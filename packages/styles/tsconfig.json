@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "../../dist/styles",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+  },
+  "include": ["./**/*"],
+}

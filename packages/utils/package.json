@@ -1,0 +1,13 @@
+{
+  "name": "utils",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "core": "*",
+    "types": "*"
+  }
+}

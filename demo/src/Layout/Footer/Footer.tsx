@@ -1,8 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useUiContext } from 'styles';
 import { meta } from '../../config';
 
 const Footer = () => {
+  const { t } = useTranslation('common');
   const { theme } = useUiContext();
 
   return (
@@ -19,7 +21,7 @@ const Footer = () => {
         ...theme.typography.caption,
       }}
     >
-      &copy; {meta.copyrightYear} {meta.name} - All rights reserved
+      &copy; {meta.copyrightYear} {meta.name} - {t('label.allRights')}
     </footer>
   );
 };

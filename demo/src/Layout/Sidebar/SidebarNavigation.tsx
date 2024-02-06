@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useUiContext } from 'styles';
 
 export interface SidebarNavigationItemProps {
@@ -15,6 +16,7 @@ export interface SidebarNavigationProps {
 const SidebarNavigation = (props: SidebarNavigationProps) => {
   const { items = [] } = props;
 
+  const { t } = useTranslation('common');
   const { pathname } = useLocation();
   const { theme } = useUiContext();
 
@@ -29,7 +31,7 @@ const SidebarNavigation = (props: SidebarNavigationProps) => {
             color: pathname === path ? theme.palette.primary.main : theme.palette.neutral.main,
           }}
         >
-          {label}
+          {t(label)}
         </Link>
       ))}
     </div>

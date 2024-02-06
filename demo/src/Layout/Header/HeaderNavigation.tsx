@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button } from 'components';
 import { PRIMARY_NAVIGATION } from '../../constants';
 
 const HeaderNavigation = () => {
+  const { t } = useTranslation('common');
   const { pathname } = useLocation();
 
   return (
@@ -14,7 +16,7 @@ const HeaderNavigation = () => {
 
         return (
           <Button key={item.key} as={Link} to={item.path} variant={isActive ? 'outlined' : 'text'} color="light">
-            {item.label}
+            {t(item.label)}
           </Button>
         );
       })}

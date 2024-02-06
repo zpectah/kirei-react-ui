@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { UiComponentsList } from 'types';
 import { Button } from 'components';
 import { routes } from '../../../../config';
@@ -10,6 +11,7 @@ export interface ViewNavigationProps {
 }
 
 const ViewNavigation = ({ route }: ViewNavigationProps) => {
+  const { t } = useTranslation('common');
   const { pathname } = useLocation();
 
   return (
@@ -26,7 +28,7 @@ const ViewNavigation = ({ route }: ViewNavigationProps) => {
             color="neutral"
             size="small"
           >
-            {item.label}
+            {t(item.label)}
           </Button>
         );
       })}

@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button, Container, Stack, Typography } from 'components';
 import { meta, routes } from '../../config';
 import { HEADER_DESKTOP_HEIGHT } from '../../constants';
 import { Footer } from '../../Layout';
 
 const Welcome = () => {
+  const { t } = useTranslation('common');
+
   return (
     <article
       style={{
@@ -25,16 +28,16 @@ const Welcome = () => {
               {meta.name}
             </Typography>
             <Typography variant="subtitle1" as="h4">
-              {meta.title}
+              {t('welcome.subtitle')}
             </Typography>
-            <Typography>{meta.description}</Typography>
+            <Typography>{t('welcome.description')}</Typography>
           </Stack>
           <Stack gap={4}>
             <Button as={Link} to={routes.getStarted.root} size="large">
-              Get started
+              {t('welcome.button.getStarted')}
             </Button>
             <Button as="a" href={meta.gitHubRepository} target="_blank" variant="text" color="neutral" size="large">
-              Github
+              {t('welcome.button.gitHub')}
             </Button>
           </Stack>
           <Footer />

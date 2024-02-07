@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from 'components';
-import { HEADER_DESKTOP_HEIGHT } from '../../constants';
+import { CONTAINER_SECONDARY_MAX_WIDTH, HEADER_DESKTOP_HEIGHT } from '../../constants';
 
 const Error = () => {
   return (
@@ -14,7 +14,7 @@ const Error = () => {
         justifyContent: 'center',
       }}
     >
-      <Container>
+      <Container maxWidth={CONTAINER_SECONDARY_MAX_WIDTH}>
         <div
           style={{
             display: 'flex',

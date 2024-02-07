@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useUiContext } from 'styles';
 import { Container } from 'components';
-import { HEADER_DESKTOP_HEIGHT, SIDEBAR_DESKTOP_WIDTH } from '../../constants';
+import { HEADER_DESKTOP_HEIGHT, SIDEBAR_DESKTOP_WIDTH, CONTAINER_PRIMARY_MAX_WIDTH } from '../../constants';
 import { Footer } from '../Footer';
 import { SidebarNavigation, SidebarNavigationItemProps } from '../Sidebar';
 
@@ -66,7 +66,7 @@ const ViewLayout = (props: ViewLayoutProps) => {
         }}
       >
         <div style={{ width: '100%', height: 'auto' }}>
-          <Container xOffset={3}>
+          <Container xOffset={3} maxWidth={CONTAINER_PRIMARY_MAX_WIDTH}>
             <Outlet />
             <Footer />
           </Container>

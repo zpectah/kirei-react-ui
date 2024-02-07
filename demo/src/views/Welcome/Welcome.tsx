@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button, Container, Stack, Typography } from 'components';
 import { meta, routes } from '../../config';
-import { HEADER_DESKTOP_HEIGHT } from '../../constants';
+import { HEADER_DESKTOP_HEIGHT, CONTAINER_SECONDARY_MAX_WIDTH } from '../../constants';
 import { Footer } from '../../Layout';
 
 const Welcome = () => {
@@ -21,7 +21,7 @@ const Welcome = () => {
         gap: '1rem',
       }}
     >
-      <Container maxWidth="md">
+      <Container maxWidth={CONTAINER_SECONDARY_MAX_WIDTH}>
         <Stack direction="column" alignItems="center" justifyContent="center" gap={6} style={{ textAlign: 'center' }}>
           <Stack direction="column" gap={2}>
             <Typography variant="h1" as="h2">

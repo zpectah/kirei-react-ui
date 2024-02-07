@@ -6,11 +6,12 @@ import { Typography } from 'components';
 export interface ViewProps extends WithChildren {
   title: ReactNode;
   subtitle?: ReactNode;
+  footer?: ReactNode;
 }
 
-const View = ({ children, title, subtitle }: ViewProps) => {
+const View = ({ children, title, subtitle, footer }: ViewProps) => {
   const {
-    theme: { spacing },
+    theme: { spacing, palette },
   } = useUiContext();
 
   return (
@@ -27,9 +28,24 @@ const View = ({ children, title, subtitle }: ViewProps) => {
         <Typography variant="h2" as="h2">
           {title}
         </Typography>
-        {subtitle && <Typography>{subtitle}</Typography>}
+        {subtitle && <Typography variant="subtitle1">{subtitle}</Typography>}
       </div>
       <div>{children}</div>
+      {footer && (
+        <div
+          style={{
+            width: '100%',
+            paddingTop: spacing.get(2),
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'end',
+            borderTop: `1px solid ${palette.shape.border}`,
+          }}
+        >
+          {footer}
+        </div>
+      )}
     </div>
   );
 };

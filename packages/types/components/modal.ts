@@ -53,6 +53,7 @@ export interface UseModalHandlingProps extends ModalHandlingProps {}
 export interface UseModalHandlingReturn extends Pick<ModalHandlingProps, 'onClose'> {
   dialogRef: MutableRefObject<HTMLDialogElement | null>;
   isMounted: boolean;
+  isOpen: boolean;
   isOpening: boolean;
   isClosing: boolean;
   onKeyDown: (event: KeyboardEvent<HTMLDialogElement>) => void;

@@ -19,19 +19,20 @@ const Modal = (props: ModalProps) => {
     id,
     ...rest
   } = props;
-  const ModalStyleProps = { maxWidth, isOpen };
+  const styleProps = { maxWidth };
 
   const {
     dialogRef,
     isMounted,
     onClose: onDialogClose,
     onKeyDown,
+    isOpen: isDialogOpen,
     isOpening,
     isClosing,
   } = useModalHandling({ isOpen, onClose });
   const {
     composedStyles: { root, backdrop, container, dialog },
-  } = useModalStyles({ styles }, { ...ModalStyleProps });
+  } = useModalStyles({ styles }, { ...styleProps });
   const {
     root: rootProps,
     backdrop: backdropProps,
@@ -40,9 +41,10 @@ const Modal = (props: ModalProps) => {
   } = useModalProps({
     style,
     className,
+    isOpen: isDialogOpen,
     isOpening,
     isClosing,
-    ...ModalStyleProps,
+    ...styleProps,
   });
 
   const rootId = useMemo(() => id ?? `${MODAL_ID_PREFIX}${getRandomString(8)}`, [id]);
@@ -55,11 +57,11 @@ const Modal = (props: ModalProps) => {
 
   return (
     isMounted &&
-    isOpen &&
+    isDialogOpen &&
     createPortal(
       <ModalContextProvider value={ModalContextValue}>
         <dialog id={rootId} ref={dialogRef} onKeyDown={onKeyDown} css={root} {...rootProps} {...rest}>
-          <div css={backdrop} {...backdropProps} onClick={onDialogClose} />
+          <div css={backdrop} {...backdropProps} />
           {/* TODO # create some sort of click outside ... and track this ... */}
           <div css={container} {...containerProps}>
             <div css={dialog} {...dialogProps}>

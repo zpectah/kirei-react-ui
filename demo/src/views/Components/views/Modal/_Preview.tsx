@@ -21,29 +21,29 @@ const PreviewView = () => {
           <Button onClick={modalToggle}>Open Modal</Button>
           <Button onClick={() => setModalTertiaryOpen(true)}>Open Tertiary</Button>
         </Stack>
-        <Modal isOpen={modalOpen} onClose={modalToggle}>
+        <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
           Modal content ...
           <br />
-          {/*<Button onClick={modalToggle} variant="outlined" color="neutral">*/}
-          {/*  Close Modal*/}
-          {/*</Button>*/}
+          <Button onClick={modalToggle} variant="outlined" color="neutral">
+            Close Modal
+          </Button>
           <br />
           <div>
             <Button onClick={modalSecondaryToggle}>Open Modal</Button>
-            <Modal isOpen={modalSecondaryOpen} onClose={modalSecondaryToggle}>
+            <Modal isOpen={modalSecondaryOpen} onClose={() => setModalSecondaryOpen(false)}>
               Modal content ...
               <br />
-              {/*<Button onClick={modalSecondaryToggle} variant="outlined" color="neutral">*/}
-              {/*  Close Modal*/}
-              {/*</Button>*/}
+              <Button onClick={modalSecondaryToggle} variant="outlined" color="neutral">
+                Close Modal
+              </Button>
             </Modal>
           </div>
         </Modal>
-        <Modal isOpen={modalTertiaryOpen} onClose={modalTertiaryToggle}>
+        <Modal isOpen={modalTertiaryOpen} onClose={() => setModalTertiaryOpen(false)}>
           <ModalHeader>Header</ModalHeader>
           <ModalBody>Body</ModalBody>
           <ModalFooter>
-            <Button onClick={() => setModalTertiaryOpen(false)} variant="outlined" color="neutral">
+            <Button onClick={modalTertiaryToggle} variant="outlined" color="neutral">
               Close Modal
             </Button>
           </ModalFooter>

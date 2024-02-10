@@ -15,6 +15,11 @@ export const useModalHandling = ({ isOpen, onClose }: UseModalHandlingProps): Us
   const { theme } = useUiContext();
   const transitionDuration = theme.transitions.duration.screen;
 
+  const openHandler = () => {
+    setOpen(true);
+    setOpening(true);
+    setTimeout(() => setOpening(false), transitionDuration);
+  };
   const closeHandler = () => {
     setClosing(true);
     setTimeout(() => {
@@ -23,7 +28,6 @@ export const useModalHandling = ({ isOpen, onClose }: UseModalHandlingProps): Us
       onClose();
     }, transitionDuration);
   };
-
   const keyDownHandler = (event: KeyboardEvent<HTMLDialogElement>) => {
     if (event.key === 'Escape') {
       event.preventDefault();
@@ -32,14 +36,6 @@ export const useModalHandling = ({ isOpen, onClose }: UseModalHandlingProps): Us
   };
 
   useLastActiveFocus(isOpen);
-
-  useEffect(() => {
-    if (isOpen) {
-      setOpen(true);
-      setOpening(true);
-      setTimeout(() => setOpening(false), transitionDuration);
-    }
-  }, [isOpen]);
 
   useEffect(() => {
     const modalElement = modalRef.current;
@@ -51,6 +47,14 @@ export const useModalHandling = ({ isOpen, onClose }: UseModalHandlingProps): Us
   }, [open, closing]);
 
   useEffect(() => {
+    if (isOpen) openHandler();
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) closeHandler();
+  }, [isOpen]);
+
+  useEffect(() => {
     setMounted(true);
 
     return () => setMounted(false);
@@ -59,6 +63,7 @@ export const useModalHandling = ({ isOpen, onClose }: UseModalHandlingProps): Us
   return {
     dialogRef: modalRef,
     isMounted: mounted,
+    isOpen: open,
     isOpening: opening,
     isClosing: closing,
     onClose: closeHandler,

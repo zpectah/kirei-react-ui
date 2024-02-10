@@ -8,11 +8,12 @@ export const useModalDialogStyles = (
 ): UseModalDialogStylesReturn => {
   const { theme } = useUiContext();
   const {
-    styles: { root },
+    styles: { root, backdrop },
   } = useCreateModalDialogStyles(theme, modalDialogStyles);
 
   const composedStyles = {
     root: [root, theme.components.ModalDialog.root, styles?.root],
+    backdrop: [backdrop, theme.components.ModalDialog.backdrop, styles?.backdrop],
   };
 
   return {

@@ -23,6 +23,7 @@ export const createThemeComponents = (components?: DeepPartial<ThemeComponents>)
     },
     ModalDialog: {
       root: components?.ModalDialog?.root,
+      backdrop: components?.ModalDialog?.backdrop,
     },
   };
 };

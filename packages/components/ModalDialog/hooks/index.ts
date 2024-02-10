@@ -1,4 +1,4 @@
 export * from './useModalDialogStyles';
-export * from './useModalDialog';
+export * from './useModalDialogHandling';
 export * from './useModalDialogProps';
 export * from './useCreateModalDialogStyles';

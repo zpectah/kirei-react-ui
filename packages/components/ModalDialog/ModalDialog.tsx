@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { ModalDialogProps } from 'types';
 import { MODAL_DIALOG_DEFAULT_VALUES, PORTAL_ELEMENT_ROOT } from 'core';
-import { useModalDialogStyles, useModalDialogProps, useModalDialog } from './hooks';
+import { getRandomString } from 'utils';
+import { useModalDialogStyles, useModalDialogProps, useModalDialogHandling } from './hooks';
 import { ModalDialogContextProvider } from './context';
 import { Button } from '../Button';
 
@@ -21,34 +22,39 @@ const ModalDialog = (props: ModalDialogProps) => {
   const modalDialogStyleProps = { maxWidth, isOpen };
 
   const {
-    composedStyles: { root },
+    dialogRef,
+    isMounted,
+    onClose: onDialogClose,
+    onKeyDown,
+    isOpening,
+    isClosing,
+  } = useModalDialogHandling({ isOpen, onClose });
+  const {
+    composedStyles: { root, backdrop },
   } = useModalDialogStyles({ styles }, { ...modalDialogStyleProps });
-  const { root: rootProps } = useModalDialogProps({ style, className, ...modalDialogStyleProps });
-  const { dialogRef, isMounted, onClose: onDialogClose, onKeyDown } = useModalDialog({ isOpen, onClose });
+  const { root: rootProps, backdrop: backdropProps } = useModalDialogProps({
+    style,
+    className,
+    isOpening,
+    isClosing,
+    ...modalDialogStyleProps,
+  });
+
+  const rootId = useMemo(() => id ?? `modal_${getRandomString(8)}`, [id]);
 
   const modalDialogContextValue = {
-    id: id ?? 'generated_id',
+    id: rootId,
     isOpen,
     onClose,
   };
 
   return (
     isMounted &&
+    isOpen &&
     createPortal(
       <ModalDialogContextProvider value={modalDialogContextValue}>
-        <dialog ref={dialogRef} onKeyDown={onKeyDown} css={root} {...rootProps} {...rest}>
-          <div
-            style={{
-              width: '100vw',
-              height: '100vh',
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              zIndex: -1,
-              backgroundColor: 'rgba(125,125,125,0.5)',
-            }}
-            onClick={onDialogClose}
-          ></div>
+        <dialog id={rootId} ref={dialogRef} onKeyDown={onKeyDown} css={root} {...rootProps} {...rest}>
+          <div css={backdrop} {...backdropProps} onClick={onDialogClose}></div>
           <div className="dialog">
             {children}
             <Button onClick={onDialogClose}>Close</Button>

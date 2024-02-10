@@ -10,6 +10,7 @@ const Modal = (props: ModalProps) => {
   const {
     maxWidth = MODAL_DEFAULT_VALUES.maxWidth,
     disableBackdropClose,
+    disableEscapeClose,
     children,
     style,
     styles,
@@ -19,7 +20,7 @@ const Modal = (props: ModalProps) => {
     id,
     ...rest
   } = props;
-  const styleProps = { maxWidth, disableBackdropClose };
+  const styleProps = { maxWidth, disableBackdropClose, disableEscapeClose };
 
   const {
     modalRootRef,
@@ -31,7 +32,7 @@ const Modal = (props: ModalProps) => {
     isOpen: isDialogOpen,
     isOpening,
     isClosing,
-  } = useModalHandling({ isOpen, onClose, disableBackdropClose });
+  } = useModalHandling({ isOpen, onClose, disableBackdropClose, disableEscapeClose });
   const {
     composedStyles: { root, backdrop, container, dialog },
   } = useModalStyles({ styles }, { ...styleProps });

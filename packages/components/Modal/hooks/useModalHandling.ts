@@ -1,12 +1,13 @@
-import { useEffect, useRef, useState, KeyboardEvent } from 'react';
+import { useEffect, useRef, useState, KeyboardEvent, MouseEvent } from 'react';
 import { UseModalHandlingProps, UseModalHandlingReturn } from 'types';
-import { useLastActiveFocus } from 'core';
+import { PORTAL_ELEMENT_ROOT, MODAL_ROOT, useLastActiveFocus } from 'core';
 import { useUiContext } from 'styles';
 
 export const useModalHandling = ({
   isOpen,
   onClose,
   disableBackdropClose,
+  disableEscapeClose,
 }: UseModalHandlingProps): UseModalHandlingReturn => {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(isOpen);
@@ -16,33 +17,38 @@ export const useModalHandling = ({
   const modalRootRef = useRef<HTMLDialogElement | null>(null);
   const modalDialogRef = useRef<HTMLDivElement | null>(null);
 
-  // TODO #context-values
   const { theme } = useUiContext();
-  const transitionDuration = theme.transitions.duration.screen;
 
   const openHandler = () => {
     setOpen(true);
     setOpening(true);
-    setTimeout(() => setOpening(false), transitionDuration);
+    setTimeout(() => setOpening(false), theme.transitions.duration.screen);
   };
   const closeHandler = () => {
     setClosing(true);
     setTimeout(() => {
       setOpen(false);
       setClosing(false);
-      onClose();
-    }, transitionDuration);
+      setTimeout(() => onClose(), 10);
+    }, theme.transitions.duration.screen);
+  };
+  const backdropClickHandler = () => {
+    if (!disableBackdropClose) closeHandler();
   };
   const keyDownHandler = (event: KeyboardEvent<HTMLDialogElement>) => {
-    if (event.key === 'Escape') {
-      // event.preventDefault();
-      closeHandler();
-    }
-  };
+    if (disableEscapeClose) {
+      event.preventDefault();
+      event.stopPropagation();
 
-  const backdropClickHandler = () => {
-    if (!disableBackdropClose) {
-      closeHandler();
+      return;
+    }
+    if (!event.isPropagationStopped() || !event.isDefaultPrevented()) {
+      const allModalNodes = PORTAL_ELEMENT_ROOT.querySelectorAll(`.${MODAL_ROOT}`);
+      const lastModal = allModalNodes[allModalNodes.length - 1];
+
+      if (event.key === 'Escape') {
+        if (event.currentTarget === lastModal) closeHandler();
+      }
     }
   };
 

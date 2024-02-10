@@ -30,14 +30,16 @@ const PreviewView = () => {
           <br />
           <div>
             <Button onClick={modalSecondaryToggle}>Open Modal</Button>
-            <Modal isOpen={modalSecondaryOpen} onClose={() => setModalSecondaryOpen(false)}>
-              Modal content ...
-              <br />
-              <Button onClick={modalSecondaryToggle} variant="outlined" color="neutral">
-                Close Modal
-              </Button>
-            </Modal>
           </div>
+        </Modal>
+        <Modal isOpen={modalSecondaryOpen} onClose={() => setModalSecondaryOpen(false)} disableEscapeClose>
+          Modal content ...
+          <br />
+          <Button onClick={() => setModalTertiaryOpen(true)}>Open Tertiary</Button>
+          <br />
+          <Button onClick={modalSecondaryToggle} variant="outlined" color="neutral">
+            Close Modal
+          </Button>
         </Modal>
         <Modal isOpen={modalTertiaryOpen} onClose={() => setModalTertiaryOpen(false)}>
           <ModalHeader>Header</ModalHeader>

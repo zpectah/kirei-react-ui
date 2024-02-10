@@ -1,4 +1,4 @@
-import { KeyboardEvent, MutableRefObject, ComponentPropsWithRef } from 'react';
+import { MouseEvent, KeyboardEvent, MutableRefObject, ComponentPropsWithRef } from 'react';
 import { WithStyle } from '../common';
 import { BreakpointKeys, ComponentStyles } from '../styles';
 
@@ -19,6 +19,7 @@ export interface ModalHandlingProps {
   onClose: () => void;
   isOpen: boolean;
   disableBackdropClose?: boolean;
+  disableEscapeClose?: boolean;
 }
 
 export interface ModalShapeProps {
@@ -59,7 +60,7 @@ export interface UseModalHandlingReturn extends Pick<ModalHandlingProps, 'onClos
   isOpening: boolean;
   isClosing: boolean;
   onKeyDown: (event: KeyboardEvent<HTMLDialogElement>) => void;
-  onBackdropClick: () => void;
+  onBackdropClick: (event: MouseEvent<HTMLDivElement>) => void;
 }
 
 export interface ModalContextProps extends ModalHandlingProps, Pick<ModalInitialProps, 'id'> {}

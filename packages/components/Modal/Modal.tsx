@@ -5,11 +5,11 @@ import { MODAL_DEFAULT_VALUES, MODAL_ID_PREFIX, PORTAL_ELEMENT_ROOT } from 'core
 import { getRandomString } from 'utils';
 import { useModalStyles, useModalProps, useModalHandling } from './hooks';
 import { ModalContextProvider } from './context';
-import { Button } from '../Button';
 
 const Modal = (props: ModalProps) => {
   const {
     maxWidth = MODAL_DEFAULT_VALUES.maxWidth,
+    disableBackdropClose,
     children,
     style,
     styles,
@@ -19,17 +19,19 @@ const Modal = (props: ModalProps) => {
     id,
     ...rest
   } = props;
-  const styleProps = { maxWidth };
+  const styleProps = { maxWidth, disableBackdropClose };
 
   const {
-    dialogRef,
+    modalRootRef,
+    modalDialogRef,
     isMounted,
     onClose: onDialogClose,
     onKeyDown,
+    onBackdropClick,
     isOpen: isDialogOpen,
     isOpening,
     isClosing,
-  } = useModalHandling({ isOpen, onClose });
+  } = useModalHandling({ isOpen, onClose, disableBackdropClose });
   const {
     composedStyles: { root, backdrop, container, dialog },
   } = useModalStyles({ styles }, { ...styleProps });
@@ -52,7 +54,7 @@ const Modal = (props: ModalProps) => {
   const ModalContextValue = {
     id: rootId,
     isOpen,
-    onClose,
+    onClose: onDialogClose,
   };
 
   return (
@@ -60,13 +62,11 @@ const Modal = (props: ModalProps) => {
     isDialogOpen &&
     createPortal(
       <ModalContextProvider value={ModalContextValue}>
-        <dialog id={rootId} ref={dialogRef} onKeyDown={onKeyDown} css={root} {...rootProps} {...rest}>
-          <div css={backdrop} {...backdropProps} />
-          {/* TODO # create some sort of click outside ... and track this ... */}
+        <dialog id={rootId} ref={modalRootRef} onKeyDown={onKeyDown} css={root} {...rootProps} {...rest}>
+          <div css={backdrop} {...backdropProps} onClick={onBackdropClick} />
           <div css={container} {...containerProps}>
-            <div css={dialog} {...dialogProps}>
+            <div ref={modalDialogRef} css={dialog} {...dialogProps}>
               {children}
-              <Button onClick={onDialogClose}>Close</Button>
             </div>
           </div>
         </dialog>

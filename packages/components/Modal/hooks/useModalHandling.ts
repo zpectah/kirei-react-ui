@@ -3,13 +3,18 @@ import { UseModalHandlingProps, UseModalHandlingReturn } from 'types';
 import { useLastActiveFocus } from 'core';
 import { useUiContext } from 'styles';
 
-export const useModalHandling = ({ isOpen, onClose }: UseModalHandlingProps): UseModalHandlingReturn => {
+export const useModalHandling = ({
+  isOpen,
+  onClose,
+  disableBackdropClose,
+}: UseModalHandlingProps): UseModalHandlingReturn => {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(isOpen);
   const [opening, setOpening] = useState(false);
   const [closing, setClosing] = useState(false);
 
-  const modalRef = useRef<HTMLDialogElement | null>(null);
+  const modalRootRef = useRef<HTMLDialogElement | null>(null);
+  const modalDialogRef = useRef<HTMLDivElement | null>(null);
 
   // TODO #context-values
   const { theme } = useUiContext();
@@ -30,7 +35,13 @@ export const useModalHandling = ({ isOpen, onClose }: UseModalHandlingProps): Us
   };
   const keyDownHandler = (event: KeyboardEvent<HTMLDialogElement>) => {
     if (event.key === 'Escape') {
-      event.preventDefault();
+      // event.preventDefault();
+      closeHandler();
+    }
+  };
+
+  const backdropClickHandler = () => {
+    if (!disableBackdropClose) {
       closeHandler();
     }
   };
@@ -38,7 +49,7 @@ export const useModalHandling = ({ isOpen, onClose }: UseModalHandlingProps): Us
   useLastActiveFocus(isOpen);
 
   useEffect(() => {
-    const modalElement = modalRef.current;
+    const modalElement = modalRootRef.current;
 
     if (modalElement) {
       if (open) modalElement.showModal();
@@ -61,12 +72,14 @@ export const useModalHandling = ({ isOpen, onClose }: UseModalHandlingProps): Us
   }, []);
 
   return {
-    dialogRef: modalRef,
+    modalRootRef,
+    modalDialogRef,
     isMounted: mounted,
     isOpen: open,
     isOpening: opening,
     isClosing: closing,
     onClose: closeHandler,
     onKeyDown: keyDownHandler,
+    onBackdropClick: backdropClickHandler,
   };
 };

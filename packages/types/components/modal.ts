@@ -18,6 +18,7 @@ export interface ModalElementaryProps extends Partial<WithStyle> {}
 export interface ModalHandlingProps {
   onClose: () => void;
   isOpen: boolean;
+  disableBackdropClose?: boolean;
 }
 
 export interface ModalShapeProps {
@@ -51,12 +52,14 @@ export interface ModalStylesProps extends ModalShapeProps {}
 export interface UseModalHandlingProps extends ModalHandlingProps {}
 
 export interface UseModalHandlingReturn extends Pick<ModalHandlingProps, 'onClose'> {
-  dialogRef: MutableRefObject<HTMLDialogElement | null>;
+  modalRootRef: MutableRefObject<HTMLDialogElement | null>;
+  modalDialogRef: MutableRefObject<HTMLDivElement | null>;
   isMounted: boolean;
   isOpen: boolean;
   isOpening: boolean;
   isClosing: boolean;
   onKeyDown: (event: KeyboardEvent<HTMLDialogElement>) => void;
+  onBackdropClick: () => void;
 }
 
 export interface ModalContextProps extends ModalHandlingProps, Pick<ModalInitialProps, 'id'> {}

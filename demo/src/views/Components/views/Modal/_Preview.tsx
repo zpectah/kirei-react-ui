@@ -21,7 +21,7 @@ const PreviewView = () => {
           <Button onClick={modalToggle}>Open Modal</Button>
           <Button onClick={() => setModalTertiaryOpen(true)}>Open Tertiary</Button>
         </Stack>
-        <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
+        <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} disableBackdropClose>
           Modal content ...
           <br />
           <Button onClick={modalToggle} variant="outlined" color="neutral">

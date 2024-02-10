@@ -44,11 +44,11 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     // '.isClosing &': {},
   };
   const containerBase = {
-    width: '100vw',
-    height: '100vh',
+    // width: '100vw',
+    // height: '100vh',
     position: 'fixed',
-    top: 0,
-    left: 0,
+    top: '50vh',
+    left: '50vw',
     zIndex: -1,
   };
   const dialogBase = {

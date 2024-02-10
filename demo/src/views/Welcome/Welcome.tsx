@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button, Container, Stack, Typography } from 'components';
 import { meta, routes } from '../../config';
-import { HEADER_DESKTOP_HEIGHT, CONTAINER_SECONDARY_MAX_WIDTH } from '../../constants';
+import { CONTAINER_SECONDARY_MAX_WIDTH } from '../../constants';
 import { Footer } from '../../Layout';
 
 const Welcome = () => {
@@ -13,7 +13,7 @@ const Welcome = () => {
     <article
       style={{
         width: '100%',
-        height: `calc(100% - ${HEADER_DESKTOP_HEIGHT})`,
+        height: '100%',
         minHeight: '500px',
         display: 'flex',
         alignItems: 'center',

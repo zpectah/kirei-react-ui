@@ -1,5 +1,5 @@
-import { ElementType } from 'react';
-import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
+import { KeyboardEvent, MutableRefObject, ComponentPropsWithRef } from 'react';
+import { WithStyle } from '../common';
 import { BreakpointKeys, ComponentStyles } from '../styles';
 
 interface ModalDialogStylesScheme<T> {
@@ -8,19 +8,25 @@ interface ModalDialogStylesScheme<T> {
 
 export interface ModalDialogStyles extends ModalDialogStylesScheme<ComponentStyles> {}
 
-export type ModalDialogInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
+export type ModalDialogInitialProps = ComponentPropsWithRef<'dialog'>;
 
 export interface ModalDialogElementaryProps extends Partial<WithStyle> {}
+
+export interface ModalHandlingProps {
+  onClose: () => void;
+  isOpen: boolean;
+}
 
 export interface ModalDialogShapeProps {
   maxWidth: BreakpointKeys;
 }
 
-export type ModalDialogProps<T extends ElementType> = {
+export type ModalDialogProps = {
   styles?: Partial<ModalDialogStyles>;
-} & ModalDialogInitialProps<T> &
+} & ModalDialogInitialProps &
   ModalDialogElementaryProps &
-  Partial<ModalDialogShapeProps>;
+  Partial<ModalDialogShapeProps> &
+  ModalHandlingProps;
 
 export interface UseModalDialogStyles {
   styles?: Partial<ModalDialogStyles>;
@@ -35,3 +41,16 @@ export interface UseModalDialogProps extends Partial<ModalDialogShapeProps>, Par
 export interface UseModalDialogPropsReturn extends ModalDialogStylesScheme<WithStyle> {}
 
 export interface ModalDialogStylesProps extends ModalDialogShapeProps {}
+
+export interface UseModalDialog extends ModalHandlingProps {}
+
+export interface UseModalDialogReturn {
+  dialogRef: MutableRefObject<HTMLDialogElement | null>;
+  isMounted: boolean;
+  onClose: () => void;
+  onKeyDown: (event: KeyboardEvent<HTMLDialogElement>) => void;
+}
+
+export interface ModalDialogContextProps extends ModalHandlingProps {
+  id: string;
+}

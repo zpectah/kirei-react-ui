@@ -25,5 +25,14 @@ export const createThemeComponents = (components?: DeepPartial<ThemeComponents>)
       root: components?.Modal?.root,
       backdrop: components?.Modal?.backdrop,
     },
+    ModalBody: {
+      root: components?.ModalBody?.root,
+    },
+    ModalFooter: {
+      root: components?.ModalFooter?.root,
+    },
+    ModalHeader: {
+      root: components?.ModalHeader?.root,
+    },
   };
 };

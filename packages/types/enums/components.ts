@@ -5,4 +5,7 @@ export enum uiComponentsListKeys {
   stack = 'stack',
   typography = 'typography',
   modal = 'modal',
+  modalBody = 'modalBody',
+  modalFooter = 'modalFooter',
+  modalHeader = 'modalHeader',
 }

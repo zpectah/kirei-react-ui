@@ -2,5 +2,8 @@ export * from './Button';
 export * from './Container';
 export * from './Link';
 export * from './Modal';
+export * from './ModalBody';
+export * from './ModalFooter';
+export * from './ModalHeader';
 export * from './Stack';
 export * from './Typography';

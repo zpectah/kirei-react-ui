@@ -2,7 +2,7 @@ import { Theme, ModalStylesProps } from 'types';
 import { getElementTransitions } from 'styles';
 
 export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps) => {
-  const { transitions, palette, shape } = theme;
+  const { transitions, palette, shape, spacing } = theme;
   // eslint-disable-next-line no-empty-pattern
   const {} = stylesProps;
 
@@ -52,11 +52,13 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     zIndex: -1,
   };
   const dialogBase = {
-    width: '50%', // TODO
-    height: '50%', // TODO
+    width: '50vw', // TODO
+    height: 'auto', // TODO
     position: 'fixed',
-    top: '25%', // TODO
-    left: '25%', // TODO
+    top: '25vh', // TODO
+    left: '25vw', // TODO
+
+    padding: spacing.get(2),
 
     backgroundColor: palette.background.secondary,
     borderRadius: shape.borderRadius.medium,

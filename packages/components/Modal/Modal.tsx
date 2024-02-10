@@ -64,7 +64,7 @@ const Modal = (props: ModalProps) => {
           <div css={container} {...containerProps}>
             <div css={dialog} {...dialogProps}>
               {children}
-              {/*<Button onClick={onDialogClose}>Close</Button>*/}
+              <Button onClick={onDialogClose}>Close</Button>
             </div>
           </div>
         </dialog>

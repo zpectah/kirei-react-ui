@@ -19,21 +19,34 @@ const PreviewView = () => {
       <Section title="Modal default">
         <Stack gap={2}>
           <Button onClick={modalToggle}>Open Modal</Button>
-          <Button onClick={modalTertiaryToggle}>Open Tertiary</Button>
+          <Button onClick={() => setModalTertiaryOpen(true)}>Open Tertiary</Button>
         </Stack>
         <Modal isOpen={modalOpen} onClose={modalToggle}>
           Modal content ...
+          <br />
+          {/*<Button onClick={modalToggle} variant="outlined" color="neutral">*/}
+          {/*  Close Modal*/}
+          {/*</Button>*/}
+          <br />
           <div>
             <Button onClick={modalSecondaryToggle}>Open Modal</Button>
             <Modal isOpen={modalSecondaryOpen} onClose={modalSecondaryToggle}>
               Modal content ...
+              <br />
+              {/*<Button onClick={modalSecondaryToggle} variant="outlined" color="neutral">*/}
+              {/*  Close Modal*/}
+              {/*</Button>*/}
             </Modal>
           </div>
         </Modal>
         <Modal isOpen={modalTertiaryOpen} onClose={modalTertiaryToggle}>
           <ModalHeader>Header</ModalHeader>
           <ModalBody>Body</ModalBody>
-          <ModalFooter>Footer</ModalFooter>
+          <ModalFooter>
+            <Button onClick={() => setModalTertiaryOpen(false)} variant="outlined" color="neutral">
+              Close Modal
+            </Button>
+          </ModalFooter>
         </Modal>
       </Section>
     </Article>

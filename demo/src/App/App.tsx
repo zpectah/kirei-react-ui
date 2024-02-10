@@ -4,7 +4,7 @@ import { UiProvider } from 'styles';
 import { routes } from '../config';
 import { PageLayout } from '../Layout';
 import { Error, Welcome, Components, GetStarted, Customization } from '../views';
-import '../i18next';
+import '../i18n';
 
 const App = () => {
   return (

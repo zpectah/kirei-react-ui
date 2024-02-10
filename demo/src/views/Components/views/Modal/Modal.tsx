@@ -6,14 +6,14 @@ import Preview from './_Preview';
 import Api from './_Api';
 import Playground from './_Playground';
 
-const ModalDialogView = () => (
+const ModalView = () => (
   <Routes>
     <Route
       path="/"
       element={
         <DetailLayout
-          route={uiComponentsListKeys['modal-dialog']}
-          title="Modal Dialog"
+          route={uiComponentsListKeys.modal}
+          title="Modal"
           subtitle="Nulla a lacinia, eget tellus varius dui sed felis a molestie, bibendum dolor ut aliquam id dolor. Ut sed vitae, ipsum potenti et libero vitae semper fusce vitae nibh, magna et at nullam donec mauris."
         />
       }
@@ -25,4 +25,4 @@ const ModalDialogView = () => (
   </Routes>
 );
 
-export default ModalDialogView;
+export default ModalView;

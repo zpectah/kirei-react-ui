@@ -1,11 +1,8 @@
 import { useEffect, useRef, useState, KeyboardEvent } from 'react';
-import { UseModalDialogHandlingProps, UseModalDialogHandlingReturn } from 'types';
+import { UseModalHandlingProps, UseModalHandlingReturn } from 'types';
 import { useLastActiveFocus } from 'core';
 
-export const useModalDialogHandling = ({
-  isOpen,
-  onClose,
-}: UseModalDialogHandlingProps): UseModalDialogHandlingReturn => {
+export const useModalHandling = ({ isOpen, onClose }: UseModalHandlingProps): UseModalHandlingReturn => {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(isOpen);
 

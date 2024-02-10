@@ -1,15 +1,15 @@
 import React, { useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { ModalDialogProps } from 'types';
-import { MODAL_DIALOG_DEFAULT_VALUES, PORTAL_ELEMENT_ROOT } from 'core';
+import { ModalProps } from 'types';
+import { MODAL_DEFAULT_VALUES, PORTAL_ELEMENT_ROOT } from 'core';
 import { getRandomString } from 'utils';
-import { useModalDialogStyles, useModalDialogProps, useModalDialogHandling } from './hooks';
-import { ModalDialogContextProvider } from './context';
+import { useModalStyles, useModalProps, useModalHandling } from './hooks';
+import { ModalContextProvider } from './context';
 import { Button } from '../Button';
 
-const ModalDialog = (props: ModalDialogProps) => {
+const Modal = (props: ModalProps) => {
   const {
-    maxWidth = MODAL_DIALOG_DEFAULT_VALUES.maxWidth,
+    maxWidth = MODAL_DEFAULT_VALUES.maxWidth,
     children,
     style,
     styles,
@@ -19,7 +19,7 @@ const ModalDialog = (props: ModalDialogProps) => {
     id,
     ...rest
   } = props;
-  const modalDialogStyleProps = { maxWidth, isOpen };
+  const ModalStyleProps = { maxWidth, isOpen };
 
   const {
     dialogRef,
@@ -28,21 +28,21 @@ const ModalDialog = (props: ModalDialogProps) => {
     onKeyDown,
     isOpening,
     isClosing,
-  } = useModalDialogHandling({ isOpen, onClose });
+  } = useModalHandling({ isOpen, onClose });
   const {
     composedStyles: { root, backdrop },
-  } = useModalDialogStyles({ styles }, { ...modalDialogStyleProps });
-  const { root: rootProps, backdrop: backdropProps } = useModalDialogProps({
+  } = useModalStyles({ styles }, { ...ModalStyleProps });
+  const { root: rootProps, backdrop: backdropProps } = useModalProps({
     style,
     className,
     isOpening,
     isClosing,
-    ...modalDialogStyleProps,
+    ...ModalStyleProps,
   });
 
   const rootId = useMemo(() => id ?? `modal_${getRandomString(8)}`, [id]);
 
-  const modalDialogContextValue = {
+  const ModalContextValue = {
     id: rootId,
     isOpen,
     onClose,
@@ -52,7 +52,7 @@ const ModalDialog = (props: ModalDialogProps) => {
     isMounted &&
     isOpen &&
     createPortal(
-      <ModalDialogContextProvider value={modalDialogContextValue}>
+      <ModalContextProvider value={ModalContextValue}>
         <dialog id={rootId} ref={dialogRef} onKeyDown={onKeyDown} css={root} {...rootProps} {...rest}>
           <div css={backdrop} {...backdropProps} onClick={onDialogClose}></div>
           <div className="dialog">
@@ -60,10 +60,10 @@ const ModalDialog = (props: ModalDialogProps) => {
             <Button onClick={onDialogClose}>Close</Button>
           </div>
         </dialog>
-      </ModalDialogContextProvider>,
+      </ModalContextProvider>,
       PORTAL_ELEMENT_ROOT
     )
   );
 };
 
-export default ModalDialog;
+export default Modal;

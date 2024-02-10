@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import { useUiContext } from 'styles';
-import { Button, ModalDialog } from 'components';
+import { Button, Modal } from 'components';
 import { Article, Section } from '../../../../components';
 
 const PreviewView = () => {
@@ -18,15 +18,15 @@ const PreviewView = () => {
         <div>
           <Button onClick={modalToggle}>Open Modal</Button>
         </div>
-        <ModalDialog isOpen={modalOpen} onClose={modalToggle}>
+        <Modal isOpen={modalOpen} onClose={modalToggle}>
           Modal content ...
           <div>
             <Button onClick={modalSecondaryToggle}>Open Modal</Button>
-            <ModalDialog isOpen={modalSecondaryOpen} onClose={modalSecondaryToggle}>
+            <Modal isOpen={modalSecondaryOpen} onClose={modalSecondaryToggle}>
               Modal content ...
-            </ModalDialog>
+            </Modal>
           </div>
-        </ModalDialog>
+        </Modal>
       </Section>
     </Article>
   );

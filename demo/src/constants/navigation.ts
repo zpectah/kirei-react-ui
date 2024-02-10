@@ -85,8 +85,8 @@ export const COMPONENTS_SIDEBAR_NAVIGATION = [
   },
   {
     key: 6,
-    label: 'menuItem.components.modalDialog',
-    path: routes.components.routes['modal-dialog'],
+    label: 'menuItem.components.modal',
+    path: routes.components.routes.modal,
   },
 ];
 

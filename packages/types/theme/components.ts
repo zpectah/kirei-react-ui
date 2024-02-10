@@ -1,11 +1,4 @@
-import {
-  ButtonStyles,
-  StackStyles,
-  ContainerStyles,
-  TypographyStyles,
-  LinkStyles,
-  ModalDialogStyles,
-} from '../components';
+import { ButtonStyles, StackStyles, ContainerStyles, TypographyStyles, LinkStyles, ModalStyles } from '../components';
 
 export interface ThemeComponents {
   Button: ButtonStyles;
@@ -13,5 +6,5 @@ export interface ThemeComponents {
   Stack: StackStyles;
   Typography: TypographyStyles;
   Link: LinkStyles;
-  ModalDialog: ModalDialogStyles;
+  Modal: ModalStyles;
 }

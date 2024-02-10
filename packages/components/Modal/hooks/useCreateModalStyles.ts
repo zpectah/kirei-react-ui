@@ -1,6 +1,6 @@
-import { Theme, ModalDialogStylesProps } from 'types';
+import { Theme, ModalStylesProps } from 'types';
 
-export const useCreateModalDialogStyles = (theme: Theme, stylesProps: ModalDialogStylesProps) => {
+export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps) => {
   // eslint-disable-next-line no-empty-pattern
   const {} = stylesProps;
 

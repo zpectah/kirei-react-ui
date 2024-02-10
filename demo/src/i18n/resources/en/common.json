@@ -23,5 +23,5 @@
   "menuItem.components.container": "Container",
   "menuItem.components.stack": "Stack",
   "menuItem.components.typography": "Typography",
-  "menuItem.components.modalDialog": "Modal Dialog"
+  "menuItem.components.modal": "Modal"
 }

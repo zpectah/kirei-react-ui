@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { COMPONENTS_SIDEBAR_NAVIGATION } from '../../constants';
 import { ViewLayout } from '../../Layout';
-import { ButtonView, ContainerView, StackView, LinkView, TypographyView, ModalDialogView } from './views';
+import { ButtonView, ContainerView, StackView, LinkView, TypographyView, ModalView } from './views';
 
 const Components = () => {
   return (
@@ -14,7 +14,7 @@ const Components = () => {
         <Route path="/container/*" element={<ContainerView />} />
         <Route path="/stack/*" element={<StackView />} />
         <Route path="/typography/*" element={<TypographyView />} />
-        <Route path="/modal-dialog/*" element={<ModalDialogView />} />
+        <Route path="/modal/*" element={<ModalView />} />
       </Route>
     </Routes>
   );

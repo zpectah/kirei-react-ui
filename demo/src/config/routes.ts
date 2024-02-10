@@ -30,7 +30,7 @@ export const routes = {
       container: `/${componentsRootPrefix}/${uiComponentsListKeys.container}`,
       stack: `/${componentsRootPrefix}/${uiComponentsListKeys.stack}`,
       typography: `/${componentsRootPrefix}/${uiComponentsListKeys.typography}`,
-      'modal-dialog': `/${componentsRootPrefix}/${uiComponentsListKeys['modal-dialog']}`,
+      modal: `/${componentsRootPrefix}/${uiComponentsListKeys.modal}`,
     },
   },
   customization: {

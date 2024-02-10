@@ -4,5 +4,5 @@ export enum uiComponentsListKeys {
   link = 'link',
   stack = 'stack',
   typography = 'typography',
-  'modal-dialog' = 'modal-dialog',
+  modal = 'modal',
 }

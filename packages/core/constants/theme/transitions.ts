@@ -7,8 +7,7 @@ export const TRANSITIONS_EASING = {
 
 export const TRANSITIONS_DURATION = {
   shortest: 125,
-  short: 250,
-  standard: 300,
-  complex: 375,
-  screen: 200,
+  short: 175,
+  standard: 325,
+  screen: 225,
 };

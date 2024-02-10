@@ -1,11 +1,12 @@
 import { DeepPartial, ThemeMode, themeModeKeys, ThemePalette } from 'types';
 import { PALETTE, PALETTE_RATIO, PALETTE_RATIO_CORRECTION } from 'core';
 
-export const getRatio = (ratio?: Partial<ThemePalette['ratio']>) => {
+export const getThemePaletteRatio = (ratio?: Partial<ThemePalette['ratio']>) => {
   return {
     activeAlpha: ratio?.activeAlpha || PALETTE_RATIO.activeAlpha,
     hoverAlpha: ratio?.hoverAlpha || PALETTE_RATIO.hoverAlpha,
     disabledAlpha: ratio?.disabledAlpha || PALETTE_RATIO.disabledAlpha,
+    backgroundAlpha: ratio?.backgroundAlpha || PALETTE_RATIO.backgroundAlpha,
     backgroundDarken: ratio?.backgroundDarken || PALETTE_RATIO.backgroundDarken,
     backgroundLighten: ratio?.backgroundLighten || PALETTE_RATIO.backgroundLighten,
     textSecondary: ratio?.textSecondary || PALETTE_RATIO.textSecondary,
@@ -26,7 +27,7 @@ export const getThemePaletteProps = (
   palette?: DeepPartial<ThemePalette>
 ) => {
   const { getLightenColor, getDarkenColor, getAlphaColor } = utils;
-  const ratio = getRatio(palette?.ratio);
+  const ratio = getThemePaletteRatio(palette?.ratio);
 
   let textColor, backgroundColor, greyBase;
 

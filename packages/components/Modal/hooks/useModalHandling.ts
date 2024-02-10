@@ -1,15 +1,19 @@
 import { useEffect, useRef, useState, KeyboardEvent } from 'react';
 import { UseModalHandlingProps, UseModalHandlingReturn } from 'types';
 import { useLastActiveFocus } from 'core';
+import { useUiContext } from 'styles';
 
 export const useModalHandling = ({ isOpen, onClose }: UseModalHandlingProps): UseModalHandlingReturn => {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(isOpen);
-
   const [opening, setOpening] = useState(false);
   const [closing, setClosing] = useState(false);
 
   const modalRef = useRef<HTMLDialogElement | null>(null);
+
+  // TODO #context-values
+  const { theme } = useUiContext();
+  const transitionDuration = theme.transitions.duration.screen;
 
   const closeHandler = () => {
     setClosing(true);
@@ -17,7 +21,7 @@ export const useModalHandling = ({ isOpen, onClose }: UseModalHandlingProps): Us
       setOpen(false);
       setClosing(false);
       onClose();
-    }, 250);
+    }, transitionDuration);
   };
 
   const keyDownHandler = (event: KeyboardEvent<HTMLDialogElement>) => {
@@ -33,7 +37,7 @@ export const useModalHandling = ({ isOpen, onClose }: UseModalHandlingProps): Us
     if (isOpen) {
       setOpen(true);
       setOpening(true);
-      setTimeout(() => setOpening(false), 250);
+      setTimeout(() => setOpening(false), transitionDuration);
     }
   }, [isOpen]);
 

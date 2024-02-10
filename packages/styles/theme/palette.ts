@@ -1,7 +1,7 @@
 import Color from 'color';
 import { DeepPartial, ThemePalette, themeModeKeys } from 'types';
 import { PALETTE } from 'core';
-import { getRatio, getThemePaletteProps } from '../utils';
+import { getThemePaletteRatio, getThemePaletteProps } from '../utils';
 
 const getLightenColor = (color: string, ratio: number) => Color(color).lighten(ratio).toString();
 const getDarkenColor = (color: string, ratio: number) => Color(color).darken(ratio).toString();
@@ -64,7 +64,7 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
   const lightColorMain = palette?.light?.main || common.light;
   const darkColorMain = palette?.dark?.main || common.dark;
 
-  const ratio = getRatio(palette?.ratio);
+  const ratio = getThemePaletteRatio(palette?.ratio);
 
   const _action = {
     active: palette?.action?.active || primaryColorMain,

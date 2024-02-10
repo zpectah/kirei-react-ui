@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { UseModalProps, UseModalPropsReturn } from 'types';
-import { MODAL_ROOT, MODAL_BACKDROP } from 'core';
+import { MODAL_ROOT, MODAL_BACKDROP, MODAL_CONTAINER, MODAL_DIALOG } from 'core';
 
 export const useModalProps = (props: UseModalProps): UseModalPropsReturn => {
   const { style, className, isOpen, isOpening, isClosing } = props;
@@ -12,6 +12,14 @@ export const useModalProps = (props: UseModalProps): UseModalPropsReturn => {
     },
     backdrop: {
       className: MODAL_BACKDROP,
+      style: {},
+    },
+    container: {
+      className: MODAL_CONTAINER,
+      style: {},
+    },
+    dialog: {
+      className: MODAL_DIALOG,
       style: {},
     },
   };

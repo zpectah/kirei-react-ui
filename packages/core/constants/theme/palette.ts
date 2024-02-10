@@ -41,6 +41,7 @@ export const PALETTE_RATIO = {
   activeAlpha: 0.12,
   hoverAlpha: 0.25,
   disabledAlpha: 0.5,
+  backgroundAlpha: 0.65,
   backgroundDarken: 0.25,
   backgroundLighten: 0.25,
   textSecondary: 25,

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { ModalProps } from 'types';
-import { MODAL_DEFAULT_VALUES, PORTAL_ELEMENT_ROOT } from 'core';
+import { MODAL_DEFAULT_VALUES, MODAL_ID_PREFIX, PORTAL_ELEMENT_ROOT } from 'core';
 import { getRandomString } from 'utils';
 import { useModalStyles, useModalProps, useModalHandling } from './hooks';
 import { ModalContextProvider } from './context';
@@ -30,9 +30,14 @@ const Modal = (props: ModalProps) => {
     isClosing,
   } = useModalHandling({ isOpen, onClose });
   const {
-    composedStyles: { root, backdrop },
+    composedStyles: { root, backdrop, container, dialog },
   } = useModalStyles({ styles }, { ...ModalStyleProps });
-  const { root: rootProps, backdrop: backdropProps } = useModalProps({
+  const {
+    root: rootProps,
+    backdrop: backdropProps,
+    container: containerProps,
+    dialog: dialogProps,
+  } = useModalProps({
     style,
     className,
     isOpening,
@@ -40,7 +45,7 @@ const Modal = (props: ModalProps) => {
     ...ModalStyleProps,
   });
 
-  const rootId = useMemo(() => id ?? `modal_${getRandomString(8)}`, [id]);
+  const rootId = useMemo(() => id ?? `${MODAL_ID_PREFIX}${getRandomString(8)}`, [id]);
 
   const ModalContextValue = {
     id: rootId,
@@ -54,10 +59,13 @@ const Modal = (props: ModalProps) => {
     createPortal(
       <ModalContextProvider value={ModalContextValue}>
         <dialog id={rootId} ref={dialogRef} onKeyDown={onKeyDown} css={root} {...rootProps} {...rest}>
-          <div css={backdrop} {...backdropProps} onClick={onDialogClose}></div>
-          <div className="dialog">
-            {children}
-            <Button onClick={onDialogClose}>Close</Button>
+          <div css={backdrop} {...backdropProps} onClick={onDialogClose} />
+          {/* TODO # create some sort of click outside ... and track this ... */}
+          <div css={container} {...containerProps}>
+            <div css={dialog} {...dialogProps}>
+              {children}
+              {/*<Button onClick={onDialogClose}>Close</Button>*/}
+            </div>
           </div>
         </dialog>
       </ModalContextProvider>,

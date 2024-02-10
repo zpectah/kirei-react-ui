@@ -15,6 +15,7 @@ export interface ThemePalette {
     activeAlpha: number;
     hoverAlpha: number;
     disabledAlpha: number;
+    backgroundAlpha: number;
     backgroundDarken: number;
     backgroundLighten: number;
     textSecondary: number;

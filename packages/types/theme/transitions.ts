@@ -9,7 +9,6 @@ export interface ThemeTransitions {
     shortest: number;
     short: number;
     standard: number;
-    complex: number;
     screen: number;
   };
 }

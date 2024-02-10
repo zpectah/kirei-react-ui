@@ -13,7 +13,6 @@ export const createThemeTransitions = (transitions?: DeepPartial<ThemeTransition
       shortest: transitions?.duration?.shortest || TRANSITIONS_DURATION.shortest,
       short: transitions?.duration?.short || TRANSITIONS_DURATION.short,
       standard: transitions?.duration?.standard || TRANSITIONS_DURATION.standard,
-      complex: transitions?.duration?.complex || TRANSITIONS_DURATION.complex,
       screen: transitions?.duration?.screen || TRANSITIONS_DURATION.screen,
     },
   };

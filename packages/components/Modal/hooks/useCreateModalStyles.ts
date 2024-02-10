@@ -1,6 +1,8 @@
 import { Theme, ModalStylesProps } from 'types';
+import { getElementTransitions } from 'styles';
 
 export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps) => {
+  const { transitions, palette, shape } = theme;
   // eslint-disable-next-line no-empty-pattern
   const {} = stylesProps;
 
@@ -12,34 +14,17 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     top: 0,
     left: 0,
     background: 'none',
-
-    '&:modal': {},
-    '&:not(:modal)': {},
+    zIndex: 999, // TODO
 
     '&::backdrop': {
       background: 'none',
     },
 
-    '&.isOpen': {},
-    '&.isOpening': {},
-    '&.isClosing': {},
-
-    '& .dialog': {
-      width: '50%',
-      height: '50%',
-      position: 'fixed',
-      top: '25%',
-      left: '25%',
-      backgroundColor: 'rgb(250,250,250)',
-      opacity: 0,
-
-      transition: 'opacity 250ms ease-in-out 0s',
-    },
-    '&.isOpen:not(.isOpening,.isClosing)': {
-      '.dialog': {
-        opacity: 1,
-      },
-    },
+    // '&:modal': {},
+    // '&:not(:modal)': {},
+    // '&.isOpen': {},
+    // '&.isOpening': {},
+    // '&.isClosing': {},
   };
   const backdropBase = {
     width: '100vw',
@@ -48,20 +33,46 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     top: 0,
     left: 0,
     zIndex: -1,
-    backgroundColor: 'rgba(25,25,25,0)',
-    transition: 'background-color 250ms ease-in-out 0s',
+    transition: getElementTransitions(['background-color'], transitions.duration.screen, transitions.easing.easeInOut),
 
-    '.isOpening &': {},
-    '.isClosing &': {},
-
+    backgroundColor: palette.utils.getAlphaColor(palette.dark.dark, 0),
     '.isOpen:not(.isOpening,.isClosing) &': {
-      backgroundColor: 'rgba(25,25,25,.25)',
+      backgroundColor: palette.utils.getAlphaColor(palette.dark.dark, palette.ratio.backgroundAlpha),
+    },
+
+    // '.isOpening &': {},
+    // '.isClosing &': {},
+  };
+  const containerBase = {
+    width: '100vw',
+    height: '100vh',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    zIndex: -1,
+  };
+  const dialogBase = {
+    width: '50%', // TODO
+    height: '50%', // TODO
+    position: 'fixed',
+    top: '25%', // TODO
+    left: '25%', // TODO
+
+    backgroundColor: palette.background.secondary,
+    borderRadius: shape.borderRadius.medium,
+    transition: getElementTransitions(['opacity'], transitions.duration.screen, transitions.easing.easeInOut),
+
+    opacity: 0,
+    '.isOpen:not(.isOpening,.isClosing) &': {
+      opacity: 1,
     },
   };
 
   const styles = {
     root: Object.assign({ ...rootBase }),
     backdrop: Object.assign({ ...backdropBase }),
+    container: Object.assign({ ...containerBase }),
+    dialog: Object.assign({ ...dialogBase }),
   };
 
   return { styles };

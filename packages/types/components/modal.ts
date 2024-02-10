@@ -5,6 +5,8 @@ import { BreakpointKeys, ComponentStyles } from '../styles';
 interface ModalStylesScheme<T> {
   root: T;
   backdrop: T;
+  container: T;
+  dialog: T;
 }
 
 export interface ModalStyles extends ModalStylesScheme<ComponentStyles> {}

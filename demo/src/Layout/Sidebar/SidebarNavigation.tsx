@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 
 export interface SidebarNavigationItemProps {
   key: number;
@@ -18,7 +18,7 @@ const SidebarNavigation = (props: SidebarNavigationProps) => {
 
   const { t } = useTranslation('common');
   const { pathname } = useLocation();
-  const { theme } = useUiContext();
+  const { theme } = useKireiContext();
 
   return (
     <div style={{ width: '100%', height: 'auto', display: 'flex', flexDirection: 'column', gap: theme.spacing.get(1) }}>

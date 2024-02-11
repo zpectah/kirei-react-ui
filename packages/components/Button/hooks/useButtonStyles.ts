@@ -1,12 +1,12 @@
 import { UseButtonStyles, UseButtonStylesReturn, ButtonStylesProps } from 'types';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { useCreateButtonStyles } from './useCreateButtonStyles';
 
 export const useButtonStyles = (
   { styles }: UseButtonStyles,
   { ...buttonStyles }: ButtonStylesProps
 ): UseButtonStylesReturn => {
-  const { theme } = useUiContext();
+  const { theme } = useKireiContext();
   const {
     styles: { root, label, iconStart, iconEnd, iconLoading },
   } = useCreateButtonStyles(theme, buttonStyles);

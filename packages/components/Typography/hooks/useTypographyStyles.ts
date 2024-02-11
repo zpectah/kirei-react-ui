@@ -1,12 +1,12 @@
 import { UseTypographyStyles, UseTypographyStylesReturn, TypographyStylesProps } from 'types';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { useCreateTypographyStyles } from './useCreateTypographyStyles';
 
 export const useTypographyStyles = (
   { styles }: UseTypographyStyles,
   { ...typographyStyles }: TypographyStylesProps
 ): UseTypographyStylesReturn => {
-  const { theme } = useUiContext();
+  const { theme } = useKireiContext();
   const {
     styles: { root },
   } = useCreateTypographyStyles(theme, typographyStyles);

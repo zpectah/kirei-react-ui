@@ -1,12 +1,12 @@
 import { UseStackStyles, UseStackStylesReturn, StackStylesProps } from 'types';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { useCreateStackStyles } from './useCreateStackStyles';
 
 export const useStackStyles = (
   { styles }: UseStackStyles,
   { ...stackStyles }: StackStylesProps
 ): UseStackStylesReturn => {
-  const { theme } = useUiContext();
+  const { theme } = useKireiContext();
   const {
     styles: { root },
   } = useCreateStackStyles(theme, stackStyles);

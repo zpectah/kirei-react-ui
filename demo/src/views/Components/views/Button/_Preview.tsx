@@ -1,10 +1,10 @@
 import React from 'react';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { Button } from 'components';
 import { Article, Section } from '../../../../components';
 
 const PreviewView = () => {
-  const { theme } = useUiContext();
+  const { theme } = useKireiContext();
 
   return (
     <>

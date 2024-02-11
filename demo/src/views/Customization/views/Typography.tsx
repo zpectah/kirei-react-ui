@@ -1,10 +1,10 @@
 import React from 'react';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { View, withPlainLayout } from '../../../Layout';
 import { Article, Section } from '../../../components';
 
 const TypographyView = () => {
-  const { theme } = useUiContext();
+  const { theme } = useKireiContext();
 
   return (
     <View

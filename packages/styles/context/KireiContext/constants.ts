@@ -1,7 +1,7 @@
-import { UiContextProps } from 'types';
+import { KireiContextProps } from 'types';
 import { createTheme } from '../../theme';
 
-export const defaultUiContext: UiContextProps = {
+export const defaultKireiContext: KireiContextProps = {
   theme: createTheme(),
   setTheme: () => {},
   setThemeMode: () => {},

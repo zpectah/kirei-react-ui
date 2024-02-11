@@ -1,12 +1,12 @@
 import { UseModalStyles, UseModalStylesReturn, ModalStylesProps } from 'types';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { useCreateModalStyles } from './useCreateModalStyles';
 
 export const useModalStyles = (
   { styles }: UseModalStyles,
   { ...ModalStyles }: ModalStylesProps
 ): UseModalStylesReturn => {
-  const { theme } = useUiContext();
+  const { theme } = useKireiContext();
   const {
     styles: { root, backdrop, container, dialog },
   } = useCreateModalStyles(theme, ModalStyles);

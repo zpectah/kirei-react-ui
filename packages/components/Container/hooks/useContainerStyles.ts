@@ -1,12 +1,12 @@
 import { UseContainerStyles, UseContainerStylesReturn, ContainerStylesProps } from 'types';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { useCreateContainerStyles } from './useCreateContainerStyles';
 
 export const useContainerStyles = (
   { styles }: UseContainerStyles,
   { ...containerStyles }: ContainerStylesProps
 ): UseContainerStylesReturn => {
-  const { theme } = useUiContext();
+  const { theme } = useKireiContext();
   const {
     styles: { root },
   } = useCreateContainerStyles(theme, containerStyles);

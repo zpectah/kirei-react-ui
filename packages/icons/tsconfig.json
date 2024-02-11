@@ -5,7 +5,7 @@
     "outDir": "../../dist/icons",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "jsxImportSource": "@emotion/react",
+    "jsxImportSource": "@emotion/react"
   },
-  "include": ["./**/*"],
+  "include": ["./**/*"]
 }

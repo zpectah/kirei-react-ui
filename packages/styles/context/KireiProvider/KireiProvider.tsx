@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Global, css, SerializedStyles } from '@emotion/react';
-import { Theme, PartialTheme, ThemeMode, themeModeKeys, UiProviderProps } from 'types';
+import { Theme, PartialTheme, ThemeMode, themeModeKeys, KireiProviderProps } from 'types';
 import { createTheme } from '../../theme';
-import { UiContextProvider } from '../UiContext';
 import { cssReset, createGlobalStyles } from '../../global';
+import { KireiContextProvider } from '../KireiContext';
 
-const UiProvider = ({ children, theme, styles, applyCSSReset, applyGlobalStyles }: UiProviderProps) => {
+const KireiProvider = ({ children, theme, styles, applyCSSReset, applyGlobalStyles }: KireiProviderProps) => {
   const [uiTheme, setUiTheme] = useState<Theme>(createTheme(theme));
 
   const defaultProviderValues = useMemo(() => {
@@ -31,15 +31,16 @@ const UiProvider = ({ children, theme, styles, applyCSSReset, applyGlobalStyles 
 
   useEffect(() => {
     const newTheme = createTheme(theme);
+
     setUiTheme(newTheme);
   }, [theme]);
 
   return (
-    <UiContextProvider value={defaultProviderValues}>
+    <KireiContextProvider value={defaultProviderValues}>
       <Global styles={defaultGlobalStyles} />
       {children}
-    </UiContextProvider>
+    </KireiContextProvider>
   );
 };
 
-export default UiProvider;
+export default KireiProvider;

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, KeyboardEvent, SyntheticEvent } from 'react';
 import { UseModalHandlingProps, UseModalHandlingReturn } from 'types';
 import { PORTAL_ELEMENT_ROOT, MODAL_ROOT, useLastActiveFocus } from 'core';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 
 export const useModalHandling = ({
   isOpen,
@@ -17,7 +17,7 @@ export const useModalHandling = ({
   const modalRootRef = useRef<HTMLDialogElement | null>(null);
   const modalDialogRef = useRef<HTMLDivElement | null>(null);
 
-  const { theme } = useUiContext();
+  const { theme } = useKireiContext();
 
   const openHandler = () => {
     setOpen(true);

@@ -1,6 +1,6 @@
 # Kirei React UI
 
-Design systém "Kirei React UI" by byl založen na konceptu jednoduchosti, elegance a čistoty. 
+Design systém "Kirei React UI" by byl založen na konceptu jednoduchosti, elegance a čistoty.
 Jeho hlavním cílem by bylo poskytnout uživatelům příjemný a intuitivní zážitek při vývoji React aplikací.
 
 ## Description

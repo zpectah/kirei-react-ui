@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { Container } from 'components';
 import { HEADER_DESKTOP_HEIGHT, SIDEBAR_DESKTOP_WIDTH, CONTAINER_PRIMARY_MAX_WIDTH } from '../../constants';
 import { Footer } from '../Footer';
@@ -14,7 +14,7 @@ export interface ViewLayoutProps {
 const ViewLayout = (props: ViewLayoutProps) => {
   const { sidebar, items = [] } = props;
 
-  const { theme } = useUiContext();
+  const { theme } = useKireiContext();
 
   return (
     <div

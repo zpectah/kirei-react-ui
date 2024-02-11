@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useUiContext } from 'styles';
+// import { useKireiContext } from 'styles';
 import { Button, Stack, Modal, ModalHeader, ModalBody, ModalFooter } from 'components';
 import { Article, Section } from '../../../../components';
 
@@ -8,7 +8,7 @@ const PreviewView = () => {
   const [modalSecondaryOpen, setModalSecondaryOpen] = useState(false);
   const [modalTertiaryOpen, setModalTertiaryOpen] = useState(false);
 
-  // const { theme } = useUiContext();
+  // const { theme } = useKireiContext();
 
   const modalToggle = () => setModalOpen(!modalOpen);
   const modalSecondaryToggle = () => setModalSecondaryOpen(!modalSecondaryOpen);

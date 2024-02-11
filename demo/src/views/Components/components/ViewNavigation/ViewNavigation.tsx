@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { UiComponentsList } from 'types';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { Button } from 'components';
 import { routes } from '../../../../config';
 import { DETAIL_NAVIGATION } from '../../../../constants';
@@ -16,7 +16,7 @@ const ViewNavigation = ({ route }: ViewNavigationProps) => {
   const { pathname } = useLocation();
   const {
     theme: { spacing, palette },
-  } = useUiContext();
+  } = useKireiContext();
 
   return (
     <div

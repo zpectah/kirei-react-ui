@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { WithChildren } from 'types';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { Typography } from 'components';
 
 export interface ArticleProps extends WithChildren {
@@ -11,7 +11,7 @@ export interface ArticleProps extends WithChildren {
 const Article = ({ children, title, subtitle }: ArticleProps) => {
   const {
     theme: { spacing },
-  } = useUiContext();
+  } = useKireiContext();
 
   return (
     <article

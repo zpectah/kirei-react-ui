@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { WithChildren } from 'types';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { Typography } from 'components';
 
 export interface ViewProps extends WithChildren {
@@ -12,7 +12,7 @@ export interface ViewProps extends WithChildren {
 const View = ({ children, title, subtitle, footer }: ViewProps) => {
   const {
     theme: { spacing, palette },
-  } = useUiContext();
+  } = useKireiContext();
 
   return (
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: spacing.get(4) }}>

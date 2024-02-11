@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { Button, Typography, Container } from 'components';
 import { meta } from '../../config';
 import { HEADER_DESKTOP_HEIGHT } from '../../constants';
 import HeaderNavigation from './HeaderNavigation';
 
 const Header = () => {
-  const { theme, toggleThemeMode } = useUiContext();
+  const { theme, toggleThemeMode } = useKireiContext();
 
   return (
     <header

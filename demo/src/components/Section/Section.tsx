@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { WithChildren } from 'types';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { Typography } from 'components';
 
 export interface SectionProps extends Partial<WithChildren> {
@@ -9,7 +9,7 @@ export interface SectionProps extends Partial<WithChildren> {
 }
 
 const Section = ({ children, title, subtitle }: SectionProps) => {
-  const { theme } = useUiContext();
+  const { theme } = useKireiContext();
 
   return (
     <section

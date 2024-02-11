@@ -1,12 +1,12 @@
 import { UseModalHeaderStyles, UseModalHeaderStylesReturn, ModalHeaderStylesProps } from 'types';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { useCreateModalHeaderStyles } from './useCreateModalHeaderStyles';
 
 export const useModalHeaderStyles = (
   { styles }: UseModalHeaderStyles,
   { ...modalHeaderStyles }: ModalHeaderStylesProps
 ): UseModalHeaderStylesReturn => {
-  const { theme } = useUiContext();
+  const { theme } = useKireiContext();
   const {
     styles: { root },
   } = useCreateModalHeaderStyles(theme, modalHeaderStyles);

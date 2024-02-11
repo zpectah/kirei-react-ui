@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { UiProvider } from 'styles';
+import { KireiProvider } from 'styles';
 import { routes } from '../config';
 import { PageLayout } from '../Layout';
 import { Error, Welcome, Components, GetStarted, Customization } from '../views';
@@ -8,7 +8,7 @@ import '../i18n';
 
 const App = () => {
   return (
-    <UiProvider applyCSSReset applyGlobalStyles>
+    <KireiProvider applyCSSReset applyGlobalStyles>
       <BrowserRouter>
         <Routes>
           <Route path={routes.welcome.route} element={<PageLayout />}>
@@ -20,7 +20,7 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-    </UiProvider>
+    </KireiProvider>
   );
 };
 

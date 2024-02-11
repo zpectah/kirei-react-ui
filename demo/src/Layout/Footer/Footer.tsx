@@ -1,12 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useUiContext } from 'styles';
+import { useKireiContext } from 'styles';
 import { Container } from 'components';
 import { meta } from '../../config';
 
 const Footer = () => {
   const { t } = useTranslation('common');
-  const { theme } = useUiContext();
+  const { theme } = useKireiContext();
 
   return (
     <footer>

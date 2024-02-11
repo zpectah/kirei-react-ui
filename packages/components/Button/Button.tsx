@@ -22,7 +22,7 @@ const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIn
     styles,
     ...rest
   } = props;
-  const buttonStyleProps = {
+  const styleProps = {
     isLoading,
     isDisabled,
     isActive,
@@ -34,7 +34,7 @@ const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIn
 
   const {
     composedStyles: { root, label, iconStart, iconEnd, iconLoading },
-  } = useButtonStyles({ styles }, { ...buttonStyleProps });
+  } = useButtonStyles({ styles }, { ...styleProps });
   const {
     root: rootProps,
     label: labelProps,
@@ -44,7 +44,7 @@ const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIn
   } = useButtonProps({
     style,
     className,
-    ...buttonStyleProps,
+    ...styleProps,
   });
 
   return (

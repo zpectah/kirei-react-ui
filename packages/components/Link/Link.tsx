@@ -15,12 +15,12 @@ const Link = <T extends ElementType>(props: LinkProps<T>) => {
     className,
     ...rest
   } = props;
-  const linkStyleProps = { variant, color, underline };
+  const styleProps = { variant, color, underline };
 
   const {
     composedStyles: { root },
-  } = useLinkStyles({ styles }, { ...linkStyleProps });
-  const { root: rootProps } = useLinkProps({ style, className, ...linkStyleProps });
+  } = useLinkStyles({ styles }, { ...styleProps });
+  const { root: rootProps } = useLinkProps({ style, className, ...styleProps });
 
   return (
     <Component css={root} {...rootProps} {...rest}>

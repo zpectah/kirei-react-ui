@@ -15,7 +15,7 @@ const Container = <T extends ElementType>(props: ContainerProps<T>) => {
     styles,
     ...rest
   } = props;
-  const containerStyleProps = {
+  const styleProps = {
     isFluid,
     maxWidth,
     xOffset,
@@ -23,8 +23,8 @@ const Container = <T extends ElementType>(props: ContainerProps<T>) => {
 
   const {
     composedStyles: { root },
-  } = useContainerStyles({ styles }, { ...containerStyleProps });
-  const { root: rootProps } = useContainerProps({ style, className, ...containerStyleProps });
+  } = useContainerStyles({ styles }, { ...styleProps });
+  const { root: rootProps } = useContainerProps({ style, className, ...styleProps });
 
   return (
     <Component css={root} {...rootProps} {...rest}>

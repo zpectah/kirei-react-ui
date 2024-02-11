@@ -15,12 +15,12 @@ const Typography = <T extends ElementType>(props: TypographyProps<T>) => {
     isTruncated,
     ...rest
   } = props;
-  const typographyStyleProps = { variant, color, isTruncated };
+  const styleProps = { variant, color, isTruncated };
 
   const {
     composedStyles: { root },
-  } = useTypographyStyles({ styles }, { ...typographyStyleProps });
-  const { root: rootProps } = useTypographyProps({ style, className, ...typographyStyleProps });
+  } = useTypographyStyles({ styles }, { ...styleProps });
+  const { root: rootProps } = useTypographyProps({ style, className, ...styleProps });
 
   return (
     <Component css={root} {...rootProps} {...rest}>

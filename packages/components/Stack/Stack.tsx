@@ -19,7 +19,7 @@ const Stack = <T extends ElementType>(props: StackProps<T>) => {
     isInline,
     ...rest
   } = props;
-  const stackStyleProps = {
+  const styleProps = {
     alignContent,
     alignItems,
     direction,
@@ -31,8 +31,8 @@ const Stack = <T extends ElementType>(props: StackProps<T>) => {
 
   const {
     composedStyles: { root },
-  } = useStackStyles({ styles }, { ...stackStyleProps });
-  const { root: rootProps } = useStackProps({ style, className, ...stackStyleProps });
+  } = useStackStyles({ styles }, { ...styleProps });
+  const { root: rootProps } = useStackProps({ style, className, ...styleProps });
 
   return (
     <Component css={root} {...rootProps} {...rest}>

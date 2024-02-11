@@ -99,20 +99,20 @@ export const TYPOGRAPHY_SHAPE_SMALL = {
   fontFamily: TYPOGRAPHY_FONT_FAMILY,
   fontWeight: TYPOGRAPHY_FONT_WEIGHT_SEMI_BOLD,
   fontSize: '0.85rem',
-  lineHeight: 1.07,
+  lineHeight: 1.125,
   letterSpacing: '0',
 };
 export const TYPOGRAPHY_SHAPE_MEDIUM = {
   fontFamily: TYPOGRAPHY_FONT_FAMILY,
   fontWeight: TYPOGRAPHY_FONT_WEIGHT_SEMI_BOLD,
   fontSize: '0.975rem',
-  lineHeight: 1.158,
+  lineHeight: 1.25,
   letterSpacing: '0',
 };
 export const TYPOGRAPHY_SHAPE_LARGE = {
   fontFamily: TYPOGRAPHY_FONT_FAMILY,
   fontWeight: TYPOGRAPHY_FONT_WEIGHT_SEMI_BOLD,
   fontSize: '1rem',
-  lineHeight: 1.19,
+  lineHeight: 1.25,
   letterSpacing: '0',
 };

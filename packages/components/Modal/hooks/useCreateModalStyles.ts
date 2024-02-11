@@ -1,14 +1,9 @@
 import { Theme, ModalStylesProps } from 'types';
-import { animations } from 'styles';
+import { STATUS_CLASS_NAMES } from 'core';
+import { animations, getContainerMaxWidth } from 'styles';
 
 export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps) => {
-  const {
-    transitions,
-    palette,
-    shape,
-    spacing,
-    breakpoints: { container, unit, up },
-  } = theme;
+  const { breakpoints, transitions, palette, shape, spacing, zIndex } = theme;
   const { maxWidth, isFullscreen } = stylesProps;
 
   const rootBase = {
@@ -19,17 +14,11 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     top: 0,
     left: 0,
     background: 'none',
-    zIndex: 999, // TODO
+    zIndex: zIndex.modal - 1,
 
     '&::backdrop': {
       background: 'none',
     },
-
-    // '&:modal': {},
-    // '&:not(:modal)': {},
-    // '&.isOpen': {},
-    // '&.isOpening': {},
-    // '&.isClosing': {},
   };
   const containerBase = {
     width: '100vw',
@@ -51,61 +40,24 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     zIndex: -1,
     backgroundColor: palette.utils.getAlphaColor(palette.dark.dark, palette.ratio.backgroundAlpha),
 
-    '.isOpen.isOpening &': {
-      animation: `${animations.fadeIn} ${transitions.duration.screen - 10}ms ease-in-out 1`,
+    [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isOpening} &`]: {
+      animation: `${animations.fadeIn} ${transitions.duration.screen - 10}ms ease-in 1`,
     },
-    '.isOpen.isClosing &': {
-      animation: `${animations.fadeOut} ${transitions.duration.screen - 5}ms ease-in-out 1`,
+    [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isClosing} &`]: {
+      animation: `${animations.fadeOut} ${transitions.duration.screen - 5}ms ease-out 1`,
     },
   };
   const dialogBase = {
     position: 'relative',
-    zIndex: 1000, // TODO
+    zIndex: zIndex.modal,
     backgroundColor: palette.background.secondary,
     padding: spacing.get(2),
 
-    '.isOpen.isOpening &': {
-      animation: `${animations.fadeInUp} ${transitions.duration.screen - 10}ms ease-in-out 1`,
+    [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isOpening} &`]: {
+      animation: `${animations.fadeInUp} ${transitions.duration.screen - 10}ms ease-in 1`,
     },
-    '.isOpen.isClosing &': {
-      animation: `${animations.fadeOutDown} ${transitions.duration.screen - 5}ms ease-in-out 1`,
-    },
-  };
-  const dialogMaxWidth = {
-    xs: {
-      [`${up('xs')}`]: {
-        maxWidth: `${container.xs}${unit}`,
-      },
-    },
-    sm: {
-      maxWidth: '100%',
-      [`${up('sm')}`]: {
-        maxWidth: `${container.sm}${unit}`,
-      },
-    },
-    md: {
-      maxWidth: '100%',
-      [`${up('md')}`]: {
-        maxWidth: `${container.md}${unit}`,
-      },
-    },
-    lg: {
-      maxWidth: '100%',
-      [`${up('lg')}`]: {
-        maxWidth: `${container.lg}${unit}`,
-      },
-    },
-    xl: {
-      maxWidth: '100%',
-      [`${up('xl')}`]: {
-        maxWidth: `${container.xl}${unit}`,
-      },
-    },
-    xxl: {
-      maxWidth: '100%',
-      [`${up('xxl')}`]: {
-        maxWidth: `${container.xxl}${unit}`,
-      },
+    [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isClosing} &`]: {
+      animation: `${animations.fadeOutDown} ${transitions.duration.screen - 5}ms ease-out 1`,
     },
   };
   const dialogSize = isFullscreen
@@ -118,7 +70,7 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
         margin: spacing.get(4),
         maxHeight: '60vh',
         borderRadius: shape.borderRadius.medium,
-        ...dialogMaxWidth[maxWidth],
+        ...getContainerMaxWidth(maxWidth, breakpoints),
       };
 
   const styles = {

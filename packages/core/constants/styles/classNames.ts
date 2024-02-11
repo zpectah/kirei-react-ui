@@ -1,10 +1,14 @@
 export const STATUS_CLASS_NAMES = {
-  isDisabled: 'isDisabled',
   isActive: 'isActive',
-  isLoading: 'isLoading',
-  isFullWidth: 'isFullWidth',
-  isTruncated: 'isTruncated',
+  isClosing: 'isClosing',
+  isDisabled: 'isDisabled',
   isFluid: 'isFluid',
+  isFullWidth: 'isFullWidth',
+  isFullscreen: 'isFullscreen',
+  isLoading: 'isLoading',
+  isOpen: 'isOpen',
+  isOpening: 'isOpening',
+  isTruncated: 'isTruncated',
 };
 
 export const SHAPE_SIZE_CLASS_NAMES = {

@@ -1,4 +1,4 @@
-import { BreakpointKeys } from '../styles';
+import { Breakpoints } from '../styles';
 
 export interface ThemeBreakpoints {
   values: {
@@ -18,8 +18,8 @@ export interface ThemeBreakpoints {
     xxl: number;
   };
   unit: 'px' | 'rem' | 'vw' | 'vh' | 'em' | '%' | 'pt' | 'pc';
-  up: (min: BreakpointKeys) => string;
-  down: (max: BreakpointKeys) => string;
-  between: (min: BreakpointKeys, max: BreakpointKeys) => string;
-  only: (key: BreakpointKeys) => string;
+  up: (min: Breakpoints) => string;
+  down: (max: Breakpoints) => string;
+  between: (min: Breakpoints, max: Breakpoints) => string;
+  only: (key: Breakpoints) => string;
 }

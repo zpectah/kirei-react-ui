@@ -1,15 +1,16 @@
-import { Theme, ButtonStylesProps, shapeSizeKeys, shapeVariantKeys } from 'types';
+import { Theme, ButtonStylesProps, shapeVariantKeys } from 'types';
 import {
   getElementTransitions,
   getContainedButtonVariant,
   getOutlinedButtonVariant,
   getTextButtonVariant,
+  getShapeSizeVariant,
 } from 'styles';
-import { BUTTON_LABEL } from 'core';
+import { STATUS_CLASS_NAMES } from 'core';
 
 export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesProps) => {
   const { transitions, palette, spacing, shape, typography } = theme;
-  const { isLoading, isDisabled, fullWidth, size, variant } = stylesProps;
+  const { size, variant } = stylesProps;
 
   const transition = getElementTransitions(
     ['background-color', 'color', 'border-color', 'box-shadow'],
@@ -35,54 +36,19 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
     borderWidth: shape.borderWidth.button,
     borderRadius: shape.borderRadius.medium,
     transition: transition,
-  };
-  const rootIsDisabled = isDisabled
-    ? {
-        pointerEvents: 'none',
-        cursor: 'default',
-      }
-    : {};
-  const rootIsLoading = isLoading
-    ? {
-        position: 'relative',
-        overflow: 'hidden',
-        cursor: 'wait',
 
-        // TODO - Make this from label perspective ...
-        [`& .${BUTTON_LABEL}`]: {
-          opacity: palette.ratio.loadingLabelAlpha,
-        },
-      }
-    : {};
-  const rootIsFullWidth = fullWidth
-    ? {
-        width: '100%',
-      }
-    : {};
-
-  const getRootSize = () => {
-    switch (size) {
-      case shapeSizeKeys.small:
-        return {
-          ...typography.shapeSmall,
-          padding: spacing.get(2),
-          gap: spacing.get(2),
-        };
-
-      case shapeSizeKeys.medium:
-        return {
-          ...typography.shapeMedium,
-          padding: spacing.get(2, 3),
-          gap: spacing.get(2),
-        };
-
-      case shapeSizeKeys.large:
-        return {
-          ...typography.shapeLarge,
-          padding: spacing.get(3, 4),
-          gap: spacing.get(3),
-        };
-    }
+    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
+      pointerEvents: 'none',
+      cursor: 'default',
+    },
+    [`&.${STATUS_CLASS_NAMES.isLoading}`]: {
+      position: 'relative',
+      overflow: 'hidden',
+      cursor: 'wait',
+    },
+    [`&.${STATUS_CLASS_NAMES.isFullWidth}`]: {
+      width: '100%',
+    },
   };
   const getRootVariant = () => {
     switch (variant) {
@@ -102,13 +68,21 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
     pointerEvents: 'none',
     fontSize: 'inherit',
     lineHeight: 'inherit',
+
+    [`.${STATUS_CLASS_NAMES.isLoading} &`]: {
+      opacity: palette.ratio.loadingLabelAlpha,
+    },
   };
 
   // iconStart
-  const iconStartBase = {};
+  const iconStartBase = {
+    /* TODO */
+  };
 
   // iconEnd
-  const iconEndBase = {};
+  const iconEndBase = {
+    /* TODO */
+  };
 
   // iconLoading
   const iconLoadingBase = {
@@ -128,10 +102,7 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
   const styles = {
     root: Object.assign({
       ...rootBase,
-      ...rootIsDisabled,
-      ...rootIsLoading,
-      ...rootIsFullWidth,
-      ...getRootSize(),
+      ...getShapeSizeVariant(size, spacing, typography),
       ...getRootVariant(),
     }),
     label: Object.assign(labelBase),

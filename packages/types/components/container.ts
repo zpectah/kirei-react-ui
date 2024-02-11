@@ -1,6 +1,6 @@
 import { ElementType } from 'react';
 import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
-import { BreakpointKeys, ComponentStyles, SpacingValues } from '../styles';
+import { Breakpoints, ComponentStyles, SpacingValues } from '../styles';
 
 interface ContainerStylesScheme<T> {
   root: T;
@@ -13,7 +13,7 @@ export type ContainerInitialProps<T extends ElementType> = NonNullable<unknown> 
 export interface ContainerElementaryProps extends Partial<WithStyle> {}
 
 export interface ContainerShapeProps {
-  maxWidth: BreakpointKeys;
+  maxWidth: Breakpoints;
   xOffset: SpacingValues;
   isFluid: boolean;
 }

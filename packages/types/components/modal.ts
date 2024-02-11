@@ -1,11 +1,11 @@
 import { MouseEvent, KeyboardEvent, SyntheticEvent, MutableRefObject, ComponentPropsWithRef } from 'react';
 import { WithStyle } from '../common';
-import { BreakpointKeys, ComponentStyles } from '../styles';
+import { Breakpoints, ComponentStyles } from '../styles';
 
 interface ModalStylesScheme<T> {
   root: T;
-  backdrop: T;
   container: T;
+  backdrop: T;
   dialog: T;
 }
 
@@ -23,7 +23,7 @@ export interface ModalHandlingProps {
 }
 
 export interface ModalShapeProps {
-  maxWidth: BreakpointKeys;
+  maxWidth: Breakpoints;
   isFullscreen: boolean;
 }
 

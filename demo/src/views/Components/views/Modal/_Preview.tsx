@@ -21,26 +21,36 @@ const PreviewView = () => {
           <Button onClick={modalToggle}>Open Modal</Button>
           <Button onClick={() => setModalTertiaryOpen(true)}>Open Tertiary</Button>
         </Stack>
+
         <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} disableBackdropClose disableEscapeClose>
-          Modal content ...
-          <br />
-          <Button onClick={modalToggle} variant="outlined" color="neutral">
-            Close Modal
-          </Button>
-          <br />
-          <div>
+          <ModalHeader>Header</ModalHeader>
+          <ModalBody>
+            Modal content ...Body
+            <br />
             <Button onClick={modalSecondaryToggle}>Open Modal</Button>
-          </div>
+            <br />
+            <Modal isOpen={modalSecondaryOpen} onClose={() => setModalSecondaryOpen(false)} disableEscapeClose>
+              <ModalHeader>
+                Modal content ...Header
+                <br />
+                <Button onClick={() => setModalTertiaryOpen(true)}>Open Tertiary</Button>
+                <br />
+              </ModalHeader>
+              <ModalBody>Body</ModalBody>
+              <ModalFooter>
+                <Button onClick={modalSecondaryToggle} variant="outlined" color="neutral">
+                  Close Modal
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={modalToggle} variant="outlined" color="neutral">
+              Close Modal
+            </Button>
+          </ModalFooter>
         </Modal>
-        <Modal isOpen={modalSecondaryOpen} onClose={() => setModalSecondaryOpen(false)} disableEscapeClose>
-          Modal content ...
-          <br />
-          <Button onClick={() => setModalTertiaryOpen(true)}>Open Tertiary</Button>
-          <br />
-          <Button onClick={modalSecondaryToggle} variant="outlined" color="neutral">
-            Close Modal
-          </Button>
-        </Modal>
+
         <Modal isOpen={modalTertiaryOpen} onClose={() => setModalTertiaryOpen(false)}>
           <ModalHeader>Header</ModalHeader>
           <ModalBody>Body</ModalBody>

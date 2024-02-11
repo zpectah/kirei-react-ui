@@ -73,8 +73,8 @@ const Modal = (props: ModalProps) => {
           {...rootProps}
           {...rest}
         >
-          <div css={backdrop} {...backdropProps} onClick={onBackdropClick} />
           <div css={container} {...containerProps}>
+            <div css={backdrop} {...backdropProps} onClick={onBackdropClick} />
             <div ref={modalDialogRef} css={dialog} {...dialogProps}>
               {children}
             </div>

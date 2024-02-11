@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { kireiComponentsRootListKeys } from 'types';
+import { routes } from '../../../../config';
 import { DetailLayout } from '../../components/index';
 import Preview from './_Preview';
 import Api from './_Api';
@@ -9,18 +10,18 @@ import Playground from './_Playground';
 const TypographyView = () => (
   <Routes>
     <Route
-      path="/"
+      path={routes.root.route}
       element={
         <DetailLayout
           route={kireiComponentsRootListKeys.typography}
           title="Typography"
-          subtitle="Condimentum euismod, dolor quis luctus at non congue lorem ipsum dolor sit amet sed ac tristique, dolor sit amet tristique vivamus vel arcu."
+          subtitle={`The Typography component leverages predefined styles from the theme and offers a selected set of font sizes and styles, contributing to a consistent text appearance across the application.`}
         />
       }
     >
       <Route index element={<Preview />} />
-      <Route path="/api" element={<Api />} />
-      <Route path="/playground" element={<Playground />} />
+      <Route path={routes.components.detail.api} element={<Api />} />
+      <Route path={routes.components.detail.playground} element={<Playground />} />
     </Route>
   </Routes>
 );

@@ -15,21 +15,23 @@ const Section = ({ children, title, subtitle }: SectionProps) => {
     <section
       style={{ padding: theme.spacing.get(2, 0), display: 'flex', flexDirection: 'column', gap: theme.spacing.get(3) }}
     >
-      <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.get(2) }}>
-        {title && (
-          <Typography variant="h5" as="h3">
-            {title}
-          </Typography>
-        )}
-        {subtitle && <Typography>{subtitle}</Typography>}
-      </div>
+      {(title || subtitle) && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.get(2) }}>
+          {title && (
+            <Typography variant="h5" as="h3">
+              {title}
+            </Typography>
+          )}
+          {subtitle && <Typography>{subtitle}</Typography>}
+        </div>
+      )}
       {children && (
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
-            padding: theme.spacing.get(2, 0),
-            gap: theme.spacing.get(2),
+            marginBottom: theme.spacing.get(2),
+            gap: theme.spacing.get(3),
           }}
         >
           {children}

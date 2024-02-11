@@ -1,60 +1,114 @@
 import React from 'react';
-import { useKireiContext } from 'styles';
 import { Button } from 'components';
 import { Article, Section } from '../../../../components';
+import { PreviewStack, PreviewCode } from '../../components/index';
 
 const PreviewView = () => {
-  const { theme } = useKireiContext();
-
   return (
     <>
-      <Article title="Default button">
-        <Section title="Basic Button">
-          <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
+      <Article
+        title="Basic Button"
+        subtitle="The Button component comes in three basic shapes. `text`, `outlined`, `contained`."
+      >
+        <Section>
+          <PreviewStack>
             <Button variant="text">Text</Button>
             <Button variant="outlined">Outlined</Button>
             <Button variant="contained">Contained</Button>
-          </div>
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
         </Section>
-      </Article>
-      <Article title="Button variants">
-        <Section title="Text Button">
-          <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
-            <Button variant="text">Text</Button>
+        <Section
+          title="Text Button"
+          subtitle={`Text buttons are often chosen for secondary actions, particularly within contexts such as dialog boxes or cards. `}
+        >
+          <PreviewStack>
+            <Button variant="text">Default</Button>
+            <Button variant="text" as="a" href="#">
+              Link
+            </Button>
             <Button variant="text" isDisabled>
               Disabled
             </Button>
-            <Button variant="text" as="a" href="/">
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
+        </Section>
+        <Section
+          title="Outlined Button"
+          subtitle={`Outlined buttons serve as medium-emphasis options, featuring actions of significance but not necessarily the primary action within an application.`}
+        >
+          <PreviewStack>
+            <Button variant="outlined">Default</Button>
+            <Button variant="outlined" as="a" href="#">
               Link
             </Button>
-          </div>
-        </Section>
-        <Section title="Outlined Button">
-          <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
-            <Button variant="outlined">Outlined</Button>
             <Button variant="outlined" isDisabled>
               Disabled
             </Button>
-            <Button variant="outlined" as="a" href="/">
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
+        </Section>
+        <Section
+          title="Contained Button"
+          subtitle={`The Contained button acts as a primary action element with greater emphasis, often serving to execute the main action within the application.`}
+        >
+          <PreviewStack>
+            <Button variant="contained">Default</Button>
+            <Button variant="contained" as="a" href="#">
               Link
             </Button>
-          </div>
-        </Section>
-        <Section title="Contained Button">
-          <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
-            <Button variant="contained">Contained</Button>
             <Button variant="contained" isDisabled>
               Disabled
             </Button>
-            <Button variant="contained" as="a" href="/">
-              Link
-            </Button>
-          </div>
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
         </Section>
       </Article>
-      <Article>
-        <Section title="Active Button">
-          <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
+      <Article title="Button color" subtitle={`For the Button, you can set basic colors defined in the theme.`}>
+        <Section title="Base colors">
+          <PreviewStack>
+            <Button color="primary">Primary</Button>
+            <Button color="secondary">Secondary</Button>
+            <Button color="tertiary">Tertiary</Button>
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
+        </Section>
+        <Section title="Emotion colors">
+          <PreviewStack>
+            <Button color="success">Success</Button>
+            <Button color="info">Info</Button>
+            <Button color="warning">Warning</Button>
+            <Button color="error">Error</Button>
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
+        </Section>
+        <Section title="Neutral (exotic) colors">
+          <PreviewStack>
+            <Button color="light">Light</Button>
+            <Button color="inverted">Inverted</Button>
+            <Button color="dark">Dark</Button>
+            <Button color="neutral">Neutral</Button>
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
+        </Section>
+      </Article>
+      <Article title="Button states" subtitle={`The Button can also have several following states.`}>
+        <Section title="Loading state">
+          <PreviewStack>
+            <Button variant="text" isLoading>
+              Loading
+            </Button>
+            <Button variant="outlined" isLoading>
+              Loading
+            </Button>
+            <Button variant="contained" isLoading>
+              Loading
+            </Button>
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
+        </Section>
+        <Section title="Active state">
+          <PreviewStack>
             <Button variant="text" isActive>
               Text
             </Button>
@@ -64,131 +118,101 @@ const PreviewView = () => {
             <Button variant="contained" isActive>
               Contained
             </Button>
-          </div>
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
         </Section>
-        <Section title="Color">
-          <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
-            <Button variant="contained" color="primary">
-              Primary
-            </Button>
-            <Button variant="contained" color="secondary">
-              Secondary
-            </Button>
-            <Button variant="contained" color="tertiary">
-              Tertiary
-            </Button>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
-            <Button variant="contained" color="success">
-              Success
-            </Button>
-            <Button variant="contained" color="info">
-              Info
-            </Button>
-            <Button variant="contained" color="warning">
-              Warning
-            </Button>
-            <Button variant="contained" color="error">
-              Error
-            </Button>
-          </div>
-        </Section>
-        <Section title="Inverted Button">
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              gap: theme.spacing.get(2),
-              padding: theme.spacing.get(2),
-              backgroundColor: theme.palette.text.primary,
-            }}
-          >
-            <Button variant="text" color="inverted">
+      </Article>
+      <Article
+        title="Button sizes"
+        subtitle={`The Button component offers versatility in size, providing options in three fundamental dimensions: "small," "medium," and "large."`}
+      >
+        <Section title="Small Button">
+          <PreviewStack>
+            <Button variant="text" size="small">
               Text
             </Button>
-            <Button variant="outlined" color="inverted">
+            <Button variant="outlined" size="small">
               Outlined
             </Button>
-            <Button variant="contained" color="inverted">
+            <Button variant="contained" size="small">
               Contained
             </Button>
-          </div>
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
         </Section>
-        <Section title="Loading">
-          <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
-            <Button variant="text" isLoading>
+        <Section title="Medium Button">
+          <PreviewStack>
+            <Button variant="text">Text</Button>
+            <Button variant="outlined">Outlined</Button>
+            <Button variant="contained">Contained</Button>
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
+        </Section>
+        <Section title="Large Button">
+          <PreviewStack>
+            <Button variant="text" size="large">
               Text
             </Button>
-            <Button variant="outlined" isLoading>
+            <Button variant="outlined" size="large">
               Outlined
             </Button>
-            <Button variant="contained" isLoading>
+            <Button variant="contained" size="large">
               Contained
             </Button>
-          </div>
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
         </Section>
-        <Section title="Loading with custom icon">
-          <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
-            <Button variant="text" isLoading loadingIcon={<>icon</>}>
+      </Article>
+      <Article
+        title="Button icons"
+        subtitle={`You can also insert custom icons into the Button using the "startIcon" and "endIcon" props.`}
+      >
+        <Section title="Icon on start">
+          <PreviewStack>
+            <Button variant="text" startIcon={`(x)`}>
               Text
             </Button>
-            <Button variant="outlined" isLoading loadingIcon={<>icon</>}>
+            <Button variant="outlined" startIcon={`(x)`}>
               Outlined
             </Button>
-            <Button variant="contained" isLoading loadingIcon={<>icon</>}>
+            <Button variant="contained" startIcon={`(x)`}>
               Contained
             </Button>
-          </div>
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
         </Section>
-        <Section title="startIcon">
-          <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
-            <Button variant="text" startIcon={<>icon</>}>
+        <Section title="Icon on end">
+          <PreviewStack>
+            <Button variant="text" endIcon={`(x)`}>
               Text
             </Button>
-            <Button variant="outlined" startIcon={<>icon</>}>
+            <Button variant="outlined" endIcon={`(x)`}>
               Outlined
             </Button>
-            <Button variant="contained" startIcon={<>icon</>}>
+            <Button variant="contained" endIcon={`(x)`}>
               Contained
             </Button>
-          </div>
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
         </Section>
-        <Section title="endIcon">
-          <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
-            <Button variant="text" endIcon={<>icon</>}>
-              Text
-            </Button>
-            <Button variant="outlined" endIcon={<>icon</>}>
-              Outlined
-            </Button>
-            <Button variant="contained" endIcon={<>icon</>}>
-              Contained
-            </Button>
-          </div>
-        </Section>
-        <Section title="Icon start and end">
-          <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
-            <Button variant="text" startIcon={<>icon</>} endIcon={<>icon</>}>
-              Text
-            </Button>
-            <Button variant="outlined" startIcon={<>icon</>} endIcon={<>icon</>}>
-              Outlined
-            </Button>
-            <Button variant="contained" startIcon={<>icon</>} endIcon={<>icon</>}>
-              Contained
-            </Button>
-          </div>
-        </Section>
+      </Article>
+      <Article
+        title="Full width button"
+        subtitle={`The Button can also be configured to span the entire width, particularly useful for mobile devices and similar contexts.`}
+      >
         <Section>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.get(2) }}>
-            <Button isFullWidth size="large">
-              Button full width
+          <PreviewStack direction="column">
+            <Button variant="text" isFullWidth>
+              Text
             </Button>
-            <Button isFullWidth>Button full width</Button>
-            <Button isFullWidth size="small">
-              Button full width
+            <Button variant="outlined" isFullWidth>
+              Outlined
             </Button>
-          </div>
+            <Button variant="contained" isFullWidth>
+              Contained
+            </Button>
+          </PreviewStack>
+          <PreviewCode>code</PreviewCode>
         </Section>
       </Article>
     </>

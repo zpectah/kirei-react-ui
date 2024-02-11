@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
 import { KireiComponentsRootList } from 'types';
 import { View } from '../../../../Layout';
-import { ViewNavigation } from '../ViewNavigation';
+import { DetailNavigation } from '../DetailNavigation';
 
 export interface DetailLayoutProps {
   route: KireiComponentsRootList;
@@ -15,7 +15,7 @@ const DetailLayout = (props: DetailLayoutProps) => {
 
   return (
     <View {...rest}>
-      <ViewNavigation route={route} />
+      <DetailNavigation route={route} />
       <Outlet />
     </View>
   );

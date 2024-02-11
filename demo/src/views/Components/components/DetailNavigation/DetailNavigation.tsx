@@ -7,11 +7,11 @@ import { Stack, Button } from 'components';
 import { routes } from '../../../../config';
 import { DETAIL_NAVIGATION } from '../../../../constants';
 
-export interface ViewNavigationProps {
+export interface DetailNavigationProps {
   route: KireiComponentsRootList;
 }
 
-const ViewNavigation = ({ route }: ViewNavigationProps) => {
+const DetailNavigation = ({ route }: DetailNavigationProps) => {
   const { t } = useTranslation('common');
   const { pathname } = useLocation();
   const {
@@ -58,4 +58,4 @@ const ViewNavigation = ({ route }: ViewNavigationProps) => {
   );
 };
 
-export default ViewNavigation;
+export default DetailNavigation;

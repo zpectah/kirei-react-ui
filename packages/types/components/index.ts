@@ -1,6 +1,7 @@
-import { uiComponentsListKeys } from '../enums';
+import { kireiComponentsRootListKeys, kireiComponentsListKeys } from '../enums';
 
-export type UiComponentsList = keyof typeof uiComponentsListKeys;
+export type KireiComponentsRootList = keyof typeof kireiComponentsRootListKeys;
+export type UiComponentsList = keyof typeof kireiComponentsListKeys;
 
 export * from './button';
 export * from './container';

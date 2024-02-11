@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { uiComponentsListKeys } from 'types';
+import { kireiComponentsListKeys } from 'types';
 import { DetailLayout } from '../../components/index';
 import Preview from './_Preview';
 import Api from './_Api';
@@ -12,7 +12,7 @@ const StackView = () => (
       path="/"
       element={
         <DetailLayout
-          route={uiComponentsListKeys.stack}
+          route={kireiComponentsListKeys.stack}
           title="Stack"
           subtitle="Morbi hendrerit, vivamus consectetur ollicitudin sed sollicitudin condimentum pulvinar, purus proin proin cras dictum. "
         />

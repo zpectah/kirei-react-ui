@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { uiComponentsListKeys } from 'types';
+import { kireiComponentsListKeys } from 'types';
 import { DetailLayout } from '../../components/index';
 import Preview from './_Preview';
 import Api from './_Api';
@@ -12,7 +12,7 @@ const LinkView = () => (
       path="/"
       element={
         <DetailLayout
-          route={uiComponentsListKeys.link}
+          route={kireiComponentsListKeys.link}
           title="Link"
           subtitle="Mauris ullamcorper, nulla a urna posuere vestibulum bibendum proin porttitor, pellentesque commodo molestie libero. Lorem mauris, tempus vitae aliquet quis orci fermentum vulputate fusce gravida."
         />

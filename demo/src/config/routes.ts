@@ -1,4 +1,4 @@
-import { uiComponentsListKeys } from 'types';
+import { kireiComponentsListKeys } from 'types';
 import { customizationRouteKeys, getStartedRouteKeys } from '../enums';
 
 const getStartedRootPrefix = 'get-started';
@@ -22,15 +22,15 @@ export const routes = {
   },
   components: {
     rootPrefix: `/${componentsRootPrefix}`,
-    root: `/${componentsRootPrefix}/${uiComponentsListKeys.button}`,
+    root: `/${componentsRootPrefix}/${kireiComponentsListKeys.button}`,
     route: `${componentsRootPrefix}/*`,
     routes: {
-      button: `/${componentsRootPrefix}/${uiComponentsListKeys.button}`,
-      link: `/${componentsRootPrefix}/${uiComponentsListKeys.link}`,
-      container: `/${componentsRootPrefix}/${uiComponentsListKeys.container}`,
-      stack: `/${componentsRootPrefix}/${uiComponentsListKeys.stack}`,
-      typography: `/${componentsRootPrefix}/${uiComponentsListKeys.typography}`,
-      modal: `/${componentsRootPrefix}/${uiComponentsListKeys.modal}`,
+      button: `/${componentsRootPrefix}/${kireiComponentsListKeys.button}`,
+      link: `/${componentsRootPrefix}/${kireiComponentsListKeys.link}`,
+      container: `/${componentsRootPrefix}/${kireiComponentsListKeys.container}`,
+      stack: `/${componentsRootPrefix}/${kireiComponentsListKeys.stack}`,
+      typography: `/${componentsRootPrefix}/${kireiComponentsListKeys.typography}`,
+      modal: `/${componentsRootPrefix}/${kireiComponentsListKeys.modal}`,
     },
   },
   customization: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { uiComponentsListKeys } from 'types';
+import { kireiComponentsListKeys } from 'types';
 import { DetailLayout } from '../../components/index';
 import Preview from './_Preview';
 import Api from './_Api';
@@ -12,7 +12,7 @@ const TypographyView = () => (
       path="/"
       element={
         <DetailLayout
-          route={uiComponentsListKeys.typography}
+          route={kireiComponentsListKeys.typography}
           title="Typography"
           subtitle="Condimentum euismod, dolor quis luctus at non congue lorem ipsum dolor sit amet sed ac tristique, dolor sit amet tristique vivamus vel arcu."
         />

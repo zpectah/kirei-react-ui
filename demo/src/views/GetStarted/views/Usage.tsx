@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Link as UiLink } from 'components';
+import { Button } from 'components';
 import { routes } from '../../../config';
 import { View, withPlainLayout } from '../../../Layout';
 import { Article } from '../../../components';
@@ -11,9 +11,9 @@ const UsageView = () => {
       title="Usage"
       subtitle="Proin cras dictum, pharetra sagittis libero sollicitudin nunc vitae et elit, ultricies tellus sollicitudin lectus. Lorem fringilla porttitor, odio morbi suspendisse non congue dui imperdiet ut hendrerit integer, fermentum nibh maximus et iaculis ut hendrerit. Interdum dignissim, dolor quis fermentum lorem ipsum nulla turpis nulla accumsan, elit fusce gravida ac nec nulla."
       footer={
-        <UiLink as={Link} to={routes.components.root}>
+        <Button variant="text" as={Link} to={routes.components.root}>
           Components
-        </UiLink>
+        </Button>
       }
     >
       <Article title="Using your first component">...TODO...</Article>

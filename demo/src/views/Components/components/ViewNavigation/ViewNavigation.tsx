@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { UiComponentsList } from 'types';
+import { KireiComponentsRootList } from 'types';
 import { useKireiContext } from 'styles';
-import { Button } from 'components';
+import { Stack, Button } from 'components';
 import { routes } from '../../../../config';
 import { DETAIL_NAVIGATION } from '../../../../constants';
 
 export interface ViewNavigationProps {
-  route: UiComponentsList;
+  route: KireiComponentsRootList;
 }
 
 const ViewNavigation = ({ route }: ViewNavigationProps) => {
@@ -19,13 +19,12 @@ const ViewNavigation = ({ route }: ViewNavigationProps) => {
   } = useKireiContext();
 
   return (
-    <div
+    <Stack
       style={{
         marginBottom: spacing.get(3),
-        display: 'flex',
-        flexDirection: 'row',
         borderBottom: `1px solid ${palette.shape.border}`,
       }}
+      wrap="nowrap"
     >
       {DETAIL_NAVIGATION.map((item) => {
         const rootPath = `${routes.components.routes[route]}${item.path}`;
@@ -38,13 +37,12 @@ const ViewNavigation = ({ route }: ViewNavigationProps) => {
             to={rootPath}
             variant="text"
             color={isActive ? 'primary' : 'neutral'}
-            size="small"
             styles={{
               root: {
                 borderRadius: 0,
-                '&.sizeLarge': {
-                  paddingLeft: spacing.get(3),
-                  paddingRight: spacing.get(3),
+                '&.sizeMedium': {
+                  paddingLeft: spacing.get(4),
+                  paddingRight: spacing.get(4),
                 },
                 '&.textPrimary': {
                   borderBottomColor: palette.primary.main,
@@ -56,7 +54,7 @@ const ViewNavigation = ({ route }: ViewNavigationProps) => {
           </Button>
         );
       })}
-    </div>
+    </Stack>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Link as UiLink } from 'components';
+import { Button } from 'components';
 import { routes } from '../../../config';
 import { View, withPlainLayout } from '../../../Layout';
 import { Article } from '../../../components';
@@ -11,9 +11,9 @@ const OverviewView = () => {
       title="Overview"
       subtitle={`Design systém "Kirei React UI" by byl založen na konceptu jednoduchosti, elegance a čistoty. Jeho hlavním cílem by bylo poskytnout uživatelům příjemný a intuitivní zážitek při vývoji React aplikací.`}
       footer={
-        <UiLink as={Link} to={routes.getStarted.routes.installation}>
+        <Button variant="text" as={Link} to={routes.getStarted.routes.installation}>
           Installation
-        </UiLink>
+        </Button>
       }
     >
       <Article title="Introduction">...TODO...</Article>

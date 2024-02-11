@@ -29,7 +29,12 @@ const PreviewView = () => {
             <br />
             <Button onClick={modalSecondaryToggle}>Open Modal</Button>
             <br />
-            <Modal isOpen={modalSecondaryOpen} onClose={() => setModalSecondaryOpen(false)} disableEscapeClose>
+            <Modal
+              maxWidth="sm"
+              isOpen={modalSecondaryOpen}
+              onClose={() => setModalSecondaryOpen(false)}
+              disableEscapeClose
+            >
               <ModalHeader>
                 Modal content ...Header
                 <br />
@@ -51,7 +56,7 @@ const PreviewView = () => {
           </ModalFooter>
         </Modal>
 
-        <Modal isOpen={modalTertiaryOpen} onClose={() => setModalTertiaryOpen(false)}>
+        <Modal isOpen={modalTertiaryOpen} onClose={() => setModalTertiaryOpen(false)} isFullscreen>
           <ModalHeader>Header</ModalHeader>
           <ModalBody>Body</ModalBody>
           <ModalFooter>

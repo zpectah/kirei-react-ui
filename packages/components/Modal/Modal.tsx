@@ -9,6 +9,7 @@ import { ModalContextProvider } from './context';
 const Modal = (props: ModalProps) => {
   const {
     maxWidth = MODAL_DEFAULT_VALUES.maxWidth,
+    isFullscreen = MODAL_DEFAULT_VALUES.isFullscreen,
     disableBackdropClose,
     disableEscapeClose,
     children,
@@ -20,7 +21,7 @@ const Modal = (props: ModalProps) => {
     id,
     ...rest
   } = props;
-  const styleProps = { maxWidth, disableBackdropClose, disableEscapeClose };
+  const styleProps = { maxWidth, disableBackdropClose, disableEscapeClose, isFullscreen };
 
   const {
     modalRootRef,

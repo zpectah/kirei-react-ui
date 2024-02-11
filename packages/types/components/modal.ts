@@ -11,7 +11,7 @@ interface ModalStylesScheme<T> {
 
 export interface ModalStyles extends ModalStylesScheme<ComponentStyles> {}
 
-export type ModalInitialProps = ComponentPropsWithRef<'dialog'>;
+export type ModalInitialProps = Omit<ComponentPropsWithRef<'dialog'>, 'onCancel'>;
 
 export interface ModalElementaryProps extends Partial<WithStyle> {}
 
@@ -24,6 +24,7 @@ export interface ModalHandlingProps {
 
 export interface ModalShapeProps {
   maxWidth: BreakpointKeys;
+  isFullscreen: boolean;
 }
 
 export type ModalProps = {

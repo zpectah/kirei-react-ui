@@ -6,7 +6,8 @@ export const MODAL_CONTAINER = `${MODAL_ROOT}-container`;
 export const MODAL_DIALOG = `${MODAL_ROOT}-dialog`;
 
 export const MODAL_DEFAULT_VALUES = {
-  maxWidth: breakpointKeys.xl,
+  maxWidth: breakpointKeys.md,
+  isFullscreen: false,
 };
 
 export const MODAL_ID_PREFIX = 'modal_';

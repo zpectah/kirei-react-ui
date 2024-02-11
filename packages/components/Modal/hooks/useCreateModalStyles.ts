@@ -2,9 +2,14 @@ import { Theme, ModalStylesProps } from 'types';
 import { animations } from 'styles';
 
 export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps) => {
-  const { transitions, palette, shape, spacing } = theme;
-  // eslint-disable-next-line no-empty-pattern
-  const {} = stylesProps;
+  const {
+    transitions,
+    palette,
+    shape,
+    spacing,
+    breakpoints: { container, unit, up },
+  } = theme;
+  const { maxWidth, isFullscreen } = stylesProps;
 
   const rootBase = {
     margin: 0,
@@ -54,21 +59,9 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     },
   };
   const dialogBase = {
-    // width: '50vw', // TODO
-    // height: 'auto', // TODO
-    // position: 'fixed',
-    // top: '25vh', // TODO
-    // left: '25vw', // TODO
-
-    width: '60vw',
-    margin: spacing.get(4),
-
-    maxWidth: '80vw',
-    maxHeight: '60vh',
     position: 'relative',
     zIndex: 1000, // TODO
     backgroundColor: palette.background.secondary,
-    borderRadius: shape.borderRadius.medium,
     padding: spacing.get(2),
 
     '.isOpen.isOpening &': {
@@ -78,12 +71,61 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
       animation: `${animations.fadeOutDown} ${transitions.duration.screen - 5}ms ease-in-out 1`,
     },
   };
+  const dialogMaxWidth = {
+    xs: {
+      [`${up('xs')}`]: {
+        maxWidth: `${container.xs}${unit}`,
+      },
+    },
+    sm: {
+      maxWidth: '100%',
+      [`${up('sm')}`]: {
+        maxWidth: `${container.sm}${unit}`,
+      },
+    },
+    md: {
+      maxWidth: '100%',
+      [`${up('md')}`]: {
+        maxWidth: `${container.md}${unit}`,
+      },
+    },
+    lg: {
+      maxWidth: '100%',
+      [`${up('lg')}`]: {
+        maxWidth: `${container.lg}${unit}`,
+      },
+    },
+    xl: {
+      maxWidth: '100%',
+      [`${up('xl')}`]: {
+        maxWidth: `${container.xl}${unit}`,
+      },
+    },
+    xxl: {
+      maxWidth: '100%',
+      [`${up('xxl')}`]: {
+        maxWidth: `${container.xxl}${unit}`,
+      },
+    },
+  };
+  const dialogSize = isFullscreen
+    ? {
+        width: '100vw',
+        height: '100vh',
+      }
+    : {
+        width: '100%',
+        margin: spacing.get(4),
+        maxHeight: '60vh',
+        borderRadius: shape.borderRadius.medium,
+        ...dialogMaxWidth[maxWidth],
+      };
 
   const styles = {
     root: Object.assign({ ...rootBase }),
     container: Object.assign({ ...containerBase }),
     backdrop: Object.assign({ ...backdropBase }),
-    dialog: Object.assign({ ...dialogBase }),
+    dialog: Object.assign({ ...dialogBase, ...dialogSize }),
   };
 
   return { styles };

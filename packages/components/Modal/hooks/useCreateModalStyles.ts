@@ -1,5 +1,5 @@
 import { Theme, ModalStylesProps } from 'types';
-import { getElementTransitions } from 'styles';
+import { animations } from 'styles';
 
 export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps) => {
   const { transitions, palette, shape, spacing } = theme;
@@ -33,19 +33,16 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     top: 0,
     left: 0,
     zIndex: -1,
-    transition: getElementTransitions(['background-color'], transitions.duration.screen, transitions.easing.easeInOut),
+    backgroundColor: palette.utils.getAlphaColor(palette.dark.dark, palette.ratio.backgroundAlpha),
 
-    backgroundColor: palette.utils.getAlphaColor(palette.dark.dark, 0),
-    '.isOpen:not(.isOpening,.isClosing) &': {
-      backgroundColor: palette.utils.getAlphaColor(palette.dark.dark, palette.ratio.backgroundAlpha),
+    '.isOpen.isOpening &': {
+      animation: `${animations.fadeIn} ${transitions.duration.screen - 10}ms ease 1`,
     },
-
-    // '.isOpening &': {},
-    // '.isClosing &': {},
+    '.isOpen.isClosing &': {
+      animation: `${animations.fadeOut} ${transitions.duration.screen + 10}ms ease 1`,
+    },
   };
   const containerBase = {
-    // width: '100vw',
-    // height: '100vh',
     position: 'fixed',
     top: '50vh',
     left: '50vw',
@@ -57,16 +54,15 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     position: 'fixed',
     top: '25vh', // TODO
     left: '25vw', // TODO
-
-    padding: spacing.get(2),
-
     backgroundColor: palette.background.secondary,
     borderRadius: shape.borderRadius.medium,
-    transition: getElementTransitions(['opacity'], transitions.duration.screen, transitions.easing.easeInOut),
+    padding: spacing.get(2),
 
-    opacity: 0,
-    '.isOpen:not(.isOpening,.isClosing) &': {
-      opacity: 1,
+    '.isOpen.isOpening &': {
+      animation: `${animations.fadeInUp} ${transitions.duration.screen - 10}ms ease 1`,
+    },
+    '.isOpen.isClosing &': {
+      animation: `${animations.fadeOutDown} ${transitions.duration.screen + 10}ms ease 1`,
     },
   };
 

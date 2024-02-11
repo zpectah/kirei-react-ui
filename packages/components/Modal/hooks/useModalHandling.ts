@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, KeyboardEvent, MouseEvent } from 'react';
+import { useEffect, useRef, useState, KeyboardEvent, SyntheticEvent } from 'react';
 import { UseModalHandlingProps, UseModalHandlingReturn } from 'types';
 import { PORTAL_ELEMENT_ROOT, MODAL_ROOT, useLastActiveFocus } from 'core';
 import { useUiContext } from 'styles';
@@ -24,6 +24,7 @@ export const useModalHandling = ({
     setOpening(true);
     setTimeout(() => setOpening(false), theme.transitions.duration.screen);
   };
+
   const closeHandler = () => {
     setClosing(true);
     setTimeout(() => {
@@ -32,27 +33,25 @@ export const useModalHandling = ({
       setTimeout(() => onClose(), 10);
     }, theme.transitions.duration.screen);
   };
+
   const backdropClickHandler = () => {
     if (!disableBackdropClose) closeHandler();
   };
+
   const keyDownHandler = (event: KeyboardEvent<HTMLDialogElement>) => {
-    if (disableEscapeClose) {
-      event.preventDefault();
-      event.stopPropagation();
+    if (disableEscapeClose) return;
 
-      return;
-    }
-    if (!event.isPropagationStopped() || !event.isDefaultPrevented()) {
-      const allModalNodes = PORTAL_ELEMENT_ROOT.querySelectorAll(`.${MODAL_ROOT}`);
-      const lastModal = allModalNodes[allModalNodes.length - 1];
+    const allModalNodes = PORTAL_ELEMENT_ROOT.querySelectorAll(`.${MODAL_ROOT}`);
+    const lastModal = allModalNodes[allModalNodes.length - 1];
 
-      if (event.key === 'Escape') {
-        if (event.currentTarget === lastModal) closeHandler();
-      }
+    if (event.key === 'Escape') {
+      if (event.currentTarget === lastModal) closeHandler();
     }
   };
 
-  useLastActiveFocus(isOpen);
+  const cancelHandler = (event: SyntheticEvent<HTMLDialogElement, Event>) => {
+    event.preventDefault();
+  };
 
   useEffect(() => {
     const modalElement = modalRootRef.current;
@@ -77,6 +76,8 @@ export const useModalHandling = ({
     return () => setMounted(false);
   }, []);
 
+  useLastActiveFocus(isOpen);
+
   return {
     modalRootRef,
     modalDialogRef,
@@ -86,6 +87,7 @@ export const useModalHandling = ({
     isClosing: closing,
     onClose: closeHandler,
     onKeyDown: keyDownHandler,
+    onCancel: cancelHandler,
     onBackdropClick: backdropClickHandler,
   };
 };

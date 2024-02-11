@@ -9,5 +9,5 @@ export const TRANSITIONS_DURATION = {
   shortest: 125,
   short: 175,
   standard: 325,
-  screen: 225, // 225
+  screen: 225,
 };

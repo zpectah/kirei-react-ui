@@ -1,4 +1,4 @@
-import { MouseEvent, KeyboardEvent, MutableRefObject, ComponentPropsWithRef } from 'react';
+import { MouseEvent, KeyboardEvent, SyntheticEvent, MutableRefObject, ComponentPropsWithRef } from 'react';
 import { WithStyle } from '../common';
 import { BreakpointKeys, ComponentStyles } from '../styles';
 
@@ -60,6 +60,7 @@ export interface UseModalHandlingReturn extends Pick<ModalHandlingProps, 'onClos
   isOpening: boolean;
   isClosing: boolean;
   onKeyDown: (event: KeyboardEvent<HTMLDialogElement>) => void;
+  onCancel: (event: SyntheticEvent<HTMLDialogElement, Event>) => void;
   onBackdropClick: (event: MouseEvent<HTMLDivElement>) => void;
 }
 

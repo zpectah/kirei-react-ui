@@ -28,6 +28,7 @@ const Modal = (props: ModalProps) => {
     isMounted,
     onClose: onDialogClose,
     onKeyDown,
+    onCancel,
     onBackdropClick,
     isOpen: isDialogOpen,
     isOpening,
@@ -63,7 +64,15 @@ const Modal = (props: ModalProps) => {
     isDialogOpen &&
     createPortal(
       <ModalContextProvider value={ModalContextValue}>
-        <dialog id={rootId} ref={modalRootRef} onKeyDown={onKeyDown} css={root} {...rootProps} {...rest}>
+        <dialog
+          id={rootId}
+          ref={modalRootRef}
+          onKeyDown={onKeyDown}
+          onCancel={onCancel}
+          css={root}
+          {...rootProps}
+          {...rest}
+        >
           <div css={backdrop} {...backdropProps} onClick={onBackdropClick} />
           <div css={container} {...containerProps}>
             <div ref={modalDialogRef} css={dialog} {...dialogProps}>

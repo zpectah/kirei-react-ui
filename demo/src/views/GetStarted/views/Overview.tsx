@@ -11,7 +11,7 @@ const OverviewView = () => {
       title="Overview"
       subtitle={`Design systém "Kirei React UI" by byl založen na konceptu jednoduchosti, elegance a čistoty. Jeho hlavním cílem by bylo poskytnout uživatelům příjemný a intuitivní zážitek při vývoji React aplikací.`}
       footer={
-        <Button variant="text" as={Link} to={routes.getStarted.routes.installation}>
+        <Button variant="text" as={Link} to={routes.getStarted.routes.installation.root}>
           Installation
         </Button>
       }

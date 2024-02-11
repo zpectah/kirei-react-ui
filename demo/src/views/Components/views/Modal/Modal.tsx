@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { kireiComponentsListKeys } from 'types';
+import { kireiComponentsRootListKeys } from 'types';
 import { DetailLayout } from '../../components/index';
 import Preview from './_Preview';
 import Api from './_Api';
@@ -12,15 +12,15 @@ const ModalView = () => (
       path="/"
       element={
         <DetailLayout
-          route={kireiComponentsListKeys.modal}
+          route={kireiComponentsRootListKeys.modal}
           title="Modal"
           subtitle="Nulla a lacinia, eget tellus varius dui sed felis a molestie, bibendum dolor ut aliquam id dolor. Ut sed vitae, ipsum potenti et libero vitae semper fusce vitae nibh, magna et at nullam donec mauris."
         />
       }
     >
       <Route index element={<Preview />} />
-      <Route path="api" element={<Api />} />
-      <Route path="playground" element={<Playground />} />
+      <Route path="/api" element={<Api />} />
+      <Route path="/playground" element={<Playground />} />
     </Route>
   </Routes>
 );

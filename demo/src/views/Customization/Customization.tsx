@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { routes } from '../../config';
 import { CUSTOMIZATION_SIDEBAR_NAVIGATION } from '../../constants';
 import { ViewLayout } from '../../Layout';
 import { ThemeView, BreakpointsView, PaletteView, TypographyView, ComponentsView } from './views';
@@ -7,13 +8,12 @@ import { ThemeView, BreakpointsView, PaletteView, TypographyView, ComponentsView
 const Customization = () => {
   return (
     <Routes>
-      <Route path="/" element={<ViewLayout items={CUSTOMIZATION_SIDEBAR_NAVIGATION} />}>
-        {/*<Route index element={<div>some customization index view </div>} />*/}
-        <Route path="/theme/*" element={<ThemeView />} />
-        <Route path="/breakpoints/*" element={<BreakpointsView />} />
-        <Route path="/palette/*" element={<PaletteView />} />
-        <Route path="/typography/*" element={<TypographyView />} />
-        <Route path="/components/*" element={<ComponentsView />} />
+      <Route path={routes.root.route} element={<ViewLayout items={CUSTOMIZATION_SIDEBAR_NAVIGATION} />}>
+        <Route path={routes.customization.routes.theme.route} element={<ThemeView />} />
+        <Route path={routes.customization.routes.breakpoints.route} element={<BreakpointsView />} />
+        <Route path={routes.customization.routes.palette.route} element={<PaletteView />} />
+        <Route path={routes.customization.routes.typography.route} element={<TypographyView />} />
+        <Route path={routes.customization.routes.components.route} element={<ComponentsView />} />
       </Route>
     </Routes>
   );

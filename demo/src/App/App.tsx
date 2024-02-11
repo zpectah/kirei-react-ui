@@ -11,7 +11,7 @@ const App = () => {
     <KireiProvider applyCSSReset applyGlobalStyles>
       <BrowserRouter>
         <Routes>
-          <Route path={routes.welcome.route} element={<PageLayout />}>
+          <Route path={routes.root.route} element={<PageLayout />}>
             <Route index element={<Welcome />} />
             <Route path={routes.getStarted.route} element={<GetStarted />} />
             <Route path={routes.components.route} element={<Components />} />

@@ -1,4 +1,4 @@
-import { kireiComponentsListKeys } from 'types';
+import { kireiComponentsRootListKeys } from 'types';
 import { customizationRouteKeys, getStartedRouteKeys } from '../enums';
 
 const getStartedRootPrefix = 'get-started';
@@ -6,7 +6,7 @@ const componentsRootPrefix = 'components';
 const customizationRootPrefix = 'customization';
 
 export const routes = {
-  welcome: {
+  root: {
     root: '/',
     route: '/',
   },
@@ -15,22 +15,54 @@ export const routes = {
     root: `/${getStartedRootPrefix}/${getStartedRouteKeys.overview}`,
     route: `${getStartedRootPrefix}/*`,
     routes: {
-      overview: `/${getStartedRootPrefix}/${getStartedRouteKeys.overview}`,
-      installation: `/${getStartedRootPrefix}/${getStartedRouteKeys.installation}`,
-      usage: `/${getStartedRootPrefix}/${getStartedRouteKeys.usage}`,
+      overview: {
+        root: `/${getStartedRootPrefix}/${getStartedRouteKeys.overview}`,
+        route: `/overview/*`,
+      },
+      installation: {
+        root: `/${getStartedRootPrefix}/${getStartedRouteKeys.installation}`,
+        route: `/installation/*`,
+      },
+      usage: {
+        root: `/${getStartedRootPrefix}/${getStartedRouteKeys.usage}`,
+        route: `/usage/*`,
+      },
     },
   },
   components: {
     rootPrefix: `/${componentsRootPrefix}`,
-    root: `/${componentsRootPrefix}/${kireiComponentsListKeys.button}`,
+    root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys.button}`,
     route: `${componentsRootPrefix}/*`,
     routes: {
-      button: `/${componentsRootPrefix}/${kireiComponentsListKeys.button}`,
-      link: `/${componentsRootPrefix}/${kireiComponentsListKeys.link}`,
-      container: `/${componentsRootPrefix}/${kireiComponentsListKeys.container}`,
-      stack: `/${componentsRootPrefix}/${kireiComponentsListKeys.stack}`,
-      typography: `/${componentsRootPrefix}/${kireiComponentsListKeys.typography}`,
-      modal: `/${componentsRootPrefix}/${kireiComponentsListKeys.modal}`,
+      button: {
+        root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys.button}`,
+        route: `/${kireiComponentsRootListKeys.button}/*`,
+      },
+      link: {
+        root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys.link}`,
+        route: `/${kireiComponentsRootListKeys.link}/*`,
+      },
+      container: {
+        root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys.container}`,
+        route: `/${kireiComponentsRootListKeys.container}/*`,
+      },
+      stack: {
+        root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys.stack}`,
+        route: `/${kireiComponentsRootListKeys.stack}/*`,
+      },
+      typography: {
+        root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys.typography}`,
+        route: `/${kireiComponentsRootListKeys.typography}/*`,
+      },
+      modal: {
+        root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys.modal}`,
+        route: `/${kireiComponentsRootListKeys.modal}/*`,
+      },
+    },
+    detail: {
+      preview: '',
+      api: '/api',
+      playground: '/playground',
     },
   },
   customization: {
@@ -38,11 +70,26 @@ export const routes = {
     root: `/${customizationRootPrefix}/${customizationRouteKeys.theme}`,
     route: `${customizationRootPrefix}/*`,
     routes: {
-      theme: `/${customizationRootPrefix}/${customizationRouteKeys.theme}`,
-      palette: `/${customizationRootPrefix}/${customizationRouteKeys.palette}`,
-      typography: `/${customizationRootPrefix}/${customizationRouteKeys.typography}`,
-      breakpoints: `/${customizationRootPrefix}/${customizationRouteKeys.breakpoints}`,
-      components: `/${customizationRootPrefix}/${customizationRouteKeys.components}`,
+      theme: {
+        root: `/${customizationRootPrefix}/${customizationRouteKeys.theme}`,
+        route: `/theme/*`,
+      },
+      palette: {
+        root: `/${customizationRootPrefix}/${customizationRouteKeys.palette}`,
+        route: `/palette/*`,
+      },
+      typography: {
+        root: `/${customizationRootPrefix}/${customizationRouteKeys.typography}`,
+        route: `/typography/*`,
+      },
+      breakpoints: {
+        root: `/${customizationRootPrefix}/${customizationRouteKeys.breakpoints}`,
+        route: `/breakpoints/*`,
+      },
+      components: {
+        root: `/${customizationRootPrefix}/${customizationRouteKeys.components}`,
+        route: `/components/*`,
+      },
     },
   },
 };

@@ -27,7 +27,7 @@ const ViewNavigation = ({ route }: ViewNavigationProps) => {
       wrap="nowrap"
     >
       {DETAIL_NAVIGATION.map((item) => {
-        const rootPath = `${routes.components.routes[route]}${item.path}`;
+        const rootPath = `${routes.components.routes[route].root}${item.path}`;
         const isActive = pathname === rootPath;
 
         return (

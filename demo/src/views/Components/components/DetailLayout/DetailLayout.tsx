@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
-import { UiComponentsList } from 'types';
+import { KireiComponentsRootList } from 'types';
 import { View } from '../../../../Layout';
 import { ViewNavigation } from '../ViewNavigation';
 
 export interface DetailLayoutProps {
-  route: UiComponentsList;
+  route: KireiComponentsRootList;
   title: ReactNode;
   subtitle?: ReactNode;
 }

@@ -37,10 +37,6 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
     borderRadius: shape.borderRadius.medium,
     transition: transition,
 
-    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
-      pointerEvents: 'none',
-      cursor: 'default',
-    },
     [`&.${STATUS_CLASS_NAMES.isLoading}`]: {
       position: 'relative',
       overflow: 'hidden',

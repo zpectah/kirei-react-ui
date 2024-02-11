@@ -12,6 +12,7 @@ const Stack = <T extends ElementType>(props: StackProps<T>) => {
     alignContent = STACK_DEFAULT_VALUES.alignContent,
     justifyItems = STACK_DEFAULT_VALUES.justifyItems,
     justifyContent = STACK_DEFAULT_VALUES.justifyContent,
+    wrap = STACK_DEFAULT_VALUES.wrap,
     children,
     className,
     style,
@@ -27,6 +28,7 @@ const Stack = <T extends ElementType>(props: StackProps<T>) => {
     isInline,
     justifyContent,
     justifyItems,
+    wrap,
   };
 
   const {

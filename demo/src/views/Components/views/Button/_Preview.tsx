@@ -179,6 +179,17 @@ const PreviewView = () => {
             </Button>
           </div>
         </Section>
+        <Section>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.get(2) }}>
+            <Button isFullWidth size="large">
+              Button full width
+            </Button>
+            <Button isFullWidth>Button full width</Button>
+            <Button isFullWidth size="small">
+              Button full width
+            </Button>
+          </div>
+        </Section>
       </Article>
     </>
   );

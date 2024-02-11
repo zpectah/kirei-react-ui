@@ -8,6 +8,7 @@ import {
   FlexAlignContent,
   FlexJustifyItems,
   FlexJustifyContent,
+  FlexWrap,
 } from '../styles';
 
 interface StackStylesScheme<T> {
@@ -27,6 +28,7 @@ export interface StackShapeProps {
   justifyItems: FlexJustifyItems;
   alignContent: FlexAlignContent;
   justifyContent: FlexJustifyContent;
+  wrap: FlexWrap;
   isInline: boolean;
 }
 

@@ -2,14 +2,14 @@ import clsx from 'clsx';
 import { UseButtonProps, UseButtonPropsReturn } from 'types';
 import {
   BUTTON_DEFAULT_VALUES,
-  STATUS_CLASS_NAMES,
-  SHAPE_SIZE_CLASS_NAMES,
-  SHAPE_VARIANT_CLASS_NAME,
-  BUTTON_ROOT,
-  BUTTON_LABEL,
-  BUTTON_ICON_START,
   BUTTON_ICON_END,
   BUTTON_ICON_LOADING,
+  BUTTON_ICON_START,
+  BUTTON_LABEL,
+  BUTTON_ROOT,
+  SHAPE_SIZE_CLASS_NAMES,
+  SHAPE_VARIANT_CLASS_NAME,
+  STATUS_CLASS_NAMES,
 } from 'core';
 import { capitalizeFirstLetter } from 'utils';
 
@@ -20,7 +20,7 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
     isLoading,
     isActive,
     isDisabled,
-    fullWidth,
+    isFullWidth,
     size = BUTTON_DEFAULT_VALUES.size,
     variant = BUTTON_DEFAULT_VALUES.variant,
     color = BUTTON_DEFAULT_VALUES.color,
@@ -42,7 +42,7 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
         isLoading && STATUS_CLASS_NAMES.isLoading,
         isDisabled && STATUS_CLASS_NAMES.isDisabled,
         isActive && STATUS_CLASS_NAMES.isActive,
-        fullWidth && STATUS_CLASS_NAMES.isFullWidth,
+        isFullWidth && STATUS_CLASS_NAMES.isFullWidth,
         className
       ),
       style: { ...style },

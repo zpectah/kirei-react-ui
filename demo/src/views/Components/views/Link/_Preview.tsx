@@ -22,6 +22,12 @@ const PreviewView = () => {
         <Link href="/" color="error">
           Link somewhere
         </Link>
+        <Link href="/" color="success">
+          Link somewhere
+        </Link>
+        <Link href="/" color="warning">
+          Link somewhere
+        </Link>
       </Section>
       <Section title="Link underline">
         <Link href="/" underline="none">
@@ -32,6 +38,20 @@ const PreviewView = () => {
         </Link>
         <Link href="/" underline="always">
           Underline always (default)
+        </Link>
+      </Section>
+      <Section title="Link disabled">
+        <Link href="/" isDisabled>
+          Link somewhere :disabled
+        </Link>
+        <Link
+          as="button"
+          onClick={() => {
+            console.log('link as button');
+          }}
+          isDisabled
+        >
+          Link as button :disabled
         </Link>
       </Section>
     </Article>

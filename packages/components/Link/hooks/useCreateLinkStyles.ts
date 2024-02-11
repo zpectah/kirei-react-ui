@@ -1,5 +1,6 @@
 import Color from 'color';
 import { Theme, LinkStylesProps } from 'types';
+import { STATUS_CLASS_NAMES } from 'core';
 import { getTypographyColor } from 'styles';
 
 export const useCreateLinkStyles = (theme: Theme, stylesProps: LinkStylesProps) => {
@@ -10,6 +11,12 @@ export const useCreateLinkStyles = (theme: Theme, stylesProps: LinkStylesProps) 
   const rootBase = {
     color: rootBaseColor,
     cursor: 'pointer',
+
+    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
+      pointerEvents: 'none',
+      cursor: 'default',
+      opacity: theme.palette.ratio.disabledAlpha,
+    },
   };
   const rootVariant = variant === 'inherit' ? {} : theme.typography[variant];
   const rootUnderline = {

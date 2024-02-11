@@ -29,7 +29,7 @@ export interface ButtonStateProps {
 }
 
 export interface ButtonShapeProps {
-  fullWidth: boolean;
+  isFullWidth: boolean;
   color: ButtonColor;
   size: ShapeSize;
   variant: ShapeVariant;

@@ -4,3 +4,4 @@ export * from './spacing';
 export * from './shape';
 export * from './transitions';
 export * from './typography';
+export * from './zIndex';

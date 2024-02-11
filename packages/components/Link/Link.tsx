@@ -13,9 +13,10 @@ const Link = <T extends ElementType>(props: LinkProps<T>) => {
     style,
     styles,
     className,
+    isDisabled,
     ...rest
   } = props;
-  const styleProps = { variant, color, underline };
+  const styleProps = { variant, color, underline, isDisabled };
 
   const {
     composedStyles: { root },

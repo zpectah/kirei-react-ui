@@ -8,4 +8,5 @@ export const STACK_DEFAULT_VALUES = {
   justifyItems: 'unset',
   alignContent: 'unset',
   justifyContent: 'unset',
+  wrap: 'wrap',
 };

@@ -56,17 +56,21 @@ export const getContainedButtonVariant = (
           borderColor: isLightMode ? bgDark : bgLight,
         },
     ['&:focus']: getFocusPropertyValue(bgLight, palette.ratio.focusOutlineAlpha, shape.borderWidth.outline),
-    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: isInverted
-      ? {
-          backgroundColor: bgDisabled,
-          color: Color(bgMain).alpha(palette.ratio.disabledInvertedAlpha).toString(),
-          borderColor: bgDisabled,
-        }
-      : {
-          color: isLightMode ? Color(bgDisabled).darken(0.25).toString() : Color(bgDisabled).lighten(0.25).toString(),
-          backgroundColor: bgDisabled,
-          borderColor: 'transparent',
-        },
+    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
+      pointerEvents: 'none',
+      cursor: 'default',
+      ...(isInverted
+        ? {
+            backgroundColor: bgDisabled,
+            color: Color(bgMain).alpha(palette.ratio.disabledInvertedAlpha).toString(),
+            borderColor: bgDisabled,
+          }
+        : {
+            color: isLightMode ? Color(bgDisabled).darken(0.25).toString() : Color(bgDisabled).lighten(0.25).toString(),
+            backgroundColor: bgDisabled,
+            borderColor: 'transparent',
+          }),
+    },
   };
 };
 
@@ -104,15 +108,19 @@ export const getOutlinedButtonVariant = (
           borderColor: isLightMode ? bgDark : bgLight,
         },
     ['&:focus']: getFocusPropertyValue(bgLight, palette.ratio.focusOutlineAlpha, shape.borderWidth.outline),
-    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: isInverted
-      ? {
-          color: bgDisabled,
-          borderColor: bgDisabled,
-        }
-      : {
-          color: bgDisabled,
-          borderColor: bgDisabled,
-        },
+    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
+      pointerEvents: 'none',
+      cursor: 'default',
+      ...(isInverted
+        ? {
+            color: bgDisabled,
+            borderColor: bgDisabled,
+          }
+        : {
+            color: bgDisabled,
+            borderColor: bgDisabled,
+          }),
+    },
   };
 };
 
@@ -148,12 +156,16 @@ export const getTextButtonVariant = (
           color: isLightMode ? bgDark : bgLight,
         },
     ['&:focus']: getFocusPropertyValue(bgLight, palette.ratio.focusOutlineAlpha, shape.borderWidth.outline),
-    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: isInverted
-      ? {
-          color: bgDisabled,
-        }
-      : {
-          color: bgDisabled,
-        },
+    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
+      pointerEvents: 'none',
+      cursor: 'default',
+      ...(isInverted
+        ? {
+            color: bgDisabled,
+          }
+        : {
+            color: bgDisabled,
+          }),
+    },
   };
 };

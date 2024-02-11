@@ -12,6 +12,10 @@ export type LinkInitialProps<T extends ElementType> = NonNullable<unknown> & Pol
 
 export interface LinkElementaryProps extends Partial<WithStyle> {}
 
+export interface LinkStateProps {
+  isDisabled: boolean;
+}
+
 export interface LinkShapeProps {
   variant: TypographyVariant;
   color: TypographyColor;
@@ -22,7 +26,8 @@ export type LinkProps<T extends ElementType> = {
   styles?: Partial<LinkStyles>;
 } & LinkInitialProps<T> &
   LinkElementaryProps &
-  Partial<LinkShapeProps>;
+  Partial<LinkShapeProps> &
+  Partial<LinkStateProps>;
 
 export interface UseLinkStyles {
   styles?: Partial<LinkStyles>;
@@ -32,8 +37,8 @@ export interface UseLinkStylesReturn {
   composedStyles: LinkStyles;
 }
 
-export interface UseLinkProps extends Partial<LinkShapeProps>, Partial<WithStyle> {}
+export interface UseLinkProps extends Partial<LinkStateProps>, Partial<LinkShapeProps>, Partial<WithStyle> {}
 
 export interface UseLinkPropsReturn extends LinkStylesScheme<WithStyle> {}
 
-export interface LinkStylesProps extends LinkShapeProps {}
+export interface LinkStylesProps extends Partial<LinkStateProps>, LinkShapeProps {}

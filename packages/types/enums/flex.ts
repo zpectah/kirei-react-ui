@@ -58,3 +58,10 @@ export enum flexJustifyContentKeys {
   stretch = 'stretch',
   unset = 'unset',
 }
+
+export enum flexWrapKeys {
+  nowrap = 'nowrap',
+  wrap = 'wrap',
+  'wrap-reverse' = 'wrap-reverse',
+  initial = 'initial',
+}

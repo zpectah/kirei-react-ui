@@ -4,6 +4,7 @@ export type KireiComponentsRootList = keyof typeof kireiComponentsRootListKeys;
 
 export * from './button';
 export * from './container';
+export * from './icons';
 export * from './link';
 export * from './modal';
 export * from './modalBody';

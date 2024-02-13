@@ -1,1 +1,10 @@
-export { default as DemoMenuIcon } from './DemoMenu';
+export { default as BackwardIcon } from './Backward';
+export { default as CloseIcon } from './Close';
+export { default as ExpandLessIcon } from './ExpandLess';
+export { default as ExpandMoreIcon } from './ExpandMore';
+export { default as ForwardIcon } from './Forward';
+export { default as HamburgerIcon } from './Hamburger';
+export { default as MinusIcon } from './Minus';
+export { default as MoreHorizontalIcon } from './MoreHorizontal';
+export { default as MoreVerticalIcon } from './MoreVertical';
+export { default as PlusIcon } from './Plus';

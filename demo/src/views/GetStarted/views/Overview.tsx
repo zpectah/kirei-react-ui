@@ -1,6 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'components';
+import { Button, Typography } from 'components';
+import {
+  BackwardIcon,
+  CloseIcon,
+  ExpandLessIcon,
+  ExpandMoreIcon,
+  ForwardIcon,
+  HamburgerIcon,
+  MoreVerticalIcon,
+  MoreHorizontalIcon,
+  MinusIcon,
+  PlusIcon,
+} from 'icons';
 import { routes } from '../../../config';
 import { View, withPlainLayout } from '../../../Layout';
 import { Article } from '../../../components';
@@ -16,7 +28,31 @@ const OverviewView = () => {
         </Button>
       }
     >
-      <Article title="Introduction">...TODO...</Article>
+      <Article title="Introduction">
+        ...TODO...
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}>
+          <BackwardIcon />
+          <ExpandLessIcon />
+          <ExpandMoreIcon />
+          <ForwardIcon />
+          <CloseIcon />
+          <HamburgerIcon />
+          <MoreVerticalIcon />
+          <MoreHorizontalIcon />
+          <MinusIcon />
+          <PlusIcon />
+        </div>
+        <br />
+        <br />
+        <div>
+          <Typography>
+            <PlusIcon />
+            Typography with icon <PlusIcon />
+          </Typography>
+        </div>
+        <br />
+        <br />
+      </Article>
       <Article title="Why Kirei React UI?">...TODO...</Article>
     </View>
   );

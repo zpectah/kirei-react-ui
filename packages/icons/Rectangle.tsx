@@ -2,17 +2,17 @@ import React from 'react';
 import { SvgIconProps } from 'types';
 import { useSvgIconProps } from 'styles';
 
-const Plus = (props: SvgIconProps) => {
+const Rectangle = (props: SvgIconProps) => {
   const { styles, ...rest } = useSvgIconProps(props);
 
   return (
     <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" css={styles} {...rest}>
       <path
         fill="currentColor"
-        d="M56,11.91L72,11.91L72,56L116.09,56L116.09,72L72,72L72,116.09L56,116.09L56,72L11.91,72L11.91,56L56,56L56,11.91Z"
+        d="M116,17.48C116,14.456 113.544,12 110.52,12L17.48,12C14.456,12 12,14.456 12,17.48L12,110.52C12,113.544 14.456,116 17.48,116L110.52,116C113.544,116 116,113.544 116,110.52L116,17.48Z"
       />
     </svg>
   );
 };
 
-export default Plus;
+export default Rectangle;

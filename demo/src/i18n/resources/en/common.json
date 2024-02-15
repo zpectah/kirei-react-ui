@@ -23,5 +23,6 @@
   "menuItem.components.container": "Container",
   "menuItem.components.stack": "Stack",
   "menuItem.components.typography": "Typography",
-  "menuItem.components.modal": "Modal"
+  "menuItem.components.modal": "Modal",
+  "menuItem.components.icons": "Icons"
 }

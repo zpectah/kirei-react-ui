@@ -1,4 +1,9 @@
 export { default as BackwardIcon } from './Backward';
+export { default as CheckIcon } from './Check';
+export { default as CheckboxIcon } from './Checkbox';
+export { default as CheckboxEmptyIcon } from './CheckboxEmpty';
+export { default as CheckboxIndeterminateIcon } from './CheckboxIndeterminate';
+export { default as CircleIcon } from './Circle';
 export { default as CloseIcon } from './Close';
 export { default as ExpandLessIcon } from './ExpandLess';
 export { default as ExpandMoreIcon } from './ExpandMore';
@@ -8,3 +13,6 @@ export { default as MinusIcon } from './Minus';
 export { default as MoreHorizontalIcon } from './MoreHorizontal';
 export { default as MoreVerticalIcon } from './MoreVertical';
 export { default as PlusIcon } from './Plus';
+export { default as RadioIcon } from './Radio';
+export { default as RadioEmptyIcon } from './RadioEmpty';
+export { default as RectangleIcon } from './Rectangle';

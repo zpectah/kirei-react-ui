@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'components';
+import { BackwardIcon, ForwardIcon } from 'icons';
 import { Article, Section } from '../../../../components';
 import { PreviewStack, PreviewCode } from '../../components/index';
 
@@ -169,13 +170,13 @@ const PreviewView = () => {
       >
         <Section title="Icon on start">
           <PreviewStack>
-            <Button variant="text" startIcon={`(x)`}>
+            <Button variant="text" startIcon={<BackwardIcon />}>
               Text
             </Button>
-            <Button variant="outlined" startIcon={`(x)`}>
+            <Button variant="outlined" startIcon={<BackwardIcon />}>
               Outlined
             </Button>
-            <Button variant="contained" startIcon={`(x)`}>
+            <Button variant="contained" startIcon={<BackwardIcon />}>
               Contained
             </Button>
           </PreviewStack>
@@ -183,13 +184,13 @@ const PreviewView = () => {
         </Section>
         <Section title="Icon on end">
           <PreviewStack>
-            <Button variant="text" endIcon={`(x)`}>
+            <Button variant="text" endIcon={<ForwardIcon />}>
               Text
             </Button>
-            <Button variant="outlined" endIcon={`(x)`}>
+            <Button variant="outlined" endIcon={<ForwardIcon />}>
               Outlined
             </Button>
-            <Button variant="contained" endIcon={`(x)`}>
+            <Button variant="contained" endIcon={<ForwardIcon />}>
               Contained
             </Button>
           </PreviewStack>

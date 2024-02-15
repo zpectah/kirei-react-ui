@@ -2,14 +2,14 @@ import React from 'react';
 import { SvgIconProps } from 'types';
 import { useSvgIconProps } from 'styles';
 
-const Minus = (props: SvgIconProps) => {
+const Circle = (props: SvgIconProps) => {
   const { styles, ...rest } = useSvgIconProps(props);
 
   return (
     <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" css={styles} {...rest}>
-      <path fill="currentColor" d="M12,56L116.09,56L116.09,72L11.91,72L12,56Z" />
+      <circle fill="currentColor" cx="64" cy="64" r="52" />
     </svg>
   );
 };
 
-export default Minus;
+export default Circle;

@@ -59,11 +59,15 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
     }
   };
 
-  // label
-  const labelBase = {
+  const rootChildBase = {
     pointerEvents: 'none',
     fontSize: 'inherit',
     lineHeight: 'inherit',
+  };
+
+  // label
+  const labelBase = {
+    ...rootChildBase,
 
     [`.${STATUS_CLASS_NAMES.isLoading} &`]: {
       opacity: palette.ratio.loadingLabelAlpha,
@@ -72,12 +76,18 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
 
   // iconStart
   const iconStartBase = {
-    /* TODO */
+    ...rootChildBase,
+    position: 'relative',
+    left: '-0.5em',
+    marginRight: '-0.25em',
   };
 
   // iconEnd
   const iconEndBase = {
-    /* TODO */
+    ...rootChildBase,
+    position: 'relative',
+    right: '-0.5em',
+    marginLeft: '-0.25em',
   };
 
   // iconLoading

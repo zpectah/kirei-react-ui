@@ -58,6 +58,10 @@ export const routes = {
         root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys.modal}`,
         route: `/${kireiComponentsRootListKeys.modal}/*`,
       },
+      icons: {
+        root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys.icons}`,
+        route: `/${kireiComponentsRootListKeys.icons}/*`,
+      },
     },
     detail: {
       preview: '',

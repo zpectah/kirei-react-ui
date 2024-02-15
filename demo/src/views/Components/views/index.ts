@@ -4,3 +4,4 @@ export * from './Stack';
 export * from './Typography';
 export * from './Link';
 export * from './Modal';
+export * from './Icons';

@@ -1,10 +1,13 @@
 import React from 'react';
-import { IconProps } from 'types';
+import { SvgIconProps } from 'types';
+import { useSvgIconProps } from 'styles';
 
-const MoreVertical = (props: IconProps) => {
+const MoreVertical = (props: SvgIconProps) => {
+  const { styles, ...rest } = useSvgIconProps(props);
+
   return (
-    <svg width="1em" height="1em" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <g id="MoreVertical">
+    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" css={styles} {...rest}>
+      <g fill="currentColor">
         <g transform="matrix(1,0,0,1,40,40)">
           <circle cx="24" cy="64" r="12" />
         </g>

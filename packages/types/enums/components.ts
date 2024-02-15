@@ -5,4 +5,5 @@ export enum kireiComponentsRootListKeys {
   stack = 'stack',
   typography = 'typography',
   modal = 'modal',
+  icons = 'icons',
 }

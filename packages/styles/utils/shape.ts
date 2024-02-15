@@ -14,7 +14,7 @@ export const getShapeSizeVariant = (size: ShapeSize, spacing: ThemeSpacing, typo
       return {
         ...typography.shapeSmall,
         padding: spacing.get(1, 2),
-        gap: spacing.get(2),
+        gap: spacing.get(1),
         minHeight: SHAPE_MIN_HEIGHT.small,
       };
 
@@ -22,7 +22,7 @@ export const getShapeSizeVariant = (size: ShapeSize, spacing: ThemeSpacing, typo
       return {
         ...typography.shapeMedium,
         padding: spacing.get(2, 3),
-        gap: spacing.get(2),
+        gap: spacing.get(1),
         minHeight: SHAPE_MIN_HEIGHT.medium,
       };
 
@@ -30,7 +30,7 @@ export const getShapeSizeVariant = (size: ShapeSize, spacing: ThemeSpacing, typo
       return {
         ...typography.shapeLarge,
         padding: spacing.get(2, 4),
-        gap: spacing.get(3),
+        gap: spacing.get(2),
         minHeight: SHAPE_MIN_HEIGHT.large,
       };
   }

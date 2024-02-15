@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { routes } from '../../config';
 import { COMPONENTS_SIDEBAR_NAVIGATION } from '../../constants';
 import { ViewLayout } from '../../Layout';
-import { ButtonView, ContainerView, StackView, LinkView, TypographyView, ModalView } from './views';
+import { ButtonView, ContainerView, StackView, LinkView, TypographyView, ModalView, IconsView } from './views';
 
 const Components = () => {
   return (
@@ -15,6 +15,7 @@ const Components = () => {
         <Route path={routes.components.routes.stack.route} element={<StackView />} />
         <Route path={routes.components.routes.typography.route} element={<TypographyView />} />
         <Route path={routes.components.routes.modal.route} element={<ModalView />} />
+        <Route path={routes.components.routes.icons.route} element={<IconsView />} />
       </Route>
     </Routes>
   );

@@ -22,26 +22,21 @@ const PreviewView = () => {
           <Button onClick={() => setModalTertiaryOpen(true)}>Open Tertiary</Button>
         </Stack>
 
-        <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} disableBackdropClose disableEscapeClose>
-          <ModalHeader>Header</ModalHeader>
+        <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} disableBackdropClose>
+          <ModalHeader title="Modal title" subtitle="Modal subtitle" divider />
           <ModalBody>
             Modal content ...Body
             <br />
             <Button onClick={modalSecondaryToggle}>Open Modal</Button>
             <br />
-            <Modal
-              maxWidth="sm"
-              isOpen={modalSecondaryOpen}
-              onClose={() => setModalSecondaryOpen(false)}
-              disableEscapeClose
-            >
-              <ModalHeader>
-                Modal content ...Header
+            <Modal maxWidth="sm" isOpen={modalSecondaryOpen} onClose={() => setModalSecondaryOpen(false)}>
+              <ModalHeader title="Modal content ...Header" />
+              <ModalBody>
+                Body
                 <br />
                 <Button onClick={() => setModalTertiaryOpen(true)}>Open Tertiary</Button>
                 <br />
-              </ModalHeader>
-              <ModalBody>Body</ModalBody>
+              </ModalBody>
               <ModalFooter>
                 <Button onClick={modalSecondaryToggle} variant="outlined" color="neutral">
                   Close Modal
@@ -57,7 +52,7 @@ const PreviewView = () => {
         </Modal>
 
         <Modal isOpen={modalTertiaryOpen} onClose={() => setModalTertiaryOpen(false)} isFullscreen>
-          <ModalHeader>Header</ModalHeader>
+          <ModalHeader title="Modal title" subtitle="Modal subtitle" />
           <ModalBody>Body</ModalBody>
           <ModalFooter>
             <Button onClick={modalTertiaryToggle} variant="outlined" color="neutral">

@@ -8,11 +8,15 @@ export const useModalHeaderStyles = (
 ): UseModalHeaderStylesReturn => {
   const { theme } = useKireiContext();
   const {
-    styles: { root },
+    styles: { root, anchorLeft, anchorRight, title, subtitle },
   } = useCreateModalHeaderStyles(theme, modalHeaderStyles);
 
   const composedStyles = {
     root: [root, theme.components.ModalHeader.root, styles?.root],
+    anchorLeft: [anchorLeft, theme.components.ModalHeader.anchorLeft, styles?.anchorLeft],
+    anchorRight: [anchorRight, theme.components.ModalHeader.anchorRight, styles?.anchorRight],
+    title: [title, theme.components.ModalHeader.title, styles?.title],
+    subtitle: [subtitle, theme.components.ModalHeader.subtitle, styles?.subtitle],
   };
 
   return {

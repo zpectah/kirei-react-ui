@@ -1,4 +1,4 @@
-import { MouseEvent, KeyboardEvent, SyntheticEvent, MutableRefObject, ComponentPropsWithRef } from 'react';
+import { MouseEvent, KeyboardEvent, SyntheticEvent, MutableRefObject, ComponentPropsWithRef, ReactNode } from 'react';
 import { WithStyle } from '../common';
 import { Breakpoints, ComponentStyles } from '../styles';
 
@@ -54,6 +54,7 @@ export interface ModalStylesProps extends ModalShapeProps {}
 export interface UseModalHandlingProps extends ModalHandlingProps {}
 
 export interface UseModalHandlingReturn extends Pick<ModalHandlingProps, 'onClose'> {
+  portalElement: HTMLElement;
   modalRootRef: MutableRefObject<HTMLDialogElement | null>;
   modalDialogRef: MutableRefObject<HTMLDivElement | null>;
   isMounted: boolean;

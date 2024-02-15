@@ -22,6 +22,7 @@ export const useModalHandling = ({
   const openHandler = () => {
     setOpen(true);
     setOpening(true);
+    checkBodyOverflow();
     setTimeout(() => setOpening(false), theme.transitions.duration.screen);
   };
 
@@ -30,7 +31,10 @@ export const useModalHandling = ({
     setTimeout(() => {
       setOpen(false);
       setClosing(false);
-      setTimeout(() => onClose(), 10);
+      setTimeout(() => {
+        onClose();
+        checkBodyOverflow();
+      }, 10);
     }, theme.transitions.duration.screen);
   };
 
@@ -49,8 +53,12 @@ export const useModalHandling = ({
     }
   };
 
-  const cancelHandler = (event: SyntheticEvent<HTMLDialogElement, Event>) => {
-    event.preventDefault();
+  const cancelHandler = (event: SyntheticEvent<HTMLDialogElement, Event>) => event.preventDefault();
+
+  const checkBodyOverflow = () => {
+    PORTAL_ELEMENT_ROOT.style.removeProperty('overflow');
+    if (PORTAL_ELEMENT_ROOT.querySelectorAll(`.${MODAL_ROOT}`).length > 0)
+      PORTAL_ELEMENT_ROOT.style.overflow = 'hidden';
   };
 
   useEffect(() => {
@@ -63,11 +71,15 @@ export const useModalHandling = ({
   }, [open, closing]);
 
   useEffect(() => {
-    if (isOpen) openHandler();
+    if (isOpen) {
+      openHandler();
+    }
   }, [isOpen]);
 
   useEffect(() => {
-    if (!isOpen) closeHandler();
+    if (!isOpen) {
+      closeHandler();
+    }
   }, [isOpen]);
 
   useEffect(() => {
@@ -79,6 +91,7 @@ export const useModalHandling = ({
   useLastActiveFocus(isOpen);
 
   return {
+    portalElement: PORTAL_ELEMENT_ROOT,
     modalRootRef,
     modalDialogRef,
     isMounted: mounted,

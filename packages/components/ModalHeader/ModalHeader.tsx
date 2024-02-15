@@ -1,18 +1,60 @@
 import React from 'react';
 import { ModalHeaderProps } from 'types';
-// import { MODAL_HEADER_DEFAULT_VALUES } from 'core';
 import { useModalHeaderStyles, useModalHeaderProps } from './hooks';
+import { Typography } from '../Typography';
 
 const ModalHeader = (props: ModalHeaderProps) => {
-  const { style, styles, className, ...rest } = props;
-  const styleProps = {};
+  const {
+    style,
+    styles,
+    className,
+    divider,
+    children,
+    title,
+    subtitle,
+    titleTypographyProps,
+    subtitleTypographyProps,
+    ...rest
+  } = props;
+  const styleProps = { divider };
 
   const {
-    composedStyles: { root },
+    composedStyles: { root, anchorLeft, anchorRight, title: titleStyles, subtitle: subtitleStyles },
   } = useModalHeaderStyles({ styles }, { ...styleProps });
-  const { root: rootProps } = useModalHeaderProps({ style, className, ...styleProps });
+  const {
+    root: rootProps,
+    anchorLeft: anchorLeftProps,
+    anchorRight: anchorRightProps,
+    title: titleProps,
+    subtitle: subtitleProps,
+  } = useModalHeaderProps({ style, className, ...styleProps });
 
-  return <header css={root} {...rootProps} {...rest} />;
+  return (
+    <header css={root} {...rootProps} {...rest}>
+      <div css={anchorLeft} {...anchorLeftProps}>
+        {title && (
+          <Typography variant="h5" as="h4" css={titleStyles} {...titleProps} {...titleTypographyProps}>
+            {title}
+          </Typography>
+        )}
+        {subtitle && (
+          <Typography
+            variant="body2"
+            color="text-tertiary"
+            css={subtitleStyles}
+            {...subtitleProps}
+            {...subtitleTypographyProps}
+          >
+            {subtitle}
+          </Typography>
+        )}
+        {children && children}
+      </div>
+      <div css={anchorRight} {...anchorRightProps}>
+        close btn...
+      </div>
+    </header>
+  );
 };
 
 export default ModalHeader;

@@ -1,10 +1,12 @@
 import { Theme, ModalBodyStylesProps } from 'types';
 
 export const useCreateModalBodyStyles = (theme: Theme, stylesProps: ModalBodyStylesProps) => {
-  const {} = theme;
+  const { spacing } = theme;
   const {} = stylesProps;
 
-  const rootBase = {};
+  const rootBase = {
+    padding: spacing.get(3, 3),
+  };
 
   const styles = {
     root: Object.assign({ ...rootBase }),

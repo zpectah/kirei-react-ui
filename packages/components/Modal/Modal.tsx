@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { ModalProps } from 'types';
-import { MODAL_DEFAULT_VALUES, MODAL_ID_PREFIX, PORTAL_ELEMENT_ROOT } from 'core';
+import { MODAL_DEFAULT_VALUES, MODAL_ID_PREFIX } from 'core';
 import { getRandomString } from 'utils';
 import { useModalStyles, useModalProps, useModalHandling } from './hooks';
 import { ModalContextProvider } from './context';
@@ -24,6 +24,7 @@ const Modal = (props: ModalProps) => {
   const styleProps = { maxWidth, disableBackdropClose, disableEscapeClose, isFullscreen };
 
   const {
+    portalElement,
     modalRootRef,
     modalDialogRef,
     isMounted,
@@ -82,7 +83,7 @@ const Modal = (props: ModalProps) => {
           </div>
         </dialog>
       </ModalContextProvider>,
-      PORTAL_ELEMENT_ROOT
+      portalElement
     )
   );
 };

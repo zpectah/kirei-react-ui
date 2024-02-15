@@ -41,23 +41,24 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     backgroundColor: palette.utils.getAlphaColor(palette.dark.dark, palette.ratio.backgroundAlpha),
 
     [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isOpening} &`]: {
-      animation: `${animations.fadeIn} ${transitions.duration.screen - 10}ms ease-in 1`,
+      animation: `${animations.fadeIn} ${transitions.duration.screen - 5}ms ${transitions.easing.easeIn} 1`,
     },
     [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isClosing} &`]: {
-      animation: `${animations.fadeOut} ${transitions.duration.screen - 5}ms ease-out 1`,
+      animation: `${animations.fadeOut} ${transitions.duration.screen + 15}ms ${transitions.easing.easeOut} 1`,
     },
   };
   const dialogBase = {
     position: 'relative',
     zIndex: zIndex.modal,
     backgroundColor: palette.background.secondary,
-    padding: spacing.get(2),
+    color: palette.text.primary,
+    padding: 0,
 
     [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isOpening} &`]: {
-      animation: `${animations.fadeInUp} ${transitions.duration.screen - 10}ms ease-in 1`,
+      animation: `${animations.fadeInUp} ${transitions.duration.screen - 5}ms ${transitions.easing.easeIn} 1`,
     },
     [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isClosing} &`]: {
-      animation: `${animations.fadeOutDown} ${transitions.duration.screen - 5}ms ease-out 1`,
+      animation: `${animations.fadeOutDown} ${transitions.duration.screen + 15}ms ${transitions.easing.easeOut} 1`,
     },
   };
   const dialogSize = isFullscreen

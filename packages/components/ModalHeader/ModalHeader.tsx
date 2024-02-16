@@ -12,6 +12,7 @@ const ModalHeader = (props: ModalHeaderProps) => {
     children,
     title,
     subtitle,
+    actions,
     titleTypographyProps,
     subtitleTypographyProps,
     ...rest
@@ -19,19 +20,19 @@ const ModalHeader = (props: ModalHeaderProps) => {
   const styleProps = { divider };
 
   const {
-    composedStyles: { root, anchorLeft, anchorRight, title: titleStyles, subtitle: subtitleStyles },
+    composedStyles: { root, titleContainer, actionsContainer, title: titleStyles, subtitle: subtitleStyles },
   } = useModalHeaderStyles({ styles }, { ...styleProps });
   const {
     root: rootProps,
-    anchorLeft: anchorLeftProps,
-    anchorRight: anchorRightProps,
+    titleContainer: titleContainerProps,
+    actionsContainer: actionsContainerProps,
     title: titleProps,
     subtitle: subtitleProps,
   } = useModalHeaderProps({ style, className, ...styleProps });
 
   return (
     <header css={root} {...rootProps} {...rest}>
-      <div css={anchorLeft} {...anchorLeftProps}>
+      <div css={titleContainer} {...titleContainerProps}>
         {title && (
           <Typography variant="h5" as="h4" css={titleStyles} {...titleProps} {...titleTypographyProps}>
             {title}
@@ -50,9 +51,11 @@ const ModalHeader = (props: ModalHeaderProps) => {
         )}
         {children && children}
       </div>
-      <div css={anchorRight} {...anchorRightProps}>
-        close btn...
-      </div>
+      {actions && (
+        <div css={actionsContainer} {...actionsContainerProps}>
+          {actions}
+        </div>
+      )}
     </header>
   );
 };

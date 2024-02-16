@@ -22,7 +22,7 @@ export const useModalHandling = ({
   const openHandler = () => {
     setOpen(true);
     setOpening(true);
-    checkBodyOverflow();
+    overflowHiddenControl();
     setTimeout(() => setOpening(false), theme.transitions.duration.screen);
   };
 
@@ -33,7 +33,7 @@ export const useModalHandling = ({
       setClosing(false);
       setTimeout(() => {
         onClose();
-        checkBodyOverflow();
+        overflowHiddenControl();
       }, 10);
     }, theme.transitions.duration.screen);
   };
@@ -55,7 +55,7 @@ export const useModalHandling = ({
 
   const cancelHandler = (event: SyntheticEvent<HTMLDialogElement, Event>) => event.preventDefault();
 
-  const checkBodyOverflow = () => {
+  const overflowHiddenControl = () => {
     PORTAL_ELEMENT_ROOT.style.removeProperty('overflow');
     if (PORTAL_ELEMENT_ROOT.querySelectorAll(`.${MODAL_ROOT}`).length > 0)
       PORTAL_ELEMENT_ROOT.style.overflow = 'hidden';

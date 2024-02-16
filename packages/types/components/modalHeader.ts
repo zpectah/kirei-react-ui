@@ -5,8 +5,8 @@ import { TypographyProps } from './typography';
 
 interface ModalHeaderStylesScheme<T> {
   root: T;
-  anchorLeft: T;
-  anchorRight: T;
+  titleContainer: T;
+  actionsContainer: T;
   title: T;
   subtitle: T;
 }
@@ -18,8 +18,9 @@ export type ModalHeaderInitialProps = ComponentPropsWithRef<'header'>;
 export interface ModalHeaderElementaryProps extends Partial<WithStyle> {
   title?: ReactNode;
   subtitle?: ReactNode;
-  titleTypographyProps?: TypographyProps<ElementType>;
-  subtitleTypographyProps?: TypographyProps<ElementType>;
+  actions?: ReactNode;
+  titleTypographyProps?: Omit<TypographyProps<ElementType>, 'children'>;
+  subtitleTypographyProps?: Omit<TypographyProps<ElementType>, 'children'>;
 }
 
 export interface ModalHeaderShapeProps {

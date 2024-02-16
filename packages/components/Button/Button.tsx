@@ -1,6 +1,7 @@
 import React, { forwardRef, ElementType } from 'react';
 import { ButtonProps, PolymorphicIntrinsicElementRef } from 'types';
 import { BUTTON_DEFAULT_VALUES } from 'core';
+import { LoaderHorizontalIcon } from 'icons';
 import { useButtonStyles, useButtonProps } from './hooks';
 
 const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIntrinsicElementRef<T>) => {
@@ -51,7 +52,7 @@ const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIn
     <Component ref={ref} css={root} {...rootProps} {...rest}>
       {isLoading && (
         <span css={iconLoading} {...iconLoadingProps}>
-          {loadingIcon ? loadingIcon : <>loading icon</>}
+          {loadingIcon ? loadingIcon : <LoaderHorizontalIcon />}
         </span>
       )}
       {startIcon && (

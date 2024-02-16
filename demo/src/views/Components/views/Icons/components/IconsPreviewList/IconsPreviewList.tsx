@@ -11,6 +11,7 @@ import {
   ExpandMoreIcon,
   ForwardIcon,
   HamburgerIcon,
+  LoaderHorizontalIcon,
   MinusIcon,
   MoreHorizontalIcon,
   MoreVerticalIcon,
@@ -18,6 +19,7 @@ import {
   RadioIcon,
   RadioEmptyIcon,
   RectangleIcon,
+  SpinnerIcon,
 } from 'icons';
 import { Modal, ModalBody } from 'components';
 import { Section } from '../../../../../../components';
@@ -85,6 +87,10 @@ const IconsPreviewList = (props: IconsPreviewListProps) => {
       node: HamburgerIcon,
     },
     {
+      label: 'LoaderHorizontal',
+      node: LoaderHorizontalIcon,
+    },
+    {
       label: 'Minus',
       node: MinusIcon,
     },
@@ -111,6 +117,10 @@ const IconsPreviewList = (props: IconsPreviewListProps) => {
     {
       label: 'Rectangle',
       node: RectangleIcon,
+    },
+    {
+      label: 'Spinner',
+      node: SpinnerIcon,
     },
   ];
 

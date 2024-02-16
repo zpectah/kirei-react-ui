@@ -8,11 +8,12 @@ export const useModalBodyStyles = (
 ): UseModalBodyStylesReturn => {
   const { theme } = useKireiContext();
   const {
-    styles: { root },
+    styles: { root, container },
   } = useCreateModalBodyStyles(theme, modalBodyStyles);
 
   const composedStyles = {
     root: [root, theme.components.ModalBody.root, styles?.root],
+    container: [container, theme.components.ModalBody.container, styles?.container],
   };
 
   return {

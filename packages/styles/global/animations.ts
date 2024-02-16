@@ -1,4 +1,4 @@
-/* Source: https://animate.style/ */
+/* Source: https://animate.style/, https://github.com/animate-css/animate.css */
 
 import { keyframes } from '@emotion/react';
 
@@ -33,6 +33,27 @@ export const animations = {
   fadeOut: keyframes`
     from {
       opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  `,
+  zoomIn: keyframes`
+    from {
+      opacity: 0;
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+    50% {
+      opacity: 1;
+    }
+  `,
+  zoomOut: keyframes`
+    from {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+      transform: scale3d(0.3, 0.3, 0.3);
     }
     to {
       opacity: 0;

@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import { UseModalHeaderProps, UseModalHeaderPropsReturn } from 'types';
 import {
   MODAL_HEADER_ROOT,
-  MODAL_HEADER_ANCHOR_LEFT,
-  MODAL_HEADER_ANCHOR_RIGHT,
+  MODAL_HEADER_TITLE_CONTAINER,
+  MODAL_HEADER_ACTIONS_CONTAINER,
   MODAL_HEADER_TITLE,
   MODAL_HEADER_SUBTITLE,
 } from 'core';
@@ -16,12 +16,12 @@ export const useModalHeaderProps = (props: UseModalHeaderProps): UseModalHeaderP
       className: clsx(MODAL_HEADER_ROOT, className),
       style: { ...style },
     },
-    anchorLeft: {
-      className: MODAL_HEADER_ANCHOR_LEFT,
+    titleContainer: {
+      className: MODAL_HEADER_TITLE_CONTAINER,
       style: {},
     },
-    anchorRight: {
-      className: MODAL_HEADER_ANCHOR_RIGHT,
+    actionsContainer: {
+      className: MODAL_HEADER_ACTIONS_CONTAINER,
       style: {},
     },
     title: {

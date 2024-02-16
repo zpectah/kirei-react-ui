@@ -7,15 +7,10 @@ const Hamburger = (props: SvgIconProps) => {
 
   return (
     <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" css={styles} {...rest}>
-      <g fill="currentColor">
-        <g transform="matrix(1,0,0,1,-0.0450998,-4)">
-          <path d="M12,28L116,28L116,44L11.91,44L12,28Z" />
-        </g>
-        <path d="M11.955,56L116.045,56L116.045,72L11.91,72L11.955,56Z" />
-        <g transform="matrix(1,0,0,1,-0.0450998,4)">
-          <path d="M12,84L116.045,84L116.045,100L11.91,100L12,84Z" />
-        </g>
-      </g>
+      <path
+        fill="currentColor"
+        d="M11.955,88L116,88L116,104L11.865,104L11.955,88ZM11.955,56L116.045,56L116.045,72L11.91,72L11.955,56ZM11.955,24L115.955,24L115.955,40L11.865,40L11.955,24Z"
+      />
     </svg>
   );
 };

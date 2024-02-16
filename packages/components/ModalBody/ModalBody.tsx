@@ -4,15 +4,21 @@ import { ModalBodyProps } from 'types';
 import { useModalBodyStyles, useModalBodyProps } from './hooks';
 
 const ModalBody = (props: ModalBodyProps) => {
-  const { style, styles, className, ...rest } = props;
-  const styleProps = {};
+  const { style, styles, className, disableOffset, children, ...rest } = props;
+  const styleProps = { disableOffset };
 
   const {
-    composedStyles: { root },
+    composedStyles: { root, container },
   } = useModalBodyStyles({ styles }, { ...styleProps });
-  const { root: rootProps } = useModalBodyProps({ style, className, ...styleProps });
+  const { root: rootProps, container: containerProps } = useModalBodyProps({ style, className, ...styleProps });
 
-  return <article css={root} {...rootProps} {...rest} />;
+  return (
+    <article css={root} {...rootProps} {...rest}>
+      <div css={container} {...containerProps}>
+        {children}
+      </div>
+    </article>
+  );
 };
 
 export default ModalBody;

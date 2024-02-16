@@ -1,11 +1,18 @@
 import React from 'react';
-import { ModalBodyProps } from 'types';
-// import { MODAL_FOOTER_DEFAULT_VALUES } from 'core';
+import { ModalFooterProps } from 'types';
+import { MODAL_FOOTER_DEFAULT_VALUES } from 'core';
 import { useModalFooterStyles, useModalFooterProps } from './hooks';
 
-const ModalFooter = (props: ModalBodyProps) => {
-  const { style, styles, className, ...rest } = props;
-  const styleProps = {};
+const ModalFooter = (props: ModalFooterProps) => {
+  const {
+    style,
+    styles,
+    className,
+    justifyContent = MODAL_FOOTER_DEFAULT_VALUES.justifyContent,
+    divider,
+    ...rest
+  } = props;
+  const styleProps = { justifyContent, divider };
 
   const {
     composedStyles: { root },

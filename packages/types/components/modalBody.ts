@@ -4,6 +4,7 @@ import { ComponentStyles } from '../styles';
 
 interface ModalBodyStylesScheme<T> {
   root: T;
+  container: T;
 }
 
 export interface ModalBodyStyles extends ModalBodyStylesScheme<ComponentStyles> {}
@@ -12,7 +13,9 @@ export type ModalBodyInitialProps = ComponentPropsWithRef<'article'>;
 
 export interface ModalBodyElementaryProps extends Partial<WithStyle> {}
 
-export interface ModalBodyShapeProps {}
+export interface ModalBodyShapeProps {
+  disableOffset?: boolean;
+}
 
 export type ModalBodyProps = {
   styles?: Partial<ModalBodyStyles>;

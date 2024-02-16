@@ -2,9 +2,12 @@ import clsx from 'clsx';
 import { css } from '@emotion/react';
 import { UseSvgIconProps, UseSvgIconPropsReturn } from 'types';
 
-export const useSvgIconProps = ({ style, className, ...rest }: UseSvgIconProps): UseSvgIconPropsReturn => {
+export const useSvgIconProps = (
+  { style, className, ...rest }: UseSvgIconProps,
+  animatedHorizontal?: boolean
+): UseSvgIconPropsReturn => {
   const styles = css({
-    width: '1em',
+    width: animatedHorizontal ? '2em' : '1em',
     height: '1em',
     display: 'inline-block',
     alignSelf: 'center',

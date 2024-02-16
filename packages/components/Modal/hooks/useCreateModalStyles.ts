@@ -30,6 +30,7 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    overflowY: 'scroll',
   };
   const backdropBase = {
     width: '100vw',
@@ -44,21 +45,23 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
       animation: `${animations.fadeIn} ${transitions.duration.screen - 5}ms ${transitions.easing.easeIn} 1`,
     },
     [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isClosing} &`]: {
-      animation: `${animations.fadeOut} ${transitions.duration.screen + 15}ms ${transitions.easing.easeOut} 1`,
+      animation: `${animations.fadeOut} ${transitions.duration.screen + 10}ms ${transitions.easing.easeOut} 1`,
     },
   };
   const dialogBase = {
-    position: 'relative',
+    position: 'absolute',
     zIndex: zIndex.modal,
     backgroundColor: palette.background.secondary,
     color: palette.text.primary,
     padding: 0,
+    display: 'flex',
+    flexDirection: 'column',
 
     [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isOpening} &`]: {
-      animation: `${animations.fadeInUp} ${transitions.duration.screen - 5}ms ${transitions.easing.easeIn} 1`,
+      animation: `${animations.zoomIn} ${transitions.duration.screen - 5}ms ${transitions.easing.easeIn} 1`,
     },
     [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isClosing} &`]: {
-      animation: `${animations.fadeOutDown} ${transitions.duration.screen + 15}ms ${transitions.easing.easeOut} 1`,
+      animation: `${animations.zoomOut} ${transitions.duration.screen + 10}ms ${transitions.easing.easeOut} 1`,
     },
   };
   const dialogSize = isFullscreen
@@ -68,8 +71,9 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
       }
     : {
         width: '100%',
+        // height: 'auto',
         margin: spacing.get(4),
-        maxHeight: '60vh',
+        maxHeight: '90vh',
         borderRadius: shape.borderRadius.medium,
         ...getContainerMaxWidth(maxWidth, breakpoints),
       };

@@ -13,14 +13,14 @@ export const useCreateModalHeaderStyles = (theme: Theme, stylesProps: ModalHeade
     justifyContent: 'space-between',
   };
 
-  const anchorLeftBase = {
+  const titleContainerBase = {
     display: 'flex',
     flexDirection: 'column',
     gap: spacing.get(1),
     flex: 1,
   };
 
-  const anchorRightBase = {};
+  const actionsContainerBase = {};
 
   const titleBase = {};
 
@@ -28,8 +28,8 @@ export const useCreateModalHeaderStyles = (theme: Theme, stylesProps: ModalHeade
 
   const styles = {
     root: Object.assign({ ...rootBase }),
-    anchorLeft: Object.assign({ ...anchorLeftBase }),
-    anchorRight: Object.assign({ ...anchorRightBase }),
+    titleContainer: Object.assign({ ...titleContainerBase }),
+    actionsContainer: Object.assign({ ...actionsContainerBase }),
     title: Object.assign({ ...titleBase }),
     subtitle: Object.assign({ ...subtitleBase }),
   };

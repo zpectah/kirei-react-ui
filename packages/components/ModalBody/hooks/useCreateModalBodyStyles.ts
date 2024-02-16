@@ -9,15 +9,16 @@ export const useCreateModalBodyStyles = (theme: Theme, stylesProps: ModalBodySty
     height: '100%',
     padding: disableOffset ? 0 : spacing.get(3, 3),
     flex: 1,
+    flexGrow: 1,
+    overflowX: 'hidden',
+    overflowY: 'scroll',
+    minHeight: 0,
     position: 'relative',
+    overscrollBehavior: 'contain',
   };
 
   const containerBase = {
-    flex: 1,
     position: 'relative',
-    // overflowX: 'hidden',
-    // overflowY: 'scroll',
-    // overscrollBehavior: 'contain',
   };
 
   const styles = {

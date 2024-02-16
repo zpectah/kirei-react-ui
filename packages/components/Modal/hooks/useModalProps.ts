@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { UseModalProps, UseModalPropsReturn } from 'types';
-import { MODAL_ROOT, MODAL_BACKDROP, MODAL_CONTAINER, MODAL_DIALOG, STATUS_CLASS_NAMES } from 'core';
+import { MODAL_ROOT, MODAL_BACKDROP, MODAL_CONTAINER, MODAL_DIALOG, MODAL_PAPER, STATUS_CLASS_NAMES } from 'core';
 
 export const useModalProps = (props: UseModalProps): UseModalPropsReturn => {
   const { style, isFullscreen, className, isOpen, isOpening, isClosing } = props;
@@ -27,6 +27,10 @@ export const useModalProps = (props: UseModalProps): UseModalPropsReturn => {
     },
     dialog: {
       className: MODAL_DIALOG,
+      style: {},
+    },
+    paper: {
+      className: MODAL_PAPER,
       style: {},
     },
   };

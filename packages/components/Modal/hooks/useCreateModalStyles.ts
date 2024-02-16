@@ -71,18 +71,20 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
       }
     : {
         width: '100%',
-        // height: 'auto',
         margin: spacing.get(4),
-        maxHeight: '90vh',
+        maxHeight: `calc(100vh - ${spacing.get(8)})`,
         borderRadius: shape.borderRadius.medium,
         ...getContainerMaxWidth(maxWidth, breakpoints),
       };
+
+  const paperBase = {};
 
   const styles = {
     root: Object.assign({ ...rootBase }),
     container: Object.assign({ ...containerBase }),
     backdrop: Object.assign({ ...backdropBase }),
     dialog: Object.assign({ ...dialogBase, ...dialogSize }),
+    paper: Object.assign({ ...paperBase }),
   };
 
   return { styles };

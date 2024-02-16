@@ -9,6 +9,8 @@ export const useCreateModalBodyStyles = (theme: Theme, stylesProps: ModalBodySty
     height: '100%',
     padding: disableOffset ? 0 : spacing.get(3, 3),
     flex: 1,
+
+    // When we want to scroll in modal-body
     flexGrow: 1,
     overflowX: 'hidden',
     overflowY: 'scroll',

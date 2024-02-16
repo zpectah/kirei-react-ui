@@ -37,13 +37,14 @@ const Modal = (props: ModalProps) => {
     isClosing,
   } = useModalHandling({ isOpen, onClose, disableBackdropClose, disableEscapeClose });
   const {
-    composedStyles: { root, backdrop, container, dialog },
+    composedStyles: { root, backdrop, container, dialog, paper },
   } = useModalStyles({ styles }, { ...styleProps });
   const {
     root: rootProps,
     backdrop: backdropProps,
     container: containerProps,
     dialog: dialogProps,
+    paper: paperProps,
   } = useModalProps({
     style,
     className,

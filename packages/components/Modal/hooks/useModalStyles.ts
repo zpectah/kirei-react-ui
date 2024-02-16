@@ -8,7 +8,7 @@ export const useModalStyles = (
 ): UseModalStylesReturn => {
   const { theme } = useKireiContext();
   const {
-    styles: { root, container, backdrop, dialog },
+    styles: { root, container, backdrop, dialog, paper },
   } = useCreateModalStyles(theme, ModalStyles);
 
   const composedStyles = {
@@ -16,6 +16,7 @@ export const useModalStyles = (
     container: [container, theme.components.Modal.container, styles?.container],
     backdrop: [backdrop, theme.components.Modal.backdrop, styles?.backdrop],
     dialog: [dialog, theme.components.Modal.dialog, styles?.dialog],
+    paper: [paper, theme.components.Modal.paper, styles?.paper],
   };
 
   return {

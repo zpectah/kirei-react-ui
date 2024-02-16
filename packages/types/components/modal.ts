@@ -7,6 +7,7 @@ interface ModalStylesScheme<T> {
   container: T;
   backdrop: T;
   dialog: T;
+  paper: T;
 }
 
 export interface ModalStyles extends ModalStylesScheme<ComponentStyles> {}

@@ -1,6 +1,8 @@
 import { ElementType } from 'react';
 import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
-import { ComponentStyles } from '../styles';
+import { BaseColor, ComponentStyles, EmotionColor, ExoticColor, PaperBackgroundColor } from '../styles';
+
+export type PaperColor = BaseColor | ExoticColor | EmotionColor | PaperBackgroundColor;
 
 interface PaperStylesScheme<T> {
   root: T;
@@ -12,7 +14,10 @@ export type PaperInitialProps<T extends ElementType> = NonNullable<unknown> & Po
 
 export interface PaperElementaryProps extends Partial<WithStyle> {}
 
-export interface PaperShapeProps {}
+export interface PaperShapeProps {
+  color: PaperColor;
+  elevation: 0 | 1 | 2; // TODO
+}
 
 export type PaperProps<T extends ElementType> = {
   styles?: Partial<PaperStyles>;

@@ -4,6 +4,7 @@ export enum baseColorKeys {
   tertiary = 'tertiary',
 }
 
+// TODO #rename to "neutral"
 export enum exoticColorKeys {
   light = 'light',
   dark = 'dark',
@@ -25,4 +26,8 @@ export enum textColorKeys {
   muted = 'muted',
   disabled = 'disabled',
   inherit = 'inherit',
+}
+
+export enum paperBackgroundColorKeys {
+  paper = 'paper',
 }

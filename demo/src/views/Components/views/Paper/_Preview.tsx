@@ -11,6 +11,8 @@ const PreviewView = () => {
       <Section title="Paper default">
         <div>...</div>
         <Paper>Paper block</Paper>
+        <Paper color="warning">Paper block</Paper>
+        <Paper color="secondary">Paper block</Paper>
       </Section>
     </Article>
   );

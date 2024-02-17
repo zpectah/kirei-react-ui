@@ -1,22 +1,28 @@
 import { Theme, ModalBodyStylesProps } from 'types';
+import { useModalContext } from '../../Modal';
 
 export const useCreateModalBodyStyles = (theme: Theme, stylesProps: ModalBodyStylesProps) => {
   const { spacing } = theme;
   const { disableOffset } = stylesProps;
+
+  const { scroll } = useModalContext();
 
   const rootBase = {
     width: '100%',
     height: '100%',
     padding: disableOffset ? 0 : spacing.get(3, 3),
     flex: 1,
-
-    // When we want to scroll in modal-body
-    flexGrow: 1,
-    overflowX: 'hidden',
-    overflowY: 'scroll',
-    minHeight: 0,
-    position: 'relative',
-    overscrollBehavior: 'contain',
+  };
+  const rootScroll = {
+    body: {},
+    paper: {
+      flexGrow: 1,
+      overflowX: 'hidden',
+      overflowY: 'scroll',
+      minHeight: 0,
+      position: 'relative',
+      overscrollBehavior: 'contain',
+    },
   };
 
   const containerBase = {
@@ -24,7 +30,7 @@ export const useCreateModalBodyStyles = (theme: Theme, stylesProps: ModalBodySty
   };
 
   const styles = {
-    root: Object.assign({ ...rootBase }),
+    root: Object.assign({ ...rootBase, ...rootScroll[scroll] }),
     container: Object.assign({ ...containerBase }),
   };
 

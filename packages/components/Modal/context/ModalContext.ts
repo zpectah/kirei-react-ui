@@ -1,10 +1,11 @@
 import { createContext, useContext } from 'react';
-import { ModalContextProps } from 'types';
+import { ModalContextProps, modalScrollDeterminateKeys } from 'types';
 
 const ModalContextDefaults: ModalContextProps = {
   id: '',
   isOpen: false,
   onClose: () => {},
+  scroll: modalScrollDeterminateKeys.paper,
 };
 
 const ModalContext = createContext(ModalContextDefaults);

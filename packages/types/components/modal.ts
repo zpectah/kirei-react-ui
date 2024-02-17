@@ -10,6 +10,13 @@ interface ModalStylesScheme<T> {
   paper: T;
 }
 
+export enum modalScrollDeterminateKeys {
+  body = 'body',
+  paper = 'paper',
+}
+
+export type ModalScrollDeterminate = keyof typeof modalScrollDeterminateKeys;
+
 export interface ModalStyles extends ModalStylesScheme<ComponentStyles> {}
 
 export type ModalInitialProps = Omit<ComponentPropsWithRef<'dialog'>, 'onCancel'>;
@@ -26,6 +33,7 @@ export interface ModalHandlingProps {
 export interface ModalShapeProps {
   maxWidth: Breakpoints;
   isFullscreen: boolean;
+  scroll: ModalScrollDeterminate;
 }
 
 export type ModalProps = {
@@ -67,4 +75,7 @@ export interface UseModalHandlingReturn extends Pick<ModalHandlingProps, 'onClos
   onBackdropClick: (event: MouseEvent<HTMLDivElement>) => void;
 }
 
-export interface ModalContextProps extends ModalHandlingProps, Pick<ModalInitialProps, 'id'> {}
+export interface ModalContextProps
+  extends ModalHandlingProps,
+    Pick<ModalInitialProps, 'id'>,
+    Pick<ModalShapeProps, 'scroll'> {}

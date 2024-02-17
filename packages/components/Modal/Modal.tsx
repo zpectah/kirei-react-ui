@@ -19,9 +19,10 @@ const Modal = (props: ModalProps) => {
     isOpen,
     onClose,
     id,
+    scroll = MODAL_DEFAULT_VALUES.scroll,
     ...rest
   } = props;
-  const styleProps = { maxWidth, disableBackdropClose, disableEscapeClose, isFullscreen };
+  const styleProps = { maxWidth, disableBackdropClose, disableEscapeClose, isFullscreen, scroll };
 
   const {
     portalElement,
@@ -60,6 +61,7 @@ const Modal = (props: ModalProps) => {
     id: rootId,
     isOpen,
     onClose: onDialogClose,
+    scroll,
   };
 
   return (
@@ -79,7 +81,9 @@ const Modal = (props: ModalProps) => {
           <div css={container} {...containerProps}>
             <div css={backdrop} {...backdropProps} onClick={onBackdropClick} />
             <div ref={modalDialogRef} css={dialog} {...dialogProps}>
-              {children}
+              <div css={paper} {...paperProps}>
+                {children}
+              </div>
             </div>
           </div>
         </dialog>

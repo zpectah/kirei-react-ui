@@ -39,6 +39,10 @@ export interface ButtonShapeProps {
   variant: ShapeVariant;
 }
 
+export interface ButtonSlots {
+  loadingIcon?: ReactNode;
+}
+
 export interface ButtonSlotProps {
   labelProps: Omit<LabelProps, 'children'>;
   iconStartProps: Omit<IconStartProps, 'children'>;
@@ -48,9 +52,7 @@ export interface ButtonSlotProps {
 
 export type ButtonProps<T extends ElementType> = {
   styles?: Partial<ButtonStyles>;
-  slots?: {
-    loadingIcon?: ReactNode;
-  };
+  slots?: ButtonSlots;
   slotProps?: Partial<ButtonSlotProps>;
 } & ButtonInitialProps<T> &
   ButtonElementaryProps &

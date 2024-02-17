@@ -21,20 +21,25 @@ import {
   RectangleIcon,
   SpinnerIcon,
 } from 'icons';
-import { Modal, ModalBody } from 'components';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'components';
 import { Section } from '../../../../../../components';
+import { PreviewStack } from '../../../../components/index';
 
-export interface IconsPreviewListProps {}
+export type ActiveIconProps = { label: string; node: ComponentType };
+export interface IconsPreviewListProps {
+  onSelect?: (icon: ActiveIconProps) => void;
+}
 
 const IconsPreviewList = (props: IconsPreviewListProps) => {
-  const {} = props;
+  const { onSelect } = props;
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [activeIcon, setActiveIcon] = useState<{ label: string; node: ComponentType } | undefined>(undefined);
+  const [activeIcon, setActiveIcon] = useState<ActiveIconProps | undefined>(undefined);
 
-  const openModalHandler = (icon: { label: string; node: ComponentType }) => {
+  const openModalHandler = (icon: ActiveIconProps) => {
     setModalOpen(true);
     setActiveIcon(icon);
+    if (onSelect) onSelect(icon);
   };
   const closeModalHandler = () => {
     setModalOpen(false);
@@ -127,71 +132,88 @@ const IconsPreviewList = (props: IconsPreviewListProps) => {
   const renderIconDetail = useMemo(() => {
     if (activeIcon)
       return (
-        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
-          <div>icon import code</div>
-          <div>icon preview</div>
-          <div>...{activeIcon.label}...</div>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              gap: '.5rem',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <div style={{}}>
-              <activeIcon.node />
+        <>
+          <ModalHeader
+            title={activeIcon.label}
+            divider
+            actions={
+              <Button onClick={closeModalHandler} variant="text" color="neutral">
+                <CloseIcon />
+              </Button>
+            }
+          />
+          <ModalBody>
+            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
+              <PreviewStack>
+                <div style={{}}>
+                  <activeIcon.node />
+                </div>
+                <div style={{ fontSize: '1.5rem' }}>
+                  <activeIcon.node />
+                </div>
+                <div style={{ fontSize: '3rem' }}>
+                  <activeIcon.node />
+                </div>
+              </PreviewStack>
+              <div>
+                <textarea
+                  style={{ width: '100%' }}
+                  defaultValue={`import { ${activeIcon.label}Icon } from '@kirei-react-ui/icons';`}
+                  readOnly
+                />
+              </div>
             </div>
-            <div style={{ fontSize: '1.5rem' }}>
-              <activeIcon.node />
-            </div>
-            <div style={{ fontSize: '3rem' }}>
-              <activeIcon.node />
-            </div>
-          </div>
-        </div>
+          </ModalBody>
+          <ModalFooter divider justifyContent="flex-end">
+            <Button onClick={closeModalHandler} variant="outlined" color="neutral">
+              Close
+            </Button>
+          </ModalFooter>
+        </>
       );
   }, [activeIcon]);
 
   return (
-    <Section>
-      <div
-        style={{
-          width: '100%',
-          height: 'auto',
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          gap: '0',
-        }}
-      >
-        {iconsList.map((icon) => (
-          <div
-            key={icon.label}
-            onClick={() => openModalHandler(icon)}
-            style={{
-              width: '20%',
-              height: 'auto',
-              minHeight: '128px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '1rem',
-            }}
-          >
-            <div style={{ fontSize: '2rem' }}>
-              <icon.node />
+    <>
+      <Section>
+        <div
+          style={{
+            width: '100%',
+            height: 'auto',
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            gap: '0',
+          }}
+        >
+          {iconsList.map((icon) => (
+            <div
+              key={icon.label}
+              onClick={() => openModalHandler(icon)}
+              style={{
+                width: '20%',
+                height: 'auto',
+                minHeight: '128px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '1rem',
+                cursor: 'pointer',
+              }}
+            >
+              <div style={{ fontSize: '2rem' }}>
+                <icon.node />
+              </div>
+              <span>{icon.label}</span>
             </div>
-            <span>{icon.label}</span>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Section>
       <Modal isOpen={modalOpen} onClose={closeModalHandler}>
-        <ModalBody>{renderIconDetail}</ModalBody>
+        {renderIconDetail}
       </Modal>
-    </Section>
+    </>
   );
 };
 

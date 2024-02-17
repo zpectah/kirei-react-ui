@@ -20,6 +20,7 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
       background: 'none',
     },
   };
+
   const containerBase = {
     width: '100vw',
     height: '100%',
@@ -31,18 +32,9 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     zIndex: -1,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', // TODO - this cause problem when overflow
-    // justifyContent: 'space-evenly',
-    // justifyContent: 'center', // TODO !!! -- only with paper
+    alignItems: 'center',
     overflowY: 'auto',
     overflowX: 'hidden',
-
-    // '&::before': {
-    //   content: '""',
-    // },
-    // '&::after': {
-    //   content: '""',
-    // },
   };
   const containerScroll = {
     body: {},
@@ -67,6 +59,7 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
       animation: `${animations.fadeOut} ${transitions.duration.screen + 10}ms ${transitions.easing.easeOut} 1`,
     },
   };
+
   const dialogBase = {
     position: 'absolute',
     zIndex: zIndex.modal,
@@ -74,10 +67,7 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    // flex: 1,
-    // flexGrow: 1,
     minHeight: 'min-content',
-    // flexShrink: 0,
 
     [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isOpening} &`]: {
       animation: `${animations.zoomIn} ${transitions.duration.screen - 5}ms ${transitions.easing.easeIn} 1`,
@@ -86,25 +76,29 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
       animation: `${animations.zoomOut} ${transitions.duration.screen + 10}ms ${transitions.easing.easeOut} 1`,
     },
   };
-  const dialogSize = isFullscreen
+  const dialogWidth = isFullscreen
     ? {
         width: '100vw',
-        height: '100vh',
       }
     : {
         width: '100%',
         ...getContainerMaxWidth(maxWidth, breakpoints),
       };
 
-  const dialogScroll = {
-    body: {
-      height: 'auto',
-      minHeight: '100%',
-    },
-    paper: {
-      // height: '100vh',
-      maxHeight: `calc(100vh - ${spacing.get(8)})`,
-    },
+  const dialogHeight = {
+    body: isFullscreen
+      ? {}
+      : {
+          height: 'auto',
+          minHeight: '100%',
+        },
+    paper: isFullscreen
+      ? {
+          height: `calc(100vh - ${spacing.get(8)})`,
+        }
+      : {
+          maxHeight: `calc(100vh - ${spacing.get(8)})`,
+        },
   };
 
   const paperBase = {
@@ -116,25 +110,33 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     backgroundColor: palette.background.secondary,
     color: palette.text.primary,
     borderRadius: shape.borderRadius.medium,
+    overflowY: 'auto',
+    overflowX: 'hidden',
   };
-
-  const paperScroll = {
-    body: {
-      // maxHeight: '100vh',
-      height: 'auto',
-    },
-    paper: {
-      minHeight: 0,
-      maxHeight: `calc(100vh - ${spacing.get(8)})`,
-    },
+  const paperHeight = {
+    body: isFullscreen
+      ? {
+          minHeight: `calc(100vh - ${spacing.get(8)})`,
+        }
+      : {
+          height: 'auto',
+        },
+    paper: isFullscreen
+      ? {
+          height: `calc(100vh - ${spacing.get(8)})`,
+        }
+      : {
+          minHeight: 0,
+          maxHeight: `calc(100vh - ${spacing.get(8)})`,
+        },
   };
 
   const styles = {
     root: Object.assign({ ...rootBase }),
     container: Object.assign({ ...containerBase, ...containerScroll[scroll] }),
     backdrop: Object.assign({ ...backdropBase }),
-    dialog: Object.assign({ ...dialogBase, ...dialogSize, ...dialogScroll[scroll] }),
-    paper: Object.assign({ ...paperBase, ...paperScroll[scroll] }),
+    dialog: Object.assign({ ...dialogBase, ...dialogWidth, ...dialogHeight[scroll] }),
+    paper: Object.assign({ ...paperBase, ...paperHeight[scroll] }),
   };
 
   return { styles };

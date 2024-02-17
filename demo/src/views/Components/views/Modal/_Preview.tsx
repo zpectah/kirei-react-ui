@@ -79,7 +79,12 @@ const PreviewView = () => {
           </ModalFooter>
         </Modal>
 
-        <Modal isOpen={modalScrollableOneOpen} onClose={() => setModalScrollableOneOpen(false)} scroll="body">
+        <Modal
+          isOpen={modalScrollableOneOpen}
+          onClose={() => setModalScrollableOneOpen(false)}
+          scroll="body"
+          isFullscreen
+        >
           <ModalHeader
             title="Modal scrollable 1"
             actions={

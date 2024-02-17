@@ -24,7 +24,6 @@ export type ButtonInitialProps<T extends ElementType> = NonNullable<unknown> & P
 export interface ButtonElementaryProps {
   startIcon?: ReactNode;
   endIcon?: ReactNode;
-  loadingIcon?: ReactNode;
 }
 
 export interface ButtonStateProps {
@@ -49,6 +48,9 @@ export interface ButtonSlotProps {
 
 export type ButtonProps<T extends ElementType> = {
   styles?: Partial<ButtonStyles>;
+  slots?: {
+    loadingIcon?: ReactNode;
+  };
   slotProps?: Partial<ButtonSlotProps>;
 } & ButtonInitialProps<T> &
   ButtonElementaryProps &

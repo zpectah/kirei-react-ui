@@ -17,7 +17,7 @@ const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIn
     isActive,
     isDisabled,
     isLoading,
-    loadingIcon,
+    slots,
     slotProps,
     startIcon,
     style,
@@ -40,6 +40,9 @@ const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIn
     iconEndProps: { ...slotProps?.iconEndProps },
     iconLoadingProps: { ...slotProps?.iconLoadingProps },
   };
+  const defaultSlots = {
+    loadingIcon: slots?.loadingIcon || <LoaderHorizontalIcon />,
+  };
 
   const {
     composedStyles: { root, label, iconStart, iconEnd, iconLoading },
@@ -61,7 +64,7 @@ const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIn
     <Component ref={ref} css={root} {...rootProps} {...rest}>
       {isLoading && (
         <span css={iconLoading} {...iconLoadingProps}>
-          {loadingIcon ? loadingIcon : <LoaderHorizontalIcon />}
+          {defaultSlots.loadingIcon}
         </span>
       )}
       {startIcon && (

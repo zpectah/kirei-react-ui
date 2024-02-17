@@ -8,7 +8,7 @@ export const useCreatePaperStyles = (theme: Theme, stylesProps: PaperStylesProps
     borderRadius: isSquare ? 0 : shape.borderRadius.medium,
     boxShadow: disableElevation
       ? 'none'
-      : `${palette.utils.getAlphaColor(palette.common.black, 0.125)} 0px 2px 8px 0px`, // TODO
+      : `${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 0.25rem 1rem, ${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 0.5rem 1.5rem, ${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 1rem 4.25rem`,
   };
   const rootColor = {
     paper: {

@@ -1,4 +1,4 @@
-import { DeepPartial, ThemeMode, themeModeKeys, ThemePalette } from 'types';
+import { DeepPartial, PaperColor, ThemeMode, themeModeKeys, ThemePalette } from 'types';
 import { PALETTE, PALETTE_RATIO, PALETTE_RATIO_CORRECTION } from 'core';
 
 export const getThemePaletteRatio = (ratio?: Partial<ThemePalette['ratio']>) => {
@@ -143,4 +143,60 @@ export const getThemePaletteProps = (
         },
       };
   }
+};
+
+export const getPaperDividerColor = (color: PaperColor, palette?: DeepPartial<ThemePalette>) => {
+  let divider;
+  switch (color) {
+    case 'primary':
+      divider = palette?.primary?.light;
+      break;
+
+    case 'secondary':
+      divider = palette?.secondary?.light;
+      break;
+
+    case 'tertiary':
+      divider = palette?.tertiary?.light;
+      break;
+
+    case 'neutral':
+      divider = palette?.neutral?.light;
+      break;
+
+    case 'inverted':
+      divider = palette?.inverted?.light;
+      break;
+
+    case 'dark':
+      divider = palette?.dark?.light;
+      break;
+
+    case 'light':
+      divider = palette?.light?.light;
+      break;
+
+    case 'success':
+      divider = palette?.success?.light;
+      break;
+
+    case 'info':
+      divider = palette?.info?.light;
+      break;
+
+    case 'warning':
+      divider = palette?.warning?.light;
+      break;
+
+    case 'error':
+      divider = palette?.error?.light;
+      break;
+
+    case 'paper':
+    default:
+      divider = palette?.shape?.divider;
+      break;
+  }
+
+  return divider;
 };

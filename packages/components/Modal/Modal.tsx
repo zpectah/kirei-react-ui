@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { ModalProps } from 'types';
-import { MODAL_DEFAULT_VALUES, MODAL_ID_PREFIX } from 'core';
+import { MODAL_DEFAULT_VALUES, MODAL_PAPER_DEFAULT_COLOR, MODAL_ID_PREFIX } from 'core';
 import { getRandomString } from 'utils';
 import { Paper } from '../Paper';
 import { useModalStyles, useModalProps, useModalHandling } from './hooks';
@@ -77,11 +77,11 @@ const Modal = (props: ModalProps) => {
   });
 
   const rootId = useMemo(() => id ?? `${MODAL_ID_PREFIX}${getRandomString(8)}`, [id]);
-
-  const ModalContextValue = {
+  const modalContextValue = {
     id: rootId,
     isOpen,
     onClose: onDialogClose,
+    color: defaultSlotProps?.PaperProps?.color || MODAL_PAPER_DEFAULT_COLOR,
     scroll,
   };
 
@@ -89,7 +89,7 @@ const Modal = (props: ModalProps) => {
     isMounted &&
     isDialogOpen &&
     createPortal(
-      <ModalContextProvider value={ModalContextValue}>
+      <ModalContextProvider value={modalContextValue}>
         <dialog
           ref={modalRootRef}
           id={rootId}

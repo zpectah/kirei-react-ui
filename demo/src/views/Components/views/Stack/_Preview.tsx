@@ -1,34 +1,44 @@
 import React from 'react';
 import { Stack } from 'components';
 import { Article, Section } from '../../../../components';
+import { PreviewCode, PreviewCombo } from '../../components/index';
 
 const PreviewView = () => {
   return (
-    <Article>
+    <>
       <Section>
-        <Stack gap={4} direction="row">
-          <div>item 1</div>
-          <div>item 2</div>
-          <div>item 3</div>
-          <div>item 4</div>
-          <div>item 5</div>
-        </Stack>
+        <PreviewCode code={`import { Stack } from 'components';`} />
       </Section>
-      <Section>
-        <Stack gap={4} wrap="wrap">
-          <div>item 1</div>
-          <div>item 2</div>
-          <div>item 3</div>
-          <div>item 4</div>
-          <div>item 5</div>
-          <div>item 6</div>
-          <div>item 7</div>
-          <div>item 8</div>
-          <div>item 9</div>
-          <div>item 10</div>
-        </Stack>
-      </Section>
-    </Article>
+      <Article>
+        <Section title="Title ... todo">
+          <PreviewCombo code="<Stack>...</Stack>">
+            <Stack gap={4} direction="row">
+              <div>item 1</div>
+              <div>item 2</div>
+              <div>item 3</div>
+              <div>item 4</div>
+              <div>item 5</div>
+            </Stack>
+          </PreviewCombo>
+        </Section>
+        <Section title="Title ... todo">
+          <PreviewCombo code="<Stack>...</Stack>">
+            <Stack gap={4} wrap="wrap">
+              <div>item 1</div>
+              <div>item 2</div>
+              <div>item 3</div>
+              <div>item 4</div>
+              <div>item 5</div>
+              <div>item 6</div>
+              <div>item 7</div>
+              <div>item 8</div>
+              <div>item 9</div>
+              <div>item 10</div>
+            </Stack>
+          </PreviewCombo>
+        </Section>
+      </Article>
+    </>
   );
 };
 

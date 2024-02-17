@@ -2,17 +2,20 @@ import React from 'react';
 import { Button } from 'components';
 import { BackwardIcon, ForwardIcon } from 'icons';
 import { Article, Section } from '../../../../components';
-import { PreviewCombo } from '../../components/index';
+import { PreviewCode, PreviewCombo } from '../../components/index';
 
 const PreviewView = () => {
   return (
     <>
+      <Section>
+        <PreviewCode code={`import { Button } from 'components';`} />
+      </Section>
       <Article
         title="Basic Button"
         subtitle="The Button component comes in three basic shapes. `text`, `outlined`, `contained`."
       >
         <Section>
-          <PreviewCombo code='import { Button } from "components";'>
+          <PreviewCombo code="<Button>...</Button>">
             <Button variant="text">Text</Button>
             <Button variant="outlined">Outlined</Button>
             <Button variant="contained">Contained</Button>
@@ -22,7 +25,7 @@ const PreviewView = () => {
           title="Text Button"
           subtitle={`Text buttons are often chosen for secondary actions, particularly within contexts such as dialog boxes or cards. `}
         >
-          <PreviewCombo code='<Button variant="text">Button label</Button>'>
+          <PreviewCombo code='<Button variant="text">...</Button>'>
             <Button variant="text">Default</Button>
             <Button variant="text" as="a" href="#">
               Link
@@ -36,7 +39,7 @@ const PreviewView = () => {
           title="Outlined Button"
           subtitle={`Outlined buttons serve as medium-emphasis options, featuring actions of significance but not necessarily the primary action within an application.`}
         >
-          <PreviewCombo code='<Button variant="outlined">Button label</Button>'>
+          <PreviewCombo code='<Button variant="outlined">...</Button>'>
             <Button variant="outlined">Default</Button>
             <Button variant="outlined" as="a" href="#">
               Link
@@ -50,7 +53,7 @@ const PreviewView = () => {
           title="Contained Button"
           subtitle={`The Contained button acts as a primary action element with greater emphasis, often serving to execute the main action within the application.`}
         >
-          <PreviewCombo code='<Button variant="contained">Button label</Button>'>
+          <PreviewCombo code='<Button variant="contained">...</Button>'>
             <Button variant="contained">Default</Button>
             <Button variant="contained" as="a" href="#">
               Link
@@ -64,9 +67,9 @@ const PreviewView = () => {
       <Article title="Button color" subtitle={`For the Button, you can set basic colors defined in the theme.`}>
         <Section title="Base colors">
           <PreviewCombo
-            code='<Button color="primary">Button label</Button>
-<Button color="secondary">Button label</Button>
-<Button color="tertiary">Button label</Button>'
+            code='<Button color="primary">...</Button>
+<Button color="secondary">...</Button>
+<Button color="tertiary">...</Button>'
           >
             <Button color="primary">Primary</Button>
             <Button color="secondary">Secondary</Button>
@@ -75,10 +78,10 @@ const PreviewView = () => {
         </Section>
         <Section title="Emotion colors">
           <PreviewCombo
-            code='<Button color="success">Button label</Button>
-<Button color="info">Button label</Button>
-<Button color="warning">Button label</Button>
-<Button color="error">Button label</Button>'
+            code='<Button color="success">...</Button>
+<Button color="info">...</Button>
+<Button color="warning">...</Button>
+<Button color="error">...</Button>'
           >
             <Button color="success">Success</Button>
             <Button color="info">Info</Button>
@@ -86,8 +89,13 @@ const PreviewView = () => {
             <Button color="error">Error</Button>
           </PreviewCombo>
         </Section>
-        <Section title="Neutral (exotic) colors">
-          <PreviewCombo code="code">
+        <Section title="Neutral colors">
+          <PreviewCombo
+            code='<Button color="light">...</Button>
+<Button color="inverted">...</Button>
+<Button color="dark">...</Button>
+<Button color="neutral">...</Button>'
+          >
             <Button color="light">Light</Button>
             <Button color="inverted">Inverted</Button>
             <Button color="dark">Dark</Button>
@@ -97,7 +105,7 @@ const PreviewView = () => {
       </Article>
       <Article title="Button states" subtitle={`The Button can also have several following states.`}>
         <Section title="Loading state">
-          <PreviewCombo code="code">
+          <PreviewCombo code="<Button isLoading>...</Button>">
             <Button variant="text" isLoading>
               Loading
             </Button>
@@ -109,8 +117,8 @@ const PreviewView = () => {
             </Button>
           </PreviewCombo>
         </Section>
-        <Section title="Active state">
-          <PreviewCombo code="code">
+        <Section title="Active state" subtitle={`Aktivní stav může zobrazovat vybranou položku nebo jiný účel.`}>
+          <PreviewCombo code="<Button isActive>...</Button>">
             <Button variant="text" isActive>
               Text
             </Button>
@@ -128,7 +136,7 @@ const PreviewView = () => {
         subtitle={`The Button component offers versatility in size, providing options in three fundamental dimensions: "small," "medium," and "large."`}
       >
         <Section title="Small Button">
-          <PreviewCombo code="code">
+          <PreviewCombo code='<Button size="small">...</Button>'>
             <Button variant="text" size="small">
               Text
             </Button>
@@ -141,14 +149,20 @@ const PreviewView = () => {
           </PreviewCombo>
         </Section>
         <Section title="Medium Button">
-          <PreviewCombo code="code">
-            <Button variant="text">Text</Button>
-            <Button variant="outlined">Outlined</Button>
-            <Button variant="contained">Contained</Button>
+          <PreviewCombo code='<Button size="medium">...</Button>'>
+            <Button variant="text" size="medium">
+              Text
+            </Button>
+            <Button variant="outlined" size="medium">
+              Outlined
+            </Button>
+            <Button variant="contained" size="medium">
+              Contained
+            </Button>
           </PreviewCombo>
         </Section>
         <Section title="Large Button">
-          <PreviewCombo code="code">
+          <PreviewCombo code='<Button size="large">...</Button>'>
             <Button variant="text" size="large">
               Text
             </Button>
@@ -166,7 +180,7 @@ const PreviewView = () => {
         subtitle={`You can also insert custom icons into the Button using the "startIcon" and "endIcon" props.`}
       >
         <Section title="Icon on start">
-          <PreviewCombo code="code">
+          <PreviewCombo code="<Button startIcon={<BackwardIcon />}>...</Button>">
             <Button variant="text" startIcon={<BackwardIcon />}>
               Text
             </Button>
@@ -179,7 +193,7 @@ const PreviewView = () => {
           </PreviewCombo>
         </Section>
         <Section title="Icon on end">
-          <PreviewCombo code="code">
+          <PreviewCombo code="<Button endIcon={<BackwardIcon />}>...</Button>">
             <Button variant="text" endIcon={<ForwardIcon />}>
               Text
             </Button>
@@ -193,11 +207,11 @@ const PreviewView = () => {
         </Section>
       </Article>
       <Article
-        title="Full width button"
+        title="Fullwidth button"
         subtitle={`The Button can also be configured to span the entire width, particularly useful for mobile devices and similar contexts.`}
       >
         <Section>
-          <PreviewCombo code="code">
+          <PreviewCombo code="<Button isFullWidth>...</Button>">
             <Button variant="text" isFullWidth>
               Text
             </Button>

@@ -13,7 +13,8 @@ const PreviewCombo = (props: PreviewComboProps) => {
   return (
     <div>
       <PreviewStack>{children}</PreviewStack>
-      {code && <PreviewCode>{code}</PreviewCode>}
+      {/*<div>controls</div>*/}
+      {code && <PreviewCode code={code} />}
     </div>
   );
 };

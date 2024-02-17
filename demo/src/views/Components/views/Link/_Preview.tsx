@@ -1,17 +1,23 @@
 import React from 'react';
 import { Link } from 'components';
 import { Article, Section } from '../../../../components';
-import { PreviewStack, PreviewCode } from '../../components/index';
+import { PreviewCode, PreviewCombo } from '../../components/index';
 
 const PreviewView = () => {
   return (
     <>
+      <Section>
+        <PreviewCode code={`import { Link } from 'components';`} />
+      </Section>
       <Article
         title="Basic Link"
         subtitle={`The Link can be used as a traditional hypertext link or as a \`button\` element.`}
       >
         <Section>
-          <PreviewStack>
+          <PreviewCombo
+            code='<Link href="/">...</Link>
+<Link as="button">...</Link>'
+          >
             <Link href="/">Link</Link>
             <Link
               as="button"
@@ -21,13 +27,17 @@ const PreviewView = () => {
             >
               Button
             </Link>
-          </PreviewStack>
-          <PreviewCode>code</PreviewCode>
+          </PreviewCombo>
         </Section>
       </Article>
       <Article title="Link underline" subtitle={`For the Link component, the underline behavior can be configured.`}>
         <Section>
-          <PreviewStack>
+          <PreviewCombo
+            code='<Link underline="none">...</Link>
+<Link underline="hover">...</Link>
+<Link underline="always">...</Link>
+          '
+          >
             <Link href="/" underline="none">
               Underline none
             </Link>
@@ -37,8 +47,7 @@ const PreviewView = () => {
             <Link href="/" underline="always">
               Underline always (default)
             </Link>
-          </PreviewStack>
-          <PreviewCode>code</PreviewCode>
+          </PreviewCombo>
         </Section>
       </Article>
       <Article
@@ -46,7 +55,11 @@ const PreviewView = () => {
         subtitle={`The color of the Link component is based on the primary color in the theme, but it can also be extended to include additional colors defined in the theme.`}
       >
         <Section title="Base colors">
-          <PreviewStack>
+          <PreviewCombo
+            code='<Link color="primary">...</Link>
+<Link color="secondary">...</Link>
+<Link color="tertiary">...</Link>'
+          >
             <Link href="/" color="primary">
               Primary
             </Link>
@@ -56,11 +69,15 @@ const PreviewView = () => {
             <Link href="/" color="tertiary">
               Tertiary
             </Link>
-          </PreviewStack>
-          <PreviewCode>code</PreviewCode>
+          </PreviewCombo>
         </Section>
         <Section title="Emotion colors">
-          <PreviewStack>
+          <PreviewCombo
+            code='<Link color="success">...</Link>
+<Link color="info">...</Link>
+<Link color="warning">...</Link>
+<Link color="error">...</Link>'
+          >
             <Link href="/" color="success">
               Success
             </Link>
@@ -73,11 +90,14 @@ const PreviewView = () => {
             <Link href="/" color="error">
               Error
             </Link>
-          </PreviewStack>
-          <PreviewCode>code</PreviewCode>
+          </PreviewCombo>
         </Section>
         <Section title="Typography colors">
-          <PreviewStack>
+          <PreviewCombo
+            code='<Link color="text-tertiary">...</Link>
+<Link color="text-secondary">...</Link>
+<Link color="text-tertiary">...</Link>'
+          >
             <Link href="/" color="text-tertiary">
               Text primary
             </Link>
@@ -87,11 +107,15 @@ const PreviewView = () => {
             <Link href="/" color="text-tertiary">
               Text tertiary
             </Link>
-          </PreviewStack>
-          <PreviewCode>code</PreviewCode>
+          </PreviewCombo>
         </Section>
         <Section title="Neutral (exotic) colors">
-          <PreviewStack>
+          <PreviewCombo
+            code='<Link color="light">...</Link>
+<Link color="inverted">...</Link>
+<Link color="dark">...</Link>
+<Link color="neutral">...</Link>'
+          >
             <Link href="/" color="light">
               Light
             </Link>
@@ -104,8 +128,7 @@ const PreviewView = () => {
             <Link href="/" color="neutral">
               Neutral
             </Link>
-          </PreviewStack>
-          <PreviewCode>code</PreviewCode>
+          </PreviewCombo>
         </Section>
       </Article>
       <Article
@@ -113,7 +136,10 @@ const PreviewView = () => {
         subtitle={`The Link component offers the option to incorporate a disabled state, enabling the deactivation of its functionality.`}
       >
         <Section>
-          <PreviewStack>
+          <PreviewCombo
+            code='<Link href="/" isDisabled>...</Link>
+<Link as="button" isDisabled>...</Link>'
+          >
             <Link href="/" isDisabled>
               Link
             </Link>
@@ -126,8 +152,7 @@ const PreviewView = () => {
             >
               Button
             </Link>
-          </PreviewStack>
-          <PreviewCode>code</PreviewCode>
+          </PreviewCombo>
         </Section>
       </Article>
     </>

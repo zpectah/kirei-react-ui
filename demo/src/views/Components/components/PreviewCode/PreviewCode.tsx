@@ -1,30 +1,19 @@
 import React from 'react';
-import { WithChildren } from 'types';
-import { useKireiContext } from 'styles';
+import SyntaxHighlighter, { SyntaxHighlighterProps } from 'react-syntax-highlighter';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-export interface PreviewCodeProps extends WithChildren {}
+export interface PreviewCodeProps {
+  children: string;
+  language?: SyntaxHighlighterProps['language'];
+}
 
 const PreviewCode = (props: PreviewCodeProps) => {
-  const { children } = props;
-
-  const {
-    theme: { palette, spacing },
-  } = useKireiContext();
+  const { children, language = 'typescript' } = props;
 
   return (
-    <div
-      style={{
-        padding: spacing.get(2, 4),
-        backgroundColor: palette.neutral.main,
-        color: palette.neutral.contrast,
-      }}
-    >
-      <div>
-        <pre>
-          <code>{children}</code>
-        </pre>
-      </div>
-    </div>
+    <SyntaxHighlighter language={language} style={dracula} customStyle={{ margin: 0, padding: '1.5rem' }}>
+      {children}
+    </SyntaxHighlighter>
   );
 };
 

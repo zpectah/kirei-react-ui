@@ -5,3 +5,4 @@ export * from './PlaygroundPreview';
 export * from './PreviewStack';
 export * from './PreviewCode';
 export * from './DetailNavigation';
+export * from './PreviewCombo';

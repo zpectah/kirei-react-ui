@@ -46,15 +46,23 @@ const PreviewView = () => {
             <br />
             <Button onClick={modalSecondaryToggle}>Open Modal</Button>
             <br />
-            <Modal maxWidth="sm" isOpen={modalSecondaryOpen} onClose={() => setModalSecondaryOpen(false)}>
-              <ModalHeader title="Modal content ...Header" />
+            <Modal
+              maxWidth="sm"
+              isOpen={modalSecondaryOpen}
+              onClose={() => setModalSecondaryOpen(false)}
+              slotProps={{
+                PaperProps: { color: 'primary', as: 'section' },
+                containerProps: { className: 'my-slot-classname' },
+              }}
+            >
+              <ModalHeader title="Modal content ...Header" divider />
               <ModalBody>
                 Body
                 <br />
                 <Button onClick={() => setModalTertiaryOpen(true)}>Open Tertiary</Button>
                 <br />
               </ModalBody>
-              <ModalFooter>
+              <ModalFooter divider>
                 <Button onClick={modalSecondaryToggle} variant="outlined" color="neutral">
                   Close Modal
                 </Button>
@@ -79,12 +87,7 @@ const PreviewView = () => {
           </ModalFooter>
         </Modal>
 
-        <Modal
-          isOpen={modalScrollableOneOpen}
-          onClose={() => setModalScrollableOneOpen(false)}
-          scroll="body"
-          isFullscreen
-        >
+        <Modal isOpen={modalScrollableOneOpen} onClose={() => setModalScrollableOneOpen(false)} scroll="body">
           <ModalHeader
             title="Modal scrollable 1"
             actions={

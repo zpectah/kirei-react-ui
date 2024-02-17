@@ -3,7 +3,13 @@ import { UseModalProps, UseModalPropsReturn } from 'types';
 import { MODAL_ROOT, MODAL_BACKDROP, MODAL_CONTAINER, MODAL_DIALOG, MODAL_PAPER, STATUS_CLASS_NAMES } from 'core';
 
 export const useModalProps = (props: UseModalProps): UseModalPropsReturn => {
-  const { style, isFullscreen, className, isOpen, isOpening, isClosing } = props;
+  const { style, isFullscreen, className, isOpen, isOpening, isClosing, slotProps } = props;
+  const {
+    backdropProps: { style: backdropStyle, className: backdropClassName, ...restOfBackdropProps },
+    containerProps: { style: containerStyle, className: containerClassName, ...restOfContainerProps },
+    dialogProps: { style: dialogStyle, className: dialogClassName, ...restOfDialogProps },
+    PaperProps: { style: paperStyle, className: paperClassName, ...restOfPaperProps },
+  } = slotProps;
 
   return {
     root: {
@@ -18,20 +24,24 @@ export const useModalProps = (props: UseModalProps): UseModalPropsReturn => {
       style: { ...style },
     },
     backdrop: {
-      className: MODAL_BACKDROP,
-      style: {},
+      className: clsx(MODAL_BACKDROP, backdropClassName),
+      style: { ...backdropStyle },
+      ...restOfBackdropProps,
     },
     container: {
-      className: MODAL_CONTAINER,
-      style: {},
+      className: clsx(MODAL_CONTAINER, containerClassName),
+      style: { ...containerStyle },
+      ...restOfContainerProps,
     },
     dialog: {
-      className: MODAL_DIALOG,
-      style: {},
+      className: clsx(MODAL_DIALOG, dialogClassName),
+      style: { ...dialogStyle },
+      ...restOfDialogProps,
     },
     paper: {
-      className: MODAL_PAPER,
-      style: {},
+      className: clsx(MODAL_PAPER, paperClassName),
+      style: { ...paperStyle },
+      ...restOfPaperProps,
     },
   };
 };

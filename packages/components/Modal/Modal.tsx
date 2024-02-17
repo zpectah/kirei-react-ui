@@ -9,35 +9,54 @@ import { ModalContextProvider } from './context';
 
 const Modal = (props: ModalProps) => {
   const {
-    maxWidth = MODAL_DEFAULT_VALUES.maxWidth,
     isFullscreen = MODAL_DEFAULT_VALUES.isFullscreen,
+    maxWidth = MODAL_DEFAULT_VALUES.maxWidth,
+    scroll = MODAL_DEFAULT_VALUES.scroll,
+    children,
+    className,
     disableBackdropClose,
     disableEscapeClose,
-    children,
-    style,
-    styles,
-    className,
+    id,
     isOpen,
     onClose,
-    id,
-    scroll = MODAL_DEFAULT_VALUES.scroll,
+    slotProps,
+    style,
+    styles,
     ...rest
   } = props;
-  const styleProps = { maxWidth, disableBackdropClose, disableEscapeClose, isFullscreen, scroll };
+
+  const styleProps = {
+    disableBackdropClose,
+    disableEscapeClose,
+    isFullscreen,
+    maxWidth,
+    scroll,
+  };
+  const defaultSlotProps = {
+    containerProps: { ...slotProps?.containerProps },
+    backdropProps: { ...slotProps?.backdropProps },
+    dialogProps: { ...slotProps?.dialogProps },
+    PaperProps: { ...slotProps?.PaperProps },
+  };
 
   const {
-    portalElement,
-    modalRootRef,
-    modalDialogRef,
+    isClosing,
     isMounted,
-    onClose: onDialogClose,
-    onKeyDown,
-    onCancel,
-    onBackdropClick,
     isOpen: isDialogOpen,
     isOpening,
-    isClosing,
-  } = useModalHandling({ isOpen, onClose, disableBackdropClose, disableEscapeClose });
+    modalDialogRef,
+    modalRootRef,
+    onBackdropClick,
+    onCancel,
+    onClose: onDialogClose,
+    onKeyDown,
+    portalElement,
+  } = useModalHandling({
+    disableBackdropClose,
+    disableEscapeClose,
+    isOpen,
+    onClose,
+  });
   const {
     composedStyles: { root, backdrop, container, dialog, paper },
   } = useModalStyles({ styles }, { ...styleProps });
@@ -48,11 +67,12 @@ const Modal = (props: ModalProps) => {
     dialog: dialogProps,
     paper: paperProps,
   } = useModalProps({
-    style,
     className,
+    isClosing,
     isOpen: isDialogOpen,
     isOpening,
-    isClosing,
+    slotProps: defaultSlotProps,
+    style,
     ...styleProps,
   });
 
@@ -71,8 +91,8 @@ const Modal = (props: ModalProps) => {
     createPortal(
       <ModalContextProvider value={ModalContextValue}>
         <dialog
-          id={rootId}
           ref={modalRootRef}
+          id={rootId}
           onKeyDown={onKeyDown}
           onCancel={onCancel}
           css={root}

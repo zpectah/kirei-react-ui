@@ -4,8 +4,7 @@ export enum baseColorKeys {
   tertiary = 'tertiary',
 }
 
-// TODO #rename to "neutral"
-export enum exoticColorKeys {
+export enum neutralColorKeys {
   light = 'light',
   dark = 'dark',
   inverted = 'inverted',

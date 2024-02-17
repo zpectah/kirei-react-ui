@@ -6,7 +6,7 @@ import {
   ThemeSpacing,
   ShapeSize,
   shapeSizeKeys,
-  exoticColorKeys,
+  neutralColorKeys,
   themeModeKeys,
 } from 'types';
 import { STATUS_CLASS_NAMES } from 'core';
@@ -32,7 +32,7 @@ export const getContainedButtonVariant = (
   { color, size }: ButtonStylesProps
 ) => {
   const baseColor = palette[color];
-  const isInverted = color === exoticColorKeys.inverted;
+  const isInverted = color === neutralColorKeys.inverted;
   const isLightMode = palette.mode === themeModeKeys.light;
   const bgMain = baseColor.main;
   const bgLight = baseColor.light;
@@ -81,7 +81,7 @@ export const getOutlinedButtonVariant = (
   { color, size }: ButtonStylesProps
 ) => {
   const baseColor = palette[color];
-  const isInverted = color === exoticColorKeys.inverted;
+  const isInverted = color === neutralColorKeys.inverted;
   const isLightMode = palette.mode === themeModeKeys.light;
   const bgMain = baseColor.main;
   const bgLight = baseColor.light;
@@ -131,7 +131,7 @@ export const getTextButtonVariant = (
   { color, size }: ButtonStylesProps
 ) => {
   const baseColor = palette[color];
-  const isInverted = color === exoticColorKeys.inverted;
+  const isInverted = color === neutralColorKeys.inverted;
   const isLightMode = palette.mode === themeModeKeys.light;
   const bgMain = baseColor.main;
   const bgLight = baseColor.light;

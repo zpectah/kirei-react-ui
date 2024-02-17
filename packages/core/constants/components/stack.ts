@@ -1,15 +1,21 @@
-// TODO
-// import { flexJustifyContentKeys } from 'types';
+import {
+  flexDirectionKeys,
+  flexAlignItemsKeys,
+  flexAlignContentKeys,
+  flexJustifyItemsKeys,
+  flexJustifyContentKeys,
+  flexWrapKeys,
+} from 'types';
 
 export const STACK_ROOT = 'Stack';
 
 export const STACK_DEFAULT_VALUES = {
   as: 'div',
-  direction: 'row',
   gap: 0,
-  alignItems: 'unset',
-  justifyItems: 'unset',
-  alignContent: 'unset',
-  justifyContent: 'unset',
-  wrap: 'wrap',
+  direction: flexDirectionKeys.row,
+  alignItems: flexAlignItemsKeys.initial,
+  justifyItems: flexJustifyItemsKeys.initial,
+  alignContent: flexAlignContentKeys.initial,
+  justifyContent: flexJustifyContentKeys.initial,
+  wrap: flexWrapKeys.nowrap,
 };

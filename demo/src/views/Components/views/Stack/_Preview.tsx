@@ -15,7 +15,7 @@ const PreviewView = () => {
         </Stack>
       </Section>
       <Section>
-        <Stack gap={4} direction="row">
+        <Stack gap={4} wrap="wrap">
           <div>item 1</div>
           <div>item 2</div>
           <div>item 3</div>

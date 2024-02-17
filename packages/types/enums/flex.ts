@@ -1,67 +1,67 @@
 export enum flexDirectionKeys {
-  column = 'column',
   'column-reverse' = 'column-reverse',
-  row = 'row',
   'row-reverse' = 'row-reverse',
+  column = 'column',
+  inherit = 'inherit',
+  initial = 'initial',
+  row = 'row', // Default
 }
 
 export enum flexAlignItemsKeys {
-  center = 'center',
-  start = 'start',
-  end = 'end',
-  'flex-start' = 'flex-start',
   'flex-end' = 'flex-end',
-  'self-start' = 'self-start',
+  'flex-start' = 'flex-start',
   'self-end' = 'self-end',
-  unset = 'unset',
+  'self-start' = 'self-start',
+  baseline = 'baseline',
+  center = 'center',
+  end = 'end',
+  inherit = 'inherit',
+  initial = 'initial',
+  normal = 'normal', // Default
+  start = 'start',
+  stretch = 'stretch',
 }
 
 export enum flexJustifyItemsKeys {
-  stretch = 'stretch',
   center = 'center',
-  start = 'start',
   end = 'end',
-  'flex-start' = 'flex-start',
-  'flex-end' = 'flex-end',
-  'self-start' = 'self-start',
-  'self-end' = 'self-end',
+  inherit = 'inherit',
+  initial = 'initial',
   left = 'left',
+  legacy = 'legacy', // Default
+  normal = 'normal',
   right = 'right',
-  baseline = 'baseline',
-  unset = 'unset',
+  start = 'start',
+  stretch = 'stretch',
 }
 
 export enum flexAlignContentKeys {
-  center = 'center',
-  start = 'start',
-  end = 'end',
-  'flex-start' = 'flex-start',
   'flex-end' = 'flex-end',
-  'space-between' = 'space-between',
+  'flex-start' = 'flex-start',
   'space-around' = 'space-around',
+  'space-between' = 'space-between',
   'space-evenly' = 'space-evenly',
-  stretch = 'stretch',
-  unset = 'unset',
+  center = 'center',
+  inherit = 'inherit',
+  initial = 'initial',
+  stretch = 'stretch', // Default
 }
 
 export enum flexJustifyContentKeys {
-  center = 'center',
-  start = 'start',
-  end = 'end',
-  'flex-start' = 'flex-start',
   'flex-end' = 'flex-end',
-  left = 'left',
-  right = 'right',
-  'space-between' = 'space-between',
+  'flex-start' = 'flex-start', // Default
   'space-around' = 'space-around',
+  'space-between' = 'space-between',
   'space-evenly' = 'space-evenly',
-  stretch = 'stretch',
-  unset = 'unset',
+  center = 'center',
+  inherit = 'inherit',
+  initial = 'initial',
 }
 
 export enum flexWrapKeys {
-  nowrap = 'nowrap',
-  wrap = 'wrap',
   'wrap-reverse' = 'wrap-reverse',
+  inherit = 'inherit',
   initial = 'initial',
+  nowrap = 'nowrap', // Default
+  wrap = 'wrap',
 }

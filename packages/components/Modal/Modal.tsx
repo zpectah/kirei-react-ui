@@ -81,6 +81,7 @@ const Modal = (props: ModalProps) => {
           <div css={container} {...containerProps}>
             <div css={backdrop} {...backdropProps} onClick={onBackdropClick} />
             <div ref={modalDialogRef} css={dialog} {...dialogProps}>
+              {/* TODO Make this as Paper component with their props */}
               <div css={paper} {...paperProps}>
                 {children}
               </div>

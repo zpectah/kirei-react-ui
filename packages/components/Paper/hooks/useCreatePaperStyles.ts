@@ -8,8 +8,7 @@ export const useCreatePaperStyles = (theme: Theme, stylesProps: PaperStylesProps
     backgroundColor: palette.background.paper,
     color: palette.text.primary,
     borderRadius: shape.borderRadius.medium,
-    border: `1px solid ${palette.utils.getAlphaColor(palette.shape.border, 0.7)}`,
-    // TODO #shadow
+    boxShadow: `${palette.utils.getAlphaColor(palette.common.black, 0.125)} 0px 2px 8px 0px`, // TODO
   };
 
   const styles = {

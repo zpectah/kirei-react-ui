@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { ModalProps } from 'types';
 import { MODAL_DEFAULT_VALUES, MODAL_ID_PREFIX } from 'core';
 import { getRandomString } from 'utils';
+import { Paper } from '../Paper';
 import { useModalStyles, useModalProps, useModalHandling } from './hooks';
 import { ModalContextProvider } from './context';
 
@@ -81,10 +82,9 @@ const Modal = (props: ModalProps) => {
           <div css={container} {...containerProps}>
             <div css={backdrop} {...backdropProps} onClick={onBackdropClick} />
             <div ref={modalDialogRef} css={dialog} {...dialogProps}>
-              {/* TODO Make this as Paper component with their props */}
-              <div css={paper} {...paperProps}>
+              <Paper css={paper} {...paperProps}>
                 {children}
-              </div>
+              </Paper>
             </div>
           </div>
         </dialog>

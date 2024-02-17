@@ -8,7 +8,7 @@ export const useModalProps = (props: UseModalProps): UseModalPropsReturn => {
     backdropProps: { style: backdropStyle, className: backdropClassName, ...restOfBackdropProps },
     containerProps: { style: containerStyle, className: containerClassName, ...restOfContainerProps },
     dialogProps: { style: dialogStyle, className: dialogClassName, ...restOfDialogProps },
-    PaperProps: { style: paperStyle, className: paperClassName, ...restOfPaperProps },
+    paperProps: { style: paperStyle, className: paperClassName, ...restOfPaperProps },
   } = slotProps;
 
   return {

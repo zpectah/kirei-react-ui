@@ -3,6 +3,11 @@ import { WithStyle } from '../common';
 import { ComponentStyles } from '../styles';
 import { TypographyProps } from './typography';
 
+type TitleContainerProps = ComponentPropsWithRef<'div'>;
+type ActionsContainerProps = ComponentPropsWithRef<'div'>;
+type TitleProps = TypographyProps<ElementType>;
+type SubtitleProps = TypographyProps<ElementType>;
+
 interface ModalHeaderStylesScheme<T> {
   root: T;
   titleContainer: T;
@@ -27,8 +32,16 @@ export interface ModalHeaderShapeProps {
   divider?: boolean;
 }
 
+export interface ModalHeaderSlotProps {
+  titleContainerProps: Omit<Partial<TitleContainerProps>, 'children'>;
+  actionsContainerProps: Omit<Partial<ActionsContainerProps>, 'children'>;
+  titleProps: Omit<TitleProps, 'children'>;
+  subtitleProps: Omit<SubtitleProps, 'children'>;
+}
+
 export type ModalHeaderProps = {
   styles?: Partial<ModalHeaderStyles>;
+  slotProps?: Partial<ModalHeaderSlotProps>;
 } & ModalHeaderInitialProps &
   ModalHeaderElementaryProps &
   Partial<ModalHeaderShapeProps>;
@@ -41,8 +54,16 @@ export interface UseModalHeaderStylesReturn {
   composedStyles: ModalHeaderStyles;
 }
 
-export interface UseModalHeaderProps extends Partial<ModalHeaderShapeProps>, Partial<WithStyle> {}
+export interface UseModalHeaderProps extends Partial<ModalHeaderShapeProps>, Partial<WithStyle> {
+  slotProps: ModalHeaderSlotProps;
+}
 
-export interface UseModalHeaderPropsReturn extends ModalHeaderStylesScheme<WithStyle> {}
+export interface UseModalHeaderPropsReturn {
+  root: ModalHeaderInitialProps;
+  titleContainer: TitleContainerProps;
+  actionsContainer: ActionsContainerProps;
+  title: TitleProps;
+  subtitle: SubtitleProps;
+}
 
 export interface ModalHeaderStylesProps extends ModalHeaderShapeProps {}

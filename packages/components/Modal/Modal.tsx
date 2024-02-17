@@ -36,7 +36,7 @@ const Modal = (props: ModalProps) => {
     containerProps: { ...slotProps?.containerProps },
     backdropProps: { ...slotProps?.backdropProps },
     dialogProps: { ...slotProps?.dialogProps },
-    PaperProps: { ...slotProps?.PaperProps },
+    paperProps: { ...slotProps?.paperProps },
   };
 
   const {
@@ -81,7 +81,7 @@ const Modal = (props: ModalProps) => {
     id: rootId,
     isOpen,
     onClose: onDialogClose,
-    color: defaultSlotProps?.PaperProps?.color || MODAL_PAPER_DEFAULT_COLOR,
+    color: defaultSlotProps?.paperProps?.color || MODAL_PAPER_DEFAULT_COLOR,
     scroll,
   };
 

@@ -9,7 +9,21 @@ import {
 } from 'core';
 
 export const useModalHeaderProps = (props: UseModalHeaderProps): UseModalHeaderPropsReturn => {
-  const { style, className } = props;
+  const { style, className, slotProps } = props;
+  const {
+    titleContainerProps: {
+      style: titleContainerStyle,
+      className: titleContainerClassName,
+      ...restOfTitleContainerProps
+    },
+    actionsContainerProps: {
+      style: actionsContainerStyle,
+      className: actionsContainerClassName,
+      ...restOfActionsContainerProps
+    },
+    titleProps: { style: titleStyle, className: titleClassName, ...restOfTitleProps },
+    subtitleProps: { style: subtitleStyle, className: subtitleClassName, ...restOfSubtitleProps },
+  } = slotProps;
 
   return {
     root: {
@@ -17,20 +31,24 @@ export const useModalHeaderProps = (props: UseModalHeaderProps): UseModalHeaderP
       style: { ...style },
     },
     titleContainer: {
-      className: MODAL_HEADER_TITLE_CONTAINER,
-      style: {},
+      className: clsx(MODAL_HEADER_TITLE_CONTAINER, titleContainerClassName),
+      style: { ...titleContainerStyle },
+      ...restOfTitleContainerProps,
     },
     actionsContainer: {
-      className: MODAL_HEADER_ACTIONS_CONTAINER,
-      style: {},
+      className: clsx(MODAL_HEADER_ACTIONS_CONTAINER, actionsContainerClassName),
+      style: { ...actionsContainerStyle },
+      ...restOfActionsContainerProps,
     },
     title: {
-      className: MODAL_HEADER_TITLE,
-      style: {},
+      className: clsx(MODAL_HEADER_TITLE, titleClassName),
+      style: { ...titleStyle },
+      ...restOfTitleProps,
     },
     subtitle: {
-      className: MODAL_HEADER_SUBTITLE,
-      style: {},
+      className: clsx(MODAL_HEADER_SUBTITLE, subtitleClassName),
+      style: { ...subtitleStyle },
+      ...restOfSubtitleProps,
     },
   };
 };

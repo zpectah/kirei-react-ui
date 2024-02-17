@@ -3,13 +3,9 @@ import { WithStyle } from '../common';
 import { Breakpoints, ComponentStyles } from '../styles';
 import { PaperColor, PaperProps } from './paper';
 
-interface ModalStylesScheme<T> {
-  root: T;
-  container: T;
-  backdrop: T;
-  dialog: T;
-  paper: T;
-}
+type ContainerProps = ComponentPropsWithRef<'div'>;
+type BackdropProps = ComponentPropsWithRef<'div'>;
+type DialogProps = ComponentPropsWithRef<'div'>;
 
 export enum modalScrollDeterminateKeys {
   body = 'body',
@@ -17,6 +13,14 @@ export enum modalScrollDeterminateKeys {
 }
 
 export type ModalScrollDeterminate = keyof typeof modalScrollDeterminateKeys;
+
+interface ModalStylesScheme<T> {
+  root: T;
+  container: T;
+  backdrop: T;
+  dialog: T;
+  paper: T;
+}
 
 export interface ModalStyles extends ModalStylesScheme<ComponentStyles> {}
 
@@ -38,10 +42,10 @@ export interface ModalShapeProps {
 }
 
 export interface ModalSlotProps {
-  containerProps: Omit<Partial<ComponentPropsWithRef<'div'>>, 'children'>;
-  backdropProps: Omit<Partial<ComponentPropsWithRef<'div'>>, 'children'>;
-  dialogProps: Omit<Partial<ComponentPropsWithRef<'div'>>, 'children'>;
-  PaperProps: Omit<Partial<PaperProps<ElementType>>, 'children'>;
+  containerProps: Omit<Partial<ContainerProps>, 'children'>;
+  backdropProps: Omit<Partial<BackdropProps>, 'children'>;
+  dialogProps: Omit<Partial<DialogProps>, 'children'>;
+  paperProps: Omit<Partial<PaperProps<ElementType>>, 'children'>;
 }
 
 export type ModalProps = {
@@ -68,9 +72,9 @@ export interface UseModalProps extends Partial<ModalShapeProps>, Partial<WithSty
 
 export interface UseModalPropsReturn {
   root: Partial<ModalInitialProps>;
-  container: Partial<ComponentPropsWithRef<'div'>>;
-  backdrop: Partial<ComponentPropsWithRef<'div'>>;
-  dialog: Partial<ComponentPropsWithRef<'div'>>;
+  container: Partial<ContainerProps>;
+  backdrop: Partial<BackdropProps>;
+  dialog: Partial<DialogProps>;
   paper: Partial<PaperProps<ElementType>>;
 }
 

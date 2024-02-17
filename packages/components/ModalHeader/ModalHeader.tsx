@@ -9,6 +9,7 @@ const ModalHeader = (props: ModalHeaderProps) => {
     children,
     className,
     divider,
+    slotProps,
     style,
     styles,
     subtitle,
@@ -17,7 +18,22 @@ const ModalHeader = (props: ModalHeaderProps) => {
     titleTypographyProps,
     ...rest
   } = props;
+
   const styleProps = { divider };
+  const defaultSlotProps = {
+    titleContainerProps: { ...slotProps?.titleContainerProps },
+    actionsContainerProps: { ...slotProps?.actionsContainerProps },
+    titleProps: {
+      variant: 'h5',
+      as: 'h4',
+      ...slotProps?.titleProps,
+    },
+    subtitleProps: {
+      variant: 'body2',
+      color: 'text-tertiary',
+      ...slotProps?.subtitleProps,
+    },
+  };
 
   const {
     composedStyles: { root, titleContainer, actionsContainer, title: titleStyles, subtitle: subtitleStyles },
@@ -28,24 +44,18 @@ const ModalHeader = (props: ModalHeaderProps) => {
     actionsContainer: actionsContainerProps,
     title: titleProps,
     subtitle: subtitleProps,
-  } = useModalHeaderProps({ style, className, ...styleProps });
+  } = useModalHeaderProps({ style, className, slotProps: defaultSlotProps, ...styleProps });
 
   return (
     <header css={root} {...rootProps} {...rest}>
       <div css={titleContainer} {...titleContainerProps}>
         {title && (
-          <Typography variant="h5" as="h4" css={titleStyles} {...titleProps} {...titleTypographyProps}>
+          <Typography css={titleStyles} {...titleProps} {...titleTypographyProps}>
             {title}
           </Typography>
         )}
         {subtitle && (
-          <Typography
-            variant="body2"
-            color="text-tertiary"
-            css={subtitleStyles}
-            {...subtitleProps}
-            {...subtitleTypographyProps}
-          >
+          <Typography css={subtitleStyles} {...subtitleProps} {...subtitleTypographyProps}>
             {subtitle}
           </Typography>
         )}

@@ -51,7 +51,7 @@ const PreviewView = () => {
               isOpen={modalSecondaryOpen}
               onClose={() => setModalSecondaryOpen(false)}
               slotProps={{
-                PaperProps: { color: 'warning', as: 'section', isSquare: true },
+                paperProps: { color: 'warning', as: 'section', isSquare: true },
                 containerProps: { className: 'my-slot-classname' },
               }}
             >

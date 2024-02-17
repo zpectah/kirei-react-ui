@@ -1,16 +1,24 @@
 import React from 'react';
 import { ModalBodyProps } from 'types';
-// import { MODAL_BODY_DEFAULT_VALUES } from 'core';
 import { useModalBodyStyles, useModalBodyProps } from './hooks';
 
 const ModalBody = (props: ModalBodyProps) => {
-  const { style, styles, className, disableOffset, children, ...rest } = props;
+  const { children, className, disableOffset, slotProps, style, styles, ...rest } = props;
+
   const styleProps = { disableOffset };
+  const defaultSlotProps = {
+    containerProps: { ...slotProps?.containerProps },
+  };
 
   const {
     composedStyles: { root, container },
   } = useModalBodyStyles({ styles }, { ...styleProps });
-  const { root: rootProps, container: containerProps } = useModalBodyProps({ style, className, ...styleProps });
+  const { root: rootProps, container: containerProps } = useModalBodyProps({
+    style,
+    className,
+    slotProps: defaultSlotProps,
+    ...styleProps,
+  });
 
   return (
     <article css={root} {...rootProps} {...rest}>

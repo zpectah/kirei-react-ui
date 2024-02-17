@@ -7,8 +7,8 @@ export const MODAL_DIALOG = `${MODAL_ROOT}-dialog`;
 export const MODAL_PAPER = `${MODAL_ROOT}-paper`;
 
 export const MODAL_DEFAULT_VALUES = {
-  maxWidth: breakpointKeys.md,
   isFullscreen: false,
+  maxWidth: breakpointKeys.md,
   scroll: modalScrollDeterminateKeys.paper,
 };
 

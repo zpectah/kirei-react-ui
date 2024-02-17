@@ -3,7 +3,11 @@ import { UseModalBodyProps, UseModalBodyPropsReturn } from 'types';
 import { MODAL_BODY_ROOT, MODAL_BODY_CONTAINER } from 'core';
 
 export const useModalBodyProps = (props: UseModalBodyProps): UseModalBodyPropsReturn => {
-  const { style, className } = props;
+  const { style, className, slotProps } = props;
+
+  const {
+    containerProps: { style: containerStyle, className: containerClassName, ...restOfContainerProps },
+  } = slotProps;
 
   return {
     root: {
@@ -11,8 +15,9 @@ export const useModalBodyProps = (props: UseModalBodyProps): UseModalBodyPropsRe
       style: { ...style },
     },
     container: {
-      className: MODAL_BODY_CONTAINER,
-      style: {},
+      className: clsx(MODAL_BODY_CONTAINER, containerClassName),
+      style: { ...containerStyle },
+      ...restOfContainerProps,
     },
   };
 };

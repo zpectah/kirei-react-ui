@@ -82,6 +82,7 @@ export interface ThemePalette {
     primary: string;
     secondary: string;
     tertiary: string;
+    paper: string;
   };
   action: {
     active: string;

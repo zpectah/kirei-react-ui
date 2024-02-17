@@ -24,5 +24,6 @@
   "menuItem.components.stack": "Stack",
   "menuItem.components.typography": "Typography",
   "menuItem.components.modal": "Modal",
-  "menuItem.components.icons": "Icons"
+  "menuItem.components.icons": "Icons",
+  "menuItem.components.paper": "Paper"
 }

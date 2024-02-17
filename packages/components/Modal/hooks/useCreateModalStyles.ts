@@ -107,9 +107,11 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     margin: spacing.get(4),
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: palette.background.secondary,
-    color: palette.text.primary,
-    borderRadius: shape.borderRadius.medium,
+
+    backgroundColor: palette.background.secondary, // TODO
+    color: palette.text.primary, // TODO
+    borderRadius: shape.borderRadius.medium, // TODO
+
     overflowY: 'auto',
     overflowX: 'hidden',
   };

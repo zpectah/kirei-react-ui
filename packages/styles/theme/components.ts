@@ -36,5 +36,8 @@ export const createThemeComponents = (components?: DeepPartial<ThemeComponents>)
     ModalHeader: {
       root: components?.ModalHeader?.root,
     },
+    Paper: {
+      root: components?.Paper?.root,
+    },
   };
 };

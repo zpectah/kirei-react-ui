@@ -17,6 +17,9 @@ export const PALETTE = {
   light: 'hsl(0, 0.0%, 94.1%)',
   white: 'hsl(0, 0.0%, 99.2%)',
 
+  paperLight: 'hsl(0, 0.0%, 99.8%)',
+  paperDark: 'hsl(0, 0.0%, 8%)',
+
   red: 'hsl(0, 65%, 47%)',
   pink: 'hsl(337, 79%, 47%)',
   purple: 'hsl(280, 68%, 42%)',

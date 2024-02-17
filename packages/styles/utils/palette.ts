@@ -29,13 +29,14 @@ export const getThemePaletteProps = (
   const { getLightenColor, getDarkenColor, getAlphaColor } = utils;
   const ratio = getThemePaletteRatio(palette?.ratio);
 
-  let textColor, backgroundColor, greyBase;
+  let textColor, backgroundColor, greyBase, paperBase;
 
   switch (mode) {
     case themeModeKeys.dark:
       textColor = palette?.text?.primary || PALETTE.white;
       backgroundColor = palette?.background?.primary || PALETTE.dark;
       greyBase = palette?.grey?.['0'] || PALETTE.dark;
+      paperBase = palette?.background?.paper || PALETTE.paperDark;
 
       return {
         grey: {
@@ -71,6 +72,7 @@ export const getThemePaletteProps = (
           tertiary:
             palette?.background?.tertiary ||
             getLightenColor(backgroundColor, ratio.backgroundSurface * PALETTE_RATIO_CORRECTION.darkBgTertiary),
+          paper: paperBase,
         },
         inverted: {
           main: palette?.inverted?.main || backgroundColor,
@@ -91,6 +93,7 @@ export const getThemePaletteProps = (
       textColor = palette?.text?.primary || PALETTE.black;
       backgroundColor = palette?.background?.primary || PALETTE.light;
       greyBase = palette?.grey?.['0'] || PALETTE.light;
+      paperBase = palette?.background?.paper || PALETTE.paperLight;
 
       return {
         grey: {
@@ -124,6 +127,7 @@ export const getThemePaletteProps = (
           tertiary:
             palette?.background?.tertiary ||
             getDarkenColor(backgroundColor, ratio.backgroundSurface * PALETTE_RATIO_CORRECTION.lightBgTertiary),
+          paper: paperBase,
         },
         inverted: {
           main: palette?.inverted?.main || backgroundColor,

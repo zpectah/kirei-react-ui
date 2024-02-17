@@ -4,7 +4,7 @@ import { BUTTON_DEFAULT_VALUES } from 'core';
 import { LoaderHorizontalIcon } from 'icons';
 import { useButtonStyles, useButtonProps } from './hooks';
 
-const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIntrinsicElementRef<T>) => {
+const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>, ref: PolymorphicIntrinsicElementRef<T>) => {
   const {
     as: Component = BUTTON_DEFAULT_VALUES.as,
     color = BUTTON_DEFAULT_VALUES.color,

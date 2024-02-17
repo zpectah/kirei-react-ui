@@ -19,7 +19,8 @@ export type ButtonColor = BaseColor | NeutralColor | EmotionColor;
 
 export interface ButtonStyles extends ButtonStylesScheme<ComponentStyles> {}
 
-export type ButtonInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
+export type ButtonInitialProps<T extends ElementType = 'button'> = NonNullable<unknown> &
+  PolymorphicComponentPropsWithRef<T>;
 
 export interface ButtonElementaryProps {
   startIcon?: ReactNode;
@@ -50,7 +51,7 @@ export interface ButtonSlotProps {
   iconLoadingProps: Omit<IconLoadingProps, 'children'>;
 }
 
-export type ButtonProps<T extends ElementType> = {
+export type ButtonProps<T extends ElementType = 'button'> = {
   styles?: Partial<ButtonStyles>;
   slots?: ButtonSlots;
   slotProps?: Partial<ButtonSlotProps>;

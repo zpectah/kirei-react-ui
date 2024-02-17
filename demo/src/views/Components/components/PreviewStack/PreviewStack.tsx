@@ -35,6 +35,7 @@ const PreviewStack = (props: PreviewStackProps) => {
       gap={gap}
       alignItems={alignItems}
       justifyContent={justifyContent}
+      wrap="wrap"
       {...rest}
     >
       {children}

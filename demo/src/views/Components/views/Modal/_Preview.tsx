@@ -51,7 +51,7 @@ const PreviewView = () => {
               isOpen={modalSecondaryOpen}
               onClose={() => setModalSecondaryOpen(false)}
               slotProps={{
-                PaperProps: { color: 'primary', as: 'section' },
+                PaperProps: { color: 'warning', as: 'section', isSquare: true },
                 containerProps: { className: 'my-slot-classname' },
               }}
             >
@@ -59,7 +59,9 @@ const PreviewView = () => {
               <ModalBody>
                 Body
                 <br />
-                <Button onClick={() => setModalTertiaryOpen(true)}>Open Tertiary</Button>
+                <Button onClick={() => setModalTertiaryOpen(true)} variant="outlined" color="light">
+                  Open Tertiary modal
+                </Button>
                 <br />
               </ModalBody>
               <ModalFooter divider>

@@ -5,16 +5,16 @@ import { Typography } from '../Typography';
 
 const ModalHeader = (props: ModalHeaderProps) => {
   const {
-    style,
-    styles,
+    actions,
+    children,
     className,
     divider,
-    children,
-    title,
+    style,
+    styles,
     subtitle,
-    actions,
-    titleTypographyProps,
     subtitleTypographyProps,
+    title,
+    titleTypographyProps,
     ...rest
   } = props;
   const styleProps = { divider };

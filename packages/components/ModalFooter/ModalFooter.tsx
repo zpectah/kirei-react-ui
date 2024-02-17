@@ -5,11 +5,11 @@ import { useModalFooterStyles, useModalFooterProps } from './hooks';
 
 const ModalFooter = (props: ModalFooterProps) => {
   const {
+    justifyContent = MODAL_FOOTER_DEFAULT_VALUES.justifyContent,
+    className,
+    divider,
     style,
     styles,
-    className,
-    justifyContent = MODAL_FOOTER_DEFAULT_VALUES.justifyContent,
-    divider,
     ...rest
   } = props;
   const styleProps = { justifyContent, divider };

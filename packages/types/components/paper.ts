@@ -16,7 +16,8 @@ export interface PaperElementaryProps extends Partial<WithStyle> {}
 
 export interface PaperShapeProps {
   color: PaperColor;
-  elevation: 0 | 1 | 2; // TODO
+  disableElevation: boolean;
+  isSquare: boolean;
 }
 
 export type PaperProps<T extends ElementType> = {

@@ -9,6 +9,7 @@ export const STATUS_CLASS_NAMES = {
   isOpen: 'isOpen',
   isOpening: 'isOpening',
   isTruncated: 'isTruncated',
+  isSquare: 'isSquare',
 };
 
 export const SHAPE_SIZE_CLASS_NAMES = {

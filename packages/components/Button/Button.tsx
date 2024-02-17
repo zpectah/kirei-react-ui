@@ -18,11 +18,13 @@ const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIn
     isDisabled,
     isLoading,
     loadingIcon,
+    slotProps,
     startIcon,
     style,
     styles,
     ...rest
   } = props;
+
   const styleProps = {
     isLoading,
     isDisabled,
@@ -31,6 +33,12 @@ const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIn
     size,
     variant,
     color,
+  };
+  const defaultSlotProps = {
+    labelProps: { ...slotProps?.labelProps },
+    iconStartProps: { ...slotProps?.iconStartProps },
+    iconEndProps: { ...slotProps?.iconEndProps },
+    iconLoadingProps: { ...slotProps?.iconLoadingProps },
   };
 
   const {
@@ -45,6 +53,7 @@ const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIn
   } = useButtonProps({
     style,
     className,
+    slotProps: defaultSlotProps,
     ...styleProps,
   });
 

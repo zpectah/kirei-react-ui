@@ -43,8 +43,8 @@ export interface UseModalBodyProps extends Partial<ModalBodyShapeProps>, Partial
 }
 
 export interface UseModalBodyPropsReturn {
-  root: ModalBodyInitialProps;
-  container: ContainerProps;
+  root: Partial<ModalBodyInitialProps>;
+  container: Partial<ContainerProps>;
 }
 
 export interface ModalBodyStylesProps extends ModalBodyShapeProps {}

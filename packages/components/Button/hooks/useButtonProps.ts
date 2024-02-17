@@ -15,16 +15,23 @@ import { capitalizeFirstLetter } from 'utils';
 
 export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
   const {
-    style,
+    color = BUTTON_DEFAULT_VALUES.color,
+    size = BUTTON_DEFAULT_VALUES.size,
+    variant = BUTTON_DEFAULT_VALUES.variant,
     className,
-    isLoading,
     isActive,
     isDisabled,
     isFullWidth,
-    size = BUTTON_DEFAULT_VALUES.size,
-    variant = BUTTON_DEFAULT_VALUES.variant,
-    color = BUTTON_DEFAULT_VALUES.color,
+    isLoading,
+    slotProps,
+    style,
   } = props;
+  const {
+    labelProps: { style: labelStyle, className: labelClassName, ...restOfLabelProps },
+    iconStartProps: { style: iconStartStyle, className: iconStartClassName, ...restOfIconStartProps },
+    iconEndProps: { style: iconEndStyle, className: iconEndClassName, ...restOfIconEndProps },
+    iconLoadingProps: { style: iconLoadingStyle, className: iconLoadingClassName, ...restOfIconLoadingProps },
+  } = slotProps;
 
   const colorVariantClassName = {
     text: `${SHAPE_VARIANT_CLASS_NAME.text}${capitalizeFirstLetter(color)}`,
@@ -48,20 +55,24 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
       style: { ...style },
     },
     label: {
-      className: BUTTON_LABEL,
-      style: {},
+      className: clsx(BUTTON_LABEL, labelClassName),
+      style: { ...labelStyle },
+      ...restOfLabelProps,
     },
     iconStart: {
-      className: BUTTON_ICON_START,
-      style: {},
+      className: clsx(BUTTON_ICON_START, iconStartClassName),
+      style: { ...iconStartStyle },
+      ...restOfIconStartProps,
     },
     iconEnd: {
-      className: BUTTON_ICON_END,
-      style: {},
+      className: clsx(BUTTON_ICON_END, iconEndClassName),
+      style: { ...iconEndStyle },
+      ...restOfIconEndProps,
     },
     iconLoading: {
-      className: BUTTON_ICON_LOADING,
-      style: {},
+      className: clsx(BUTTON_ICON_LOADING, iconLoadingClassName),
+      style: { ...iconLoadingStyle },
+      ...restOfIconLoadingProps,
     },
   };
 };

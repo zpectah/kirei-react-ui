@@ -59,11 +59,11 @@ export interface UseModalHeaderProps extends Partial<ModalHeaderShapeProps>, Par
 }
 
 export interface UseModalHeaderPropsReturn {
-  root: ModalHeaderInitialProps;
-  titleContainer: TitleContainerProps;
-  actionsContainer: ActionsContainerProps;
-  title: TitleProps;
-  subtitle: SubtitleProps;
+  root: Partial<ModalHeaderInitialProps>;
+  titleContainer: Partial<TitleContainerProps>;
+  actionsContainer: Partial<ActionsContainerProps>;
+  title: Partial<TitleProps>;
+  subtitle: Partial<SubtitleProps>;
 }
 
 export interface ModalHeaderStylesProps extends ModalHeaderShapeProps {}

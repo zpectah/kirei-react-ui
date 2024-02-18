@@ -1,15 +1,17 @@
 import React, { ElementType, useMemo } from 'react';
 import { useKireiContext } from 'styles';
-import { StackProps } from 'types';
+import { SpacingValues, StackProps } from 'types';
 import { Stack } from 'components';
 
-export interface PreviewStackProps extends StackProps<ElementType> {}
+export interface PreviewStackProps extends StackProps<ElementType> {
+  spacing?: SpacingValues;
+}
 
 const PreviewStack = (props: PreviewStackProps) => {
-  const { children, gap = 4, alignItems = 'center', justifyContent = 'center', ...rest } = props;
+  const { children, gap = 4, alignItems = 'center', justifyContent = 'center', spacing = 5, ...rest } = props;
 
   const {
-    theme: { palette, spacing },
+    theme: { palette, spacing: themeSpacing },
   } = useKireiContext();
 
   const backgroundImage = useMemo(() => {
@@ -29,7 +31,7 @@ const PreviewStack = (props: PreviewStackProps) => {
         backgroundImage,
         backgroundPosition: `0 0, ${backgroundPositionBase} ${backgroundPositionBase}`,
         backgroundSize: `${backgroundSizeBase} ${backgroundSizeBase}`,
-        padding: spacing.get(4),
+        padding: themeSpacing.get(spacing),
         border: `1px solid ${palette.utils.getAlphaColor(palette.shape.border, 0.5)}`,
       }}
       gap={gap}

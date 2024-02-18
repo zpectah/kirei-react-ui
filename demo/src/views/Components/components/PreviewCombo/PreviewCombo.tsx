@@ -1,18 +1,19 @@
 import React from 'react';
 import { WithChildren } from 'types';
-import { PreviewStack } from '../PreviewStack';
+import { PreviewStack, PreviewStackProps } from '../PreviewStack';
 import { PreviewCode } from '../PreviewCode';
 
 export interface PreviewComboProps extends WithChildren {
   code?: string;
+  stackProps?: Partial<PreviewStackProps>;
 }
 
 const PreviewCombo = (props: PreviewComboProps) => {
-  const { children, code } = props;
+  const { children, code, stackProps } = props;
 
   return (
     <div>
-      <PreviewStack>{children}</PreviewStack>
+      <PreviewStack {...stackProps}>{children}</PreviewStack>
       {/*<div>controls</div>*/}
       {code && <PreviewCode code={code} />}
     </div>

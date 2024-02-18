@@ -23,20 +23,23 @@ const Article = ({ children, title, subtitle }: ArticleProps) => {
         gap: spacing.get(4),
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: spacing.get(2),
-        }}
-      >
-        {title && (
-          <Typography variant="h4" as="h2">
-            {title}
-          </Typography>
-        )}
-        {subtitle && <Typography>{subtitle}</Typography>}
-      </div>
+      {(title || subtitle) && (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: spacing.get(2),
+          }}
+        >
+          {title && (
+            <Typography variant="h4" as="h2">
+              {title}
+            </Typography>
+          )}
+          {subtitle && <Typography>{subtitle}</Typography>}
+        </div>
+      )}
+
       <div>{children}</div>
     </article>
   );

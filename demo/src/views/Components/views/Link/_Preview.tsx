@@ -46,7 +46,7 @@ const PreviewView = () => {
               Underline on hover
             </Link>
             <Link href="/" underline="always">
-              Underline always (default)
+              Underline always
             </Link>
           </PreviewCombo>
         </Section>

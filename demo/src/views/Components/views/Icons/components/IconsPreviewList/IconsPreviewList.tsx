@@ -1,29 +1,9 @@
 import React, { useMemo, useState, ComponentType } from 'react';
-import {
-  BackwardIcon,
-  CheckIcon,
-  CheckboxIcon,
-  CheckboxEmptyIcon,
-  CheckboxIndeterminateIcon,
-  CircleIcon,
-  CloseIcon,
-  ExpandLessIcon,
-  ExpandMoreIcon,
-  ForwardIcon,
-  HamburgerIcon,
-  LoaderHorizontalIcon,
-  MinusIcon,
-  MoreHorizontalIcon,
-  MoreVerticalIcon,
-  PlusIcon,
-  RadioIcon,
-  RadioEmptyIcon,
-  RectangleIcon,
-  SpinnerIcon,
-} from 'icons';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'components';
+import { CloseIcon } from 'icons';
+import { Modal, ModalHeader, ModalBody, Button, Paper, Typography } from 'components';
 import { Section } from '../../../../../../components';
-import { PreviewStack } from '../../../../components/index';
+import { PreviewCombo } from '../../../../components/index';
+import iconsList from './iconsList';
 
 export type ActiveIconProps = { label: string; node: ComponentType };
 export interface IconsPreviewListProps {
@@ -46,96 +26,16 @@ const IconsPreviewList = (props: IconsPreviewListProps) => {
     setActiveIcon(undefined);
   };
 
-  const iconsList = [
-    {
-      label: 'Backward',
-      node: BackwardIcon,
-    },
-    {
-      label: 'Check',
-      node: CheckIcon,
-    },
-    {
-      label: 'Checkbox',
-      node: CheckboxIcon,
-    },
-    {
-      label: 'CheckboxEmpty',
-      node: CheckboxEmptyIcon,
-    },
-    {
-      label: 'CheckboxIndeterminate',
-      node: CheckboxIndeterminateIcon,
-    },
-    {
-      label: 'Circle',
-      node: CircleIcon,
-    },
-    {
-      label: 'Close',
-      node: CloseIcon,
-    },
-    {
-      label: 'ExpandLess',
-      node: ExpandLessIcon,
-    },
-    {
-      label: 'ExpandMore',
-      node: ExpandMoreIcon,
-    },
-    {
-      label: 'Forward',
-      node: ForwardIcon,
-    },
-    {
-      label: 'Hamburger',
-      node: HamburgerIcon,
-    },
-    {
-      label: 'LoaderHorizontal',
-      node: LoaderHorizontalIcon,
-    },
-    {
-      label: 'Minus',
-      node: MinusIcon,
-    },
-    {
-      label: 'MoreHorizontal',
-      node: MoreHorizontalIcon,
-    },
-    {
-      label: 'MoreVertical',
-      node: MoreVerticalIcon,
-    },
-    {
-      label: 'Plus',
-      node: PlusIcon,
-    },
-    {
-      label: 'Radio',
-      node: RadioIcon,
-    },
-    {
-      label: 'RadioEmpty',
-      node: RadioEmptyIcon,
-    },
-    {
-      label: 'Rectangle',
-      node: RectangleIcon,
-    },
-    {
-      label: 'Spinner',
-      node: SpinnerIcon,
-    },
-  ];
-
   const renderIconDetail = useMemo(() => {
-    if (activeIcon)
+    if (activeIcon) {
+      const iconName = `${activeIcon.label}Icon`;
+      const iconNameImport = `import { ${iconName} } from "icons";`;
+      const IconNode = activeIcon.node;
+
       return (
         <>
           <ModalHeader
             title={activeIcon.label}
-            divider
             actions={
               <Button onClick={closeModalHandler} variant="text" color="neutral">
                 <CloseIcon />
@@ -144,37 +44,27 @@ const IconsPreviewList = (props: IconsPreviewListProps) => {
           />
           <ModalBody>
             <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
-              <PreviewStack>
+              <PreviewCombo code={iconNameImport} stackProps={{ gap: 10 }}>
                 <div style={{}}>
-                  <activeIcon.node />
+                  <IconNode />
                 </div>
                 <div style={{ fontSize: '1.5rem' }}>
-                  <activeIcon.node />
+                  <IconNode />
                 </div>
                 <div style={{ fontSize: '3rem' }}>
-                  <activeIcon.node />
+                  <IconNode />
                 </div>
-              </PreviewStack>
-              <div>
-                <textarea
-                  style={{ width: '100%' }}
-                  defaultValue={`import { ${activeIcon.label}Icon } from '@kirei-react-ui/icons';`}
-                  readOnly
-                />
-              </div>
+              </PreviewCombo>
             </div>
           </ModalBody>
-          <ModalFooter divider justifyContent="flex-end">
-            <Button onClick={closeModalHandler} variant="outlined" color="neutral">
-              Close
-            </Button>
-          </ModalFooter>
         </>
       );
+    }
   }, [activeIcon]);
 
   return (
     <>
+      <div>...search bar here TODO...</div>
       <Section>
         <div
           style={{
@@ -187,25 +77,28 @@ const IconsPreviewList = (props: IconsPreviewListProps) => {
           }}
         >
           {iconsList.map((icon) => (
-            <div
-              key={icon.label}
-              onClick={() => openModalHandler(icon)}
-              style={{
-                width: '20%',
-                height: 'auto',
-                minHeight: '128px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '1rem',
-                cursor: 'pointer',
-              }}
-            >
-              <div style={{ fontSize: '2rem' }}>
-                <icon.node />
-              </div>
-              <span>{icon.label}</span>
+            <div key={icon.label} style={{ width: '20%', minHeight: '150px', padding: '.5rem' }}>
+              <Paper
+                onClick={() => openModalHandler(icon)}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '1rem',
+                  cursor: 'pointer',
+                }}
+                disableElevation
+              >
+                <div style={{ fontSize: '2rem' }}>
+                  <icon.node />
+                </div>
+                <Typography variant="caption" isTruncated>
+                  {icon.label}
+                </Typography>
+              </Paper>
             </div>
           ))}
         </div>

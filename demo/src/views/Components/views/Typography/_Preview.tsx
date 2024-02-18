@@ -1,6 +1,7 @@
 import React from 'react';
-import { Article, Section } from '../../../../components';
 import { Typography } from 'components';
+import { routes } from '../../../../config';
+import { Article, ArticleFooter, Section } from '../../../../components';
 import { PreviewCode, PreviewCombo } from '../../components/index';
 
 const PreviewView = () => {
@@ -63,6 +64,11 @@ const PreviewView = () => {
           </Typography>
         </Section>
       </Article>
+
+      <ArticleFooter
+        forwardRoute={`${routes.components.routes.typography.root}${routes.components.detail.api}`}
+        forwardLabel={'API'}
+      />
     </>
   );
 };

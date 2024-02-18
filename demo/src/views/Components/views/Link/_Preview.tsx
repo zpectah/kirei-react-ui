@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'components';
-import { Article, Section } from '../../../../components';
+import { routes } from '../../../../config';
+import { Article, ArticleFooter, Section } from '../../../../components';
 import { PreviewCode, PreviewCombo } from '../../components/index';
 
 const PreviewView = () => {
@@ -155,6 +156,11 @@ const PreviewView = () => {
           </PreviewCombo>
         </Section>
       </Article>
+
+      <ArticleFooter
+        forwardRoute={`${routes.components.routes.link.root}${routes.components.detail.api}`}
+        forwardLabel={'API'}
+      />
     </>
   );
 };

@@ -1,12 +1,20 @@
 import React from 'react';
-import { Article } from '../../../../components';
+import { routes } from '../../../../config';
+import { Article, ArticleFooter } from '../../../../components';
 import { IconsPreviewList } from './components';
 
 const PreviewView = () => {
   return (
-    <Article>
-      <IconsPreviewList />
-    </Article>
+    <>
+      <Article>
+        <IconsPreviewList />
+      </Article>
+
+      <ArticleFooter
+        forwardRoute={`${routes.components.routes.icons.root}${routes.components.detail.api}`}
+        forwardLabel={'API'}
+      />
+    </>
   );
 };
 

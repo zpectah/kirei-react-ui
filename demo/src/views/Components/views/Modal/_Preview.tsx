@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 // import { useKireiContext } from 'styles';
 import { Button, Stack, Modal, ModalHeader, ModalBody, ModalFooter } from 'components';
 import { CloseIcon } from 'icons';
-import { Article, Section } from '../../../../components';
+import { routes } from '../../../../config';
+import { Article, ArticleFooter, Section } from '../../../../components';
 import { PreviewCode, PreviewCombo } from '../../components/index';
 
 const PreviewView = () => {
@@ -168,6 +169,11 @@ const PreviewView = () => {
           </Modal>
         </Section>
       </Article>
+
+      <ArticleFooter
+        forwardRoute={`${routes.components.routes.modal.root}${routes.components.detail.api}`}
+        forwardLabel={'API'}
+      />
     </>
   );
 };

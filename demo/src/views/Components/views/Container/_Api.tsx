@@ -1,8 +1,20 @@
 import React from 'react';
-import { Article } from '../../../../components';
+import { routes } from '../../../../config';
+import { Article, ArticleFooter } from '../../../../components';
 
 const ApiView = () => {
-  return <Article>ContainerDocumentation</Article>;
+  return (
+    <>
+      <Article>ContainerDocumentation</Article>
+
+      <ArticleFooter
+        backRoute={`${routes.components.routes.container.root}${routes.components.detail.preview}`}
+        backLabel={'Preview'}
+        forwardRoute={`${routes.components.routes.container.root}${routes.components.detail.playground}`}
+        forwardLabel={'Playground'}
+      />
+    </>
+  );
 };
 
 export default ApiView;

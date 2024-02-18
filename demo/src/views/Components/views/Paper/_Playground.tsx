@@ -1,8 +1,18 @@
 import React from 'react';
-import { Article } from '../../../../components';
+import { routes } from '../../../../config';
+import { Article, ArticleFooter } from '../../../../components';
 
 const PlaygroundView = () => {
-  return <Article>Paper Playground</Article>;
+  return (
+    <>
+      <Article>Paper Playground</Article>
+
+      <ArticleFooter
+        backRoute={`${routes.components.routes.paper.root}${routes.components.detail.api}`}
+        backLabel={'API'}
+      />
+    </>
+  );
 };
 
 export default PlaygroundView;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack } from 'components';
+import { Paper, Stack } from 'components';
 import { routes } from '../../../../config';
 import { Article, ArticleFooter, Section } from '../../../../components';
 import { PreviewCode, PreviewCombo } from '../../components/index';
@@ -10,31 +10,117 @@ const PreviewView = () => {
       <Section>
         <PreviewCode code={`import { Stack } from 'components';`} />
       </Section>
-      <Article>
-        <Section title="Title ... todo">
-          <PreviewCombo code="<Stack>...</Stack>">
+      <Article title="Basics" subtitle={`Stack uses all CSS FlexBox properties and does not modify it in any way.`}>
+        <Section title="Horizontally">
+          <PreviewCombo code='<Stack direction="row">...</Stack>'>
             <Stack gap={4} direction="row">
-              <div>item 1</div>
-              <div>item 2</div>
-              <div>item 3</div>
-              <div>item 4</div>
-              <div>item 5</div>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item
+              </Paper>
             </Stack>
           </PreviewCombo>
         </Section>
-        <Section title="Title ... todo">
-          <PreviewCombo code="<Stack>...</Stack>">
+        <Section title="Vertically">
+          <PreviewCombo code='<Stack direction="column">...</Stack>'>
+            <Stack gap={4} direction="column" style={{ width: '100%' }}>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item
+              </Paper>
+            </Stack>
+          </PreviewCombo>
+        </Section>
+      </Article>
+      <Article
+        title="Flexbox"
+        subtitle={`Items inside the Stack component are controlled and aligned according to CSS properties.`}
+      >
+        <Section
+          title="Wrap"
+          subtitle={`Items inside the Stack component can be wrapped as needed. The behavior of individual items is already under your control and almost any element can be used.`}
+        >
+          <PreviewCombo code='<Stack wrap="wrap">...</Stack>'>
             <Stack gap={4} wrap="wrap">
-              <div>item 1</div>
-              <div>item 2</div>
-              <div>item 3</div>
-              <div>item 4</div>
-              <div>item 5</div>
-              <div>item 6</div>
-              <div>item 7</div>
-              <div>item 8</div>
-              <div>item 9</div>
-              <div>item 10</div>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 1
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 2
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 3
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 4
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 5
+              </Paper>
+            </Stack>
+          </PreviewCombo>
+        </Section>
+        <Section title="Direction" subtitle={`We can also set the items in reverse order.`}>
+          <PreviewCombo code='<Stack wrap="wrap" direction="column-reverse">...</Stack>'>
+            <Stack gap={4} wrap="wrap" direction="row-reverse">
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 1
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 2
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 3
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 4
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 5
+              </Paper>
+            </Stack>
+          </PreviewCombo>
+        </Section>
+        <Section title="Gap" subtitle={`The gap value is based on the definition in the main theme object.`}>
+          <PreviewCombo code="<Stack gap={2}>...</Stack>">
+            <Stack gap={2} wrap="wrap">
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 1
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 2
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 3
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 4
+              </Paper>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+                Item 5
+              </Paper>
             </Stack>
           </PreviewCombo>
         </Section>

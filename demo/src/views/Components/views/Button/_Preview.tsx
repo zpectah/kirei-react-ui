@@ -12,7 +12,7 @@ const PreviewView = () => {
         <PreviewCode code={`import { Button } from 'components';`} />
       </Section>
       <Article
-        title="Basic Button"
+        title="Basics"
         subtitle="The Button component comes in three basic shapes. `text`, `outlined`, `contained`."
       >
         <Section>

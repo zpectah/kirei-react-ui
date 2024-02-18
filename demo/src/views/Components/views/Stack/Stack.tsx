@@ -15,7 +15,7 @@ const StackView = () => (
         <DetailLayout
           route={kireiComponentsRootListKeys.stack}
           title="Stack"
-          subtitle={`The Stack component organizes its direct child elements either vertically or horizontally, allowing for customizable spacing and optional dividers between each child to control the layout's visual appearance and structure.`}
+          subtitle={`The Stack component organizes its direct child elements either vertically or horizontally, allowing for customizable spacing to control the layout's visual appearance and structure.`}
         />
       }
     >

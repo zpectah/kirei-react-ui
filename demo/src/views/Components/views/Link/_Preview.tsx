@@ -11,7 +11,7 @@ const PreviewView = () => {
         <PreviewCode code={`import { Link } from 'components';`} />
       </Section>
       <Article
-        title="Basic Link"
+        title="Basics"
         subtitle={`The Link can be used as a traditional hypertext link or as a \`button\` element.`}
       >
         <Section>
@@ -110,7 +110,7 @@ const PreviewView = () => {
             </Link>
           </PreviewCombo>
         </Section>
-        <Section title="Neutral (exotic) colors">
+        <Section title="Neutral colors">
           <PreviewCombo
             code='<Link color="light">...</Link>
 <Link color="inverted">...</Link>

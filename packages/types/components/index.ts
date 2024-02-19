@@ -2,6 +2,7 @@ import { kireiComponentsRootListKeys } from '../enums';
 
 export type KireiComponentsRootList = keyof typeof kireiComponentsRootListKeys;
 
+export * from './backdrop';
 export * from './button';
 export * from './container';
 export * from './icons';

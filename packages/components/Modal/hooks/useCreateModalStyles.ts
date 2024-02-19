@@ -44,20 +44,7 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
   };
 
   const backdropBase = {
-    width: '100vw',
-    height: '100vh',
-    position: 'fixed',
-    top: 0,
-    left: 0,
     zIndex: -1,
-    backgroundColor: palette.utils.getAlphaColor(palette.dark.dark, palette.ratio.backgroundAlpha),
-
-    [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isOpening} &`]: {
-      animation: `${animations.fadeIn} ${transitions.duration.screen - 5}ms ${transitions.easing.easeIn} 1`,
-    },
-    [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isClosing} &`]: {
-      animation: `${animations.fadeOut} ${transitions.duration.screen + 10}ms ${transitions.easing.easeOut} 1`,
-    },
   };
 
   const dialogBase = {

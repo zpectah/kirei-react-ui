@@ -30,3 +30,8 @@ export enum textColorKeys {
 export enum paperBackgroundColorKeys {
   paper = 'paper',
 }
+
+export enum backdropBackgroundColorKeys {
+  light = 'light',
+  dark = 'dark',
+}

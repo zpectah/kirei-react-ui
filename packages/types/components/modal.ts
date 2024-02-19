@@ -2,9 +2,9 @@ import { MouseEvent, KeyboardEvent, SyntheticEvent, MutableRefObject, ComponentP
 import { WithStyle } from '../common';
 import { Breakpoints, ComponentStyles } from '../styles';
 import { PaperColor, PaperProps } from './paper';
+import { BackdropProps } from './backdrop';
 
 type ContainerProps = ComponentPropsWithRef<'div'>;
-type BackdropProps = ComponentPropsWithRef<'div'>;
 type DialogProps = ComponentPropsWithRef<'div'>;
 
 export enum modalScrollDeterminateKeys {
@@ -43,7 +43,7 @@ export interface ModalShapeProps {
 
 export interface ModalSlotProps {
   containerProps: Omit<Partial<ContainerProps>, 'children'>;
-  backdropProps: Omit<Partial<BackdropProps>, 'children'>;
+  backdropProps: Partial<BackdropProps<ElementType>>;
   dialogProps: Omit<Partial<DialogProps>, 'children'>;
   paperProps: Omit<Partial<PaperProps<ElementType>>, 'children'>;
 }
@@ -73,7 +73,7 @@ export interface UseModalProps extends Partial<ModalShapeProps>, Partial<WithSty
 export interface UseModalPropsReturn {
   root: Partial<ModalInitialProps>;
   container: Partial<ContainerProps>;
-  backdrop: Partial<BackdropProps>;
+  backdrop: Partial<BackdropProps<ElementType>>;
   dialog: Partial<DialogProps>;
   paper: Partial<PaperProps<ElementType>>;
 }

@@ -1,4 +1,5 @@
 import {
+  BackdropStyles,
   ButtonStyles,
   ContainerStyles,
   LinkStyles,
@@ -12,6 +13,7 @@ import {
 } from '../components';
 
 export interface ThemeComponents {
+  Backdrop: BackdropStyles;
   Button: ButtonStyles;
   Container: ContainerStyles;
   Link: LinkStyles;

@@ -39,5 +39,8 @@ export const createThemeComponents = (components?: DeepPartial<ThemeComponents>)
     Paper: {
       root: components?.Paper?.root,
     },
+    Backdrop: {
+      root: components?.Backdrop?.root,
+    },
   };
 };

@@ -1,3 +1,4 @@
+export * from './backdrop';
 export * from './button';
 export * from './container';
 export * from './dom';

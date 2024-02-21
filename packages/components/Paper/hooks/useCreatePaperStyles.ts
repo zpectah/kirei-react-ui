@@ -1,14 +1,16 @@
 import { Theme, PaperStylesProps } from 'types';
 
 export const useCreatePaperStyles = (theme: Theme, stylesProps: PaperStylesProps) => {
-  const { color, isSquare, disableElevation } = stylesProps;
+  const { color, isActive, isGlass, isSquare, disableElevation } = stylesProps;
   const { palette, shape } = theme;
 
   const rootBase = {
     borderRadius: isSquare ? 0 : shape.borderRadius.medium,
     boxShadow: disableElevation
       ? 'none'
-      : `${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 0.25rem 1rem, ${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 0.5rem 1.5rem, ${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 1rem 4.25rem`,
+      : `${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 0.25rem 1rem, 
+      ${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 0.5rem 1.5rem, 
+      ${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 1rem 4.25rem`,
   };
   const rootColor = {
     paper: {
@@ -61,10 +63,29 @@ export const useCreatePaperStyles = (theme: Theme, stylesProps: PaperStylesProps
     },
   };
 
+  // TODO #clean-code
+  const rootGlass = isGlass
+    ? {
+        backgroundColor: palette.utils.getAlphaColor(rootColor[color].backgroundColor, 0.45),
+        color: rootColor[color].color,
+      }
+    : {
+        ...rootColor[color],
+      };
+  const outlineColor = color === 'paper' ? palette.primary.main : rootColor[color].backgroundColor;
+  const rootActive = isActive
+    ? {
+        ...rootGlass,
+        outline: `${shape.borderWidth.outline} solid ${palette.utils.getAlphaColor(outlineColor, palette.ratio.activeAlpha * 5)}`,
+      }
+    : {
+        ...rootGlass,
+      };
+
   const styles = {
     root: Object.assign({
       ...rootBase,
-      ...rootColor[color],
+      ...rootActive,
     }),
   };
 

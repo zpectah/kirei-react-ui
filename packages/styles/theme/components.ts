@@ -26,15 +26,21 @@ export const createThemeComponents = (components?: DeepPartial<ThemeComponents>)
       backdrop: components?.Modal?.backdrop,
       container: components?.Modal?.container,
       dialog: components?.Modal?.dialog,
+      paper: components?.Modal?.paper,
     },
     ModalBody: {
       root: components?.ModalBody?.root,
+      container: components?.ModalBody?.container,
     },
     ModalFooter: {
       root: components?.ModalFooter?.root,
     },
     ModalHeader: {
       root: components?.ModalHeader?.root,
+      titleContainer: components?.ModalHeader?.titleContainer,
+      actionsContainer: components?.ModalHeader?.actionsContainer,
+      title: components?.ModalHeader?.title,
+      subtitle: components?.ModalHeader?.subtitle,
     },
     Paper: {
       root: components?.Paper?.root,

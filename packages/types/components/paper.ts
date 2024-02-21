@@ -18,6 +18,8 @@ export interface PaperShapeProps {
   color: PaperColor;
   disableElevation: boolean;
   isSquare: boolean;
+  isGlass: boolean;
+  isActive: boolean;
 }
 
 export type PaperProps<T extends ElementType> = {

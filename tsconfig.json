@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "jsxImportSource": "@emotion/react",
+    "types": ["@testing-library/jest-dom"]
+  },
+  "include": ["./**/*"]
+}

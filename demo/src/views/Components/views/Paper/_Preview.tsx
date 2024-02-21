@@ -21,6 +21,12 @@ const PreviewView = () => {
           <Paper>Paper block</Paper>
           <Paper color="warning">Paper block</Paper>
           <Paper color="secondary">Paper block</Paper>
+          <br />
+          <Paper color="error" isGlass>
+            Paper glass block
+          </Paper>
+          <br />
+          <Paper color="error">Paper block</Paper>
         </Section>
       </Article>
 

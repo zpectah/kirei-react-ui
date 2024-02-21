@@ -4,6 +4,7 @@
     "strict": true,
     "alwaysStrict": true,
     "jsx": "react-jsx",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "esModuleInterop": true
   }
 }

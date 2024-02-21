@@ -33,6 +33,7 @@ const PreviewStack = (props: PreviewStackProps) => {
         backgroundSize: `${backgroundSizeBase} ${backgroundSizeBase}`,
         padding: themeSpacing.get(spacing),
         border: `1px solid ${palette.utils.getAlphaColor(palette.shape.border, 0.5)}`,
+        overflow: 'hidden',
       }}
       gap={gap}
       alignItems={alignItems}

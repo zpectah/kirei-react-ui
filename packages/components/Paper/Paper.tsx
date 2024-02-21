@@ -10,12 +10,14 @@ const Paper = <T extends ElementType>(props: PaperProps<T>) => {
     children,
     className,
     disableElevation,
+    isActive,
+    isGlass,
     isSquare,
     style,
     styles,
     ...rest
   } = props;
-  const styleProps = { color, isSquare, disableElevation };
+  const styleProps = { color, isActive, isGlass, isSquare, disableElevation };
 
   const {
     composedStyles: { root },

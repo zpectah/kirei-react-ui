@@ -6,7 +6,10 @@ import { IconsPreviewList } from './components';
 const PreviewView = () => {
   return (
     <>
-      <Article>
+      <Article title="Static">
+        <IconsPreviewList />
+      </Article>
+      <Article title="Animated">
         <IconsPreviewList />
       </Article>
 

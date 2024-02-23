@@ -6,7 +6,7 @@ const Backward = (props: SvgIconProps) => {
   const { styles, ...rest } = useSvgIconProps(props);
 
   return (
-    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" css={styles} {...rest}>
+    <svg viewBox="0 0 128 128" css={styles} {...rest}>
       <g transform="matrix(1,0,0,1,15.6333,1.42109e-14)">
         <path
           fill="currentColor"

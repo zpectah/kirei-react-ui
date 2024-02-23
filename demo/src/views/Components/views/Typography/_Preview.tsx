@@ -206,8 +206,8 @@ const PreviewView = () => {
           <PreviewCombo
             code={`<Typography color="text-primary">...</Typography>
 <Typography color="text-secondary">...</Typography>
-<Typography color="text-tertiary">...</Typography>
-<Typography color="text-muted">...</Typography>
+<Typography color="muted">...</Typography>
+<Typography color="disabled">...</Typography>
 `}
             stackProps={{ direction: 'column', alignItems: 'flex-start' }}
           >
@@ -217,11 +217,11 @@ const PreviewView = () => {
             <Typography color="text-secondary">
               text-secondary: Sollicitudin pulvinar, felis a turpis nibh maximus suspendisse magna et dui sed
             </Typography>
-            <Typography color="text-tertiary">
-              text-tertiary: Magna ut venenatis, elit bibendum vivamus consequat fermentum ullamcorper fermentum
+            <Typography color="muted">
+              muted: Magna ut venenatis, elit bibendum vivamus consequat fermentum ullamcorper fermentum
             </Typography>
-            <Typography color="text-muted">
-              text-muted: Dui et tempus dignissim, egestas bibendum metus integer purus venenatis ante, consequat dui
+            <Typography color="disabled">
+              disabled: Dui et tempus dignissim, egestas bibendum metus integer purus venenatis ante, consequat dui
             </Typography>
           </PreviewCombo>
         </Section>

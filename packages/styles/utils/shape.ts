@@ -2,9 +2,9 @@ import Color from 'color';
 import { shapeSizeKeys, ShapeSize, ThemeSpacing, ThemeTypography } from 'types';
 import { SHAPE_MIN_HEIGHT } from 'core';
 
-export const getFocusPropertyValue = (background: string, focusOutlineAlpha: number, focusOutlineWidth: string) => {
+export const getFocusPropertyValue = (background: string, outlineAlpha: number, focusOutlineWidth: string) => {
   return {
-    outline: `${focusOutlineWidth} solid ${Color(background).alpha(focusOutlineAlpha).toString()}`,
+    outline: `${focusOutlineWidth} solid ${Color(background).alpha(outlineAlpha).toString()}`,
   };
 };
 

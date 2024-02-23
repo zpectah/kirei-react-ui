@@ -55,14 +55,14 @@ export const getContainedButtonVariant = (
           boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${isLightMode ? bgDark : bgLight}`,
           borderColor: isLightMode ? bgDark : bgLight,
         },
-    ['&:focus']: getFocusPropertyValue(bgLight, palette.ratio.focusOutlineAlpha, shape.borderWidth.outline),
+    ['&:focus']: getFocusPropertyValue(bgLight, palette.ratio.outlineAlpha, shape.borderWidth.outline),
     [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
       pointerEvents: 'none',
       cursor: 'default',
       ...(isInverted
         ? {
             backgroundColor: bgDisabled,
-            color: Color(bgMain).alpha(palette.ratio.disabledInvertedAlpha).toString(),
+            color: Color(bgMain).alpha(palette.ratio.disabledAlpha).toString(),
             borderColor: bgDisabled,
           }
         : {
@@ -97,17 +97,17 @@ export const getOutlinedButtonVariant = (
     [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled}), &.${STATUS_CLASS_NAMES.isActive}`]: isInverted
       ? {
           boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(isLightMode ? bgLight : bgDark)
-            .alpha(palette.ratio.hoverShadowAlpha)
+            .alpha(palette.ratio.shadowAlpha)
             .toString()}`,
           color: isLightMode ? bgLight : bgDark,
           borderColor: isLightMode ? bgLight : bgDark,
         }
       : {
-          boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(bgLight).alpha(palette.ratio.hoverShadowAlpha).toString()}`,
+          boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(bgLight).alpha(palette.ratio.shadowAlpha).toString()}`,
           color: isLightMode ? bgDark : bgLight,
           borderColor: isLightMode ? bgDark : bgLight,
         },
-    ['&:focus']: getFocusPropertyValue(bgLight, palette.ratio.focusOutlineAlpha, shape.borderWidth.outline),
+    ['&:focus']: getFocusPropertyValue(bgLight, palette.ratio.outlineAlpha, shape.borderWidth.outline),
     [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
       pointerEvents: 'none',
       cursor: 'default',
@@ -147,15 +147,15 @@ export const getTextButtonVariant = (
     [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled}), &.${STATUS_CLASS_NAMES.isActive}`]: isInverted
       ? {
           boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(isLightMode ? bgLight : bgDark)
-            .alpha(palette.ratio.hoverShadowAlpha)
+            .alpha(palette.ratio.shadowAlpha)
             .toString()}`,
           color: isLightMode ? bgLight : bgDark,
         }
       : {
-          boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(bgLight).alpha(palette.ratio.hoverShadowAlpha).toString()}`,
+          boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(bgLight).alpha(palette.ratio.shadowAlpha).toString()}`,
           color: isLightMode ? bgDark : bgLight,
         },
-    ['&:focus']: getFocusPropertyValue(bgLight, palette.ratio.focusOutlineAlpha, shape.borderWidth.outline),
+    ['&:focus']: getFocusPropertyValue(bgLight, palette.ratio.outlineAlpha, shape.borderWidth.outline),
     [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
       pointerEvents: 'none',
       cursor: 'default',

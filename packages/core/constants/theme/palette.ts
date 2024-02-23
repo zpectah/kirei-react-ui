@@ -8,8 +8,8 @@ export const PALETTE = {
   info: 'hsl(210, 78.7%, 46.1%)',
   success: 'hsl(123, 43.4%, 38.8%)',
 
-  hover: 'hsl(0, 0.0%, 9.8%)',
-  muted: 'hsl(177, 0%, 64%)',
+  // hover: 'hsl(0, 0.0%, 9.8%)',
+  disabled: 'hsl(177, 0%, 64%)',
 
   grey: 'hsl(0, 0.0%, 38.0%)',
   dark: 'hsl(0, 0.0%, 9.8%)',
@@ -45,21 +45,9 @@ export const PALETTE_RATIO = {
   hoverAlpha: 0.25,
   disabledAlpha: 0.5,
   backgroundAlpha: 0.65,
-  backgroundDarken: 0.25,
-  backgroundLighten: 0.25,
-  textSecondary: 25,
-  textTertiary: 40,
-  shapeDivider: 85,
-  shapeBorder: 80,
-  backgroundSurface: 0.05,
-  hoverShadowAlpha: 0.05,
-  focusOutlineAlpha: 0.5,
-  disabledInvertedAlpha: 0.5,
+  shadowAlpha: 0.05,
+  outlineAlpha: 0.5,
   loadingLabelAlpha: 0.25,
 };
 
-// export const PALETTE_RATIO_CORRECTION = {
-//   darkBgSecondary: 4,
-//   darkBgTertiary: 6,
-//   lightBgTertiary: 1.75,
-// };
+export const BACKGROUND_TONAL_OFFSET = 0.25;

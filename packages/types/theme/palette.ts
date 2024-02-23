@@ -16,16 +16,16 @@ export interface ThemePalette {
     hoverAlpha: number;
     disabledAlpha: number;
     backgroundAlpha: number;
-    backgroundDarken: number;
-    backgroundLighten: number;
-    textSecondary: number;
-    textTertiary: number;
-    shapeDivider: number;
-    shapeBorder: number;
-    backgroundSurface: number;
-    hoverShadowAlpha: number;
-    focusOutlineAlpha: number;
-    disabledInvertedAlpha: number;
+    // backgroundDarken: number;
+    // backgroundLighten: number;
+    // textSecondary: number;
+    // textTertiary: number;
+    // shapeDivider: number;
+    // shapeBorder: number;
+    // backgroundSurface: number;
+    shadowAlpha: number;
+    outlineAlpha: number;
+    // disabledInvertedAlpha: number;
     loadingLabelAlpha: number;
   };
   common: {

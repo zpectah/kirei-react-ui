@@ -15,8 +15,8 @@ const PreviewStack = (props: PreviewStackProps) => {
   } = useKireiContext();
 
   const backgroundImage = useMemo(() => {
-    const colorPrimary = palette.background.tertiary;
-    const colorSecondary = palette.background.primary;
+    const colorPrimary = palette.utils.getDarkenColor(palette.background.default, 0.15); // TODO
+    const colorSecondary = palette.utils.getDarkenColor(palette.background.default, 0.25); // TODO
 
     return `
     repeating-linear-gradient(45deg, ${colorPrimary} 25%, transparent 25%, transparent 75%, ${colorPrimary} 75%, ${colorPrimary}),

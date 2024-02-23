@@ -1,5 +1,5 @@
 import { DeepPartial, PaperColor, ThemeMode, themeModeKeys, ThemePalette } from 'types';
-import { PALETTE, PALETTE_RATIO, PALETTE_RATIO_CORRECTION } from 'core';
+import { PALETTE, PALETTE_RATIO } from 'core';
 
 export const getThemePaletteRatio = (ratio?: Partial<ThemePalette['ratio']>) => {
   return {
@@ -29,34 +29,34 @@ export const getThemePaletteProps = (
   const { getLightenColor, getDarkenColor, getAlphaColor } = utils;
   const ratio = getThemePaletteRatio(palette?.ratio);
 
-  let textColor, backgroundColor, greyBase, paperBase;
+  let textColor, backgroundColor, paperBase;
 
   switch (mode) {
     case themeModeKeys.dark:
       textColor = palette?.text?.primary || PALETTE.white;
-      backgroundColor = palette?.background?.primary || PALETTE.dark;
-      greyBase = palette?.grey?.['0'] || PALETTE.dark;
+      backgroundColor = palette?.background?.default || PALETTE.dark;
+      // greyBase = palette?.grey?.['0'] || PALETTE.dark;
       paperBase = palette?.background?.paper || PALETTE.paperDark;
 
       return {
-        grey: {
-          0: greyBase,
-          5: getLightenColor(greyBase, 0.05),
-          10: getLightenColor(greyBase, 0.1),
-          20: getLightenColor(greyBase, 0.2),
-          30: getLightenColor(greyBase, 0.3),
-          40: getLightenColor(greyBase, 0.4),
-          50: getLightenColor(greyBase, 0.5),
-          60: getLightenColor(greyBase, 0.6),
-          70: getLightenColor(greyBase, 0.7),
-          80: getLightenColor(greyBase, 0.8),
-          90: getLightenColor(greyBase, 0.9),
-          100: getLightenColor(greyBase, 1.0),
-        },
+        // grey: {
+        //   0: greyBase,
+        //   5: getLightenColor(greyBase, 0.05),
+        //   10: getLightenColor(greyBase, 0.1),
+        //   20: getLightenColor(greyBase, 0.2),
+        //   30: getLightenColor(greyBase, 0.3),
+        //   40: getLightenColor(greyBase, 0.4),
+        //   50: getLightenColor(greyBase, 0.5),
+        //   60: getLightenColor(greyBase, 0.6),
+        //   70: getLightenColor(greyBase, 0.7),
+        //   80: getLightenColor(greyBase, 0.8),
+        //   90: getLightenColor(greyBase, 0.9),
+        //   100: getLightenColor(greyBase, 1.0),
+        // },
         text: {
           primary: textColor,
           secondary: palette?.text?.secondary || getDarkenColor(textColor, ratio.textSecondary / 100),
-          tertiary: palette?.text?.tertiary || getDarkenColor(textColor, ratio.textTertiary / 100),
+          // tertiary: palette?.text?.tertiary || getDarkenColor(textColor, ratio.textTertiary / 100),
           muted: palette?.text?.muted || PALETTE.muted,
           disabled: palette?.text?.disabled || getAlphaColor(PALETTE.muted, ratio.disabledAlpha),
         },
@@ -65,13 +65,10 @@ export const getThemePaletteProps = (
           border: palette?.shape?.border || getDarkenColor(textColor, ratio.shapeBorder / 100),
         },
         background: {
-          primary: backgroundColor,
-          secondary:
-            palette?.background?.secondary ||
-            getLightenColor(backgroundColor, ratio.backgroundSurface * PALETTE_RATIO_CORRECTION.darkBgSecondary),
-          tertiary:
-            palette?.background?.tertiary ||
-            getLightenColor(backgroundColor, ratio.backgroundSurface * PALETTE_RATIO_CORRECTION.darkBgTertiary),
+          default: backgroundColor,
+          // primary: backgroundColor,
+          // secondary: palette?.background?.secondary || getLightenColor(backgroundColor, ratio.backgroundSurface * PALETTE_RATIO_CORRECTION.darkBgSecondary),
+          // tertiary: palette?.background?.tertiary || getLightenColor(backgroundColor, ratio.backgroundSurface * PALETTE_RATIO_CORRECTION.darkBgTertiary),
           paper: paperBase,
         },
         inverted: {
@@ -91,29 +88,29 @@ export const getThemePaletteProps = (
     case themeModeKeys.light:
     default:
       textColor = palette?.text?.primary || PALETTE.black;
-      backgroundColor = palette?.background?.primary || PALETTE.light;
-      greyBase = palette?.grey?.['0'] || PALETTE.light;
+      backgroundColor = palette?.background?.default || PALETTE.light;
+      // greyBase = palette?.grey?.['0'] || PALETTE.light;
       paperBase = palette?.background?.paper || PALETTE.paperLight;
 
       return {
-        grey: {
-          0: greyBase,
-          5: getDarkenColor(greyBase, 0.05),
-          10: getDarkenColor(greyBase, 0.1),
-          20: getDarkenColor(greyBase, 0.2),
-          30: getDarkenColor(greyBase, 0.3),
-          40: getDarkenColor(greyBase, 0.4),
-          50: getDarkenColor(greyBase, 0.5),
-          60: getDarkenColor(greyBase, 0.6),
-          70: getDarkenColor(greyBase, 0.7),
-          80: getDarkenColor(greyBase, 0.8),
-          90: getDarkenColor(greyBase, 0.9),
-          100: getDarkenColor(greyBase, 1.0),
-        },
+        // grey: {
+        //   0: greyBase,
+        //   5: getDarkenColor(greyBase, 0.05),
+        //   10: getDarkenColor(greyBase, 0.1),
+        //   20: getDarkenColor(greyBase, 0.2),
+        //   30: getDarkenColor(greyBase, 0.3),
+        //   40: getDarkenColor(greyBase, 0.4),
+        //   50: getDarkenColor(greyBase, 0.5),
+        //   60: getDarkenColor(greyBase, 0.6),
+        //   70: getDarkenColor(greyBase, 0.7),
+        //   80: getDarkenColor(greyBase, 0.8),
+        //   90: getDarkenColor(greyBase, 0.9),
+        //   100: getDarkenColor(greyBase, 1.0),
+        // },
         text: {
           primary: textColor,
           secondary: palette?.text?.secondary || getLightenColor(textColor, ratio.textSecondary),
-          tertiary: palette?.text?.tertiary || getLightenColor(textColor, ratio.textTertiary),
+          // tertiary: palette?.text?.tertiary || getLightenColor(textColor, ratio.textTertiary),
           muted: palette?.text?.muted || PALETTE.muted,
           disabled: palette?.text?.disabled || getAlphaColor(PALETTE.muted, ratio.disabledAlpha),
         },
@@ -122,11 +119,10 @@ export const getThemePaletteProps = (
           border: palette?.shape?.border || getLightenColor(textColor, ratio.shapeBorder),
         },
         background: {
-          primary: backgroundColor,
-          secondary: palette?.background?.secondary || getDarkenColor(backgroundColor, ratio.backgroundSurface),
-          tertiary:
-            palette?.background?.tertiary ||
-            getDarkenColor(backgroundColor, ratio.backgroundSurface * PALETTE_RATIO_CORRECTION.lightBgTertiary),
+          default: backgroundColor,
+          // primary: backgroundColor,
+          // secondary: palette?.background?.secondary || getDarkenColor(backgroundColor, ratio.backgroundSurface),
+          // tertiary: palette?.background?.tertiary || getDarkenColor(backgroundColor, ratio.backgroundSurface * PALETTE_RATIO_CORRECTION.lightBgTertiary),
           paper: paperBase,
         },
         inverted: {

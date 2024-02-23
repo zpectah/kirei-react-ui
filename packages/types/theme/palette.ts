@@ -53,40 +53,41 @@ export interface ThemePalette {
     brown: string;
     blueGrey: string;
   };
-  grey: {
-    0: string;
-    5: string;
-    10: string;
-    20: string;
-    30: string;
-    40: string;
-    50: string;
-    60: string;
-    70: string;
-    80: string;
-    90: string;
-    100: string;
-  };
+  // grey: {
+  //   0: string;
+  //   5: string;
+  //   10: string;
+  //   20: string;
+  //   30: string;
+  //   40: string;
+  //   50: string;
+  //   60: string;
+  //   70: string;
+  //   80: string;
+  //   90: string;
+  //   100: string;
+  // };
   text: {
     primary: string;
     secondary: string;
-    tertiary: string;
+    // tertiary: string; // TODO #projít
     muted: string;
     disabled: string;
   };
   shape: {
-    divider: string;
+    divider: string; // TODO with opacity
     border: string;
   };
   background: {
-    primary: string;
-    secondary: string;
-    tertiary: string;
+    // primary: string; // TODO #projít
+    // secondary: string; // TODO #projít
+    // tertiary: string; // TODO #projít
+
+    default: string;
     paper: string;
   };
   action: {
     active: string;
-    hover: string;
     disabled: string;
   };
   primary: ThemePaletteCluster;

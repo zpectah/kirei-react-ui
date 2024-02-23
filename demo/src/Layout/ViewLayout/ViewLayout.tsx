@@ -33,7 +33,7 @@ const ViewLayout = (props: ViewLayoutProps) => {
           position: 'fixed',
           top: HEADER_DESKTOP_HEIGHT,
           left: 0,
-          backgroundColor: theme.palette.background.secondary,
+          backgroundColor: 'rgba(0,0,0,.25)', // TODO
           overflow: 'hidden',
         }}
       >

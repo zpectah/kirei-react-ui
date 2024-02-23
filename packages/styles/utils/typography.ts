@@ -15,7 +15,6 @@ export const getTypographyColor = (theme: Theme, color: TypographyColor) => {
     [neutralColorKeys.neutral]: theme.palette.neutral.main,
     [textColorKeys['text-primary']]: theme.palette.text.primary,
     [textColorKeys['text-secondary']]: theme.palette.text.secondary,
-    [textColorKeys['text-tertiary']]: theme.palette.text.tertiary,
     [textColorKeys.muted]: theme.palette.text.muted,
     [textColorKeys.disabled]: theme.palette.text.disabled,
     [textColorKeys.inherit]: 'inherit',

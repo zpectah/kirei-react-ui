@@ -58,8 +58,8 @@ export const PALETTE_RATIO = {
   loadingLabelAlpha: 0.25,
 };
 
-export const PALETTE_RATIO_CORRECTION = {
-  darkBgSecondary: 4,
-  darkBgTertiary: 6,
-  lightBgTertiary: 1.75,
-};
+// export const PALETTE_RATIO_CORRECTION = {
+//   darkBgSecondary: 4,
+//   darkBgTertiary: 6,
+//   lightBgTertiary: 1.75,
+// };

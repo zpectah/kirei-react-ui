@@ -68,12 +68,10 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
 
   const _action = {
     active: palette?.action?.active || primaryColorMain,
-    hover: palette?.action?.hover || PALETTE.hover,
     disabled: palette?.action?.disabled || PALETTE.muted,
   };
   const action = {
     active: getAlphaColor(_action.active, ratio.activeAlpha),
-    hover: getAlphaColor(_action.hover, ratio.hoverAlpha),
     disabled: getAlphaColor(_action.disabled, ratio.disabledAlpha),
   };
 

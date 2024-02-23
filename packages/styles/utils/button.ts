@@ -62,11 +62,11 @@ export const getContainedButtonVariant = (
       ...(isInverted
         ? {
             backgroundColor: bgDisabled,
-            color: Color(bgMain).alpha(palette.ratio.disabledAlpha).toString(),
-            borderColor: bgDisabled,
+            color: color,
+            borderColor: 'transparent',
           }
         : {
-            color: isLightMode ? Color(bgDisabled).darken(0.25).toString() : Color(bgDisabled).lighten(0.25).toString(),
+            color: color,
             backgroundColor: bgDisabled,
             borderColor: 'transparent',
           }),

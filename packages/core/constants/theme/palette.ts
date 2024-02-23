@@ -8,7 +8,6 @@ export const PALETTE = {
   info: 'hsl(210, 78.7%, 46.1%)',
   success: 'hsl(123, 43.4%, 38.8%)',
 
-  // hover: 'hsl(0, 0.0%, 9.8%)',
   disabled: 'hsl(177, 0%, 64%)',
 
   grey: 'hsl(0, 0.0%, 38.0%)',

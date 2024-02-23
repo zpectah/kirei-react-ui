@@ -12,8 +12,8 @@ const PlaygroundPreview = (props: PlaygroundPreviewProps) => {
   } = useKireiContext();
 
   const backgroundImage = useMemo(() => {
-    const colorPrimary = palette.background.tertiary;
-    const colorSecondary = palette.background.primary;
+    const colorPrimary = palette.utils.getDarkenColor(palette.background.default, 0.025);
+    const colorSecondary = palette.utils.getDarkenColor(palette.background.default, 0.15);
 
     return `
     repeating-linear-gradient(45deg, ${colorPrimary} 25%, transparent 25%, transparent 75%, ${colorPrimary} 75%, ${colorPrimary}),
@@ -34,7 +34,7 @@ const PlaygroundPreview = (props: PlaygroundPreviewProps) => {
         backgroundPosition: `0 0, ${backgroundPositionBase} ${backgroundPositionBase}`,
         backgroundSize: `${backgroundSizeBase} ${backgroundSizeBase}`,
         padding: spacing.get(8, 4),
-        border: `1px solid ${palette.utils.getAlphaColor(palette.shape.border, 0.5)}`,
+        border: `1px solid ${palette.shape.border}`,
       }}
     >
       {children}

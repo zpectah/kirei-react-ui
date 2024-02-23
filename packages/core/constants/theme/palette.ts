@@ -41,12 +41,15 @@ export const PALETTE = {
 
 export const PALETTE_RATIO = {
   activeAlpha: 0.12,
-  hoverAlpha: 0.25,
-  disabledAlpha: 0.5,
   backgroundAlpha: 0.65,
-  shadowAlpha: 0.05,
+  backgroundTonal: 0.25,
+  disabledAlpha: 0.5,
+  hoverAlpha: 0.25,
   outlineAlpha: 0.5,
-  loadingLabelAlpha: 0.25,
+  shadowAlpha: 0.05,
 };
 
-export const BACKGROUND_TONAL_OFFSET = 0.25;
+export const SECONDARY_TEXT_ALPHA = 0.85;
+export const SHAPE_DIVIDER_ALPHA = 0.25;
+export const SHAPE_BORDER_ALPHA = 0.15;
+export const LOADING_LABEL_ALPHA = 0.25;

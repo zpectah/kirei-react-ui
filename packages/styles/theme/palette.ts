@@ -1,6 +1,6 @@
 import Color from 'color';
 import { DeepPartial, ThemePalette, themeModeKeys } from 'types';
-import { BACKGROUND_TONAL_OFFSET, PALETTE } from 'core';
+import { PALETTE } from 'core';
 import { getThemePaletteRatio, getThemePaletteProps } from '../utils';
 
 const getLightenColor = (color: string, ratio: number) => Color(color).lighten(ratio).toString();
@@ -10,8 +10,6 @@ const getGreyscaleColor = (color: string) => Color(color).grayscale().toString()
 const getWhitenColor = (color: string, ratio: number) => Color(color).whiten(ratio).toString();
 const getBlackenColor = (color: string, ratio: number) => Color(color).blacken(ratio).toString();
 const getAlphaColor = (color: string, ratio: number) => Color(color).alpha(ratio).toString();
-const isColorLight = (color: string) => Color(color).isLight();
-const isColorDark = (color: string) => Color(color).isDark();
 
 export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePalette => {
   const mode = palette?.mode || themeModeKeys.light;
@@ -23,6 +21,7 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
   const infoColorMain = palette?.info?.main || PALETTE.info;
   const successColorMain = palette?.success?.main || PALETTE.success;
 
+  const ratio = getThemePaletteRatio(palette?.ratio);
   const utils = {
     getLightenColor,
     getDarkenColor,
@@ -31,8 +30,6 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     getWhitenColor,
     getBlackenColor,
     getAlphaColor,
-    isColorLight,
-    isColorDark,
   };
 
   const common = {
@@ -63,16 +60,9 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
 
   const lightColorMain = palette?.light?.main || common.light;
   const darkColorMain = palette?.dark?.main || common.dark;
-
-  const ratio = getThemePaletteRatio(palette?.ratio);
-
-  const _action = {
-    active: palette?.action?.active || primaryColorMain,
-    disabled: palette?.action?.disabled || PALETTE.disabled,
-  };
   const action = {
-    active: getAlphaColor(_action.active, ratio.activeAlpha),
-    disabled: getAlphaColor(_action.disabled, ratio.disabledAlpha),
+    active: palette?.action?.active || getAlphaColor(primaryColorMain, ratio.activeAlpha),
+    disabled: palette?.action?.disabled || getAlphaColor(PALETTE.disabled, ratio.disabledAlpha),
   };
 
   const themePrimary = {
@@ -87,61 +77,61 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
   });
 
   return {
+    utils,
     ...themePrimary,
     ...themeSecondary,
-    utils,
     primary: {
       main: primaryColorMain,
-      dark: palette?.primary?.dark || getDarkenColor(primaryColorMain, BACKGROUND_TONAL_OFFSET),
-      light: palette?.primary?.light || getLightenColor(primaryColorMain, BACKGROUND_TONAL_OFFSET),
+      dark: palette?.primary?.dark || getDarkenColor(primaryColorMain, ratio.backgroundTonal),
+      light: palette?.primary?.light || getLightenColor(primaryColorMain, ratio.backgroundTonal),
       contrast: palette?.primary?.contrast || PALETTE.white,
     },
     secondary: {
       main: secondaryColorMain,
-      dark: palette?.secondary?.dark || getDarkenColor(secondaryColorMain, BACKGROUND_TONAL_OFFSET),
-      light: palette?.secondary?.light || getLightenColor(secondaryColorMain, BACKGROUND_TONAL_OFFSET),
+      dark: palette?.secondary?.dark || getDarkenColor(secondaryColorMain, ratio.backgroundTonal),
+      light: palette?.secondary?.light || getLightenColor(secondaryColorMain, ratio.backgroundTonal),
       contrast: palette?.secondary?.contrast || PALETTE.white,
     },
     tertiary: {
       main: tertiaryColorMain,
-      dark: palette?.tertiary?.dark || getDarkenColor(tertiaryColorMain, BACKGROUND_TONAL_OFFSET),
-      light: palette?.tertiary?.light || getLightenColor(tertiaryColorMain, BACKGROUND_TONAL_OFFSET),
+      dark: palette?.tertiary?.dark || getDarkenColor(tertiaryColorMain, ratio.backgroundTonal),
+      light: palette?.tertiary?.light || getLightenColor(tertiaryColorMain, ratio.backgroundTonal),
       contrast: palette?.tertiary?.contrast || PALETTE.white,
     },
     error: {
       main: errorColorMain,
-      dark: palette?.error?.dark || getDarkenColor(errorColorMain, BACKGROUND_TONAL_OFFSET),
-      light: palette?.error?.light || getLightenColor(errorColorMain, BACKGROUND_TONAL_OFFSET),
+      dark: palette?.error?.dark || getDarkenColor(errorColorMain, ratio.backgroundTonal),
+      light: palette?.error?.light || getLightenColor(errorColorMain, ratio.backgroundTonal),
       contrast: palette?.error?.contrast || PALETTE.white,
     },
     warning: {
       main: warningColorMain,
-      dark: palette?.warning?.dark || getDarkenColor(warningColorMain, BACKGROUND_TONAL_OFFSET),
-      light: palette?.warning?.light || getLightenColor(warningColorMain, BACKGROUND_TONAL_OFFSET),
+      dark: palette?.warning?.dark || getDarkenColor(warningColorMain, ratio.backgroundTonal),
+      light: palette?.warning?.light || getLightenColor(warningColorMain, ratio.backgroundTonal),
       contrast: palette?.warning?.contrast || PALETTE.white,
     },
     info: {
       main: infoColorMain,
-      dark: palette?.info?.dark || getDarkenColor(infoColorMain, BACKGROUND_TONAL_OFFSET),
-      light: palette?.info?.light || getLightenColor(infoColorMain, BACKGROUND_TONAL_OFFSET),
+      dark: palette?.info?.dark || getDarkenColor(infoColorMain, ratio.backgroundTonal),
+      light: palette?.info?.light || getLightenColor(infoColorMain, ratio.backgroundTonal),
       contrast: palette?.info?.contrast || PALETTE.white,
     },
     success: {
       main: successColorMain,
-      dark: palette?.success?.dark || getDarkenColor(successColorMain, BACKGROUND_TONAL_OFFSET),
-      light: palette?.success?.light || getLightenColor(successColorMain, BACKGROUND_TONAL_OFFSET),
+      dark: palette?.success?.dark || getDarkenColor(successColorMain, ratio.backgroundTonal),
+      light: palette?.success?.light || getLightenColor(successColorMain, ratio.backgroundTonal),
       contrast: palette?.success?.contrast || PALETTE.white,
     },
     light: {
       main: lightColorMain,
-      dark: palette?.light?.dark || getDarkenColor(lightColorMain, BACKGROUND_TONAL_OFFSET),
-      light: palette?.light?.light || getLightenColor(lightColorMain, BACKGROUND_TONAL_OFFSET),
+      dark: palette?.light?.dark || getDarkenColor(lightColorMain, ratio.backgroundTonal),
+      light: palette?.light?.light || getLightenColor(lightColorMain, ratio.backgroundTonal),
       contrast: palette?.light?.contrast || PALETTE.dark,
     },
     dark: {
       main: darkColorMain,
-      dark: palette?.dark?.dark || getDarkenColor(darkColorMain, BACKGROUND_TONAL_OFFSET),
-      light: palette?.dark?.light || getLightenColor(darkColorMain, BACKGROUND_TONAL_OFFSET),
+      dark: palette?.dark?.dark || getDarkenColor(darkColorMain, ratio.backgroundTonal),
+      light: palette?.dark?.light || getLightenColor(darkColorMain, ratio.backgroundTonal),
       contrast: palette?.dark?.contrast || PALETTE.light,
     },
   };

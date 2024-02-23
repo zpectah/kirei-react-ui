@@ -1,15 +1,15 @@
 import { DeepPartial, PaperColor, ThemeMode, themeModeKeys, ThemePalette } from 'types';
-import { BACKGROUND_TONAL_OFFSET, PALETTE, PALETTE_RATIO } from 'core';
+import { PALETTE, PALETTE_RATIO, SECONDARY_TEXT_ALPHA, SHAPE_BORDER_ALPHA, SHAPE_DIVIDER_ALPHA } from 'core';
 
 export const getThemePaletteRatio = (ratio?: Partial<ThemePalette['ratio']>) => {
   return {
     activeAlpha: ratio?.activeAlpha || PALETTE_RATIO.activeAlpha,
-    hoverAlpha: ratio?.hoverAlpha || PALETTE_RATIO.hoverAlpha,
-    disabledAlpha: ratio?.disabledAlpha || PALETTE_RATIO.disabledAlpha,
     backgroundAlpha: ratio?.backgroundAlpha || PALETTE_RATIO.backgroundAlpha,
-    shadowAlpha: ratio?.shadowAlpha || PALETTE_RATIO.shadowAlpha,
+    backgroundTonal: ratio?.backgroundTonal || PALETTE_RATIO.backgroundTonal,
+    disabledAlpha: ratio?.disabledAlpha || PALETTE_RATIO.disabledAlpha,
+    hoverAlpha: ratio?.hoverAlpha || PALETTE_RATIO.hoverAlpha,
     outlineAlpha: ratio?.outlineAlpha || PALETTE_RATIO.outlineAlpha,
-    loadingLabelAlpha: ratio?.loadingLabelAlpha || PALETTE_RATIO.loadingLabelAlpha,
+    shadowAlpha: ratio?.shadowAlpha || PALETTE_RATIO.shadowAlpha,
   };
 };
 
@@ -32,13 +32,13 @@ export const getThemePaletteProps = (
       return {
         text: {
           primary: textColor,
-          secondary: palette?.text?.secondary || getAlphaColor(textColor, 0.85),
+          secondary: palette?.text?.secondary || getAlphaColor(textColor, SECONDARY_TEXT_ALPHA),
           muted: palette?.text?.muted || PALETTE.disabled,
           disabled: palette?.text?.disabled || getAlphaColor(PALETTE.disabled, ratio.disabledAlpha),
         },
         shape: {
-          divider: palette?.shape?.divider || getAlphaColor(PALETTE.white, 0.25),
-          border: palette?.shape?.border || getAlphaColor(PALETTE.white, 0.15),
+          divider: palette?.shape?.divider || getAlphaColor(PALETTE.white, SHAPE_DIVIDER_ALPHA),
+          border: palette?.shape?.border || getAlphaColor(PALETTE.white, SHAPE_BORDER_ALPHA),
         },
         background: {
           default: backgroundColor,
@@ -46,14 +46,14 @@ export const getThemePaletteProps = (
         },
         inverted: {
           main: palette?.inverted?.main || backgroundColor,
-          dark: palette?.inverted?.dark || getDarkenColor(backgroundColor, BACKGROUND_TONAL_OFFSET),
-          light: palette?.inverted?.light || getLightenColor(backgroundColor, BACKGROUND_TONAL_OFFSET),
+          dark: palette?.inverted?.dark || getDarkenColor(backgroundColor, ratio.backgroundTonal),
+          light: palette?.inverted?.light || getLightenColor(backgroundColor, ratio.backgroundTonal),
           contrast: palette?.inverted?.contrast || PALETTE.light,
         },
         neutral: {
           main: palette?.neutral?.main || textColor,
-          dark: palette?.neutral?.dark || getDarkenColor(textColor, BACKGROUND_TONAL_OFFSET),
-          light: palette?.neutral?.light || getLightenColor(textColor, BACKGROUND_TONAL_OFFSET),
+          dark: palette?.neutral?.dark || getDarkenColor(textColor, ratio.backgroundTonal),
+          light: palette?.neutral?.light || getLightenColor(textColor, ratio.backgroundTonal),
           contrast: palette?.neutral?.contrast || PALETTE.dark,
         },
       };
@@ -67,13 +67,13 @@ export const getThemePaletteProps = (
       return {
         text: {
           primary: textColor,
-          secondary: palette?.text?.secondary || getAlphaColor(textColor, 0.85),
+          secondary: palette?.text?.secondary || getAlphaColor(textColor, SECONDARY_TEXT_ALPHA),
           muted: palette?.text?.muted || PALETTE.disabled,
           disabled: palette?.text?.disabled || getAlphaColor(PALETTE.disabled, ratio.disabledAlpha),
         },
         shape: {
-          divider: palette?.shape?.divider || getAlphaColor(PALETTE.black, 0.25),
-          border: palette?.shape?.border || getAlphaColor(PALETTE.black, 0.15),
+          divider: palette?.shape?.divider || getAlphaColor(PALETTE.black, SHAPE_DIVIDER_ALPHA),
+          border: palette?.shape?.border || getAlphaColor(PALETTE.black, SHAPE_BORDER_ALPHA),
         },
         background: {
           default: backgroundColor,
@@ -81,14 +81,14 @@ export const getThemePaletteProps = (
         },
         inverted: {
           main: palette?.inverted?.main || backgroundColor,
-          dark: palette?.inverted?.dark || getDarkenColor(backgroundColor, BACKGROUND_TONAL_OFFSET),
-          light: palette?.inverted?.light || getLightenColor(backgroundColor, BACKGROUND_TONAL_OFFSET),
+          dark: palette?.inverted?.dark || getDarkenColor(backgroundColor, ratio.backgroundTonal),
+          light: palette?.inverted?.light || getLightenColor(backgroundColor, ratio.backgroundTonal),
           contrast: palette?.inverted?.contrast || PALETTE.dark,
         },
         neutral: {
           main: palette?.neutral?.main || textColor,
-          dark: palette?.neutral?.dark || getDarkenColor(textColor, BACKGROUND_TONAL_OFFSET),
-          light: palette?.neutral?.light || getLightenColor(textColor, BACKGROUND_TONAL_OFFSET),
+          dark: palette?.neutral?.dark || getDarkenColor(textColor, ratio.backgroundTonal),
+          light: palette?.neutral?.light || getLightenColor(textColor, ratio.backgroundTonal),
           contrast: palette?.neutral?.contrast || PALETTE.light,
         },
       };

@@ -13,12 +13,12 @@ export interface ThemePalette {
   mode: ThemeMode;
   ratio: {
     activeAlpha: number;
-    hoverAlpha: number;
-    disabledAlpha: number;
     backgroundAlpha: number;
-    shadowAlpha: number;
+    backgroundTonal: number;
+    disabledAlpha: number;
+    hoverAlpha: number;
     outlineAlpha: number;
-    loadingLabelAlpha: number;
+    shadowAlpha: number;
   };
   common: {
     black: string;
@@ -78,8 +78,6 @@ export interface ThemePalette {
     getNegativeColor: (color: string) => string;
     getLightenColor: (color: string, ratio: number) => string;
     getDarkenColor: (color: string, ratio: number) => string;
-    isColorLight: (color: string) => boolean;
-    isColorDark: (color: string) => boolean;
     getGreyscaleColor: (color: string) => string;
     getWhitenColor: (color: string, ratio: number) => string;
     getBlackenColor: (color: string, ratio: number) => string;

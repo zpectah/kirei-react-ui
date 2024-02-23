@@ -6,7 +6,7 @@ import {
   getTextButtonVariant,
   getShapeSizeVariant,
 } from 'styles';
-import { STATUS_CLASS_NAMES } from 'core';
+import { LOADING_LABEL_ALPHA, STATUS_CLASS_NAMES } from 'core';
 
 export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesProps) => {
   const { transitions, palette, spacing, shape, typography } = theme;
@@ -70,7 +70,7 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
     ...rootChildBase,
 
     [`.${STATUS_CLASS_NAMES.isLoading} &`]: {
-      opacity: palette.ratio.loadingLabelAlpha,
+      opacity: LOADING_LABEL_ALPHA,
     },
   };
 

@@ -2,7 +2,7 @@
 
 import { keyframes } from '@emotion/react';
 
-export const animations = {
+export const KEYFRAMES = {
   fadeInUp: keyframes`
     from {
       opacity: 0;

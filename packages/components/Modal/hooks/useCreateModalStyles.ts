@@ -1,6 +1,6 @@
 import { Theme, ModalStylesProps } from 'types';
 import { STATUS_CLASS_NAMES } from 'core';
-import { animations, getContainerMaxWidth } from 'styles';
+import { KEYFRAMES, getContainerMaxWidth } from 'styles';
 
 export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps) => {
   const { breakpoints, transitions, spacing, zIndex } = theme;
@@ -52,10 +52,10 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     zIndex: -1,
 
     [`.${STATUS_CLASS_NAMES.isOpening} &`]: {
-      animation: `${animations.fadeIn} ${transitions.duration.screen}ms ${transitions.easing.easeIn} 1`,
+      animation: `${KEYFRAMES.fadeIn} ${transitions.duration.screen}ms ${transitions.easing.easeIn} 1`,
     },
     [`.${STATUS_CLASS_NAMES.isClosing} &`]: {
-      animation: `${animations.fadeOut} ${transitions.duration.screen + 5}ms ${transitions.easing.easeOut} 1`,
+      animation: `${KEYFRAMES.fadeOut} ${transitions.duration.screen + 5}ms ${transitions.easing.easeOut} 1`,
     },
   };
 
@@ -69,10 +69,10 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     minHeight: 'min-content',
 
     [`.${STATUS_CLASS_NAMES.isOpening} &`]: {
-      animation: `${animations.zoomIn} ${transitions.duration.screen}ms ${transitions.easing.easeIn} 1`,
+      animation: `${KEYFRAMES.zoomIn} ${transitions.duration.screen}ms ${transitions.easing.easeIn} 1`,
     },
     [`.${STATUS_CLASS_NAMES.isClosing} &`]: {
-      animation: `${animations.zoomOut} ${transitions.duration.screen + 5}ms ${transitions.easing.easeOut} 1`,
+      animation: `${KEYFRAMES.zoomOut} ${transitions.duration.screen + 5}ms ${transitions.easing.easeOut} 1`,
     },
   };
   const dialogWidth = isFullscreen

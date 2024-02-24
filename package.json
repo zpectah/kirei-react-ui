@@ -22,7 +22,8 @@
     "lint:all": "eslint .",
     "lint:packages": "eslint packages",
     "lint:demo": "eslint demo",
-    "test": "jest /tests"
+    "test": "jest /tests",
+    "test:coverage": "jest /tests --coverage"
   },
   "private": true,
   "dependencies": {
@@ -59,5 +60,8 @@
   "workspaces": [
     "packages/*",
     "demo"
-  ]
+  ],
+  "jest":{
+    "testEnvironment": "jsdom"
+  }
 }

@@ -1,6 +1,5 @@
 import Color from 'color';
 import {
-  ButtonStylesProps,
   ThemePalette,
   ThemeShape,
   ThemeSpacing,
@@ -8,6 +7,7 @@ import {
   shapeSizeKeys,
   neutralColorKeys,
   themeModeKeys,
+  ButtonColor,
 } from 'types';
 import { STATUS_CLASS_NAMES } from 'core';
 import { getFocusPropertyValue } from './shape';
@@ -29,7 +29,7 @@ export const getContainedButtonVariant = (
   palette: ThemePalette,
   shape: ThemeShape,
   spacing: ThemeSpacing,
-  { color, size }: ButtonStylesProps
+  { color, size }: { color: ButtonColor; size: ShapeSize }
 ) => {
   const baseColor = palette[color];
   const isInverted = color === neutralColorKeys.inverted;
@@ -78,7 +78,7 @@ export const getOutlinedButtonVariant = (
   palette: ThemePalette,
   shape: ThemeShape,
   spacing: ThemeSpacing,
-  { color, size }: ButtonStylesProps
+  { color, size }: { color: ButtonColor; size: ShapeSize }
 ) => {
   const baseColor = palette[color];
   const isInverted = color === neutralColorKeys.inverted;
@@ -128,7 +128,7 @@ export const getTextButtonVariant = (
   palette: ThemePalette,
   shape: ThemeShape,
   spacing: ThemeSpacing,
-  { color, size }: ButtonStylesProps
+  { color, size }: { color: ButtonColor; size: ShapeSize }
 ) => {
   const baseColor = palette[color];
   const isInverted = color === neutralColorKeys.inverted;

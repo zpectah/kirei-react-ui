@@ -1,4 +1,15 @@
-import { Theme, ButtonStylesProps, shapeVariantKeys } from 'types';
+import {
+  Theme,
+  ButtonStylesProps,
+  shapeVariantKeys,
+  ShapeVariant,
+  ThemePalette,
+  ThemeShape,
+  ThemeSpacing,
+  ButtonColor,
+  ShapeSize,
+} from 'types';
+import { LOADING_LABEL_ALPHA, STATUS_CLASS_NAMES } from 'core';
 import {
   getElementTransitions,
   getContainedButtonVariant,
@@ -6,11 +17,29 @@ import {
   getTextButtonVariant,
   getShapeSizeVariant,
 } from 'styles';
-import { LOADING_LABEL_ALPHA, STATUS_CLASS_NAMES } from 'core';
+
+const getRootVariant = (
+  variant: ShapeVariant,
+  palette: ThemePalette,
+  shape: ThemeShape,
+  spacing: ThemeSpacing,
+  stylesProps: { color: ButtonColor; size: ShapeSize }
+) => {
+  switch (variant) {
+    case shapeVariantKeys.contained:
+      return getContainedButtonVariant(palette, shape, spacing, stylesProps);
+
+    case shapeVariantKeys.outlined:
+      return getOutlinedButtonVariant(palette, shape, spacing, stylesProps);
+
+    case shapeVariantKeys.text:
+      return getTextButtonVariant(palette, shape, spacing, stylesProps);
+  }
+};
 
 export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesProps) => {
   const { transitions, palette, spacing, shape, typography } = theme;
-  const { size, variant } = stylesProps;
+  const { size, color, variant } = stylesProps;
 
   const transition = getElementTransitions(
     ['background-color', 'color', 'border-color', 'box-shadow'],
@@ -46,18 +75,6 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
       width: '100%',
     },
   };
-  const getRootVariant = () => {
-    switch (variant) {
-      case shapeVariantKeys.contained:
-        return getContainedButtonVariant(palette, shape, spacing, stylesProps);
-
-      case shapeVariantKeys.outlined:
-        return getOutlinedButtonVariant(palette, shape, spacing, stylesProps);
-
-      case shapeVariantKeys.text:
-        return getTextButtonVariant(palette, shape, spacing, stylesProps);
-    }
-  };
 
   const rootChildBase = {
     pointerEvents: 'none',
@@ -77,17 +94,11 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
   // iconStart
   const iconStartBase = {
     ...rootChildBase,
-    position: 'relative',
-    left: '-0.5em',
-    marginRight: '-0.25em',
   };
 
   // iconEnd
   const iconEndBase = {
     ...rootChildBase,
-    position: 'relative',
-    right: '-0.5em',
-    marginLeft: '-0.25em',
   };
 
   // iconLoading
@@ -109,7 +120,7 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
     root: Object.assign({
       ...rootBase,
       ...getShapeSizeVariant(size, spacing, typography),
-      ...getRootVariant(),
+      ...getRootVariant(variant, palette, shape, spacing, { size, color }),
     }),
     label: Object.assign(labelBase),
     iconStart: Object.assign(iconStartBase),

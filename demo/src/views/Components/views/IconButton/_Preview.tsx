@@ -9,17 +9,44 @@ const PreviewView = () => {
   return (
     <>
       <Section>
-        <PreviewCode code={`import { Stack } from 'components';`} />
+        <PreviewCode code={`import { IconButton } from 'components';`} />
       </Section>
       <Article title="Basics" subtitle={`...`}>
         <Section title="...">
-          <PreviewCombo code='<Stack direction="row">...</Stack>'>...</PreviewCombo>
+          <PreviewCombo code='<Stack direction="row">...</Stack>'>
+            <IconButton variant="text">
+              <CloseIcon />
+            </IconButton>
+            <IconButton variant="outlined">
+              <CloseIcon />
+            </IconButton>
+            <IconButton variant="contained">
+              <CloseIcon />
+            </IconButton>
+          </PreviewCombo>
+          <PreviewCombo code='<Stack direction="row">...</Stack>'>
+            <IconButton size="small" variant="text">
+              <CloseIcon />
+            </IconButton>
+            <IconButton size="small" variant="outlined">
+              <CloseIcon />
+            </IconButton>
+            <IconButton size="small" variant="contained">
+              <CloseIcon />
+            </IconButton>
+          </PreviewCombo>
+          <PreviewCombo code='<Stack direction="row">...</Stack>'>
+            <IconButton size="large" variant="text">
+              <CloseIcon />
+            </IconButton>
+            <IconButton size="large" variant="outlined">
+              <CloseIcon />
+            </IconButton>
+            <IconButton size="large" variant="contained">
+              <CloseIcon />
+            </IconButton>
+          </PreviewCombo>
           ...
-          <br />
-          <IconButton>
-            <CloseIcon />
-          </IconButton>
-          <br />
         </Section>
       </Article>
 

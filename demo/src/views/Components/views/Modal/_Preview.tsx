@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import { useKireiContext } from 'styles';
-import { Button, Stack, Modal, ModalHeader, ModalBody, ModalFooter } from 'components';
+import { Button, IconButton, Stack, Modal, ModalHeader, ModalBody, ModalFooter } from 'components';
 import { CloseIcon } from 'icons';
 import { routes } from '../../../../config';
 import { Article, ArticleFooter, Section } from '../../../../components';
@@ -41,9 +41,9 @@ const PreviewView = () => {
               title="Modal title"
               subtitle="Modal subtitle"
               actions={
-                <Button onClick={modalToggle} variant="text" color="neutral">
+                <IconButton onClick={modalToggle}>
                   <CloseIcon />
-                </Button>
+                </IconButton>
               }
             />
             <ModalBody disableOffset style={{ backgroundColor: 'red', padding: '3rem' }}>
@@ -63,7 +63,15 @@ const PreviewView = () => {
                   containerProps: { className: 'my-slot-classname' },
                 }}
               >
-                <ModalHeader title="Modal content ...Header" divider />
+                <ModalHeader
+                  title="Modal content ...Header"
+                  actions={
+                    <IconButton onClick={modalSecondaryToggle}>
+                      <CloseIcon />
+                    </IconButton>
+                  }
+                  divider
+                />
                 <ModalBody>
                   Body
                   <br />
@@ -88,7 +96,15 @@ const PreviewView = () => {
           </Modal>
 
           <Modal isOpen={modalTertiaryOpen} onClose={() => setModalTertiaryOpen(false)} isFullscreen>
-            <ModalHeader title="Modal title" subtitle="Modal subtitle" />
+            <ModalHeader
+              title="Modal title"
+              subtitle="Modal subtitle"
+              actions={
+                <IconButton onClick={modalTertiaryToggle}>
+                  <CloseIcon />
+                </IconButton>
+              }
+            />
             <ModalBody>Body</ModalBody>
             <ModalFooter>
               <Button onClick={modalTertiaryToggle} variant="outlined" color="neutral">
@@ -101,9 +117,9 @@ const PreviewView = () => {
             <ModalHeader
               title="Modal scrollable 1"
               actions={
-                <Button onClick={modalScrollableOneOpenToggle} variant="text" color="neutral">
+                <IconButton onClick={modalScrollableOneOpenToggle}>
                   <CloseIcon />
-                </Button>
+                </IconButton>
               }
               divider
             />

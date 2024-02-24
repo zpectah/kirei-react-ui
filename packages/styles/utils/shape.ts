@@ -8,6 +8,7 @@ export const getFocusPropertyValue = (background: string, outlineAlpha: number, 
   };
 };
 
+// TODO - only Button
 export const getShapeSizeVariant = (size: ShapeSize, spacing: ThemeSpacing, typography: ThemeTypography) => {
   switch (size) {
     case shapeSizeKeys.small:

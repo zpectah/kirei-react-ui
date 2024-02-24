@@ -1,3 +1,9 @@
+export enum shapeKeys {
+  square = 'square',
+  rounded = 'rounded',
+  circle = 'circle',
+}
+
 export enum shapeSizeKeys {
   small = 'small',
   medium = 'medium',

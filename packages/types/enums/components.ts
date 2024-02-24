@@ -6,5 +6,6 @@ export enum kireiComponentsRootListKeys {
   typography = 'typography',
   modal = 'modal',
   icons = 'icons',
+  'icon-button' = 'icon-button',
   paper = 'paper',
 }

@@ -66,6 +66,10 @@ export const routes = {
         root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys.paper}`,
         route: `/${kireiComponentsRootListKeys.paper}/*`,
       },
+      'icon-button': {
+        root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys['icon-button']}`,
+        route: `/${kireiComponentsRootListKeys['icon-button']}/*`,
+      },
     },
     detail: {
       preview: '',

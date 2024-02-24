@@ -98,6 +98,11 @@ export const COMPONENTS_SIDEBAR_NAVIGATION = [
     label: 'menuItem.components.paper',
     path: routes.components.routes.paper.root,
   },
+  {
+    key: 9,
+    label: 'menuItem.components.iconButton',
+    path: routes.components.routes['icon-button'].root,
+  },
 ];
 
 export const CUSTOMIZATION_SIDEBAR_NAVIGATION = [

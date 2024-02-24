@@ -25,5 +25,6 @@
   "menuItem.components.typography": "Typography",
   "menuItem.components.modal": "Modal",
   "menuItem.components.icons": "Icons",
-  "menuItem.components.paper": "Paper"
+  "menuItem.components.paper": "Paper",
+  "menuItem.components.iconButton": "IconButton"
 }

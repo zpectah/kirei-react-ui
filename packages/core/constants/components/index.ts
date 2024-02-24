@@ -2,6 +2,7 @@ export * from './backdrop';
 export * from './button';
 export * from './container';
 export * from './dom';
+export * from './iconButton';
 export * from './link';
 export * from './modal';
 export * from './modalBody';

@@ -2,6 +2,7 @@ import {
   BackdropStyles,
   ButtonStyles,
   ContainerStyles,
+  IconButtonStyles,
   LinkStyles,
   ModalBodyStyles,
   ModalFooterStyles,
@@ -16,6 +17,7 @@ export interface ThemeComponents {
   Backdrop: BackdropStyles;
   Button: ButtonStyles;
   Container: ContainerStyles;
+  IconButton: IconButtonStyles;
   Link: LinkStyles;
   Modal: ModalStyles;
   ModalBody: ModalBodyStyles;

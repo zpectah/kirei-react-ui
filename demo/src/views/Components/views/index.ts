@@ -6,3 +6,4 @@ export * from './Link';
 export * from './Modal';
 export * from './Paper';
 export * from './Icons';
+export * from './IconButton';

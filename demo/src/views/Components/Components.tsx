@@ -12,6 +12,7 @@ import {
   ModalView,
   IconsView,
   PaperView,
+  IconButtonView,
 } from './views';
 
 const Components = () => {
@@ -26,6 +27,7 @@ const Components = () => {
         <Route path={routes.components.routes.modal.route} element={<ModalView />} />
         <Route path={routes.components.routes.icons.route} element={<IconsView />} />
         <Route path={routes.components.routes.paper.route} element={<PaperView />} />
+        <Route path={routes.components.routes['icon-button'].route} element={<IconButtonView />} />
       </Route>
     </Routes>
   );

@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, ElementType, ReactNode } from 'react';
 import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
-import { ComponentStyles, ShapeSize, ShapeVariant, BrandColor, NeutralColor, EmotionColor } from '../styles';
+import { ComponentStyles, ShapeSize, ShapeVariant, ButtonColor } from '../styles';
 
 type LabelProps = ComponentPropsWithRef<'span'>;
 type IconStartProps = ComponentPropsWithRef<'span'>;
@@ -14,8 +14,6 @@ interface ButtonStylesScheme<T> {
   iconEnd: T;
   iconLoading: T;
 }
-
-export type ButtonColor = BrandColor | NeutralColor | EmotionColor;
 
 export interface ButtonStyles extends ButtonStylesScheme<ComponentStyles> {}
 

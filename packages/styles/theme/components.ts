@@ -48,5 +48,9 @@ export const createThemeComponents = (components?: DeepPartial<ThemeComponents>)
     Backdrop: {
       root: components?.Backdrop?.root,
     },
+    IconButton: {
+      root: components?.IconButton?.root,
+      icon: components?.IconButton?.icon,
+    },
   };
 };

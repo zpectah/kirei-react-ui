@@ -53,3 +53,5 @@ export const SECONDARY_TEXT_ALPHA = 0.85;
 export const SHAPE_DIVIDER_ALPHA = 0.25;
 export const SHAPE_BORDER_ALPHA = 0.15;
 export const LOADING_LABEL_ALPHA = 0.25;
+
+export const BACKGROUND_GLASS_ALPHA = 0.25;

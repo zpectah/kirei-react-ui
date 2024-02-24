@@ -1,6 +1,6 @@
 import { ElementType } from 'react';
 import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
-import { BrandColor, ComponentStyles, EmotionColor, NeutralColor, PaperBackgroundColor } from '../styles';
+import { BrandColor, ComponentStyles, EmotionColor, NeutralColor, PaperBackgroundColor, PaperVariant } from '../styles';
 
 export type PaperColor = BrandColor | NeutralColor | EmotionColor | PaperBackgroundColor;
 
@@ -16,10 +16,9 @@ export interface PaperElementaryProps extends Partial<WithStyle> {}
 
 export interface PaperShapeProps {
   color: PaperColor;
+  variant: PaperVariant;
   disableElevation: boolean;
   isSquare: boolean;
-  isGlass: boolean;
-  isActive: boolean;
 }
 
 export type PaperProps<T extends ElementType> = {

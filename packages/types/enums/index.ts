@@ -4,6 +4,7 @@ export * from './components';
 export * from './css';
 export * from './flex';
 export * from './link';
+export * from './paper';
 export * from './shape';
 export * from './theme';
 export * from './typography';

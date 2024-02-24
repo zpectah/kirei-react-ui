@@ -1,91 +1,144 @@
+import { BACKGROUND_GLASS_ALPHA } from 'core';
 import { Theme, PaperStylesProps } from 'types';
 
+const getPaperShape = (
+  background: string,
+  color: string,
+  colorAlt: string,
+  border: string,
+  getAlphaColor: (color: string, ratio: number) => string
+) => {
+  return {
+    contained: {
+      backgroundColor: background,
+      color: color,
+    },
+    outlined: {
+      color: background,
+      border: `1px solid ${border}`,
+    },
+    glass: {
+      color: colorAlt,
+      backgroundColor: getAlphaColor(background, BACKGROUND_GLASS_ALPHA),
+      border: `1px solid ${border}`,
+    },
+  };
+};
+
 export const useCreatePaperStyles = (theme: Theme, stylesProps: PaperStylesProps) => {
-  const { color, isActive, isGlass, isSquare, disableElevation } = stylesProps;
+  const { color, isSquare, disableElevation, variant } = stylesProps;
   const { palette, shape } = theme;
 
   const rootBase = {
     borderRadius: isSquare ? 0 : shape.borderRadius.medium,
-    boxShadow: disableElevation
-      ? 'none'
-      : `${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 0.25rem 1rem, 
-      ${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 0.5rem 1.5rem, 
-      ${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 1rem 4.25rem`,
+    // TODO
+    // boxShadow: disableElevation
+    //   ? 'none'
+    //   : `${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 0.25rem 1rem,
+    //   ${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 0.5rem 1.5rem,
+    //   ${palette.utils.getAlphaColor(palette.common.black, 0.1)} 0px 1rem 4.25rem`,
   };
-  const rootColor = {
+  const rootVariants = {
     paper: {
-      backgroundColor: palette.background.paper,
-      color: palette.text.primary,
+      contained: {
+        backgroundColor: palette.background.paper,
+        color: palette.text.primary,
+      },
+      outlined: {
+        color: palette.text.primary,
+        border: `1px solid ${palette.shape.border}`,
+      },
+      glass: {
+        backgroundColor: palette.utils.getAlphaColor(palette.background.paper, BACKGROUND_GLASS_ALPHA),
+        border: `1px solid ${palette.shape.border}`,
+      },
     },
-    primary: {
-      backgroundColor: palette.primary.main,
-      color: palette.primary.contrast,
-    },
-    secondary: {
-      backgroundColor: palette.secondary.main,
-      color: palette.secondary.contrast,
-    },
-    tertiary: {
-      backgroundColor: palette.tertiary.main,
-      color: palette.tertiary.contrast,
-    },
-    neutral: {
-      backgroundColor: palette.neutral.main,
-      color: palette.neutral.contrast,
-    },
-    inverted: {
-      backgroundColor: palette.inverted.main,
-      color: palette.inverted.contrast,
-    },
-    dark: {
-      backgroundColor: palette.dark.main,
-      color: palette.dark.contrast,
-    },
-    light: {
-      backgroundColor: palette.light.main,
-      color: palette.light.contrast,
-    },
-    success: {
-      backgroundColor: palette.success.main,
-      color: palette.success.contrast,
-    },
-    info: {
-      backgroundColor: palette.info.main,
-      color: palette.info.contrast,
-    },
-    warning: {
-      backgroundColor: palette.warning.main,
-      color: palette.warning.contrast,
-    },
-    error: {
-      backgroundColor: palette.error.main,
-      color: palette.error.contrast,
-    },
-  };
 
-  // TODO #clean-code
-  const rootGlass = isGlass
-    ? {
-        backgroundColor: palette.utils.getAlphaColor(rootColor[color].backgroundColor, 0.45),
-        color: rootColor[color].color,
-      }
-    : {
-        ...rootColor[color],
-      };
-  const outlineColor = color === 'paper' ? palette.primary.main : rootColor[color].backgroundColor;
-  const rootActive = isActive
-    ? {
-        ...rootGlass,
-        outline: `${shape.borderWidth.outline} solid ${palette.utils.getAlphaColor(outlineColor, palette.ratio.activeAlpha * 5)}`,
-      }
-    : {
-        ...rootGlass,
-      };
+    primary: getPaperShape(
+      palette.primary.main,
+      palette.primary.contrast,
+      palette.primary.dark,
+      palette.primary.main,
+      palette.utils.getAlphaColor
+    ),
+    secondary: getPaperShape(
+      palette.secondary.main,
+      palette.secondary.contrast,
+      palette.secondary.dark,
+      palette.secondary.main,
+      palette.utils.getAlphaColor
+    ),
+    tertiary: getPaperShape(
+      palette.tertiary.main,
+      palette.tertiary.contrast,
+      palette.tertiary.dark,
+      palette.tertiary.main,
+      palette.utils.getAlphaColor
+    ),
+
+    success: getPaperShape(
+      palette.success.main,
+      palette.success.contrast,
+      palette.success.dark,
+      palette.success.main,
+      palette.utils.getAlphaColor
+    ),
+    info: getPaperShape(
+      palette.info.main,
+      palette.info.contrast,
+      palette.info.dark,
+      palette.info.main,
+      palette.utils.getAlphaColor
+    ),
+    warning: getPaperShape(
+      palette.warning.main,
+      palette.warning.contrast,
+      palette.warning.dark,
+      palette.warning.main,
+      palette.utils.getAlphaColor
+    ),
+    error: getPaperShape(
+      palette.error.main,
+      palette.error.contrast,
+      palette.error.dark,
+      palette.error.main,
+      palette.utils.getAlphaColor
+    ),
+
+    inverted: getPaperShape(
+      palette.inverted.main,
+      palette.inverted.contrast,
+      palette.inverted.dark,
+      palette.inverted.main,
+      palette.utils.getAlphaColor
+    ),
+    neutral: getPaperShape(
+      palette.neutral.main,
+      palette.neutral.contrast,
+      palette.neutral.dark,
+      palette.neutral.main,
+      palette.utils.getAlphaColor
+    ),
+    light: getPaperShape(
+      palette.light.main,
+      palette.light.contrast,
+      palette.light.dark,
+      palette.light.main,
+      palette.utils.getAlphaColor
+    ),
+    dark: getPaperShape(
+      palette.dark.main,
+      palette.dark.contrast,
+      palette.dark.dark,
+      palette.dark.main,
+      palette.utils.getAlphaColor
+    ),
+  };
 
   const styles = {
     root: Object.assign({
       ...rootBase,
-      ...rootActive,
+      ...rootVariants[color][variant],
     }),
   };
 

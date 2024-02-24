@@ -3,6 +3,7 @@ export * from './color';
 export * from './flex';
 export * from './interpolation';
 export * from './link';
+export * from './paper';
 export * from './shape';
 export * from './spacing';
 export * from './typography';

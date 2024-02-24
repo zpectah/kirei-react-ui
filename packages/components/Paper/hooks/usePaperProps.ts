@@ -4,7 +4,13 @@ import { PAPER_ROOT, PAPER_DEFAULT_VALUES, STATUS_CLASS_NAMES } from 'core';
 import { capitalizeFirstLetter } from 'utils';
 
 export const usePaperProps = (props: UsePaperProps): UsePaperPropsReturn => {
-  const { style, className, isSquare, color = PAPER_DEFAULT_VALUES.color } = props;
+  const {
+    color = PAPER_DEFAULT_VALUES.color,
+    variant = PAPER_DEFAULT_VALUES.variant,
+    className,
+    isSquare,
+    style,
+  } = props;
 
   return {
     root: {

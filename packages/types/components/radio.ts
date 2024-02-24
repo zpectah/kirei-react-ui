@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from 'react';
+import { ComponentPropsWithRef, InputHTMLAttributes } from 'react';
 import { WithStyle } from '../common';
 import { ComponentStyles } from '../styles';
 
@@ -8,7 +8,9 @@ interface RadioStylesScheme<T> {
 
 export interface RadioStyles extends RadioStylesScheme<ComponentStyles> {}
 
-export type RadioInitialProps = NonNullable<unknown> & ComponentPropsWithRef<'input'>;
+export type RadioInitialProps = NonNullable<unknown> &
+  ComponentPropsWithRef<'input'> &
+  InputHTMLAttributes<HTMLInputElement>;
 
 export interface RadioElementaryProps extends Partial<WithStyle> {}
 
@@ -16,7 +18,7 @@ export interface RadioShapeProps {}
 
 export type RadioProps = {
   styles?: Partial<RadioStyles>;
-} & RadioInitialProps &
+} & Omit<RadioInitialProps, 'type'> &
   RadioElementaryProps &
   Partial<RadioShapeProps>;
 

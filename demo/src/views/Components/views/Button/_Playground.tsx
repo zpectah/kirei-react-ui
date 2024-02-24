@@ -1,6 +1,6 @@
 import React, { ElementType, useState } from 'react';
 import { ButtonProps } from 'types';
-import { Button } from 'components';
+import { Button, Checkbox } from 'components';
 import { routes } from '../../../../config';
 import { Article, ArticleFooter, Section } from '../../../../components';
 import { PlaygroundPreview, PlaygroundControls } from '../../components/index';
@@ -111,9 +111,7 @@ const PlaygroundView = () => {
                 key: 5,
                 label: 'Full width',
                 value: (
-                  <input
-                    type="checkbox"
-                    // value={buttonProps.size}
+                  <Checkbox
                     checked={buttonProps.isFullWidth}
                     onChange={(event) => {
                       setButtonProps({
@@ -122,7 +120,6 @@ const PlaygroundView = () => {
                         isFullWidth: event.target.checked,
                       });
                     }}
-                    style={{ width: '1rem', height: '1rem', backgroundColor: buttonProps.isFullWidth ? 'red' : 'grey' }}
                   />
                 ),
               },
@@ -130,9 +127,7 @@ const PlaygroundView = () => {
                 key: 6,
                 label: 'Disabled',
                 value: (
-                  <input
-                    type="checkbox"
-                    // value={buttonProps.size}
+                  <Checkbox
                     checked={buttonProps.isDisabled}
                     onChange={(event) => {
                       setButtonProps({
@@ -141,7 +136,6 @@ const PlaygroundView = () => {
                         isDisabled: event.target.checked,
                       });
                     }}
-                    style={{ width: '1rem', height: '1rem', backgroundColor: buttonProps.isDisabled ? 'red' : 'grey' }}
                   />
                 ),
               },
@@ -149,9 +143,7 @@ const PlaygroundView = () => {
                 key: 7,
                 label: 'Loading',
                 value: (
-                  <input
-                    type="checkbox"
-                    // value={buttonProps.size}
+                  <Checkbox
                     checked={buttonProps.isLoading}
                     onChange={(event) => {
                       setButtonProps({
@@ -160,7 +152,6 @@ const PlaygroundView = () => {
                         isLoading: event.target.checked,
                       });
                     }}
-                    style={{ width: '1rem', height: '1rem', backgroundColor: buttonProps.isLoading ? 'red' : 'grey' }}
                   />
                 ),
               },
@@ -168,9 +159,7 @@ const PlaygroundView = () => {
                 key: 8,
                 label: 'Active',
                 value: (
-                  <input
-                    type="checkbox"
-                    // value={buttonProps.size}
+                  <Checkbox
                     checked={buttonProps.isActive}
                     onChange={(event) => {
                       setButtonProps({
@@ -179,7 +168,6 @@ const PlaygroundView = () => {
                         isActive: event.target.checked,
                       });
                     }}
-                    style={{ width: '1rem', height: '1rem', backgroundColor: buttonProps.isActive ? 'red' : 'grey' }}
                   />
                 ),
               },

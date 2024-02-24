@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from 'react';
+import { ComponentPropsWithRef, InputHTMLAttributes } from 'react';
 import { WithStyle } from '../common';
 import { ComponentStyles } from '../styles';
 
@@ -8,7 +8,9 @@ interface CheckboxStylesScheme<T> {
 
 export interface CheckboxStyles extends CheckboxStylesScheme<ComponentStyles> {}
 
-export type CheckboxInitialProps = NonNullable<unknown> & ComponentPropsWithRef<'input'>;
+export type CheckboxInitialProps = NonNullable<unknown> &
+  ComponentPropsWithRef<'input'> &
+  InputHTMLAttributes<HTMLInputElement>;
 
 export interface CheckboxElementaryProps extends Partial<WithStyle> {}
 
@@ -16,7 +18,7 @@ export interface CheckboxShapeProps {}
 
 export type CheckboxProps = {
   styles?: Partial<CheckboxStyles>;
-} & CheckboxInitialProps &
+} & Omit<CheckboxInitialProps, 'type'> &
   CheckboxElementaryProps &
   Partial<CheckboxShapeProps>;
 

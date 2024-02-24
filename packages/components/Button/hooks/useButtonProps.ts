@@ -43,7 +43,7 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
     root: {
       className: clsx(
         BUTTON_ROOT,
-        SHAPE_VARIANT_CLASS_NAME[variant],
+        `variant${capitalizeFirstLetter(variant)}`,
         SHAPE_SIZE_CLASS_NAMES[size],
         colorVariantClassName[variant],
         isLoading && STATUS_CLASS_NAMES.isLoading,

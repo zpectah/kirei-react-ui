@@ -15,9 +15,14 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     left: 0,
     background: 'none',
     zIndex: zIndex.modal - 1,
+    opacity: 0,
 
     '&::backdrop': {
       background: 'none',
+    },
+
+    [`&.isOpen`]: {
+      opacity: 1,
     },
   };
 
@@ -45,6 +50,13 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
 
   const backdropBase = {
     zIndex: -1,
+
+    [`.${STATUS_CLASS_NAMES.isOpening} &`]: {
+      animation: `${animations.fadeIn} ${transitions.duration.screen}ms ${transitions.easing.easeIn} 1`,
+    },
+    [`.${STATUS_CLASS_NAMES.isClosing} &`]: {
+      animation: `${animations.fadeOut} ${transitions.duration.screen + 5}ms ${transitions.easing.easeOut} 1`,
+    },
   };
 
   const dialogBase = {
@@ -56,11 +68,11 @@ export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps
     justifyContent: 'center',
     minHeight: 'min-content',
 
-    [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isOpening} &`]: {
-      animation: `${animations.zoomIn} ${transitions.duration.screen - 5}ms ${transitions.easing.easeIn} 1`,
+    [`.${STATUS_CLASS_NAMES.isOpening} &`]: {
+      animation: `${animations.zoomIn} ${transitions.duration.screen}ms ${transitions.easing.easeIn} 1`,
     },
-    [`.${STATUS_CLASS_NAMES.isOpen}.${STATUS_CLASS_NAMES.isClosing} &`]: {
-      animation: `${animations.zoomOut} ${transitions.duration.screen + 10}ms ${transitions.easing.easeOut} 1`,
+    [`.${STATUS_CLASS_NAMES.isClosing} &`]: {
+      animation: `${animations.zoomOut} ${transitions.duration.screen + 5}ms ${transitions.easing.easeOut} 1`,
     },
   };
   const dialogWidth = isFullscreen

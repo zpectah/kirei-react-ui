@@ -60,8 +60,5 @@
   "workspaces": [
     "packages/*",
     "demo"
-  ],
-  "jest":{
-    "testEnvironment": "jsdom"
-  }
+  ]
 }

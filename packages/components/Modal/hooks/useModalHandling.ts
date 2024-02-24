@@ -22,8 +22,12 @@ export const useModalHandling = ({
   const openHandler = () => {
     setOpen(true);
     setOpening(true);
-    overflowHiddenControl();
-    setTimeout(() => setOpening(false), theme.transitions.duration.screen);
+    setTimeout(() => {
+      setOpening(false);
+      setTimeout(() => {
+        overflowHiddenControl();
+      }, 0);
+    }, theme.transitions.duration.screen);
   };
 
   const closeHandler = () => {
@@ -34,7 +38,7 @@ export const useModalHandling = ({
       setTimeout(() => {
         onClose();
         overflowHiddenControl();
-      }, 10);
+      }, 0);
     }, theme.transitions.duration.screen);
   };
 

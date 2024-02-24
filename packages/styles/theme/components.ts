@@ -52,5 +52,17 @@ export const createThemeComponents = (components?: DeepPartial<ThemeComponents>)
       root: components?.IconButton?.root,
       icon: components?.IconButton?.icon,
     },
+    Checkbox: {
+      root: components?.Checkbox?.root,
+    },
+    Radio: {
+      root: components?.Radio?.root,
+    },
+    ControlLabel: {
+      root: components?.ControlLabel?.root,
+    },
+    Label: {
+      root: components?.Label?.root,
+    },
   };
 };

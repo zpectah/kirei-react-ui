@@ -1,14 +1,18 @@
 import {
   BackdropStyles,
   ButtonStyles,
+  CheckboxStyles,
   ContainerStyles,
+  ControlLabelStyles,
   IconButtonStyles,
+  LabelStyles,
   LinkStyles,
   ModalBodyStyles,
   ModalFooterStyles,
   ModalHeaderStyles,
   ModalStyles,
   PaperStyles,
+  RadioStyles,
   StackStyles,
   TypographyStyles,
 } from '../components';
@@ -16,14 +20,18 @@ import {
 export interface ThemeComponents {
   Backdrop: BackdropStyles;
   Button: ButtonStyles;
+  Checkbox: CheckboxStyles;
   Container: ContainerStyles;
+  ControlLabel: ControlLabelStyles;
   IconButton: IconButtonStyles;
+  Label: LabelStyles;
   Link: LinkStyles;
   Modal: ModalStyles;
   ModalBody: ModalBodyStyles;
   ModalFooter: ModalFooterStyles;
   ModalHeader: ModalHeaderStyles;
   Paper: PaperStyles;
+  Radio: RadioStyles;
   Stack: StackStyles;
   Typography: TypographyStyles;
 }

@@ -1,10 +1,10 @@
-import { Theme, TypographyColor, baseColorKeys, neutralColorKeys, emotionColorKeys, textColorKeys } from 'types';
+import { Theme, TypographyColor, brandColorKeys, neutralColorKeys, emotionColorKeys, textColorKeys } from 'types';
 
 export const getTypographyColor = (theme: Theme, color: TypographyColor) => {
   const rootColorMap = {
-    [baseColorKeys.primary]: theme.palette.primary.main,
-    [baseColorKeys.secondary]: theme.palette.secondary.main,
-    [baseColorKeys.tertiary]: theme.palette.tertiary.main,
+    [brandColorKeys.primary]: theme.palette.primary.main,
+    [brandColorKeys.secondary]: theme.palette.secondary.main,
+    [brandColorKeys.tertiary]: theme.palette.tertiary.main,
     [emotionColorKeys.error]: theme.palette.error.main,
     [emotionColorKeys.warning]: theme.palette.warning.main,
     [emotionColorKeys.info]: theme.palette.info.main,

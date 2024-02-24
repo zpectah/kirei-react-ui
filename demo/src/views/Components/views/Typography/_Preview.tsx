@@ -4,6 +4,7 @@ import { useKireiContext } from 'styles';
 import { routes } from '../../../../config';
 import { Article, ArticleFooter, Section } from '../../../../components';
 import { PreviewCode, PreviewCombo } from '../../components/index';
+import examples from './examples';
 
 const PreviewView = () => {
   const {
@@ -13,24 +14,15 @@ const PreviewView = () => {
   return (
     <>
       <Section>
-        <PreviewCode code={`import { Typography } from 'components';`} />
+        <PreviewCode code={examples.import} />
       </Section>
       <Article
         title="Basics"
         subtitle={`The component does not define the font in the first place, it needs to be imported in the application document and defined in the theme. We are using open source fonts from Google Fonts.`}
       >
         <Stack direction="column" gap={2} style={{ marginBottom: '1rem' }}>
-          <PreviewCode
-            language="html"
-            code={`<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />`}
-          />
-          <PreviewCode
-            code={`const theme = {
-  typography: {
-    fontFamily: '${typography.fontFamily}',
-  },
-};`}
-          />
+          <PreviewCode language="html" code={examples.html} />
+          <PreviewCode code={examples.theme(typography.fontFamily)} />
         </Stack>
       </Article>
       <Article
@@ -38,17 +30,7 @@ const PreviewView = () => {
         subtitle={`Variants of the Typography component are based on the typography definition in the theme object. It links these elements across the application.`}
       >
         <Section title="Headings">
-          <PreviewCombo
-            code='<Typography variant="h1">...</Typography>
-<Typography variant="h2">...</Typography>
-<Typography variant="h3">...</Typography>
-<Typography variant="h4">...</Typography>
-<Typography variant="h5">...</Typography>
-<Typography variant="h6">...</Typography>
-<Typography variant="subtitle1">...</Typography>
-<Typography variant="subtitle2">...</Typography>'
-            stackProps={{ direction: 'column', alignItems: 'flex-start' }}
-          >
+          <PreviewCombo code={examples.variant.headings} stackProps={{ direction: 'column', alignItems: 'flex-start' }}>
             <Typography variant="h1">
               h1
               <br />
@@ -95,13 +77,7 @@ const PreviewView = () => {
           </PreviewCombo>
         </Section>
         <Section title="Common">
-          <PreviewCombo
-            code='<Typography variant="body1">...</Typography>
-<Typography variant="body2">...</Typography>
-<Typography variant="caption">...</Typography>
-<Typography variant="overline">...</Typography>'
-            stackProps={{ direction: 'column', alignItems: 'flex-start' }}
-          >
+          <PreviewCombo code={examples.variant.common} stackProps={{ direction: 'column', alignItems: 'flex-start' }}>
             <Typography variant="body1">
               body1
               <br />
@@ -133,12 +109,7 @@ const PreviewView = () => {
           title="Shapes"
           subtitle={`These properties are primarily used for shapes that can be rendered in several basic sizes.`}
         >
-          <PreviewCombo
-            code='<Typography variant="shapeSmall">...</Typography>
-<Typography variant="shapeMedium">...</Typography>
-<Typography variant="shapeLarge">...</Typography>'
-            stackProps={{ direction: 'column', alignItems: 'flex-start' }}
-          >
+          <PreviewCombo code={examples.variant.shapes} stackProps={{ direction: 'column', alignItems: 'flex-start' }}>
             <Typography variant="shapeSmall">
               shapeSmall
               <br />
@@ -161,13 +132,8 @@ const PreviewView = () => {
         title="Colors"
         subtitle={`The Typography color is based on the colors defined in the theme and covers all usage in your application.`}
       >
-        <Section title="Base colors">
-          <PreviewCombo
-            code={`<Typography color="primary">...</Typography>
-<Typography color="secondary">...</Typography>
-<Typography color="tertiary">...</Typography>`}
-            stackProps={{ direction: 'column', alignItems: 'flex-start' }}
-          >
+        <Section title="Brand colors">
+          <PreviewCombo code={examples.colors.brand} stackProps={{ direction: 'column', alignItems: 'flex-start' }}>
             <Typography color="primary">
               primary: Suscipit ante, sapien sed vitae fermentum non congue iaculis quis nisi commodo
             </Typography>
@@ -180,14 +146,7 @@ const PreviewView = () => {
           </PreviewCombo>
         </Section>
         <Section title="Emotion colors">
-          <PreviewCombo
-            code={`<Typography color="success">...</Typography>
-<Typography color="info">...</Typography>
-<Typography color="warning">...</Typography>
-<Typography color="error">...</Typography>
-`}
-            stackProps={{ direction: 'column', alignItems: 'flex-start' }}
-          >
+          <PreviewCombo code={examples.colors.emotion} stackProps={{ direction: 'column', alignItems: 'flex-start' }}>
             <Typography color="success">
               success: Aliquet dolor quis, metus nunc ut enim et quis arcu cursus ligula donec
             </Typography>
@@ -204,11 +163,7 @@ const PreviewView = () => {
         </Section>
         <Section title="Typography colors">
           <PreviewCombo
-            code={`<Typography color="text-primary">...</Typography>
-<Typography color="text-secondary">...</Typography>
-<Typography color="muted">...</Typography>
-<Typography color="disabled">...</Typography>
-`}
+            code={examples.colors.typography}
             stackProps={{ direction: 'column', alignItems: 'flex-start' }}
           >
             <Typography color="text-primary">
@@ -226,14 +181,7 @@ const PreviewView = () => {
           </PreviewCombo>
         </Section>
         <Section title="Neutral colors">
-          <PreviewCombo
-            code={`<Typography color="dark">...</Typography>
-<Typography color="neutral">...</Typography>
-<Typography color="light">...</Typography>
-<Typography color="inverted">...</Typography>
-`}
-            stackProps={{ direction: 'column', alignItems: 'flex-start' }}
-          >
+          <PreviewCombo code={examples.colors.neutral} stackProps={{ direction: 'column', alignItems: 'flex-start' }}>
             <Typography color="dark">
               dark: Donec facilisis, arcu suspendisse molestie congue tristique lacinia
             </Typography>
@@ -252,7 +200,7 @@ const PreviewView = () => {
       <Article title="Formating" subtitle={`Typography can be formatted in different ways.`}>
         <Section title="Truncate" subtitle={`The text can be shortened if necessary.`}>
           <PreviewCombo
-            code="<Typography isTruncated>...</Typography>"
+            code={examples.formatting.isTruncated}
             stackProps={{ direction: 'column', alignItems: 'flex-start' }}
           >
             <Typography isTruncated style={{ maxWidth: '100%' }}>

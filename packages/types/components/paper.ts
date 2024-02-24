@@ -1,8 +1,8 @@
 import { ElementType } from 'react';
 import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
-import { BaseColor, ComponentStyles, EmotionColor, NeutralColor, PaperBackgroundColor } from '../styles';
+import { BrandColor, ComponentStyles, EmotionColor, NeutralColor, PaperBackgroundColor } from '../styles';
 
-export type PaperColor = BaseColor | NeutralColor | EmotionColor | PaperBackgroundColor;
+export type PaperColor = BrandColor | NeutralColor | EmotionColor | PaperBackgroundColor;
 
 interface PaperStylesScheme<T> {
   root: T;

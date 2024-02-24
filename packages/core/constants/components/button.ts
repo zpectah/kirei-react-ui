@@ -1,4 +1,4 @@
-import { shapeSizeKeys, shapeVariantKeys, baseColorKeys } from 'types';
+import { shapeSizeKeys, shapeVariantKeys, brandColorKeys } from 'types';
 
 export const BUTTON_ROOT = 'Button';
 export const BUTTON_LABEL = `${BUTTON_ROOT}-label`;
@@ -10,5 +10,5 @@ export const BUTTON_DEFAULT_VALUES = {
   as: 'button',
   size: shapeSizeKeys.medium,
   variant: shapeVariantKeys.contained,
-  color: baseColorKeys.primary,
+  color: brandColorKeys.primary,
 };

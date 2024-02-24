@@ -66,7 +66,7 @@ const PreviewView = () => {
         </Section>
       </Article>
       <Article title="Button color" subtitle={`For the Button, you can set basic colors defined in the theme.`}>
-        <Section title="Base colors">
+        <Section title="Brand colors">
           <PreviewCombo
             code='<Button color="primary">...</Button>
 <Button color="secondary">...</Button>

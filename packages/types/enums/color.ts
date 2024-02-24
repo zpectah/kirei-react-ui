@@ -1,4 +1,4 @@
-export enum baseColorKeys {
+export enum brandColorKeys {
   primary = 'primary',
   secondary = 'secondary',
   tertiary = 'tertiary',

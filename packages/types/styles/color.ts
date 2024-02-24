@@ -1,5 +1,5 @@
 import {
-  baseColorKeys,
+  brandColorKeys,
   neutralColorKeys,
   emotionColorKeys,
   textColorKeys,
@@ -7,11 +7,11 @@ import {
   backdropBackgroundColorKeys,
 } from '../enums';
 
-export type BaseColor = keyof typeof baseColorKeys;
+export type BrandColor = keyof typeof brandColorKeys;
 export type NeutralColor = keyof typeof neutralColorKeys;
 export type EmotionColor = keyof typeof emotionColorKeys;
 export type TextColor = keyof typeof textColorKeys;
 export type PaperBackgroundColor = keyof typeof paperBackgroundColorKeys;
 export type BackdropBackgroundColor = keyof typeof backdropBackgroundColorKeys;
 
-export type TypographyColor = BaseColor | NeutralColor | EmotionColor | TextColor;
+export type TypographyColor = BrandColor | NeutralColor | EmotionColor | TextColor;

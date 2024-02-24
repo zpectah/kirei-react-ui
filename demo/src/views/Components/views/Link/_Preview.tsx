@@ -55,7 +55,7 @@ const PreviewView = () => {
         title="Link colors"
         subtitle={`The color of the Link component is based on the primary color in the theme, but it can also be extended to include additional colors defined in the theme.`}
       >
-        <Section title="Base colors">
+        <Section title="Brand colors">
           <PreviewCombo
             code='<Link color="primary">...</Link>
 <Link color="secondary">...</Link>

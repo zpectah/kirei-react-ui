@@ -6,4 +6,5 @@ export const PAPER_DEFAULT_VALUES = {
   as: 'div',
   color: paperBackgroundColorKeys.paper,
   variant: paperVariantKeys.contained,
+  elevation: 0,
 };

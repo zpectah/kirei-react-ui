@@ -3,7 +3,7 @@ import { STATUS_CLASS_NAMES } from 'core';
 import { animations, getContainerMaxWidth } from 'styles';
 
 export const useCreateModalStyles = (theme: Theme, stylesProps: ModalStylesProps) => {
-  const { breakpoints, transitions, palette, shape, spacing, zIndex } = theme;
+  const { breakpoints, transitions, spacing, zIndex } = theme;
   const { maxWidth, isFullscreen, scroll } = stylesProps;
 
   const rootBase = {

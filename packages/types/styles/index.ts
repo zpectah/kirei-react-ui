@@ -1,5 +1,6 @@
 export * from './breakpoint';
 export * from './color';
+export * from './elevation';
 export * from './flex';
 export * from './interpolation';
 export * from './link';

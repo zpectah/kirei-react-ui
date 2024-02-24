@@ -7,6 +7,7 @@ export const usePaperProps = (props: UsePaperProps): UsePaperPropsReturn => {
   const {
     color = PAPER_DEFAULT_VALUES.color,
     variant = PAPER_DEFAULT_VALUES.variant,
+    elevation = PAPER_DEFAULT_VALUES.elevation,
     className,
     isSquare,
     style,
@@ -16,8 +17,9 @@ export const usePaperProps = (props: UsePaperProps): UsePaperPropsReturn => {
     root: {
       className: clsx(
         PAPER_ROOT,
+        `${variant}${capitalizeFirstLetter(color)}`,
+        `elevation${elevation}`,
         isSquare && STATUS_CLASS_NAMES.isSquare,
-        `color${capitalizeFirstLetter(color)}`,
         className
       ),
       style: { ...style },

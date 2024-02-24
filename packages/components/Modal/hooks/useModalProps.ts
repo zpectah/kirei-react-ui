@@ -41,6 +41,7 @@ export const useModalProps = (props: UseModalProps): UseModalPropsReturn => {
     paper: {
       className: clsx(MODAL_PAPER, paperClassName),
       style: { ...paperStyle },
+      elevation: 5,
       ...restOfPaperProps,
     },
   };

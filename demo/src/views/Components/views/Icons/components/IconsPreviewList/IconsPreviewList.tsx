@@ -90,7 +90,7 @@ const IconsPreviewList = (props: IconsPreviewListProps) => {
                   gap: '1rem',
                   cursor: 'pointer',
                 }}
-                disableElevation
+                elevation={1}
               >
                 <div style={{ fontSize: '2rem' }}>
                   <icon.node />

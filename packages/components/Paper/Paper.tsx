@@ -8,15 +8,15 @@ const Paper = <T extends ElementType>(props: PaperProps<T>) => {
     as: Component = PAPER_DEFAULT_VALUES.as,
     color = PAPER_DEFAULT_VALUES.color,
     variant = PAPER_DEFAULT_VALUES.variant,
+    elevation = PAPER_DEFAULT_VALUES.elevation,
     children,
     className,
-    disableElevation,
     isSquare,
     style,
     styles,
     ...rest
   } = props;
-  const styleProps = { color, isSquare, disableElevation, variant };
+  const styleProps = { color, elevation, isSquare, variant };
 
   const {
     composedStyles: { root },

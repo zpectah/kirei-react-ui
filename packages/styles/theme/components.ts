@@ -61,8 +61,8 @@ export const createThemeComponents = (components?: DeepPartial<ThemeComponents>)
     ControlLabel: {
       root: components?.ControlLabel?.root,
     },
-    Label: {
-      root: components?.Label?.root,
+    FieldLabel: {
+      root: components?.FieldLabel?.root,
     },
   };
 };

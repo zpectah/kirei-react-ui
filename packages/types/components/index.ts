@@ -9,7 +9,7 @@ export * from './container';
 export * from './controlLabel';
 export * from './iconButton';
 export * from './icons';
-export * from './label';
+export * from './fieldLabel';
 export * from './link';
 export * from './modal';
 export * from './modalBody';

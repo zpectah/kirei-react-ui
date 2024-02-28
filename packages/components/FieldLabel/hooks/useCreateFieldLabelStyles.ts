@@ -1,6 +1,6 @@
-import { Theme, LabelStylesProps } from 'types';
+import { Theme, FieldLabelStylesProps } from 'types';
 
-export const useCreateLabelStyles = (theme: Theme, stylesProps: LabelStylesProps) => {
+export const useCreateFieldLabelStyles = (theme: Theme, stylesProps: FieldLabelStylesProps) => {
   const {} = stylesProps;
   const {} = theme;
 

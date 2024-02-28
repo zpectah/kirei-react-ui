@@ -4,7 +4,7 @@ export * from './Checkbox';
 export * from './Container';
 export * from './ControlLabel';
 export * from './IconButton';
-export * from './Label';
+export * from './FieldLabel';
 export * from './Link';
 export * from './Modal';
 export * from './ModalBody';

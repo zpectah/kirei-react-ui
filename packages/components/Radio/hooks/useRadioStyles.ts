@@ -8,11 +8,12 @@ export const useRadioStyles = (
 ): UseRadioStylesReturn => {
   const { theme } = useKireiContext();
   const {
-    styles: { root },
+    styles: { root, label },
   } = useCreateRadioStyles(theme, RadioStyles);
 
   const composedStyles = {
     root: [root, theme.components.Radio.root, styles?.root],
+    label: [label, theme.components.Radio.label, styles?.label],
   };
 
   return {

@@ -1,12 +1,31 @@
 import React, { forwardRef, useState, useRef, useImperativeHandle, ChangeEvent } from 'react';
 import { CheckboxProps } from 'types';
-// import {CHECKBOX_DEFAULT_VALUES} from "core";
+import { CHECKBOX_DEFAULT_VALUES } from 'core';
 import { CheckboxIcon, CheckboxEmptyIcon, CheckboxIndeterminateIcon } from 'icons';
 import { useCheckboxProps, useCheckboxStyles } from './hooks';
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxProps, ref) => {
-  const { className, style, styles, onChange, checked, ...rest } = props;
-  const styleProps = {};
+  const {
+    size = CHECKBOX_DEFAULT_VALUES.size,
+    className,
+    style,
+    styles,
+    onChange,
+    checked,
+    isDisabled,
+    slots,
+    slotProps,
+    labelRef,
+    ...rest
+  } = props;
+
+  const styleProps = { size, isDisabled };
+  const defaultSlotProps = { labelProps: { ...slotProps?.labelProps } };
+  const defaultSlots = {
+    checkedIcon: slots?.checkedIcon || <CheckboxIcon />,
+    uncheckedIcon: slots?.uncheckedIcon || <CheckboxEmptyIcon />,
+    indeterminateIcon: slots?.indeterminateIcon || <CheckboxIndeterminateIcon />,
+  };
 
   const [isChecked, setIsChecked] = useState<boolean | undefined>(checked);
 
@@ -17,16 +36,21 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxPro
     if (onChange) onChange(event);
   };
 
-  // Expose all HTMLInputElement properties and methods
+  // If we want to also use this reference
   useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
   const {
-    composedStyles: { root },
+    composedStyles: { root, label },
   } = useCheckboxStyles({ styles }, { ...styleProps });
-  const { root: rootProps } = useCheckboxProps({ style, className, ...styleProps });
+  const { root: rootProps, label: labelProps } = useCheckboxProps({
+    style,
+    className,
+    slotProps: defaultSlotProps,
+    ...styleProps,
+  });
 
   return (
-    <label>
+    <label ref={labelRef} css={label} {...labelProps}>
       <input
         type="checkbox"
         ref={inputRef}
@@ -36,8 +60,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxPro
         {...rootProps}
         {...rest}
       />
-      {isChecked ? <CheckboxIcon /> : <CheckboxEmptyIcon />}
-      {!isChecked && isChecked && <CheckboxIndeterminateIcon />}
+      {isChecked ? defaultSlots.checkedIcon : defaultSlots.uncheckedIcon}
+      {!isChecked && isChecked && defaultSlots.indeterminateIcon}
     </label>
   );
 });

@@ -1,26 +1,48 @@
-import { ComponentPropsWithRef, InputHTMLAttributes } from 'react';
+import { ComponentPropsWithRef, ReactNode, RefObject } from 'react';
 import { WithStyle } from '../common';
-import { ComponentStyles } from '../styles';
+import { ComponentStyles, ShapeSize } from '../styles';
+
+type CheckboxLabelProps = ComponentPropsWithRef<'label'>;
 
 interface CheckboxStylesScheme<T> {
   root: T;
+  label: T;
 }
 
 export interface CheckboxStyles extends CheckboxStylesScheme<ComponentStyles> {}
 
-export type CheckboxInitialProps = NonNullable<unknown> &
-  ComponentPropsWithRef<'input'> &
-  InputHTMLAttributes<HTMLInputElement>;
+export type CheckboxInitialProps = NonNullable<unknown> & Omit<ComponentPropsWithRef<'input'>, 'size'>;
 
-export interface CheckboxElementaryProps extends Partial<WithStyle> {}
+export interface CheckboxElementaryProps extends Partial<WithStyle> {
+  labelRef?: RefObject<HTMLLabelElement>;
+}
 
-export interface CheckboxShapeProps {}
+export interface CheckboxShapeProps {
+  size: ShapeSize;
+}
+
+export interface CheckboxStateProps {
+  isDisabled: boolean;
+}
+
+export interface CheckboxSlots {
+  checkedIcon?: ReactNode;
+  uncheckedIcon?: ReactNode;
+  indeterminateIcon?: ReactNode;
+}
+
+export interface CheckboxSlotProps {
+  labelProps: CheckboxLabelProps;
+}
 
 export type CheckboxProps = {
   styles?: Partial<CheckboxStyles>;
+  slots?: CheckboxSlots;
+  slotProps?: Partial<CheckboxSlotProps>;
 } & Omit<CheckboxInitialProps, 'type'> &
   CheckboxElementaryProps &
-  Partial<CheckboxShapeProps>;
+  Partial<CheckboxShapeProps> &
+  Partial<CheckboxStateProps>;
 
 export interface UseCheckboxStyles {
   styles?: Partial<CheckboxStyles>;
@@ -30,7 +52,9 @@ export interface UseCheckboxStylesReturn {
   composedStyles: CheckboxStyles;
 }
 
-export interface UseCheckboxProps extends Partial<CheckboxShapeProps>, Partial<WithStyle> {}
+export interface UseCheckboxProps extends Partial<CheckboxShapeProps>, Partial<CheckboxStateProps>, Partial<WithStyle> {
+  slotProps: CheckboxSlotProps;
+}
 
 export interface UseCheckboxPropsReturn extends CheckboxStylesScheme<WithStyle> {}
 

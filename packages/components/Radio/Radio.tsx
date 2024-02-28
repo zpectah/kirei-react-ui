@@ -1,12 +1,30 @@
 import React, { forwardRef, useRef, useImperativeHandle, useState, ChangeEvent } from 'react';
 import { RadioProps } from 'types';
-// import {RADIO_DEFAULT_VALUES} from "core";
+import { RADIO_DEFAULT_VALUES } from 'core';
 import { useRadioProps, useRadioStyles } from './hooks';
 import { RadioIcon, RadioEmptyIcon } from 'icons';
 
 const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps, ref) => {
-  const { className, style, styles, onChange, checked, ...rest } = props;
-  const styleProps = {};
+  const {
+    size = RADIO_DEFAULT_VALUES.size,
+    className,
+    style,
+    styles,
+    onChange,
+    checked,
+    isDisabled,
+    slots,
+    slotProps,
+    labelRef,
+    ...rest
+  } = props;
+
+  const styleProps = { size, isDisabled };
+  const defaultSlotProps = { labelProps: { ...slotProps?.labelProps } };
+  const defaultSlots = {
+    checkedIcon: slots?.checkedIcon || <RadioIcon />,
+    uncheckedIcon: slots?.uncheckedIcon || <RadioEmptyIcon />,
+  };
 
   const [isChecked, setIsChecked] = useState<boolean | undefined>(checked);
 
@@ -17,16 +35,21 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps, ref) 
     if (onChange) onChange(event);
   };
 
-  // Expose all HTMLInputElement properties and methods
+  // If we want to also use this reference
   useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
   const {
-    composedStyles: { root },
+    composedStyles: { root, label },
   } = useRadioStyles({ styles }, { ...styleProps });
-  const { root: rootProps } = useRadioProps({ style, className, ...styleProps });
+  const { root: rootProps, label: labelProps } = useRadioProps({
+    style,
+    className,
+    slotProps: defaultSlotProps,
+    ...styleProps,
+  });
 
   return (
-    <label>
+    <label ref={labelRef} css={label} {...labelProps}>
       <input
         type="radio"
         ref={inputRef}
@@ -36,7 +59,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps, ref) 
         {...rootProps}
         {...rest}
       />
-      {isChecked ? <RadioIcon /> : <RadioEmptyIcon />}
+      {isChecked ? defaultSlots.checkedIcon : defaultSlots.uncheckedIcon}
     </label>
   );
 });

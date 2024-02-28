@@ -8,11 +8,12 @@ export const useCheckboxStyles = (
 ): UseCheckboxStylesReturn => {
   const { theme } = useKireiContext();
   const {
-    styles: { root },
+    styles: { root, label },
   } = useCreateCheckboxStyles(theme, CheckboxStyles);
 
   const composedStyles = {
     root: [root, theme.components.Checkbox.root, styles?.root],
+    label: [label, theme.components.Checkbox.label, styles?.label],
   };
 
   return {

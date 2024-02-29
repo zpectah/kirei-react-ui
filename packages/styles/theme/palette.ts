@@ -63,6 +63,7 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
   const action = {
     active: palette?.action?.active || getAlphaColor(primaryColorMain, ratio.activeAlpha),
     disabled: palette?.action?.disabled || getAlphaColor(PALETTE.disabled, ratio.disabledAlpha),
+    // TODO - active is currently for outline ... i need also for other purposes non alpha color
   };
 
   const themePrimary = {

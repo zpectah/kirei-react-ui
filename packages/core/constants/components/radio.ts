@@ -5,5 +5,5 @@ export const RADIO_LABEL = `${RADIO_ROOT}-label`;
 
 export const RADIO_DEFAULT_VALUES = {
   // color: neutralColorKeys.neutral,
-  size: shapeSizeKeys.medium,
+  // size: shapeSizeKeys.medium,
 };

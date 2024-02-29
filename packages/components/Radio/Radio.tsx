@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useImperativeHandle, useState, ChangeEvent } from 'react';
+import React, { forwardRef, useRef, useImperativeHandle, useState, ChangeEvent, FocusEvent } from 'react';
 import { RadioProps } from 'types';
 import { RADIO_DEFAULT_VALUES } from 'core';
 import { useRadioProps, useRadioStyles } from './hooks';
@@ -6,11 +6,12 @@ import { RadioIcon, RadioEmptyIcon } from 'icons';
 
 const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps, ref) => {
   const {
-    size = RADIO_DEFAULT_VALUES.size,
     className,
     style,
     styles,
     onChange,
+    onFocus,
+    onBlur,
     checked,
     isDisabled,
     slots,
@@ -19,7 +20,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps, ref) 
     ...rest
   } = props;
 
-  const styleProps = { size, isDisabled };
+  const styleProps = { isDisabled };
   const defaultSlotProps = { labelProps: { ...slotProps?.labelProps } };
   const defaultSlots = {
     checkedIcon: slots?.checkedIcon || <RadioIcon />,
@@ -27,12 +28,23 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps, ref) 
   };
 
   const [isChecked, setIsChecked] = useState<boolean | undefined>(checked);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setIsChecked(!isChecked);
     if (onChange) onChange(event);
+  };
+
+  const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
+    setIsFocused(true);
+    if (onFocus) onFocus(event);
+  };
+
+  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
+    setIsFocused(false);
+    if (onBlur) onBlur(event);
   };
 
   // If we want to also use this reference
@@ -45,6 +57,8 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps, ref) 
     style,
     className,
     slotProps: defaultSlotProps,
+    isChecked: isChecked || false,
+    isFocused,
     ...styleProps,
   });
 
@@ -54,7 +68,9 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps, ref) 
         type="radio"
         ref={inputRef}
         checked={isChecked}
-        onChange={handleRadioChange}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         css={root}
         {...rootProps}
         {...rest}

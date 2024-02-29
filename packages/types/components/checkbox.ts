@@ -17,9 +17,7 @@ export interface CheckboxElementaryProps extends Partial<WithStyle> {
   labelRef?: RefObject<HTMLLabelElement>;
 }
 
-export interface CheckboxShapeProps {
-  size: ShapeSize;
-}
+export interface CheckboxShapeProps {}
 
 export interface CheckboxStateProps {
   isDisabled: boolean;
@@ -54,6 +52,8 @@ export interface UseCheckboxStylesReturn {
 
 export interface UseCheckboxProps extends Partial<CheckboxShapeProps>, Partial<CheckboxStateProps>, Partial<WithStyle> {
   slotProps: CheckboxSlotProps;
+  isChecked: boolean;
+  isFocused: boolean;
 }
 
 export interface UseCheckboxPropsReturn extends CheckboxStylesScheme<WithStyle> {}

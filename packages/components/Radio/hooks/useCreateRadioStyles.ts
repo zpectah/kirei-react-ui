@@ -2,8 +2,8 @@ import { Theme, RadioStylesProps } from 'types';
 import { SHAPE_MIN_HEIGHT } from 'core';
 
 export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps) => {
-  const { size } = stylesProps;
-  const {} = theme;
+  const {} = stylesProps;
+  const { palette, shape } = theme;
 
   const rootBase = {
     width: 0,
@@ -16,20 +16,23 @@ export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps
     justifyContent: 'center',
     flexShrink: 0,
     cursor: 'pointer',
-  };
-  const labelSize = {
-    small: {
-      width: SHAPE_MIN_HEIGHT.small,
-      height: SHAPE_MIN_HEIGHT.small,
+    width: '1.3rem',
+    height: '1.3rem',
+    fontSize: '1.3rem',
+
+    [`&.isChecked`]: {
+      color: palette.primary.main,
+      [`&.isFocused`]: {
+        [`svg`]: {
+          outline: `${shape.borderWidth.outline} solid ${palette.action.active}`,
+          borderRadius: '100%',
+        },
+      },
     },
-    medium: {
-      width: SHAPE_MIN_HEIGHT.medium,
-      height: SHAPE_MIN_HEIGHT.medium,
+    [`&.isFocused`]: {
+      color: palette.primary.main,
     },
-    large: {
-      width: SHAPE_MIN_HEIGHT.large,
-      height: SHAPE_MIN_HEIGHT.large,
-    },
+    [`&.isDisabled`]: {},
   };
 
   const styles = {
@@ -38,7 +41,6 @@ export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps
     }),
     label: Object.assign({
       ...labelBase,
-      ...labelSize[size],
     }),
   };
 

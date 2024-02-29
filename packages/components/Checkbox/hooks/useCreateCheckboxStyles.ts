@@ -2,8 +2,8 @@ import { Theme, CheckboxStylesProps } from 'types';
 import { SHAPE_MIN_HEIGHT } from 'core';
 
 export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStylesProps) => {
-  const { size } = stylesProps;
-  const {} = theme;
+  const {} = stylesProps;
+  const { palette, shape } = theme;
 
   const rootBase = {
     width: 0,
@@ -16,23 +16,22 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
     justifyContent: 'center',
     flexShrink: 0,
     cursor: 'pointer',
-  };
-  const labelSize = {
-    small: {
-      width: `calc(${SHAPE_MIN_HEIGHT.small} / 2)`,
-      height: `calc(${SHAPE_MIN_HEIGHT.small} / 2)`,
-      fontSize: '1rem',
+    width: '1.3rem',
+    height: '1.3rem',
+    fontSize: '1.3rem',
+
+    [`&.isChecked`]: {
+      color: palette.primary.main,
+      [`&.isFocused`]: {
+        [`svg`]: {
+          outline: `${shape.borderWidth.outline} solid ${palette.action.active}`,
+        },
+      },
     },
-    medium: {
-      width: `calc(${SHAPE_MIN_HEIGHT.medium} / 2)`,
-      height: `calc(${SHAPE_MIN_HEIGHT.medium} / 2)`,
-      fontSize: '1.45rem',
+    [`&.isFocused`]: {
+      color: palette.primary.main,
     },
-    large: {
-      width: `calc(${SHAPE_MIN_HEIGHT.large} / 2)`,
-      height: `calc(${SHAPE_MIN_HEIGHT.large} / 2)`,
-      fontSize: '1.7rem',
-    },
+    [`&.isDisabled`]: {},
   };
 
   const styles = {
@@ -41,7 +40,6 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
     }),
     label: Object.assign({
       ...labelBase,
-      ...labelSize[size],
     }),
   };
 

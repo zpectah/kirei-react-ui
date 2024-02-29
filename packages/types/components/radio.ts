@@ -17,9 +17,7 @@ export interface RadioElementaryProps extends Partial<WithStyle> {
   labelRef?: RefObject<HTMLLabelElement>;
 }
 
-export interface RadioShapeProps {
-  size: ShapeSize;
-}
+export interface RadioShapeProps {}
 
 export interface RadioStateProps {
   isDisabled: boolean;
@@ -53,6 +51,8 @@ export interface UseRadioStylesReturn {
 
 export interface UseRadioProps extends Partial<RadioShapeProps>, Partial<RadioStateProps>, Partial<WithStyle> {
   slotProps: RadioSlotProps;
+  isChecked: boolean;
+  isFocused: boolean;
 }
 
 export interface UseRadioPropsReturn extends RadioStylesScheme<WithStyle> {}

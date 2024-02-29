@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useRef, useImperativeHandle, ChangeEvent } from 'react';
+import React, { forwardRef, useState, useRef, useImperativeHandle, ChangeEvent, useEffect, FocusEvent } from 'react';
 import { CheckboxProps } from 'types';
 import { CHECKBOX_DEFAULT_VALUES } from 'core';
 import { CheckboxIcon, CheckboxEmptyIcon, CheckboxIndeterminateIcon } from 'icons';
@@ -6,11 +6,12 @@ import { useCheckboxProps, useCheckboxStyles } from './hooks';
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxProps, ref) => {
   const {
-    size = CHECKBOX_DEFAULT_VALUES.size,
     className,
     style,
     styles,
     onChange,
+    onFocus,
+    onBlur,
     checked,
     isDisabled,
     slots,
@@ -19,7 +20,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxPro
     ...rest
   } = props;
 
-  const styleProps = { size, isDisabled };
+  const styleProps = { isDisabled };
   const defaultSlotProps = { labelProps: { ...slotProps?.labelProps } };
   const defaultSlots = {
     checkedIcon: slots?.checkedIcon || <CheckboxIcon />,
@@ -28,12 +29,23 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxPro
   };
 
   const [isChecked, setIsChecked] = useState<boolean | undefined>(checked);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setIsChecked(!isChecked);
     if (onChange) onChange(event);
+  };
+
+  const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
+    setIsFocused(true);
+    if (onFocus) onFocus(event);
+  };
+
+  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
+    setIsFocused(false);
+    if (onBlur) onBlur(event);
   };
 
   // If we want to also use this reference
@@ -46,6 +58,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxPro
     style,
     className,
     slotProps: defaultSlotProps,
+    isChecked: isChecked || false,
+    isFocused,
     ...styleProps,
   });
 
@@ -55,7 +69,9 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxPro
         type="checkbox"
         ref={inputRef}
         checked={isChecked}
-        onChange={handleCheckboxChange}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         css={root}
         {...rootProps}
         {...rest}

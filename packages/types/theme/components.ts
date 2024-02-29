@@ -5,7 +5,6 @@ import {
   ContainerStyles,
   ControlLabelStyles,
   IconButtonStyles,
-  FieldLabelStyles,
   LinkStyles,
   ModalBodyStyles,
   ModalFooterStyles,
@@ -24,7 +23,6 @@ export interface ThemeComponents {
   Container: ContainerStyles;
   ControlLabel: ControlLabelStyles;
   IconButton: IconButtonStyles;
-  FieldLabel: FieldLabelStyles;
   Link: LinkStyles;
   Modal: ModalStyles;
   ModalBody: ModalBodyStyles;

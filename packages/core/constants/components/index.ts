@@ -5,7 +5,6 @@ export * from './container';
 export * from './controlLabel';
 export * from './dom';
 export * from './iconButton';
-export * from './fieldLabel';
 export * from './link';
 export * from './modal';
 export * from './modalBody';

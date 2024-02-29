@@ -13,4 +13,5 @@ export * from './modalHeader';
 export * from './paper';
 export * from './radio';
 export * from './stack';
+export * from './switch';
 export * from './typography';

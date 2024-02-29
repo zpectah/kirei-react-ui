@@ -1,7 +1,7 @@
-import { Theme, CheckboxStylesProps } from 'types';
+import { Theme, SwitchStylesProps } from 'types';
 import { SHAPE_MIN_HEIGHT } from 'core';
 
-export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStylesProps) => {
+export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesProps) => {
   const {} = stylesProps;
   const { palette, shape } = theme;
 
@@ -21,6 +21,8 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
     height: '1.3rem',
     fontSize: '1.3rem',
 
+    position: 'relative',
+
     [`&.isChecked`]: {
       color: palette.primary.main,
       [`&.isFocused`]: {
@@ -35,12 +37,35 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
     [`&.isDisabled`]: {},
   };
 
+  const sliderBase = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: palette.text.secondary,
+
+    [`&::before`]: {
+      position: 'absolute',
+      content: '""',
+      width: '1rem',
+      height: '1rem',
+      left: 0,
+      bottom: 0,
+
+      backgroundColor: palette.primary.main,
+    },
+  };
+
   const styles = {
     root: Object.assign({
       ...rootBase,
     }),
     label: Object.assign({
       ...labelBase,
+    }),
+    slider: Object.assign({
+      ...sliderBase,
     }),
   };
 

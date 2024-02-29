@@ -8,6 +8,7 @@ export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps
   const rootBase = {
     width: 0,
     height: 0,
+    opacity: 0,
   };
 
   const labelBase = {

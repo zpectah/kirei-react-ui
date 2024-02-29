@@ -12,4 +12,5 @@ export * from './ModalHeader';
 export * from './Paper';
 export * from './Radio';
 export * from './Stack';
+export * from './Switch';
 export * from './Typography';

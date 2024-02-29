@@ -13,6 +13,7 @@ import {
   PaperStyles,
   RadioStyles,
   StackStyles,
+  SwitchStyles,
   TypographyStyles,
 } from '../components';
 
@@ -31,5 +32,6 @@ export interface ThemeComponents {
   Paper: PaperStyles;
   Radio: RadioStyles;
   Stack: StackStyles;
+  Switch: SwitchStyles;
   Typography: TypographyStyles;
 }

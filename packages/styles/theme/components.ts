@@ -63,5 +63,10 @@ export const createThemeComponents = (components?: DeepPartial<ThemeComponents>)
     ControlLabel: {
       root: components?.ControlLabel?.root,
     },
+    Switch: {
+      root: components?.Switch?.root,
+      label: components?.Switch?.label,
+      slider: components?.Switch?.slider,
+    },
   };
 };

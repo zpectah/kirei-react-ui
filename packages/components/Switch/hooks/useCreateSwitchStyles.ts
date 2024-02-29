@@ -17,22 +17,16 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
     justifyContent: 'center',
     flexShrink: 0,
     cursor: 'pointer',
-    width: '1.3rem',
-    height: '1.3rem',
-    fontSize: '1.3rem',
+    width: '2.8rem',
+    height: '1.4rem',
+    fontSize: '1.4rem',
 
     position: 'relative',
+    borderRadius: '2.8rem',
 
-    [`&.isChecked`]: {
-      color: palette.primary.main,
-      [`&.isFocused`]: {
-        [`svg`]: {
-          outline: `${shape.borderWidth.outline} solid ${palette.action.active}`,
-        },
-      },
-    },
+    [`&.isChecked`]: {},
     [`&.isFocused`]: {
-      color: palette.primary.main,
+      outline: `${shape.borderWidth.outline} solid ${palette.action.active}`,
     },
     [`&.isDisabled`]: {},
   };
@@ -44,16 +38,28 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
     right: 0,
     bottom: 0,
     backgroundColor: palette.text.secondary,
+    borderRadius: '2.8rem',
+
+    [`.isChecked &`]: {
+      backgroundColor: palette.primary.main,
+    },
 
     [`&::before`]: {
       position: 'absolute',
       content: '""',
-      width: '1rem',
-      height: '1rem',
-      left: 0,
-      bottom: 0,
+      width: '.99rem',
+      height: '.99rem',
+      left: '0.22rem',
+      top: '0.21rem',
 
-      backgroundColor: palette.primary.main,
+      backgroundColor: palette.background.default,
+
+      borderRadius: '2.8rem',
+      transition: `transform .125s ease-in-out 0s`,
+
+      [`.isChecked &`]: {
+        transform: 'translateX(1.3rem)',
+      },
     },
   };
 

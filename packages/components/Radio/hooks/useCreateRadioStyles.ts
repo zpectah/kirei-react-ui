@@ -1,5 +1,4 @@
 import { Theme, RadioStylesProps } from 'types';
-import { SHAPE_MIN_HEIGHT } from 'core';
 
 export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps) => {
   const {} = stylesProps;
@@ -17,8 +16,8 @@ export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps
     justifyContent: 'center',
     flexShrink: 0,
     cursor: 'pointer',
-    width: '1.3rem',
-    height: '1.3rem',
+    width: '1.4rem',
+    height: '1.4rem',
     fontSize: '1.3rem',
 
     [`&.isChecked`]: {

@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, ReactNode, RefObject } from 'react';
 import { WithStyle } from '../common';
-import { ComponentStyles, ShapeSize } from '../styles';
+import { ComponentStyles } from '../styles';
 
 type RadioLabelProps = ComponentPropsWithRef<'label'>;
 

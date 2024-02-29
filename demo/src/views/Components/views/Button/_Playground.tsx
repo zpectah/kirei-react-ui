@@ -1,6 +1,6 @@
 import React, { ElementType, useState } from 'react';
 import { ButtonProps } from 'types';
-import { Button, Checkbox } from 'components';
+import { Button, Switch } from 'components';
 import { routes } from '../../../../config';
 import { Article, ArticleFooter, Section } from '../../../../components';
 import { PlaygroundPreview, PlaygroundControls } from '../../components/index';
@@ -111,7 +111,7 @@ const PlaygroundView = () => {
                 key: 5,
                 label: 'Full width',
                 value: (
-                  <Checkbox
+                  <Switch
                     checked={buttonProps.isFullWidth}
                     onChange={(event) => {
                       setButtonProps({
@@ -127,7 +127,7 @@ const PlaygroundView = () => {
                 key: 6,
                 label: 'Disabled',
                 value: (
-                  <Checkbox
+                  <Switch
                     checked={buttonProps.isDisabled}
                     onChange={(event) => {
                       setButtonProps({
@@ -143,7 +143,7 @@ const PlaygroundView = () => {
                 key: 7,
                 label: 'Loading',
                 value: (
-                  <Checkbox
+                  <Switch
                     checked={buttonProps.isLoading}
                     onChange={(event) => {
                       setButtonProps({
@@ -159,7 +159,7 @@ const PlaygroundView = () => {
                 key: 8,
                 label: 'Active',
                 value: (
-                  <Checkbox
+                  <Switch
                     checked={buttonProps.isActive}
                     onChange={(event) => {
                       setButtonProps({

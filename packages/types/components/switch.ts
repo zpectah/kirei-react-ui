@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, ReactNode, RefObject } from 'react';
+import { ComponentPropsWithRef, RefObject } from 'react';
 import { WithStyle } from '../common';
 import { ComponentStyles, ShapeSize } from '../styles';
 

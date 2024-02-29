@@ -1,6 +1,6 @@
-import React, { forwardRef, useState, useRef, useImperativeHandle, ChangeEvent, useEffect, FocusEvent } from 'react';
+import React, { forwardRef, useState, useRef, useImperativeHandle, ChangeEvent, FocusEvent } from 'react';
 import { CheckboxProps } from 'types';
-import { CHECKBOX_DEFAULT_VALUES } from 'core';
+// import { CHECKBOX_DEFAULT_VALUES } from 'core';
 import { CheckboxIcon, CheckboxEmptyIcon, CheckboxIndeterminateIcon } from 'icons';
 import { useCheckboxProps, useCheckboxStyles } from './hooks';
 

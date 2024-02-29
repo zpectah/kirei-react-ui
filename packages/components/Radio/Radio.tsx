@@ -1,6 +1,6 @@
 import React, { forwardRef, useRef, useImperativeHandle, useState, ChangeEvent, FocusEvent } from 'react';
 import { RadioProps } from 'types';
-import { RADIO_DEFAULT_VALUES } from 'core';
+// import { RADIO_DEFAULT_VALUES } from 'core';
 import { useRadioProps, useRadioStyles } from './hooks';
 import { RadioIcon, RadioEmptyIcon } from 'icons';
 

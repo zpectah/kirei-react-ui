@@ -1,6 +1,6 @@
-import React, { forwardRef, useState, useRef, useImperativeHandle, ChangeEvent, useEffect, FocusEvent } from 'react';
+import React, { forwardRef, useState, useRef, useImperativeHandle, ChangeEvent, FocusEvent } from 'react';
 import { SwitchProps } from 'types';
-import { SWITCH_DEFAULT_VALUES } from 'core';
+// import { SWITCH_DEFAULT_VALUES } from 'core';
 import { useSwitchProps, useSwitchStyles } from './hooks';
 
 const Switch = forwardRef<HTMLInputElement, SwitchProps>((props: SwitchProps, ref) => {

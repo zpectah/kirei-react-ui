@@ -1,5 +1,4 @@
 import { Theme, CheckboxStylesProps } from 'types';
-import { SHAPE_MIN_HEIGHT } from 'core';
 
 export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStylesProps) => {
   const {} = stylesProps;
@@ -17,8 +16,8 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
     justifyContent: 'center',
     flexShrink: 0,
     cursor: 'pointer',
-    width: '1.3rem',
-    height: '1.3rem',
+    width: '1.4rem',
+    height: '1.4rem',
     fontSize: '1.3rem',
 
     [`&.isChecked`]: {

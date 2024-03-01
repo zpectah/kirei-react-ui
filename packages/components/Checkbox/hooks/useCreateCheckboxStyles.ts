@@ -20,16 +20,31 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
     height: '1.4rem',
     fontSize: '1.3rem',
 
+    color: palette.text.secondary,
+
+    position: 'relative',
+
+    [`&:hover`]: {
+      color: palette.text.primary,
+    },
     [`&.isChecked`]: {
       color: palette.primary.main,
-      [`&.isFocused`]: {
-        [`svg`]: {
-          outline: `${shape.borderWidth.outline} solid ${palette.action.active}`,
-        },
-      },
     },
     [`&.isFocused`]: {
       color: palette.primary.main,
+
+      [`&::before`]: {
+        content: '""',
+        width: '130%',
+        height: '130%',
+        backgroundColor: palette.action.active,
+        borderRadius: shape.borderRadius.medium,
+        display: 'block',
+        position: 'absolute',
+        top: '-15%',
+        left: '-15%',
+        zIndex: '-1',
+      },
     },
     [`&.isDisabled`]: {},
   };

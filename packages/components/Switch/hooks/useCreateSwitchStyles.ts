@@ -17,17 +17,14 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
     justifyContent: 'center',
     flexShrink: 0,
     cursor: 'pointer',
-    width: '2.8rem',
-    height: '1.4rem',
-    fontSize: '1.4rem',
+    width: '2rem',
+    height: '1.3rem',
 
     position: 'relative',
-    borderRadius: '2.8rem',
+    borderRadius: shape.borderRadius.medium,
 
     [`&.isChecked`]: {},
-    [`&.isFocused`]: {
-      outline: `${shape.borderWidth.outline} solid ${palette.action.active}`,
-    },
+    [`&.isFocused`]: {},
     [`&.isDisabled`]: {},
   };
 
@@ -38,27 +35,41 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
     right: 0,
     bottom: 0,
     backgroundColor: palette.text.secondary,
-    borderRadius: '2.8rem',
+    borderRadius: shape.borderRadius.medium,
+    border: `3px solid ${palette.text.secondary}`,
 
+    [`&:hover`]: {
+      backgroundColor: palette.text.primary,
+    },
+
+    [`.isFocused &`]: {
+      outline: `${shape.borderWidth.outline} solid ${palette.action.active}`,
+    },
     [`.isChecked &`]: {
       backgroundColor: palette.primary.main,
+      borderColor: palette.primary.main,
+
+      [`&:hover`]: {
+        backgroundColor: palette.primary.main,
+      },
     },
 
     [`&::before`]: {
       position: 'absolute',
       content: '""',
-      width: '.99rem',
-      height: '.99rem',
-      left: '0.22rem',
-      top: '0.21rem',
-
+      width: '0.5rem',
+      height: '0.925rem',
+      left: 0,
+      top: 0,
       backgroundColor: palette.background.default,
-
-      borderRadius: '2.8rem',
+      borderRadius: shape.borderRadius.small,
       transition: `transform .125s ease-in-out 0s`,
 
       [`.isChecked &`]: {
-        transform: 'translateX(1.3rem)',
+        transform: 'translateX(1.1rem)',
+      },
+      [`.isFocused &`]: {
+        outline: `${shape.borderWidth.outline} solid ${palette.action.active}`,
       },
     },
   };

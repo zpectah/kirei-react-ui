@@ -1,8 +1,17 @@
 import { Theme, RadioStylesProps } from 'types';
+import { getElementTransitions } from 'styles';
+import { STATUS_CLASS_NAMES } from 'core';
 
 export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps) => {
   const {} = stylesProps;
-  const { palette, shape } = theme;
+  const { palette, shape, transitions } = theme;
+
+  const labelTransition = getElementTransitions(['color'], transitions.duration.shortest, transitions.easing.easeInOut);
+  const focusElementTransition = getElementTransitions(
+    ['background-color'],
+    transitions.duration.shortest,
+    transitions.easing.easeInOut
+  );
 
   const rootBase = {
     width: 0,
@@ -19,34 +28,41 @@ export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps
     width: '1.4rem',
     height: '1.4rem',
     fontSize: '1.3rem',
-
     color: palette.text.secondary,
-
     position: 'relative',
+    transition: labelTransition,
+
+    [`&::before`]: {
+      content: '""',
+      display: 'block',
+      width: '130%',
+      height: '130%',
+      backgroundColor: 'transparent',
+      borderRadius: '100%',
+      position: 'absolute',
+      top: '-15%',
+      left: '-15%',
+      zIndex: '-1',
+      transition: focusElementTransition,
+    },
 
     [`&:hover`]: {
       color: palette.text.primary,
     },
-    [`&.isChecked`]: {
+
+    [`&.${STATUS_CLASS_NAMES.isChecked}`]: {
       color: palette.primary.main,
     },
-    [`&.isFocused`]: {
-      color: palette.primary.main,
-
+    [`&.${STATUS_CLASS_NAMES.isFocused}`]: {
       [`&::before`]: {
-        content: '""',
-        width: '130%',
-        height: '130%',
         backgroundColor: palette.action.active,
-        borderRadius: '100%',
-        display: 'block',
-        position: 'absolute',
-        top: '-15%',
-        left: '-15%',
-        zIndex: '-1',
       },
     },
-    [`&.isDisabled`]: {},
+    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
+      pointerEvents: 'none',
+      cursor: 'default',
+      opacity: palette.ratio.disabledAlpha,
+    },
   };
 
   const styles = {

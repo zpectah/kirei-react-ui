@@ -1,9 +1,21 @@
 import { Theme, SwitchStylesProps } from 'types';
-import { SHAPE_MIN_HEIGHT } from 'core';
+import { SHAPE_MIN_HEIGHT, STATUS_CLASS_NAMES } from 'core';
+import { getElementTransitions } from 'styles';
 
 export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesProps) => {
   const {} = stylesProps;
-  const { palette, shape } = theme;
+  const { palette, shape, transitions } = theme;
+
+  const sliderTransition = getElementTransitions(
+    ['background-color', 'color', 'border-color'],
+    transitions.duration.shortest,
+    transitions.easing.easeInOut
+  );
+  const sliderBeforeTransition = getElementTransitions(
+    ['transform', 'background-color', 'color', 'border-color'],
+    transitions.duration.shortest,
+    transitions.easing.easeInOut
+  );
 
   const rootBase = {
     width: 0,
@@ -23,9 +35,13 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
     position: 'relative',
     borderRadius: shape.borderRadius.medium,
 
-    [`&.isChecked`]: {},
-    [`&.isFocused`]: {},
-    [`&.isDisabled`]: {},
+    [`&.${STATUS_CLASS_NAMES.isChecked}`]: {},
+    [`&.${STATUS_CLASS_NAMES.isFocused}`]: {},
+    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
+      pointerEvents: 'none',
+      cursor: 'default',
+      opacity: palette.ratio.disabledAlpha,
+    },
   };
 
   const sliderBase = {
@@ -37,15 +53,16 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
     backgroundColor: palette.text.secondary,
     borderRadius: shape.borderRadius.medium,
     border: `3px solid ${palette.text.secondary}`,
+    transition: sliderTransition,
 
     [`&:hover`]: {
       backgroundColor: palette.text.primary,
     },
 
-    [`.isFocused &`]: {
+    [`.${STATUS_CLASS_NAMES.isFocused} &`]: {
       outline: `${shape.borderWidth.outline} solid ${palette.action.active}`,
     },
-    [`.isChecked &`]: {
+    [`.${STATUS_CLASS_NAMES.isChecked} &`]: {
       backgroundColor: palette.primary.main,
       borderColor: palette.primary.main,
 
@@ -63,12 +80,12 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
       top: 0,
       backgroundColor: palette.background.default,
       borderRadius: shape.borderRadius.small,
-      transition: `transform .125s ease-in-out 0s`,
+      transition: sliderBeforeTransition,
 
-      [`.isChecked &`]: {
+      [`.${STATUS_CLASS_NAMES.isChecked} &`]: {
         transform: 'translateX(1.1rem)',
       },
-      [`.isFocused &`]: {
+      [`.${STATUS_CLASS_NAMES.isFocused} &`]: {
         outline: `${shape.borderWidth.outline} solid ${palette.action.active}`,
       },
     },

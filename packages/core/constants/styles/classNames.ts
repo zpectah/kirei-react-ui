@@ -2,6 +2,8 @@ export const STATUS_CLASS_NAMES = {
   isActive: 'isActive',
   isClosing: 'isClosing',
   isDisabled: 'isDisabled',
+  isFocused: 'isFocused',
+  isChecked: 'isChecked',
   isFluid: 'isFluid',
   isFullWidth: 'isFullWidth',
   isFullscreen: 'isFullscreen',

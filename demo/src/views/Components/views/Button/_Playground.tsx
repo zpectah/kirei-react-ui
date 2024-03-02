@@ -1,6 +1,6 @@
 import React, { ElementType, useState } from 'react';
 import { ButtonProps } from 'types';
-import { Button, Checkbox, Switch, Radio } from 'components';
+import { Button, Checkbox, Switch, Radio, ControlLabel } from 'components';
 import { routes } from '../../../../config';
 import { Article, ArticleFooter, Section } from '../../../../components';
 import { PlaygroundPreview, PlaygroundControls } from '../../components/index';
@@ -20,6 +20,8 @@ const PlaygroundView = () => {
   return (
     <>
       <Article title="Button Playground">
+        <ControlLabel control={<Checkbox />} label="Some text label" checked isDisabled />
+
         <Section>
           <PlaygroundPreview>
             <Button {...buttonProps} />

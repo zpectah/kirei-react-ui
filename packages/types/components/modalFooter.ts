@@ -1,5 +1,5 @@
 import { ComponentPropsWithRef } from 'react';
-import { WithStyle } from '../common';
+import { ElementRestProps, WithStyle } from '../common';
 import { ComponentStyles, FlexJustifyContent } from '../styles';
 
 interface ModalFooterStylesScheme<T> {
@@ -9,6 +9,7 @@ interface ModalFooterStylesScheme<T> {
 export interface ModalFooterStyles extends ModalFooterStylesScheme<ComponentStyles> {}
 
 export type ModalFooterInitialProps = ComponentPropsWithRef<'footer'>;
+export type ModalFooterRestProps = ElementRestProps<HTMLElement>;
 
 export interface ModalFooterElementaryProps extends Partial<WithStyle> {}
 
@@ -33,6 +34,8 @@ export interface UseModalFooterStylesReturn {
 
 export interface UseModalFooterProps extends Partial<ModalFooterShapeProps>, Partial<WithStyle> {}
 
-export interface UseModalFooterPropsReturn extends ModalFooterStylesScheme<WithStyle> {}
+export interface UseModalFooterPropsReturn {
+  root: Partial<ModalFooterRestProps>;
+}
 
 export interface ModalFooterStylesProps extends ModalFooterShapeProps {}

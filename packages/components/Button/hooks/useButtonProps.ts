@@ -13,7 +13,7 @@ import {
 } from 'core';
 import { capitalizeFirstLetter } from 'utils';
 
-export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
+export const useButtonProps = <E extends Element>(props: UseButtonProps): UseButtonPropsReturn<E> => {
   const {
     color = BUTTON_DEFAULT_VALUES.color,
     size = BUTTON_DEFAULT_VALUES.size,

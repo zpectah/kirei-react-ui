@@ -1,5 +1,5 @@
 import { ComponentPropsWithRef, ElementType, ReactNode } from 'react';
-import { WithStyle } from '../common';
+import { ElementRestProps, WithStyle } from '../common';
 import { ComponentStyles } from '../styles';
 import { TypographyProps } from './typography';
 
@@ -19,6 +19,7 @@ interface ModalHeaderStylesScheme<T> {
 export interface ModalHeaderStyles extends ModalHeaderStylesScheme<ComponentStyles> {}
 
 export type ModalHeaderInitialProps = ComponentPropsWithRef<'header'>;
+export type ModalHeaderRestProps = ElementRestProps<HTMLElement>;
 
 export interface ModalHeaderElementaryProps extends Partial<WithStyle> {
   title?: ReactNode;
@@ -59,7 +60,7 @@ export interface UseModalHeaderProps extends Partial<ModalHeaderShapeProps>, Par
 }
 
 export interface UseModalHeaderPropsReturn {
-  root: Partial<ModalHeaderInitialProps>;
+  root: Partial<ModalHeaderRestProps>;
   titleContainer: Partial<TitleContainerProps>;
   actionsContainer: Partial<ActionsContainerProps>;
   title: Partial<TitleProps>;

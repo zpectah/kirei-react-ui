@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { UseStackProps, UseStackPropsReturn } from 'types';
 import { STACK_ROOT } from 'core';
 
-export const useStackProps = (props: UseStackProps): UseStackPropsReturn => {
+export const useStackProps = <E extends Element>(props: UseStackProps): UseStackPropsReturn<E> => {
   const { style, className } = props;
 
   return {

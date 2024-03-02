@@ -1,5 +1,5 @@
 import { ElementType } from 'react';
-import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
+import { ElementRestProps, PolymorphicComponentPropsWithRef, WithStyle } from '../common';
 import { Breakpoints, ComponentStyles, Spacing } from '../styles';
 
 interface ContainerStylesScheme<T> {
@@ -9,6 +9,7 @@ interface ContainerStylesScheme<T> {
 export interface ContainerStyles extends ContainerStylesScheme<ComponentStyles> {}
 
 export type ContainerInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
+export type ContainerRestProps<E extends Element> = ElementRestProps<E>;
 
 export interface ContainerElementaryProps extends Partial<WithStyle> {}
 
@@ -34,6 +35,8 @@ export interface UseContainerStylesReturn {
 
 export interface UseContainerProps extends Partial<ContainerShapeProps>, Partial<WithStyle> {}
 
-export interface UseContainerPropsReturn extends ContainerStylesScheme<WithStyle> {}
+export interface UseContainerPropsReturn<E extends Element> {
+  root: Partial<ContainerRestProps<E>>;
+}
 
 export interface ContainerStylesProps extends ContainerShapeProps {}

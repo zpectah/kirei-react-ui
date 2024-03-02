@@ -1,5 +1,5 @@
 import { ComponentPropsWithRef } from 'react';
-import { WithStyle } from '../common';
+import { ElementRestProps, WithStyle } from '../common';
 import { ComponentStyles } from '../styles';
 
 type ContainerProps = ComponentPropsWithRef<'div'>;
@@ -12,6 +12,7 @@ interface ModalBodyStylesScheme<T> {
 export interface ModalBodyStyles extends ModalBodyStylesScheme<ComponentStyles> {}
 
 export type ModalBodyInitialProps = ComponentPropsWithRef<'article'>;
+export type ModalBodyRestProps = ElementRestProps<HTMLElement>;
 
 export interface ModalBodyElementaryProps extends Partial<WithStyle> {}
 
@@ -43,7 +44,7 @@ export interface UseModalBodyProps extends Partial<ModalBodyShapeProps>, Partial
 }
 
 export interface UseModalBodyPropsReturn {
-  root: Partial<ModalBodyInitialProps>;
+  root: Partial<ModalBodyRestProps>;
   container: Partial<ContainerProps>;
 }
 

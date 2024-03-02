@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { UseTypographyProps, UseTypographyPropsReturn } from 'types';
 import { TYPOGRAPHY_ROOT, STATUS_CLASS_NAMES } from 'core';
 
-export const useTypographyProps = (props: UseTypographyProps): UseTypographyPropsReturn => {
+export const useTypographyProps = <E extends Element>(props: UseTypographyProps): UseTypographyPropsReturn<E> => {
   const { style, className, isTruncated } = props;
 
   return {

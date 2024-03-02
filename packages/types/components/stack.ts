@@ -1,5 +1,5 @@
 import { ElementType } from 'react';
-import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
+import { ElementRestProps, PolymorphicComponentPropsWithRef, WithStyle } from '../common';
 import {
   ComponentStyles,
   Spacing,
@@ -18,6 +18,7 @@ interface StackStylesScheme<T> {
 export interface StackStyles extends StackStylesScheme<ComponentStyles> {}
 
 export type StackInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
+export type StackRestProps<E extends Element> = ElementRestProps<E>;
 
 export interface StackElementaryProps extends Partial<WithStyle> {}
 
@@ -48,6 +49,8 @@ export interface UseStackStylesReturn {
 
 export interface UseStackProps extends Partial<StackShapeProps>, Partial<WithStyle> {}
 
-export interface UseStackPropsReturn extends StackStylesScheme<WithStyle> {}
+export interface UseStackPropsReturn<E extends Element> {
+  root: Partial<StackRestProps<E>>;
+}
 
 export interface StackStylesProps extends StackShapeProps {}

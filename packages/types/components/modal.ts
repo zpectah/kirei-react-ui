@@ -1,5 +1,5 @@
 import { MouseEvent, KeyboardEvent, SyntheticEvent, MutableRefObject, ComponentPropsWithRef, ElementType } from 'react';
-import { WithStyle } from '../common';
+import { ElementRestProps, WithStyle } from '../common';
 import { Breakpoints, ComponentStyles } from '../styles';
 import { PaperColor, PaperProps } from './paper';
 import { BackdropProps } from './backdrop';
@@ -25,6 +25,7 @@ interface ModalStylesScheme<T> {
 export interface ModalStyles extends ModalStylesScheme<ComponentStyles> {}
 
 export type ModalInitialProps = Omit<ComponentPropsWithRef<'dialog'>, 'onCancel'>;
+export type ModalRestProps = ElementRestProps<HTMLDialogElement>;
 
 export interface ModalElementaryProps extends Partial<WithStyle> {}
 
@@ -71,7 +72,7 @@ export interface UseModalProps extends Partial<ModalShapeProps>, Partial<WithSty
 }
 
 export interface UseModalPropsReturn {
-  root: Partial<ModalInitialProps>;
+  root: Partial<ModalRestProps>;
   container: Partial<ContainerProps>;
   backdrop: Partial<BackdropProps<ElementType>>;
   dialog: Partial<DialogProps>;

@@ -9,7 +9,7 @@ import {
 } from 'core';
 import { capitalizeFirstLetter } from 'utils';
 
-export const useIconButtonProps = (props: UseIconButtonProps): UseIconButtonPropsReturn => {
+export const useIconButtonProps = <E extends Element>(props: UseIconButtonProps): UseIconButtonPropsReturn<E> => {
   const {
     size = ICON_BUTTON_DEFAULT_VALUES.size,
     color = ICON_BUTTON_DEFAULT_VALUES.color,

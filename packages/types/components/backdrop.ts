@@ -1,7 +1,6 @@
 import { ElementType } from 'react';
-import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
-import { ComponentStyles } from '../styles';
-import { BackdropBackgroundColor } from '../styles';
+import { PolymorphicComponentPropsWithRef, WithStyle, ElementRestProps } from '../common';
+import { ComponentStyles, BackdropBackgroundColor } from '../styles';
 
 interface BackdropStylesScheme<T> {
   root: T;
@@ -10,6 +9,7 @@ interface BackdropStylesScheme<T> {
 export interface BackdropStyles extends BackdropStylesScheme<ComponentStyles> {}
 
 export type BackdropInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
+export type BackdropRestProps<E extends Element> = ElementRestProps<E>;
 
 export interface BackdropElementaryProps extends Partial<WithStyle> {}
 
@@ -33,6 +33,8 @@ export interface UseBackdropStylesReturn {
 
 export interface UseBackdropProps extends Partial<BackdropShapeProps>, Partial<WithStyle> {}
 
-export interface UseBackdropPropsReturn extends BackdropStylesScheme<WithStyle> {}
+export interface UseBackdropPropsReturn<E extends Element> {
+  root: Partial<BackdropRestProps<E>>;
+}
 
 export interface BackdropStylesProps extends BackdropShapeProps {}

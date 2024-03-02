@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { UseBackdropProps, UseBackdropPropsReturn } from 'types';
 import { BACKDROP_ROOT } from 'core';
 
-export const useBackdropProps = (props: UseBackdropProps): UseBackdropPropsReturn => {
+export const useBackdropProps = <E extends Element>(props: UseBackdropProps): UseBackdropPropsReturn<E> => {
   const { style, className } = props;
 
   return {

@@ -3,7 +3,7 @@ import { UsePaperProps, UsePaperPropsReturn } from 'types';
 import { PAPER_ROOT, PAPER_DEFAULT_VALUES, STATUS_CLASS_NAMES } from 'core';
 import { capitalizeFirstLetter } from 'utils';
 
-export const usePaperProps = (props: UsePaperProps): UsePaperPropsReturn => {
+export const usePaperProps = <E extends Element>(props: UsePaperProps): UsePaperPropsReturn<E> => {
   const {
     color = PAPER_DEFAULT_VALUES.color,
     variant = PAPER_DEFAULT_VALUES.variant,

@@ -1,5 +1,5 @@
 import { ElementType } from 'react';
-import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
+import { ElementRestProps, PolymorphicComponentPropsWithRef, WithStyle } from '../common';
 import {
   BrandColor,
   ComponentStyles,
@@ -19,6 +19,7 @@ interface PaperStylesScheme<T> {
 export interface PaperStyles extends PaperStylesScheme<ComponentStyles> {}
 
 export type PaperInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
+export type PaperRestProps<E extends Element> = ElementRestProps<E>;
 
 export interface PaperElementaryProps extends Partial<WithStyle> {}
 
@@ -45,6 +46,8 @@ export interface UsePaperStylesReturn {
 
 export interface UsePaperProps extends Partial<PaperShapeProps>, Partial<WithStyle> {}
 
-export interface UsePaperPropsReturn extends PaperStylesScheme<WithStyle> {}
+export interface UsePaperPropsReturn<E extends Element> {
+  root: Partial<PaperRestProps<E>>;
+}
 
 export interface PaperStylesProps extends PaperShapeProps {}

@@ -1,5 +1,5 @@
 import { ElementType } from 'react';
-import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
+import { ElementRestProps, PolymorphicComponentPropsWithRef, WithStyle } from '../common';
 import { ComponentStyles, TypographyVariant, TypographyColor } from '../styles';
 
 interface TypographyStylesScheme<T> {
@@ -9,6 +9,7 @@ interface TypographyStylesScheme<T> {
 export interface TypographyStyles extends TypographyStylesScheme<ComponentStyles> {}
 
 export type TypographyInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
+export type TypographyRestProps<E extends Element> = ElementRestProps<E>;
 
 export interface TypographyElementaryProps extends Partial<WithStyle> {}
 
@@ -34,6 +35,8 @@ export interface UseTypographyStylesReturn {
 
 export interface UseTypographyProps extends Partial<TypographyShapeProps>, Partial<WithStyle> {}
 
-export interface UseTypographyPropsReturn extends TypographyStylesScheme<WithStyle> {}
+export interface UseTypographyPropsReturn<E extends Element> {
+  root: Partial<TypographyRestProps<E>>;
+}
 
 export interface TypographyStylesProps extends TypographyShapeProps {}

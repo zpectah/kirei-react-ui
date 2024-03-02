@@ -1,9 +1,11 @@
 import { ComponentPropsWithRef, ElementType, ReactElement, ReactNode, RefObject } from 'react';
-import { WithStyle } from '../common';
+import { ElementRestProps, WithStyle } from '../common';
 import { ComponentStyles, Placement, Spacing } from '../styles';
 import { TypographyProps } from './typography';
 
 type LabelProps = TypographyProps<'label'>;
+
+type ControlLabelPickedProps = 'checked' | 'required' | 'value' | 'onChange' | 'onFocus' | 'onBlur';
 
 interface ControlLabelStylesScheme<T> {
   root: T;
@@ -13,7 +15,7 @@ interface ControlLabelStylesScheme<T> {
 export interface ControlLabelStyles extends ControlLabelStylesScheme<ComponentStyles> {}
 
 export type ControlLabelInitialProps = NonNullable<unknown> & Omit<ComponentPropsWithRef<'label'>, 'children'>;
-export type ControlLabelPickedProps = 'checked' | 'required' | 'value' | 'onChange' | 'onFocus' | 'onBlur';
+export type ControlLabelRestProps = ElementRestProps<HTMLLabelElement>;
 
 export interface ControlLabelElementaryProps extends Partial<WithStyle> {
   control: ReactElement;
@@ -57,6 +59,9 @@ export interface UseControlLabelProps extends Partial<ControlLabelShapeProps>, P
   slotProps: ControlLabelSlotProps;
 }
 
-export interface UseControlLabelPropsReturn extends ControlLabelStylesScheme<WithStyle> {}
+export interface UseControlLabelPropsReturn {
+  root: Partial<ControlLabelRestProps>;
+  label: Partial<LabelProps>;
+}
 
 export interface ControlLabelStylesProps extends ControlLabelShapeProps {}

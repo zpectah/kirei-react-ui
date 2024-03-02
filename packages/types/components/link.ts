@@ -1,5 +1,5 @@
 import { ElementType } from 'react';
-import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
+import { ElementRestProps, PolymorphicComponentPropsWithRef, WithStyle } from '../common';
 import { ComponentStyles, TypographyVariant, TypographyColor, LinkUnderline } from '../styles';
 
 interface LinkStylesScheme<T> {
@@ -9,6 +9,7 @@ interface LinkStylesScheme<T> {
 export interface LinkStyles extends LinkStylesScheme<ComponentStyles> {}
 
 export type LinkInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
+export type LinkRestProps<E extends Element> = ElementRestProps<E>;
 
 export interface LinkElementaryProps extends Partial<WithStyle> {}
 
@@ -39,6 +40,8 @@ export interface UseLinkStylesReturn {
 
 export interface UseLinkProps extends Partial<LinkStateProps>, Partial<LinkShapeProps>, Partial<WithStyle> {}
 
-export interface UseLinkPropsReturn extends LinkStylesScheme<WithStyle> {}
+export interface UseLinkPropsReturn<E extends Element> {
+  root: Partial<LinkRestProps<E>>;
+}
 
 export interface LinkStylesProps extends Partial<LinkStateProps>, LinkShapeProps {}

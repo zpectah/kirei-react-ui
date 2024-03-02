@@ -1,6 +1,6 @@
-import { AriaAttributes, ComponentPropsWithRef, HTMLAttributes, RefObject } from 'react';
-import { WithStyle } from '../common';
-import { ComponentStyles, ShapeSize } from '../styles';
+import { ComponentPropsWithRef, RefObject } from 'react';
+import { WithStyle, ElementRestProps } from '../common';
+import { ComponentStyles } from '../styles';
 
 type SwitchLabelProps = ComponentPropsWithRef<'label'>;
 type SwitchSliderProps = ComponentPropsWithRef<'span'>;
@@ -14,7 +14,7 @@ interface SwitchStylesScheme<T> {
 export interface SwitchStyles extends SwitchStylesScheme<ComponentStyles> {}
 
 export type SwitchInitialProps = NonNullable<unknown> & Omit<ComponentPropsWithRef<'input'>, 'size'>;
-export type SwitchRestProps = Partial<HTMLAttributes<HTMLInputElement>> & Partial<AriaAttributes>;
+export type SwitchRestProps = ElementRestProps<HTMLInputElement>;
 
 export interface SwitchElementaryProps extends Partial<WithStyle> {
   labelRef?: RefObject<HTMLLabelElement>;

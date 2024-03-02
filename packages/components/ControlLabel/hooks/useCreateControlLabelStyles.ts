@@ -41,10 +41,15 @@ export const useCreateControlLabelStyles = (theme: Theme, stylesProps: ControlLa
     },
   };
 
+  const labelBase = {};
+
   const styles = {
     root: Object.assign({
       ...rootBase,
       ...rootPlacement[labelPlacement],
+    }),
+    label: Object.assign({
+      ...labelBase,
     }),
   };
 

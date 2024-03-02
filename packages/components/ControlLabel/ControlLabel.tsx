@@ -21,10 +21,15 @@ const ControlLabel = forwardRef<HTMLLabelElement, ControlLabelProps>((props: Con
     required,
     style,
     styles,
+    slotProps,
     value,
     ...rest
   } = props;
+
   const styleProps = { labelPlacement, gap };
+  const defaultSlotProps = {
+    labelProps: { ...CONTROL_LABEL_DEFAULT_VALUES.label, ...slotProps?.labelProps },
+  };
 
   const controlProps = useMemo(() => {
     const fieldChecked = control.props.checked || checked;
@@ -45,19 +50,22 @@ const ControlLabel = forwardRef<HTMLLabelElement, ControlLabelProps>((props: Con
   }, [inputRef, inputProps, control, checked, value, onChange, onFocus, onBlur, required]);
 
   const {
-    composedStyles: { root },
+    composedStyles: { root, label: labelStyles },
   } = useControlLabelStyles({ styles }, { ...styleProps });
-  const { root: rootProps } = useControlLabelProps({
+  const { root: rootProps, label: labelProps } = useControlLabelProps({
     style,
     className,
     isDisabled: controlProps.isDisabled,
+    slotProps: defaultSlotProps,
     ...styleProps,
   });
 
   return (
     <label ref={ref} css={root} {...rootProps} {...rest}>
       {cloneElement(control, controlProps)}
-      <Typography as="span">{label}</Typography>
+      <Typography css={labelStyles} {...labelProps}>
+        {label}
+      </Typography>
     </label>
   );
 });

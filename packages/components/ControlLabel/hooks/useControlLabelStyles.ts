@@ -8,11 +8,12 @@ export const useControlLabelStyles = (
 ): UseControlLabelStylesReturn => {
   const { theme } = useKireiContext();
   const {
-    styles: { root },
+    styles: { root, label },
   } = useCreateControlLabelStyles(theme, ControlLabelStyles);
 
   const composedStyles = {
     root: [root, theme.components.ControlLabel.root, styles?.root],
+    label: [label, theme.components.ControlLabel.label, styles?.label],
   };
 
   return {

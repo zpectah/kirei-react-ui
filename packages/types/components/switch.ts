@@ -57,3 +57,11 @@ export interface UseSwitchProps extends Partial<SwitchShapeProps>, Partial<Switc
 export interface UseSwitchPropsReturn extends SwitchStylesScheme<WithStyle> {}
 
 export interface SwitchStylesProps extends SwitchShapeProps {}
+
+export interface UseSwitchHandlingProps
+  extends Pick<SwitchInitialProps, 'checked' | 'onChange' | 'onFocus' | 'onBlur' | 'ref'> {}
+
+export interface UseSwitchHandlingReturn extends UseSwitchHandlingProps {
+  focused: boolean;
+  inputRef: RefObject<HTMLInputElement>;
+}

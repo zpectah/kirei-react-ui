@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { UseRadioProps, UseRadioPropsReturn } from 'types';
-import { RADIO_ROOT, RADIO_LABEL } from 'core';
+import { RADIO_ROOT, RADIO_INPUT, RADIO_LABEL } from 'core';
 
 export const useRadioProps = (props: UseRadioProps): UseRadioPropsReturn => {
   const { style, className, slotProps, isDisabled, isChecked, isFocused } = props;
@@ -10,11 +10,12 @@ export const useRadioProps = (props: UseRadioProps): UseRadioPropsReturn => {
 
   return {
     root: {
-      className: clsx(RADIO_ROOT, className),
+      className: clsx(RADIO_INPUT, className),
       style: { ...style },
     },
     label: {
       className: clsx(
+        RADIO_ROOT,
         RADIO_LABEL,
         isDisabled && 'isDisabled',
         isChecked && 'isChecked',

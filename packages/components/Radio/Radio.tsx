@@ -1,8 +1,7 @@
-import React, { forwardRef, useRef, useImperativeHandle, useState, ChangeEvent, FocusEvent } from 'react';
+import React, { forwardRef } from 'react';
 import { RadioProps } from 'types';
-// import { RADIO_DEFAULT_VALUES } from 'core';
-import { useRadioProps, useRadioStyles } from './hooks';
 import { RadioIcon, RadioEmptyIcon } from 'icons';
+import { useRadioHandling, useRadioProps, useRadioStyles } from './hooks';
 
 const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps, ref) => {
   const {
@@ -27,29 +26,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps, ref) 
     uncheckedIcon: slots?.uncheckedIcon || <RadioEmptyIcon />,
   };
 
-  const [isChecked, setIsChecked] = useState<boolean | undefined>(checked);
-  const [isFocused, setIsFocused] = useState<boolean>(false);
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(!isChecked);
-    if (onChange) onChange(event);
-  };
-
-  const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
-    setIsFocused(true);
-    if (onFocus) onFocus(event);
-  };
-
-  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
-    setIsFocused(false);
-    if (onBlur) onBlur(event);
-  };
-
-  // If we want to also use this reference
-  useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
-
+  const { inputRef, focused, ...handlingProps } = useRadioHandling({ checked, onChange, onBlur, onFocus, ref });
   const {
     composedStyles: { root, label },
   } = useRadioStyles({ styles }, { ...styleProps });
@@ -57,25 +34,15 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps, ref) 
     style,
     className,
     slotProps: defaultSlotProps,
-    isChecked: isChecked || false,
-    isFocused,
+    isChecked: handlingProps.checked || false,
+    isFocused: focused,
     ...styleProps,
   });
 
   return (
     <label ref={labelRef} css={label} {...labelProps}>
-      <input
-        type="radio"
-        ref={inputRef}
-        checked={isChecked}
-        onChange={handleChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        css={root}
-        {...rootProps}
-        {...rest}
-      />
-      {isChecked ? defaultSlots.checkedIcon : defaultSlots.uncheckedIcon}
+      <input type="radio" ref={inputRef} css={root} {...handlingProps} {...rootProps} {...rest} />
+      {handlingProps.checked ? defaultSlots.checkedIcon : defaultSlots.uncheckedIcon}
     </label>
   );
 });

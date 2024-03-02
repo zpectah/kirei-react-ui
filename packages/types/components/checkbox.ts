@@ -21,6 +21,7 @@ export interface CheckboxShapeProps {}
 
 export interface CheckboxStateProps {
   isDisabled: boolean;
+  indeterminate: boolean;
 }
 
 export interface CheckboxSlots {
@@ -59,3 +60,11 @@ export interface UseCheckboxProps extends Partial<CheckboxShapeProps>, Partial<C
 export interface UseCheckboxPropsReturn extends CheckboxStylesScheme<WithStyle> {}
 
 export interface CheckboxStylesProps extends CheckboxShapeProps {}
+
+export interface UseCheckboxHandlingProps
+  extends Pick<CheckboxInitialProps, 'checked' | 'onChange' | 'onFocus' | 'onBlur' | 'ref'> {}
+
+export interface UseCheckboxHandlingReturn extends UseCheckboxHandlingProps {
+  focused: boolean;
+  inputRef: RefObject<HTMLInputElement>;
+}

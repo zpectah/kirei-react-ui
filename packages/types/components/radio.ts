@@ -58,3 +58,11 @@ export interface UseRadioProps extends Partial<RadioShapeProps>, Partial<RadioSt
 export interface UseRadioPropsReturn extends RadioStylesScheme<WithStyle> {}
 
 export interface RadioStylesProps extends RadioShapeProps {}
+
+export interface UseRadioHandlingProps
+  extends Pick<RadioInitialProps, 'checked' | 'onChange' | 'onFocus' | 'onBlur' | 'ref'> {}
+
+export interface UseRadioHandlingReturn extends UseRadioHandlingProps {
+  focused: boolean;
+  inputRef: RefObject<HTMLInputElement>;
+}

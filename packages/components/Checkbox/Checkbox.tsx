@@ -1,8 +1,7 @@
-import React, { forwardRef, useState, useRef, useImperativeHandle, ChangeEvent, FocusEvent } from 'react';
+import React, { forwardRef } from 'react';
 import { CheckboxProps } from 'types';
-// import { CHECKBOX_DEFAULT_VALUES } from 'core';
 import { CheckboxIcon, CheckboxEmptyIcon, CheckboxIndeterminateIcon } from 'icons';
-import { useCheckboxProps, useCheckboxStyles } from './hooks';
+import { useCheckboxHandling, useCheckboxProps, useCheckboxStyles } from './hooks';
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxProps, ref) => {
   const {
@@ -13,6 +12,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxPro
     onFocus,
     onBlur,
     checked,
+    indeterminate,
     isDisabled,
     slots,
     slotProps,
@@ -28,29 +28,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxPro
     indeterminateIcon: slots?.indeterminateIcon || <CheckboxIndeterminateIcon />,
   };
 
-  const [isChecked, setIsChecked] = useState<boolean | undefined>(checked);
-  const [isFocused, setIsFocused] = useState<boolean>(false);
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(!isChecked);
-    if (onChange) onChange(event);
-  };
-
-  const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
-    setIsFocused(true);
-    if (onFocus) onFocus(event);
-  };
-
-  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
-    setIsFocused(false);
-    if (onBlur) onBlur(event);
-  };
-
-  // If we want to also use this reference
-  useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
-
+  const { inputRef, focused, ...handlingProps } = useCheckboxHandling({ checked, onChange, onBlur, onFocus, ref });
   const {
     composedStyles: { root, label },
   } = useCheckboxStyles({ styles }, { ...styleProps });
@@ -58,26 +36,20 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxPro
     style,
     className,
     slotProps: defaultSlotProps,
-    isChecked: isChecked || false,
-    isFocused,
+    isChecked: handlingProps.checked || false,
+    isFocused: focused,
+    indeterminate,
     ...styleProps,
   });
 
   return (
     <label ref={labelRef} css={label} {...labelProps}>
-      <input
-        type="checkbox"
-        ref={inputRef}
-        checked={isChecked}
-        onChange={handleChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        css={root}
-        {...rootProps}
-        {...rest}
-      />
-      {isChecked ? defaultSlots.checkedIcon : defaultSlots.uncheckedIcon}
-      {!isChecked && isChecked && defaultSlots.indeterminateIcon}
+      <input type="checkbox" ref={inputRef} css={root} {...handlingProps} {...rootProps} {...rest} />
+      {indeterminate
+        ? defaultSlots.indeterminateIcon
+        : handlingProps.checked
+          ? defaultSlots.checkedIcon
+          : defaultSlots.uncheckedIcon}
     </label>
   );
 });

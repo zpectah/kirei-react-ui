@@ -112,7 +112,9 @@ const PlaygroundView = () => {
                 label: 'Full width',
                 value: (
                   <Checkbox
+                    // indeterminate
                     checked={buttonProps.isFullWidth}
+                    // checked
                     onChange={(event) => {
                       setButtonProps({
                         ...buttonProps,

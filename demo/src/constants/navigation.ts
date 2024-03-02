@@ -103,6 +103,21 @@ export const COMPONENTS_SIDEBAR_NAVIGATION = [
     label: 'menuItem.components.iconButton',
     path: routes.components.routes['icon-button'].root,
   },
+  {
+    key: 10,
+    label: 'menuItem.components.checkbox',
+    path: routes.components.routes.checkbox.root,
+  },
+  {
+    key: 11,
+    label: 'menuItem.components.radio',
+    path: routes.components.routes.radio.root,
+  },
+  {
+    key: 12,
+    label: 'menuItem.components.switch',
+    path: routes.components.routes.switch.root,
+  },
 ];
 
 export const CUSTOMIZATION_SIDEBAR_NAVIGATION = [

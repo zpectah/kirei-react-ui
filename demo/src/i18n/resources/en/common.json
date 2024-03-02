@@ -26,5 +26,8 @@
   "menuItem.components.modal": "Modal",
   "menuItem.components.icons": "Icons",
   "menuItem.components.paper": "Paper",
-  "menuItem.components.iconButton": "IconButton"
+  "menuItem.components.iconButton": "IconButton",
+  "menuItem.components.checkbox": "Checkbox",
+  "menuItem.components.radio": "Radio",
+  "menuItem.components.switch": "Switch"
 }

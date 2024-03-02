@@ -8,4 +8,7 @@ export enum kireiComponentsRootListKeys {
   icons = 'icons',
   'icon-button' = 'icon-button',
   paper = 'paper',
+  checkbox = 'checkbox',
+  radio = 'radio',
+  switch = 'switch',
 }

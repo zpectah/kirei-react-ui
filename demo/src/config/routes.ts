@@ -70,6 +70,18 @@ export const routes = {
         root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys['icon-button']}`,
         route: `/${kireiComponentsRootListKeys['icon-button']}/*`,
       },
+      checkbox: {
+        root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys.checkbox}`,
+        route: `/${kireiComponentsRootListKeys.checkbox}/*`,
+      },
+      radio: {
+        root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys.radio}`,
+        route: `/${kireiComponentsRootListKeys.radio}/*`,
+      },
+      switch: {
+        root: `/${componentsRootPrefix}/${kireiComponentsRootListKeys.switch}`,
+        route: `/${kireiComponentsRootListKeys.switch}/*`,
+      },
     },
     detail: {
       preview: '',

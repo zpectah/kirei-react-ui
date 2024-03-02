@@ -13,6 +13,9 @@ import {
   IconsView,
   PaperView,
   IconButtonView,
+  CheckboxView,
+  RadioView,
+  SwitchView,
 } from './views';
 
 const Components = () => {
@@ -28,6 +31,9 @@ const Components = () => {
         <Route path={routes.components.routes.icons.route} element={<IconsView />} />
         <Route path={routes.components.routes.paper.route} element={<PaperView />} />
         <Route path={routes.components.routes['icon-button'].route} element={<IconButtonView />} />
+        <Route path={routes.components.routes.checkbox.route} element={<CheckboxView />} />
+        <Route path={routes.components.routes.radio.route} element={<RadioView />} />
+        <Route path={routes.components.routes.switch.route} element={<SwitchView />} />
       </Route>
     </Routes>
   );

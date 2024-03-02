@@ -7,3 +7,6 @@ export * from './Modal';
 export * from './Paper';
 export * from './Icons';
 export * from './IconButton';
+export * from './Checkbox';
+export * from './Radio';
+export * from './Switch';

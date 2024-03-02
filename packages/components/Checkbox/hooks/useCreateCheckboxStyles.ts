@@ -1,6 +1,6 @@
 import { Theme, CheckboxStylesProps } from 'types';
 import { getElementTransitions } from 'styles';
-import { STATUS_CLASS_NAMES } from 'core';
+import { STATUS_CLASS_NAMES, SHAPE_MIN_HEIGHT } from 'core';
 
 export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStylesProps) => {
   const {} = stylesProps;
@@ -25,9 +25,9 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
     justifyContent: 'center',
     flexShrink: 0,
     cursor: 'pointer',
-    width: '1.4rem',
-    height: '1.4rem',
-    fontSize: '1.3rem',
+    width: `calc(${SHAPE_MIN_HEIGHT.medium} / 1.5)`,
+    height: `calc(${SHAPE_MIN_HEIGHT.medium} / 1.5)`,
+    fontSize: `calc(${SHAPE_MIN_HEIGHT.medium} / 1.81)`,
     color: palette.text.secondary,
     position: 'relative',
     transition: labelTransition,
@@ -35,13 +35,13 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
     [`&::before`]: {
       content: '""',
       display: 'block',
-      width: '130%',
-      height: '130%',
+      width: '120%',
+      height: '120%',
       backgroundColor: 'transparent',
       borderRadius: shape.borderRadius.medium,
       position: 'absolute',
-      top: '-15%',
-      left: '-15%',
+      top: '-10%',
+      left: '-10%',
       zIndex: '-1',
       transition: focusElementTransition,
     },

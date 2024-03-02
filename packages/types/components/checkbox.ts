@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, ReactNode, RefObject } from 'react';
+import { ComponentPropsWithRef, ReactNode, RefObject, HTMLAttributes, AriaAttributes } from 'react';
 import { WithStyle } from '../common';
 import { ComponentStyles } from '../styles';
 
@@ -12,6 +12,7 @@ interface CheckboxStylesScheme<T> {
 export interface CheckboxStyles extends CheckboxStylesScheme<ComponentStyles> {}
 
 export type CheckboxInitialProps = NonNullable<unknown> & Omit<ComponentPropsWithRef<'input'>, 'size'>;
+export type CheckboxRestProps = Partial<HTMLAttributes<HTMLInputElement>> & Partial<AriaAttributes>;
 
 export interface CheckboxElementaryProps extends Partial<WithStyle> {
   labelRef?: RefObject<HTMLLabelElement>;
@@ -51,13 +52,19 @@ export interface UseCheckboxStylesReturn {
   composedStyles: CheckboxStyles;
 }
 
-export interface UseCheckboxProps extends Partial<CheckboxShapeProps>, Partial<CheckboxStateProps>, Partial<WithStyle> {
+export interface UseCheckboxProps
+  extends Partial<CheckboxShapeProps>,
+    Partial<CheckboxStateProps>,
+    Partial<CheckboxRestProps> {
   slotProps: CheckboxSlotProps;
   isChecked: boolean;
   isFocused: boolean;
 }
 
-export interface UseCheckboxPropsReturn extends CheckboxStylesScheme<WithStyle> {}
+export interface UseCheckboxPropsReturn {
+  root: Partial<CheckboxRestProps>;
+  label: Partial<CheckboxLabelProps>;
+}
 
 export interface CheckboxStylesProps extends CheckboxShapeProps {}
 

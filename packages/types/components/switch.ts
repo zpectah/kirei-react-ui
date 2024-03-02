@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, RefObject } from 'react';
+import { AriaAttributes, ComponentPropsWithRef, HTMLAttributes, RefObject } from 'react';
 import { WithStyle } from '../common';
 import { ComponentStyles, ShapeSize } from '../styles';
 
@@ -14,6 +14,7 @@ interface SwitchStylesScheme<T> {
 export interface SwitchStyles extends SwitchStylesScheme<ComponentStyles> {}
 
 export type SwitchInitialProps = NonNullable<unknown> & Omit<ComponentPropsWithRef<'input'>, 'size'>;
+export type SwitchRestProps = Partial<HTMLAttributes<HTMLInputElement>> & Partial<AriaAttributes>;
 
 export interface SwitchElementaryProps extends Partial<WithStyle> {
   labelRef?: RefObject<HTMLLabelElement>;
@@ -54,7 +55,11 @@ export interface UseSwitchProps extends Partial<SwitchShapeProps>, Partial<Switc
   isFocused: boolean;
 }
 
-export interface UseSwitchPropsReturn extends SwitchStylesScheme<WithStyle> {}
+export interface UseSwitchPropsReturn {
+  root: Partial<SwitchRestProps>;
+  label: Partial<SwitchLabelProps>;
+  slider: Partial<SwitchSliderProps>;
+}
 
 export interface SwitchStylesProps extends SwitchShapeProps {}
 

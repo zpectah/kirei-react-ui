@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { UseCheckboxProps, UseCheckboxPropsReturn } from 'types';
+import { UseCheckboxProps, UseCheckboxPropsReturn, CheckboxRestProps } from 'types';
 import { CHECKBOX_ROOT, CHECKBOX_INPUT, CHECKBOX_LABEL, STATUS_CLASS_NAMES } from 'core';
 
 export const useCheckboxProps = (props: UseCheckboxProps): UseCheckboxPropsReturn => {
@@ -12,7 +12,9 @@ export const useCheckboxProps = (props: UseCheckboxProps): UseCheckboxPropsRetur
     root: {
       className: clsx(CHECKBOX_INPUT, className),
       style: { ...style },
-    },
+      'aria-checked': isChecked,
+      'data-indeterminate': indeterminate,
+    } as Partial<CheckboxRestProps>,
     label: {
       className: clsx(
         CHECKBOX_ROOT,

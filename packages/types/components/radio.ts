@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, ReactNode, RefObject } from 'react';
+import { AriaAttributes, ComponentPropsWithRef, HTMLAttributes, ReactNode, RefObject } from 'react';
 import { WithStyle } from '../common';
 import { ComponentStyles } from '../styles';
 
@@ -12,6 +12,7 @@ interface RadioStylesScheme<T> {
 export interface RadioStyles extends RadioStylesScheme<ComponentStyles> {}
 
 export type RadioInitialProps = NonNullable<unknown> & Omit<ComponentPropsWithRef<'input'>, 'size'>;
+export type RadioRestProps = Partial<HTMLAttributes<HTMLInputElement>> & Partial<AriaAttributes>;
 
 export interface RadioElementaryProps extends Partial<WithStyle> {
   labelRef?: RefObject<HTMLLabelElement>;
@@ -55,7 +56,10 @@ export interface UseRadioProps extends Partial<RadioShapeProps>, Partial<RadioSt
   isFocused: boolean;
 }
 
-export interface UseRadioPropsReturn extends RadioStylesScheme<WithStyle> {}
+export interface UseRadioPropsReturn {
+  root: Partial<RadioRestProps>;
+  label: Partial<RadioLabelProps>;
+}
 
 export interface RadioStylesProps extends RadioShapeProps {}
 

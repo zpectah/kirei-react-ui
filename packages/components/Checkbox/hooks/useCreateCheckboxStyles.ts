@@ -50,7 +50,7 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
       color: palette.text.primary,
     },
 
-    [`&.${STATUS_CLASS_NAMES.isChecked}`]: {
+    [`&.${STATUS_CLASS_NAMES.isChecked}, &.${STATUS_CLASS_NAMES.isIndeterminate}`]: {
       color: palette.primary.main,
     },
     [`&.${STATUS_CLASS_NAMES.isFocused}`]: {

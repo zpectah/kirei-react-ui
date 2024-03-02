@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, ReactElement, ReactNode, RefObject } from 'react';
 import { WithStyle } from '../common';
-import { ComponentStyles } from '../styles';
+import { ComponentStyles, Placement, Spacing } from '../styles';
 
 interface ControlLabelStylesScheme<T> {
   root: T;
@@ -9,21 +9,26 @@ interface ControlLabelStylesScheme<T> {
 export interface ControlLabelStyles extends ControlLabelStylesScheme<ComponentStyles> {}
 
 export type ControlLabelInitialProps = NonNullable<unknown> & Omit<ComponentPropsWithRef<'label'>, 'children'>;
+export type ControlLabelPickedProps = Pick<
+  ComponentPropsWithRef<'input'>,
+  'checked' | 'required' | 'value' | 'onChange' | 'onFocus' | 'onBlur'
+>;
 
 export interface ControlLabelElementaryProps extends Partial<WithStyle> {
   control: ReactElement;
   inputRef?: RefObject<HTMLInputElement>;
   inputProps?: Partial<ComponentPropsWithRef<'input'>>;
   label?: ReactNode;
-  labelPlacement?: 'left' | 'right'; // TODO
 }
 
-export interface ControlLabelInputProps
-  extends Pick<ComponentPropsWithRef<'input'>, 'checked' | 'required' | 'value' | 'onChange' | 'onFocus' | 'onBlur'> {
+export interface ControlLabelInputProps extends ControlLabelPickedProps {
   isDisabled?: boolean;
 }
 
-export interface ControlLabelShapeProps {}
+export interface ControlLabelShapeProps {
+  labelPlacement: Placement;
+  gap: Spacing;
+}
 
 export type ControlLabelProps = {
   styles?: Partial<ControlLabelStyles>;

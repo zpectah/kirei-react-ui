@@ -1,4 +1,4 @@
-import { DeepPartial, ThemeSpacing, SpacingValues } from 'types';
+import { DeepPartial, ThemeSpacing, Spacing } from 'types';
 import { SPACING_UNIT, SPACING_RATIO, SPACING_VALUES } from 'core';
 
 export const createThemeSpacing = (spacing?: DeepPartial<ThemeSpacing>): ThemeSpacing => {
@@ -23,7 +23,7 @@ export const createThemeSpacing = (spacing?: DeepPartial<ThemeSpacing>): ThemeSp
     16: spacing?.['16'] || SPACING_VALUES['16'],
   };
 
-  const get = (...args: SpacingValues[]) => {
+  const get = (...args: Spacing[]) => {
     const array: string[] = [];
     args.forEach((arg) => {
       array.push(`${values[arg] * ratio}${SPACING_UNIT}`);

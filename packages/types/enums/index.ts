@@ -5,6 +5,8 @@ export * from './css';
 export * from './flex';
 export * from './link';
 export * from './paper';
+export * from './placement';
 export * from './shape';
+export * from './spacing';
 export * from './theme';
 export * from './typography';

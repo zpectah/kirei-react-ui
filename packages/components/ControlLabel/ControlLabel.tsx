@@ -1,29 +1,30 @@
 import React, { forwardRef, cloneElement, useMemo } from 'react';
 import { ControlLabelProps } from 'types';
-// import { CONTROL_LABEL_DEFAULT_VALUES } from 'core';
+import { CONTROL_LABEL_DEFAULT_VALUES } from 'core';
 import { useControlLabelProps, useControlLabelStyles } from './hooks';
 import { Typography } from '../Typography';
 
 const ControlLabel = forwardRef<HTMLLabelElement, ControlLabelProps>((props: ControlLabelProps, ref) => {
   const {
-    control,
-    inputRef,
-    inputProps,
-    className,
-    style,
-    styles,
+    labelPlacement = CONTROL_LABEL_DEFAULT_VALUES.labelPlacement,
+    gap = CONTROL_LABEL_DEFAULT_VALUES.gap,
     checked,
-    value,
+    className,
+    control,
+    inputProps,
+    inputRef,
+    isDisabled,
+    label,
+    onBlur,
     onChange,
     onFocus,
-    onBlur,
     required,
-    label,
-    labelPlacement, // TODO
-    isDisabled,
+    style,
+    styles,
+    value,
     ...rest
   } = props;
-  const styleProps = {};
+  const styleProps = { labelPlacement, gap };
 
   const controlProps = useMemo(() => {
     const fieldChecked = control.props.checked || checked;
@@ -31,15 +32,14 @@ const ControlLabel = forwardRef<HTMLLabelElement, ControlLabelProps>((props: Con
     const fieldDisabled = control.props.isDisabled || isDisabled;
 
     return {
-      ref: inputRef,
       checked: fieldChecked,
-      value: fieldValue,
       isDisabled: fieldDisabled,
+      ref: inputRef,
+      value: fieldValue,
+      onBlur,
       onChange,
       onFocus,
-      onBlur,
       required,
-      'data-test': 'xyz',
       ...inputProps,
     };
   }, [inputRef, inputProps, control, checked, value, onChange, onFocus, onBlur, required]);

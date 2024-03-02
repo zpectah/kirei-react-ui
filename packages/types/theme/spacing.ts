@@ -1,7 +1,7 @@
-import { SpacingValues } from '../styles';
+import { Spacing } from '../styles';
 
 export interface ThemeSpacing {
-  get: (...args: SpacingValues[]) => string;
+  get: (...args: Spacing[]) => string;
   ratio: number;
   0: number;
   1: number;

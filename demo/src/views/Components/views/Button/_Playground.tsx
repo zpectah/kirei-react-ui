@@ -20,7 +20,12 @@ const PlaygroundView = () => {
   return (
     <>
       <Article title="Button Playground">
-        <ControlLabel control={<Checkbox />} label="Some text label" checked isDisabled />
+        <ControlLabel control={<Switch />} label="Duis id libero vitae, pulvinar lacinia" />
+        <ControlLabel control={<Switch />} label="Duis id libero vitae, pulvinar lacinia" />
+        <ControlLabel
+          control={<Switch />}
+          label="Duis id libero vitae, pulvinar lacinia non nulla consequat elit suscipit sapien, consectetur aliquet rutrum erat. Faucibus elementum luctus, lectus quis vitae consectetur vel libero sed odio morbi tristique, tortor iaculis in donec condimentum. Curabitur nunc, nec augue sed id tortor a fusce molestie neque, tortor lorem ipsum id dolor nulla."
+        />
 
         <Section>
           <PlaygroundPreview>

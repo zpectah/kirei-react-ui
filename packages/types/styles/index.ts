@@ -5,6 +5,7 @@ export * from './flex';
 export * from './interpolation';
 export * from './link';
 export * from './paper';
+export * from './placement';
 export * from './shape';
 export * from './spacing';
 export * from './typography';

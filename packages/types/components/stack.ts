@@ -2,7 +2,7 @@ import { ElementType } from 'react';
 import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
 import {
   ComponentStyles,
-  SpacingValues,
+  Spacing,
   FlexDirection,
   FlexAlignItems,
   FlexAlignContent,
@@ -23,7 +23,7 @@ export interface StackElementaryProps extends Partial<WithStyle> {}
 
 export interface StackShapeProps {
   direction: FlexDirection;
-  gap: SpacingValues;
+  gap: Spacing;
   alignItems: FlexAlignItems;
   justifyItems: FlexJustifyItems;
   alignContent: FlexAlignContent;

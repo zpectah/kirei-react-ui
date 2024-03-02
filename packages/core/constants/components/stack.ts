@@ -5,13 +5,14 @@ import {
   flexJustifyItemsKeys,
   flexJustifyContentKeys,
   flexWrapKeys,
+  spacingKeys,
 } from 'types';
 
 export const STACK_ROOT = 'Stack';
 
 export const STACK_DEFAULT_VALUES = {
   as: 'div',
-  gap: 0,
+  gap: spacingKeys['0'],
   direction: flexDirectionKeys.row,
   alignItems: flexAlignItemsKeys.initial,
   justifyItems: flexJustifyItemsKeys.initial,

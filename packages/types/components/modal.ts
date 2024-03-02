@@ -1,20 +1,22 @@
 import { MouseEvent, KeyboardEvent, SyntheticEvent, MutableRefObject, ComponentPropsWithRef, ElementType } from 'react';
-import { ElementRestProps, WithStyle } from '../common';
+import { ElementRestProps, WithoutChildren, WithStyle } from '../common';
 import { Breakpoints, ComponentStyles } from '../styles';
 import { PaperColor, PaperProps } from './paper';
 import { BackdropProps } from './backdrop';
 
-type ContainerProps = ComponentPropsWithRef<'div'>;
-type DialogProps = ComponentPropsWithRef<'div'>;
-
+// TODO
 export enum modalScrollDeterminateKeys {
   body = 'body',
   paper = 'paper',
 }
 
+// TODO
 export type ModalScrollDeterminate = keyof typeof modalScrollDeterminateKeys;
 
-interface ModalStylesScheme<T> {
+type ContainerProps = ComponentPropsWithRef<'div'>;
+type DialogProps = ComponentPropsWithRef<'div'>;
+
+interface StylesScheme<T> {
   root: T;
   container: T;
   backdrop: T;
@@ -22,8 +24,7 @@ interface ModalStylesScheme<T> {
   paper: T;
 }
 
-export interface ModalStyles extends ModalStylesScheme<ComponentStyles> {}
-
+export type ModalStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type ModalInitialProps = Omit<ComponentPropsWithRef<'dialog'>, 'onCancel'>;
 export type ModalRestProps = ElementRestProps<HTMLDialogElement>;
 
@@ -43,10 +44,10 @@ export interface ModalShapeProps {
 }
 
 export interface ModalSlotProps {
-  containerProps: Omit<Partial<ContainerProps>, 'children'>;
+  containerProps: WithoutChildren<Partial<ContainerProps>>;
   backdropProps: Partial<BackdropProps<ElementType>>;
-  dialogProps: Omit<Partial<DialogProps>, 'children'>;
-  paperProps: Omit<Partial<PaperProps<ElementType>>, 'children'>;
+  dialogProps: WithoutChildren<Partial<DialogProps>>;
+  paperProps: WithoutChildren<Partial<PaperProps<ElementType>>>;
 }
 
 export type ModalProps = {

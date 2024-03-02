@@ -1,20 +1,19 @@
 import { ComponentPropsWithRef, ElementType, ReactElement, ReactNode, RefObject } from 'react';
-import { ElementRestProps, WithStyle } from '../common';
+import { ElementRestProps, WithoutChildren, WithStyle } from '../common';
 import { ComponentStyles, Placement, Spacing } from '../styles';
 import { TypographyProps } from './typography';
 
 type LabelProps = TypographyProps<'label'>;
 
-type ControlLabelPickedProps = 'checked' | 'required' | 'value' | 'onChange' | 'onFocus' | 'onBlur';
+type ControlLabelInputPickedProps = 'checked' | 'required' | 'value' | 'onChange' | 'onFocus' | 'onBlur';
 
-interface ControlLabelStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
   label: T;
 }
 
-export interface ControlLabelStyles extends ControlLabelStylesScheme<ComponentStyles> {}
-
-export type ControlLabelInitialProps = NonNullable<unknown> & Omit<ComponentPropsWithRef<'label'>, 'children'>;
+export type ControlLabelStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
+export type ControlLabelInitialProps = NonNullable<unknown> & WithoutChildren<ComponentPropsWithRef<'label'>>;
 export type ControlLabelRestProps = ElementRestProps<HTMLLabelElement>;
 
 export interface ControlLabelElementaryProps extends Partial<WithStyle> {
@@ -22,10 +21,10 @@ export interface ControlLabelElementaryProps extends Partial<WithStyle> {
   inputRef?: RefObject<HTMLInputElement>;
   inputProps?: Partial<ComponentPropsWithRef<'input'>>;
   label?: ReactNode;
-  labelTypographyProps?: Omit<TypographyProps<ElementType>, 'children'>;
+  labelTypographyProps?: WithoutChildren<TypographyProps<ElementType>>;
 }
 
-export interface ControlLabelInputProps extends Pick<ComponentPropsWithRef<'input'>, ControlLabelPickedProps> {
+export interface ControlLabelInputProps extends Pick<ComponentPropsWithRef<'input'>, ControlLabelInputPickedProps> {
   isDisabled?: boolean;
 }
 
@@ -35,7 +34,7 @@ export interface ControlLabelShapeProps {
 }
 
 export interface ControlLabelSlotProps {
-  labelProps: Omit<LabelProps, 'children' | 'as'>;
+  labelProps: WithoutChildren<LabelProps, 'as'>;
 }
 
 export type ControlLabelProps = {

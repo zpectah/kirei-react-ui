@@ -10,14 +10,13 @@ import {
   Elevation,
 } from '../styles';
 
-export type PaperColor = BrandColor | NeutralColor | EmotionColor | PaperBackgroundColor;
-
-interface PaperStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
 }
 
-export interface PaperStyles extends PaperStylesScheme<ComponentStyles> {}
+export type PaperColor = BrandColor | NeutralColor | EmotionColor | PaperBackgroundColor;
 
+export type PaperStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type PaperInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
 export type PaperRestProps<E extends Element> = ElementRestProps<E>;
 

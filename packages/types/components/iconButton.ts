@@ -1,16 +1,15 @@
 import { ComponentPropsWithRef, ElementType } from 'react';
-import { ElementRestProps, PolymorphicComponentPropsWithRef, WithStyle } from '../common';
+import { ElementRestProps, PolymorphicComponentPropsWithRef, WithoutChildren, WithStyle } from '../common';
 import { ComponentStyles, Shape, ShapeSize, ShapeVariant, ButtonColor } from '../styles';
 
 type IconProps = ComponentPropsWithRef<'span'>;
 
-interface IconButtonStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
   icon: T;
 }
 
-export interface IconButtonStyles extends IconButtonStylesScheme<ComponentStyles> {}
-
+export type IconButtonStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type IconButtonInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
 export type IconButtonRestProps<E extends Element> = ElementRestProps<E>;
 
@@ -24,7 +23,7 @@ export interface IconButtonShapeProps {
 }
 
 export interface IconButtonSlotProps {
-  iconProps: Omit<IconProps, 'children'>;
+  iconProps: WithoutChildren<IconProps>;
 }
 
 export type IconButtonProps<T extends ElementType> = {

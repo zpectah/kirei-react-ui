@@ -1,16 +1,15 @@
 import { ComponentPropsWithRef } from 'react';
-import { ElementRestProps, WithStyle } from '../common';
+import { ElementRestProps, WithoutChildren, WithStyle } from '../common';
 import { ComponentStyles } from '../styles';
 
 type ContainerProps = ComponentPropsWithRef<'div'>;
 
-interface ModalBodyStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
   container: T;
 }
 
-export interface ModalBodyStyles extends ModalBodyStylesScheme<ComponentStyles> {}
-
+export type ModalBodyStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type ModalBodyInitialProps = ComponentPropsWithRef<'article'>;
 export type ModalBodyRestProps = ElementRestProps<HTMLElement>;
 
@@ -21,7 +20,7 @@ export interface ModalBodyShapeProps {
 }
 
 export interface ModalBodySlotProps {
-  containerProps: Omit<ContainerProps, 'children'>;
+  containerProps: WithoutChildren<ContainerProps>;
 }
 
 export type ModalBodyProps = {

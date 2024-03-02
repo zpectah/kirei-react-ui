@@ -11,12 +11,11 @@ import {
   FlexWrap,
 } from '../styles';
 
-interface StackStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
 }
 
-export interface StackStyles extends StackStylesScheme<ComponentStyles> {}
-
+export type StackStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type StackInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
 export type StackRestProps<E extends Element> = ElementRestProps<E>;
 

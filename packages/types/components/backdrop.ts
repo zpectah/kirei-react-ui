@@ -2,12 +2,11 @@ import { ElementType } from 'react';
 import { PolymorphicComponentPropsWithRef, WithStyle, ElementRestProps } from '../common';
 import { ComponentStyles, BackdropBackgroundColor } from '../styles';
 
-interface BackdropStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
 }
 
-export interface BackdropStyles extends BackdropStylesScheme<ComponentStyles> {}
-
+export type BackdropStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type BackdropInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
 export type BackdropRestProps<E extends Element> = ElementRestProps<E>;
 

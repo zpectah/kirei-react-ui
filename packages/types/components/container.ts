@@ -2,12 +2,11 @@ import { ElementType } from 'react';
 import { ElementRestProps, PolymorphicComponentPropsWithRef, WithStyle } from '../common';
 import { Breakpoints, ComponentStyles, Spacing } from '../styles';
 
-interface ContainerStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
 }
 
-export interface ContainerStyles extends ContainerStylesScheme<ComponentStyles> {}
-
+export type ContainerStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type ContainerInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
 export type ContainerRestProps<E extends Element> = ElementRestProps<E>;
 

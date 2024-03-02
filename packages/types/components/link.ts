@@ -2,12 +2,11 @@ import { ElementType } from 'react';
 import { ElementRestProps, PolymorphicComponentPropsWithRef, WithStyle } from '../common';
 import { ComponentStyles, TypographyVariant, TypographyColor, LinkUnderline } from '../styles';
 
-interface LinkStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
 }
 
-export interface LinkStyles extends LinkStylesScheme<ComponentStyles> {}
-
+export type LinkStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type LinkInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
 export type LinkRestProps<E extends Element> = ElementRestProps<E>;
 

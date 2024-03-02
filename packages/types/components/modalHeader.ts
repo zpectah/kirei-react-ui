@@ -1,5 +1,5 @@
 import { ComponentPropsWithRef, ElementType, ReactNode } from 'react';
-import { ElementRestProps, WithStyle } from '../common';
+import { ElementRestProps, WithoutChildren, WithStyle } from '../common';
 import { ComponentStyles } from '../styles';
 import { TypographyProps } from './typography';
 
@@ -8,7 +8,7 @@ type ActionsContainerProps = ComponentPropsWithRef<'div'>;
 type TitleProps = TypographyProps<ElementType>;
 type SubtitleProps = TypographyProps<ElementType>;
 
-interface ModalHeaderStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
   titleContainer: T;
   actionsContainer: T;
@@ -16,8 +16,7 @@ interface ModalHeaderStylesScheme<T> {
   subtitle: T;
 }
 
-export interface ModalHeaderStyles extends ModalHeaderStylesScheme<ComponentStyles> {}
-
+export type ModalHeaderStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type ModalHeaderInitialProps = ComponentPropsWithRef<'header'>;
 export type ModalHeaderRestProps = ElementRestProps<HTMLElement>;
 
@@ -25,8 +24,8 @@ export interface ModalHeaderElementaryProps extends Partial<WithStyle> {
   title?: ReactNode;
   subtitle?: ReactNode;
   actions?: ReactNode;
-  titleTypographyProps?: Omit<TypographyProps<ElementType>, 'children'>;
-  subtitleTypographyProps?: Omit<TypographyProps<ElementType>, 'children'>;
+  titleTypographyProps?: WithoutChildren<TypographyProps<ElementType>>;
+  subtitleTypographyProps?: WithoutChildren<TypographyProps<ElementType>>;
 }
 
 export interface ModalHeaderShapeProps {
@@ -34,10 +33,10 @@ export interface ModalHeaderShapeProps {
 }
 
 export interface ModalHeaderSlotProps {
-  titleContainerProps: Omit<Partial<TitleContainerProps>, 'children'>;
-  actionsContainerProps: Omit<Partial<ActionsContainerProps>, 'children'>;
-  titleProps: Omit<TitleProps, 'children'>;
-  subtitleProps: Omit<SubtitleProps, 'children'>;
+  titleContainerProps: WithoutChildren<Partial<TitleContainerProps>>;
+  actionsContainerProps: WithoutChildren<Partial<ActionsContainerProps>>;
+  titleProps: WithoutChildren<TitleProps>;
+  subtitleProps: WithoutChildren<SubtitleProps>;
 }
 
 export type ModalHeaderProps = {

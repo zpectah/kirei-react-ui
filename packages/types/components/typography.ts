@@ -2,12 +2,11 @@ import { ElementType } from 'react';
 import { ElementRestProps, PolymorphicComponentPropsWithRef, WithStyle } from '../common';
 import { ComponentStyles, TypographyVariant, TypographyColor } from '../styles';
 
-interface TypographyStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
 }
 
-export interface TypographyStyles extends TypographyStylesScheme<ComponentStyles> {}
-
+export type TypographyStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type TypographyInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
 export type TypographyRestProps<E extends Element> = ElementRestProps<E>;
 

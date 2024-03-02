@@ -2,12 +2,11 @@ import { ComponentPropsWithRef } from 'react';
 import { ElementRestProps, WithStyle } from '../common';
 import { ComponentStyles, FlexJustifyContent } from '../styles';
 
-interface ModalFooterStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
 }
 
-export interface ModalFooterStyles extends ModalFooterStylesScheme<ComponentStyles> {}
-
+export type ModalFooterStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type ModalFooterInitialProps = ComponentPropsWithRef<'footer'>;
 export type ModalFooterRestProps = ElementRestProps<HTMLElement>;
 

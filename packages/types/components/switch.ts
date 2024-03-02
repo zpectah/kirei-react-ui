@@ -1,18 +1,17 @@
 import { ComponentPropsWithRef, RefObject } from 'react';
-import { WithStyle, ElementRestProps } from '../common';
+import { WithStyle, ElementRestProps, InputPickedProps } from '../common';
 import { ComponentStyles } from '../styles';
 
 type SwitchLabelProps = ComponentPropsWithRef<'label'>;
 type SwitchSliderProps = ComponentPropsWithRef<'span'>;
 
-interface SwitchStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
   label: T;
   slider: T;
 }
 
-export interface SwitchStyles extends SwitchStylesScheme<ComponentStyles> {}
-
+export type SwitchStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type SwitchInitialProps = NonNullable<unknown> & Omit<ComponentPropsWithRef<'input'>, 'size'>;
 export type SwitchRestProps = ElementRestProps<HTMLInputElement>;
 
@@ -20,9 +19,7 @@ export interface SwitchElementaryProps extends Partial<WithStyle> {
   labelRef?: RefObject<HTMLLabelElement>;
 }
 
-export interface SwitchShapeProps {
-  // size: ShapeSize; // TODO
-}
+export interface SwitchShapeProps {}
 
 export interface SwitchStateProps {
   isDisabled: boolean;
@@ -63,8 +60,7 @@ export interface UseSwitchPropsReturn {
 
 export interface SwitchStylesProps extends SwitchShapeProps {}
 
-export interface UseSwitchHandlingProps
-  extends Pick<SwitchInitialProps, 'checked' | 'onChange' | 'onFocus' | 'onBlur' | 'ref'> {}
+export interface UseSwitchHandlingProps extends Pick<SwitchInitialProps, InputPickedProps> {}
 
 export interface UseSwitchHandlingReturn extends UseSwitchHandlingProps {
   focused: boolean;

@@ -1,5 +1,5 @@
 import { ComponentPropsWithRef, ElementType, ReactNode } from 'react';
-import { ElementRestProps, PolymorphicComponentPropsWithRef, WithStyle } from '../common';
+import { ElementRestProps, PolymorphicComponentPropsWithRef, WithStyle, WithoutChildren } from '../common';
 import { ComponentStyles, ShapeSize, ShapeVariant, ButtonColor } from '../styles';
 
 type LabelProps = ComponentPropsWithRef<'span'>;
@@ -7,7 +7,7 @@ type IconStartProps = ComponentPropsWithRef<'span'>;
 type IconEndProps = ComponentPropsWithRef<'span'>;
 type IconLoadingProps = ComponentPropsWithRef<'span'>;
 
-interface ButtonStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
   label: T;
   iconStart: T;
@@ -15,8 +15,7 @@ interface ButtonStylesScheme<T> {
   iconLoading: T;
 }
 
-export interface ButtonStyles extends ButtonStylesScheme<ComponentStyles> {}
-
+export type ButtonStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type ButtonInitialProps<T extends ElementType = 'button'> = NonNullable<unknown> &
   PolymorphicComponentPropsWithRef<T>;
 export type ButtonRestProps<E extends Element> = ElementRestProps<E>;
@@ -44,10 +43,10 @@ export interface ButtonSlots {
 }
 
 export interface ButtonSlotProps {
-  labelProps: Omit<LabelProps, 'children'>;
-  iconStartProps: Omit<IconStartProps, 'children'>;
-  iconEndProps: Omit<IconEndProps, 'children'>;
-  iconLoadingProps: Omit<IconLoadingProps, 'children'>;
+  labelProps: WithoutChildren<LabelProps>;
+  iconStartProps: WithoutChildren<IconStartProps>;
+  iconEndProps: WithoutChildren<IconEndProps>;
+  iconLoadingProps: WithoutChildren<IconLoadingProps>;
 }
 
 export type ButtonProps<T extends ElementType = 'button'> = {

@@ -1,16 +1,15 @@
 import { ComponentPropsWithRef, ReactNode, RefObject } from 'react';
-import { WithStyle, ElementRestProps } from '../common';
+import { WithStyle, ElementRestProps, InputPickedProps } from '../common';
 import { ComponentStyles } from '../styles';
 
 type RadioLabelProps = ComponentPropsWithRef<'label'>;
 
-interface RadioStylesScheme<T> {
+interface StylesScheme<T> {
   root: T;
   label: T;
 }
 
-export interface RadioStyles extends RadioStylesScheme<ComponentStyles> {}
-
+export type RadioStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type RadioInitialProps = NonNullable<unknown> & Omit<ComponentPropsWithRef<'input'>, 'size'>;
 export type RadioRestProps = ElementRestProps<HTMLInputElement>;
 
@@ -63,8 +62,7 @@ export interface UseRadioPropsReturn {
 
 export interface RadioStylesProps extends RadioShapeProps {}
 
-export interface UseRadioHandlingProps
-  extends Pick<RadioInitialProps, 'checked' | 'onChange' | 'onFocus' | 'onBlur' | 'ref'> {}
+export interface UseRadioHandlingProps extends Pick<RadioInitialProps, InputPickedProps> {}
 
 export interface UseRadioHandlingReturn extends UseRadioHandlingProps {
   focused: boolean;

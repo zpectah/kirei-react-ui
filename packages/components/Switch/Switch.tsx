@@ -1,12 +1,25 @@
 import React, { forwardRef } from 'react';
 import { SwitchProps } from 'types';
+import { SWITCH_DEFAULT_VALUES } from 'core';
 import { useSwitchHandling, useSwitchProps, useSwitchStyles } from './hooks';
 
 const Switch = forwardRef<HTMLInputElement, SwitchProps>((props: SwitchProps, ref) => {
-  const { className, style, styles, onChange, onFocus, onBlur, checked, isDisabled, slotProps, labelRef, ...rest } =
-    props;
+  const {
+    color = SWITCH_DEFAULT_VALUES.color,
+    className,
+    style,
+    styles,
+    onChange,
+    onFocus,
+    onBlur,
+    checked,
+    isDisabled,
+    slotProps,
+    labelRef,
+    ...rest
+  } = props;
 
-  const styleProps = { isDisabled };
+  const styleProps = { color };
   const defaultSlotProps = { labelProps: { ...slotProps?.labelProps }, sliderProps: { ...slotProps?.sliderProps } };
 
   const { inputRef, focused, ...handlingProps } = useSwitchHandling({ checked, onChange, onBlur, onFocus, ref });
@@ -20,6 +33,7 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>((props: SwitchProps, re
   } = useSwitchProps({
     style,
     className,
+    isDisabled,
     slotProps: defaultSlotProps,
     isChecked: handlingProps.checked || false,
     isFocused: focused,

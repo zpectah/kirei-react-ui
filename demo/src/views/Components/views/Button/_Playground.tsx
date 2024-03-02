@@ -1,6 +1,6 @@
 import React, { ElementType, useState } from 'react';
 import { ButtonProps } from 'types';
-import { Button, Checkbox, Switch, Radio, ControlLabel } from 'components';
+import { Button, Switch, ControlLabel } from 'components';
 import { routes } from '../../../../config';
 import { Article, ArticleFooter, Section } from '../../../../components';
 import { PlaygroundPreview, PlaygroundControls } from '../../components/index';
@@ -20,8 +20,8 @@ const PlaygroundView = () => {
   return (
     <>
       <Article title="Button Playground">
-        <ControlLabel control={<Switch />} label="Duis id libero vitae, pulvinar lacinia" />
-        <ControlLabel control={<Switch />} label="Duis id libero vitae, pulvinar lacinia" />
+        <ControlLabel control={<Switch color="error" />} label="Duis id libero vitae, pulvinar lacinia" />
+        <ControlLabel control={<Switch color="success" />} label="Duis id libero vitae, pulvinar lacinia" />
         <ControlLabel
           control={<Switch />}
           label="Duis id libero vitae, pulvinar lacinia non nulla consequat elit suscipit sapien, consectetur aliquet rutrum erat. Faucibus elementum luctus, lectus quis vitae consectetur vel libero sed odio morbi tristique, tortor iaculis in donec condimentum. Curabitur nunc, nec augue sed id tortor a fusce molestie neque, tortor lorem ipsum id dolor nulla."
@@ -118,10 +118,8 @@ const PlaygroundView = () => {
                 key: 5,
                 label: 'Full width',
                 value: (
-                  <Checkbox
-                    // indeterminate
+                  <Switch
                     checked={buttonProps.isFullWidth}
-                    // checked
                     onChange={(event) => {
                       setButtonProps({
                         ...buttonProps,
@@ -168,7 +166,7 @@ const PlaygroundView = () => {
                 key: 8,
                 label: 'Active',
                 value: (
-                  <Radio
+                  <Switch
                     checked={buttonProps.isActive}
                     onChange={(event) => {
                       setButtonProps({

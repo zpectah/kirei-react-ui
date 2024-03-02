@@ -1,10 +1,12 @@
 import React, { forwardRef } from 'react';
 import { CheckboxProps } from 'types';
+import { CHECKBOX_DEFAULT_VALUES } from 'core';
 import { CheckboxIcon, CheckboxEmptyIcon, CheckboxIndeterminateIcon } from 'icons';
 import { useCheckboxHandling, useCheckboxProps, useCheckboxStyles } from './hooks';
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxProps, ref) => {
   const {
+    color = CHECKBOX_DEFAULT_VALUES.color,
     className,
     style,
     styles,
@@ -20,7 +22,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxPro
     ...rest
   } = props;
 
-  const styleProps = { isDisabled };
+  const styleProps = { color };
   const defaultSlotProps = { labelProps: { ...slotProps?.labelProps } };
   const defaultSlots = {
     checkedIcon: slots?.checkedIcon || <CheckboxIcon />,
@@ -35,10 +37,11 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxPro
   const { root: rootProps, label: labelProps } = useCheckboxProps({
     style,
     className,
+    isDisabled,
+    indeterminate,
     slotProps: defaultSlotProps,
     isChecked: handlingProps.checked || false,
     isFocused: focused,
-    indeterminate,
     ...styleProps,
   });
 

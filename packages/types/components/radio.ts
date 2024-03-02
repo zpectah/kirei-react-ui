@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, ReactNode, RefObject } from 'react';
 import { WithStyle, ElementRestProps, InputPickedProps } from '../common';
-import { ComponentStyles } from '../styles';
+import { ComponentStyles, InputColor } from '../styles';
 
 type RadioLabelProps = ComponentPropsWithRef<'label'>;
 
@@ -17,7 +17,9 @@ export interface RadioElementaryProps extends Partial<WithStyle> {
   labelRef?: RefObject<HTMLLabelElement>;
 }
 
-export interface RadioShapeProps {}
+export interface RadioShapeProps {
+  color: InputColor;
+}
 
 export interface RadioStateProps {
   isDisabled: boolean;

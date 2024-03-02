@@ -16,3 +16,4 @@ export type BackdropBackgroundColor = keyof typeof backdropBackgroundColorKeys;
 
 export type ButtonColor = BrandColor | NeutralColor | EmotionColor;
 export type TypographyColor = BrandColor | NeutralColor | EmotionColor | TextColor;
+export type InputColor = BrandColor | EmotionColor;

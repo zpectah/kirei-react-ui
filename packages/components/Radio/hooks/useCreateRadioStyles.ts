@@ -1,10 +1,25 @@
-import { Theme, RadioStylesProps } from 'types';
+import { Theme, RadioStylesProps, ThemePalette, InputColor } from 'types';
 import { getElementTransitions } from 'styles';
 import { SHAPE_MIN_HEIGHT, STATUS_CLASS_NAMES } from 'core';
 
+const getColorVariant = (palette: ThemePalette, color: InputColor) => {
+  const colorMain = palette[color].main;
+
+  return {
+    [`&.${STATUS_CLASS_NAMES.isChecked}, &.${STATUS_CLASS_NAMES.isIndeterminate}`]: {
+      color: colorMain,
+    },
+    [`&.${STATUS_CLASS_NAMES.isFocused}`]: {
+      [`&::before`]: {
+        backgroundColor: palette.utils.getAlphaColor(colorMain, palette.ratio.activeAlpha),
+      },
+    },
+  };
+};
+
 export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps) => {
-  const {} = stylesProps;
-  const { palette, shape, transitions } = theme;
+  const { color } = stylesProps;
+  const { palette, transitions } = theme;
 
   const labelTransition = getElementTransitions(['color'], transitions.duration.shortest, transitions.easing.easeInOut);
   const focusElementTransition = getElementTransitions(
@@ -50,14 +65,6 @@ export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps
       color: palette.text.primary,
     },
 
-    [`&.${STATUS_CLASS_NAMES.isChecked}`]: {
-      color: palette.primary.main,
-    },
-    [`&.${STATUS_CLASS_NAMES.isFocused}`]: {
-      [`&::before`]: {
-        backgroundColor: palette.action.active,
-      },
-    },
     [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
       pointerEvents: 'none',
       cursor: 'default',
@@ -71,6 +78,7 @@ export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps
     }),
     label: Object.assign({
       ...labelBase,
+      ...getColorVariant(palette, color),
     }),
   };
 

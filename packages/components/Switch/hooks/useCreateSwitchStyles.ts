@@ -1,9 +1,33 @@
-import { Theme, SwitchStylesProps } from 'types';
+import { Theme, SwitchStylesProps, ThemePalette, InputColor } from 'types';
 import { SHAPE_MIN_HEIGHT, STATUS_CLASS_NAMES } from 'core';
 import { getElementTransitions } from 'styles';
 
+const getColorVariant = (palette: ThemePalette, color: InputColor) => {
+  const colorMain = palette[color].main;
+
+  return {
+    label: {
+      [`&.${STATUS_CLASS_NAMES.isFocused}`]: {
+        [`&::before`]: {
+          backgroundColor: palette.utils.getAlphaColor(colorMain, palette.ratio.activeAlpha),
+        },
+      },
+    },
+    slider: {
+      [`.${STATUS_CLASS_NAMES.isChecked} &`]: {
+        backgroundColor: colorMain,
+        borderColor: colorMain,
+
+        [`&:hover`]: {
+          backgroundColor: colorMain,
+        },
+      },
+    },
+  };
+};
+
 export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesProps) => {
-  const {} = stylesProps;
+  const { color } = stylesProps;
   const { palette, shape, transitions } = theme;
 
   const sliderTransition = getElementTransitions(
@@ -53,12 +77,6 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
       transition: focusElementTransition,
     },
 
-    [`&.${STATUS_CLASS_NAMES.isChecked}`]: {},
-    [`&.${STATUS_CLASS_NAMES.isFocused}`]: {
-      [`&::before`]: {
-        backgroundColor: palette.action.active,
-      },
-    },
     [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
       pointerEvents: 'none',
       cursor: 'default',
@@ -82,16 +100,6 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
       backgroundColor: palette.text.primary,
     },
 
-    // [`.${STATUS_CLASS_NAMES.isFocused} &`]: {},
-    [`.${STATUS_CLASS_NAMES.isChecked} &`]: {
-      backgroundColor: palette.primary.main,
-      borderColor: palette.primary.main,
-
-      [`&:hover`]: {
-        backgroundColor: palette.primary.main,
-      },
-    },
-
     [`&::before`]: {
       position: 'absolute',
       content: '""',
@@ -106,11 +114,10 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
       [`.${STATUS_CLASS_NAMES.isChecked} &`]: {
         transform: 'translateX(1.1rem)',
       },
-      [`.${STATUS_CLASS_NAMES.isFocused} &`]: {
-        outline: `${shape.borderWidth.outline} solid ${palette.action.active}`,
-      },
     },
   };
+
+  const colorVariant = getColorVariant(palette, color);
 
   const styles = {
     root: Object.assign({
@@ -118,9 +125,11 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
     }),
     label: Object.assign({
       ...labelBase,
+      ...colorVariant.label,
     }),
     slider: Object.assign({
       ...sliderBase,
+      ...colorVariant.slider,
     }),
   };
 

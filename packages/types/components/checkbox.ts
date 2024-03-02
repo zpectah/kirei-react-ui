@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, ReactNode, RefObject } from 'react';
 import { WithStyle, ElementRestProps, InputPickedProps } from '../common';
-import { ComponentStyles } from '../styles';
+import { ComponentStyles, InputColor } from '../styles';
 
 type CheckboxLabelProps = ComponentPropsWithRef<'label'>;
 
@@ -11,13 +11,15 @@ interface StylesScheme<T> {
 
 export type CheckboxStyles = NonNullable<unknown> & StylesScheme<ComponentStyles>;
 export type CheckboxInitialProps = NonNullable<unknown> & Omit<ComponentPropsWithRef<'input'>, 'size'>;
-export type CheckboxRestProps = ElementRestProps<HTMLInputElement>;
+export type CheckboxRestProps = Omit<ElementRestProps<HTMLInputElement>, 'color'>;
 
 export interface CheckboxElementaryProps extends Partial<WithStyle> {
   labelRef?: RefObject<HTMLLabelElement>;
 }
 
-export interface CheckboxShapeProps {}
+export interface CheckboxShapeProps {
+  color: InputColor;
+}
 
 export interface CheckboxStateProps {
   isDisabled: boolean;

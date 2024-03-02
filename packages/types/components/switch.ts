@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, RefObject } from 'react';
 import { WithStyle, ElementRestProps, InputPickedProps } from '../common';
-import { ComponentStyles } from '../styles';
+import { ComponentStyles, InputColor } from '../styles';
 
 type SwitchLabelProps = ComponentPropsWithRef<'label'>;
 type SwitchSliderProps = ComponentPropsWithRef<'span'>;
@@ -19,7 +19,9 @@ export interface SwitchElementaryProps extends Partial<WithStyle> {
   labelRef?: RefObject<HTMLLabelElement>;
 }
 
-export interface SwitchShapeProps {}
+export interface SwitchShapeProps {
+  color: InputColor;
+}
 
 export interface SwitchStateProps {
   isDisabled: boolean;

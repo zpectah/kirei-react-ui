@@ -1,17 +1,8 @@
 import { MouseEvent, KeyboardEvent, SyntheticEvent, MutableRefObject, ComponentPropsWithRef, ElementType } from 'react';
-import { ElementRestProps, WithoutChildren, WithStyle } from '../common';
+import { ElementRestProps, WithoutChildren, WithStyle, ScrollDeterminate } from '../common';
 import { Breakpoints, ComponentStyles } from '../styles';
 import { PaperColor, PaperProps } from './paper';
 import { BackdropProps } from './backdrop';
-
-// TODO
-export enum modalScrollDeterminateKeys {
-  body = 'body',
-  paper = 'paper',
-}
-
-// TODO
-export type ModalScrollDeterminate = keyof typeof modalScrollDeterminateKeys;
 
 type ContainerProps = ComponentPropsWithRef<'div'>;
 type DialogProps = ComponentPropsWithRef<'div'>;
@@ -40,7 +31,7 @@ export interface ModalHandlingProps {
 export interface ModalShapeProps {
   isFullscreen: boolean;
   maxWidth: Breakpoints;
-  scroll: ModalScrollDeterminate;
+  scroll: ScrollDeterminate;
 }
 
 export interface ModalSlotProps {

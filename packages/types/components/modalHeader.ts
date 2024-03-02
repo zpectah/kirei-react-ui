@@ -5,8 +5,8 @@ import { TypographyProps } from './typography';
 
 type TitleContainerProps = ComponentPropsWithRef<'div'>;
 type ActionsContainerProps = ComponentPropsWithRef<'div'>;
-type TitleProps = TypographyProps<ElementType>;
-type SubtitleProps = TypographyProps<ElementType>;
+type TitleProps<T extends ElementType> = TypographyProps<T>;
+type SubtitleProps<T extends ElementType> = TypographyProps<T>;
 
 interface StylesScheme<T> {
   root: T;
@@ -32,16 +32,16 @@ export interface ModalHeaderShapeProps {
   divider?: boolean;
 }
 
-export interface ModalHeaderSlotProps {
+export interface ModalHeaderSlotProps<T1 extends ElementType, T2 extends ElementType> {
   titleContainerProps: WithoutChildren<Partial<TitleContainerProps>>;
   actionsContainerProps: WithoutChildren<Partial<ActionsContainerProps>>;
-  titleProps: WithoutChildren<TitleProps>;
-  subtitleProps: WithoutChildren<SubtitleProps>;
+  titleProps: WithoutChildren<TitleProps<T1>>;
+  subtitleProps: WithoutChildren<SubtitleProps<T2>>;
 }
 
-export type ModalHeaderProps = {
+export type ModalHeaderProps<T1 extends ElementType, T2 extends ElementType> = {
   styles?: Partial<ModalHeaderStyles>;
-  slotProps?: Partial<ModalHeaderSlotProps>;
+  slotProps?: Partial<ModalHeaderSlotProps<T1, T2>>;
 } & ModalHeaderInitialProps &
   ModalHeaderElementaryProps &
   Partial<ModalHeaderShapeProps>;
@@ -54,16 +54,18 @@ export interface UseModalHeaderStylesReturn {
   composedStyles: ModalHeaderStyles;
 }
 
-export interface UseModalHeaderProps extends Partial<ModalHeaderShapeProps>, Partial<WithStyle> {
-  slotProps: ModalHeaderSlotProps;
+export interface UseModalHeaderProps<T1 extends ElementType, T2 extends ElementType>
+  extends Partial<ModalHeaderShapeProps>,
+    Partial<WithStyle> {
+  slotProps: ModalHeaderSlotProps<T1, T2>;
 }
 
-export interface UseModalHeaderPropsReturn {
+export interface UseModalHeaderPropsReturn<T1 extends ElementType, T2 extends ElementType> {
   root: Partial<ModalHeaderRestProps>;
   titleContainer: Partial<TitleContainerProps>;
   actionsContainer: Partial<ActionsContainerProps>;
-  title: Partial<TitleProps>;
-  subtitle: Partial<SubtitleProps>;
+  title: Partial<TitleProps<T1>>;
+  subtitle: Partial<SubtitleProps<T2>>;
 }
 
 export interface ModalHeaderStylesProps extends ModalHeaderShapeProps {}

@@ -1,1 +1,1 @@
-export type InputPickedProps = 'ref' | 'checked' | 'value' | 'onChange' | 'onFocus' | 'onBlur';
+export type InputPickedProps = 'ref' | 'checked' | 'value' | 'required' | 'onChange' | 'onFocus' | 'onBlur';

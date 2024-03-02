@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { UseModalHeaderProps, UseModalHeaderPropsReturn } from 'types';
+import { TypographyProps, UseModalHeaderProps, UseModalHeaderPropsReturn } from 'types';
 import {
   MODAL_HEADER_ROOT,
   MODAL_HEADER_TITLE_CONTAINER,
@@ -7,8 +7,11 @@ import {
   MODAL_HEADER_TITLE,
   MODAL_HEADER_SUBTITLE,
 } from 'core';
+import { ElementType } from 'react';
 
-export const useModalHeaderProps = (props: UseModalHeaderProps): UseModalHeaderPropsReturn => {
+export const useModalHeaderProps = <T1 extends ElementType, T2 extends ElementType>(
+  props: UseModalHeaderProps<T1, T2>
+): UseModalHeaderPropsReturn<T1, T2> => {
   const { style, className, slotProps } = props;
   const {
     titleContainerProps: {
@@ -44,11 +47,11 @@ export const useModalHeaderProps = (props: UseModalHeaderProps): UseModalHeaderP
       className: clsx(MODAL_HEADER_TITLE, titleClassName),
       style: { ...titleStyle },
       ...restOfTitleProps,
-    },
+    } as TypographyProps<T1>,
     subtitle: {
       className: clsx(MODAL_HEADER_SUBTITLE, subtitleClassName),
       style: { ...subtitleStyle },
       ...restOfSubtitleProps,
-    },
+    } as TypographyProps<T2>,
   };
 };

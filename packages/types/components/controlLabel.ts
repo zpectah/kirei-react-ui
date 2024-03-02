@@ -1,11 +1,9 @@
 import { ComponentPropsWithRef, ElementType, ReactElement, ReactNode, RefObject } from 'react';
-import { ElementRestProps, WithoutChildren, WithStyle } from '../common';
+import { ElementRestProps, InputPickedProps, WithoutChildren, WithStyle } from '../common';
 import { ComponentStyles, Placement, Spacing } from '../styles';
 import { TypographyProps } from './typography';
 
 type LabelProps = TypographyProps<'label'>;
-
-type ControlLabelInputPickedProps = 'checked' | 'required' | 'value' | 'onChange' | 'onFocus' | 'onBlur';
 
 interface StylesScheme<T> {
   root: T;
@@ -24,7 +22,7 @@ export interface ControlLabelElementaryProps extends Partial<WithStyle> {
   labelTypographyProps?: WithoutChildren<TypographyProps<ElementType>>;
 }
 
-export interface ControlLabelInputProps extends Pick<ComponentPropsWithRef<'input'>, ControlLabelInputPickedProps> {
+export interface ControlLabelInputProps extends Pick<ComponentPropsWithRef<'input'>, InputPickedProps> {
   isDisabled?: boolean;
 }
 

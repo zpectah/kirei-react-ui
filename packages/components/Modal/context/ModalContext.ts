@@ -1,12 +1,12 @@
 import { createContext, useContext } from 'react';
-import { ModalContextProps, modalScrollDeterminateKeys } from 'types';
+import { ModalContextProps, scrollDeterminateKeys } from 'types';
 import { MODAL_PAPER_DEFAULT_COLOR } from 'core';
 
 const ModalContextDefaults: ModalContextProps = {
   id: '',
   isOpen: false,
   onClose: () => {},
-  scroll: modalScrollDeterminateKeys.paper,
+  scroll: scrollDeterminateKeys.paper,
   color: MODAL_PAPER_DEFAULT_COLOR,
 };
 

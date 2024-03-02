@@ -1,9 +1,9 @@
-import React from 'react';
-import { ModalHeaderProps } from 'types';
+import React, { ElementType } from 'react';
+import { ModalHeaderProps, TypographyProps } from 'types';
 import { useModalHeaderStyles, useModalHeaderProps } from './hooks';
 import { Typography } from '../Typography';
 
-const ModalHeader = (props: ModalHeaderProps) => {
+const ModalHeader = <T1 extends ElementType, T2 extends ElementType>(props: ModalHeaderProps<T1, T2>) => {
   const {
     actions,
     children,
@@ -27,12 +27,12 @@ const ModalHeader = (props: ModalHeaderProps) => {
       variant: 'h5',
       as: 'h4',
       ...slotProps?.titleProps,
-    },
+    } as TypographyProps<T1>,
     subtitleProps: {
       variant: 'body2',
       color: 'text-tertiary',
       ...slotProps?.subtitleProps,
-    },
+    } as TypographyProps<T2>,
   };
 
   const {

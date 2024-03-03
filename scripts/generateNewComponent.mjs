@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { formatCamelCaseToUpper } from './utils';
 
 const componentName = process.argv[2];
 const componentKey = process.argv[3];
@@ -53,9 +54,9 @@ export interface ${componentName}StylesProps extends ${componentName}ShapeProps 
 }
 function createConstants(directory, componentName, componentKey) {
   const content = `
-export const ${componentName.toUpperCase()}_ROOT = '${componentName}';
+export const ${formatCamelCaseToUpper(componentName)}_ROOT = '${componentName}';
 
-export const ${componentName.toUpperCase()}_DEFAULT_VALUES = {
+export const ${formatCamelCaseToUpper(componentName)}_DEFAULT_VALUES = {
   as: 'div',
 };  
   `;
@@ -70,12 +71,12 @@ function createMain(directory, componentName) {
   const content = `
 import React, { ElementType } from 'react';
 import { ${componentName}Props } from 'types';
-import { ${componentName.toUpperCase()}_DEFAULT_VALUES } from 'core';
+import { ${formatCamelCaseToUpper(componentName)}_DEFAULT_VALUES } from 'core';
 import { use${componentName}Styles, use${componentName}Props } from './hooks';
 
 const ${componentName} = <T extends ElementType>(props: ${componentName}Props<T>) => {
   const {
-    as: Component = ${componentName.toUpperCase()}_DEFAULT_VALUES.as,
+    as: Component = ${formatCamelCaseToUpper(componentName)}_DEFAULT_VALUES.as,
     children,
     className,
     style,
@@ -109,14 +110,14 @@ function createHookProps(directory, componentName) {
   const content = `
 import clsx from 'clsx';
 import { Use${componentName}Props, Use${componentName}PropsReturn } from 'types';
-import { ${componentName.toUpperCase()}_ROOT } from 'core';
+import { ${formatCamelCaseToUpper(componentName)}_ROOT } from 'core';
 
 export const use${componentName}Props = <E extends Element>(props: Use${componentName}Props): Use${componentName}PropsReturn<E> => {
   const { style, className } = props;
 
   return {
     root: {
-      className: clsx(${componentName.toUpperCase()}_ROOT, className),
+      className: clsx(${formatCamelCaseToUpper(componentName)}_ROOT, className),
       style: { ...style },
     },
   };

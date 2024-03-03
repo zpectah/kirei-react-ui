@@ -1,6 +1,12 @@
 import fs from 'fs';
 import path from 'path';
-import { formatCamelCaseToUpper } from './utils';
+
+function formatCamelCaseToUpper(string) {
+  let formattedString = string.replace(/[A-Z]/g, match => `_${match}`).toUpperCase();
+  formattedString = formattedString.replace(/^_/, '');
+
+  return formattedString;
+}
 
 const componentName = process.argv[2];
 const componentKey = process.argv[3];

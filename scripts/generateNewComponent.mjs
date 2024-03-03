@@ -221,7 +221,7 @@ function generateReactComponent(componentName, componentPrefix) {
     typesRoot: `${directoryRoot}/types/components/`,
   };
 
-  if (!fs.existsSync(dir.componentRoot)) {
+  if (!fs.existsSync(dir.componentHooksRoot)) {
     fs.mkdirSync(dir.componentRoot);
     fs.mkdirSync(dir.componentHooksRoot);
   } else {

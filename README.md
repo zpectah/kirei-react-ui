@@ -26,6 +26,12 @@ Jeho hlavním cílem by bylo poskytnout uživatelům příjemný a intuitivní z
 - `% yarn format:all:write` Formats project structure
 - `% yarn lint:all` Lints project structure
 
+### Generators
+
+- `% yarn generate:newComponent <ComponentName> <componentKey>` Generates default files for new component
+- `% yarn generate:demo:newComponent <ComponentName> <componentKey>` Generates new component for demo pages
+- `% yarn generate:demo:newComponentApi <ComponentName>` Generates new component for demo component api page
+
 ### Demo
 
 - `% yarn start:demo` Starts development server for demo preview

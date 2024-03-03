@@ -18,17 +18,17 @@ const PreviewView = () => {
         <Section>
           <PreviewCombo code='<Container maxWidth="md">...</Container>'>
             <Container maxWidth="xs">
-              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} isSquare elevation={0}>
                 Container: xs
               </Paper>
             </Container>
             <Container maxWidth="sm">
-              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} isSquare elevation={0}>
                 Container: sm
               </Paper>
             </Container>
             <Container maxWidth="md">
-              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} isSquare elevation={0}>
                 Container: md
               </Paper>
             </Container>
@@ -40,7 +40,7 @@ const PreviewView = () => {
         >
           <PreviewCombo code="<Container isFluid>...</Container>">
             <Container isFluid>
-              <Paper style={{ textAlign: 'center', padding: '.5rem' }} disableElevation isSquare>
+              <Paper style={{ textAlign: 'center', padding: '.5rem' }} isSquare elevation={0}>
                 Fluid Container
               </Paper>
             </Container>

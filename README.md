@@ -1,7 +1,8 @@
 # Kirei React UI
 
-Design systém "Kirei React UI" by byl založen na konceptu jednoduchosti, elegance a čistoty.
-Jeho hlavním cílem by bylo poskytnout uživatelům příjemný a intuitivní zážitek při vývoji React aplikací.
+Kirei React UI represents a pinnacle in the realm of Open Source Design Systems, 
+founded upon principles of simplicity and minimalism. It doesn't just epitomize 
+sleek aesthetics but also champions seamless implementation for unparalleled user experiences.
 
 ## Description
 
@@ -27,6 +28,7 @@ Jeho hlavním cílem by bylo poskytnout uživatelům příjemný a intuitivní z
 - `% yarn lint:all` Lints project structure
 
 ### Generators
+Generators will not update root files with index, it will only generate new file as template
 
 - `% yarn generate:newComponent <ComponentName> <componentKey>` Generates default files for new component
 - `% yarn generate:demo:newComponent <ComponentName> <componentKey>` Generates new component for demo pages

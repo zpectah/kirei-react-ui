@@ -5,3 +5,7 @@ node_modules
 dist
 demo/dist
 demo/node_modules
+
+scripts/generateDemoNewComponent.mjs
+scripts/generateDemoNewComponentApi.mjs
+scripts/generateNewComponent.mjs

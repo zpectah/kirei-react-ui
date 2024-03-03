@@ -2,9 +2,9 @@ import fs from 'fs';
 import path from 'path';
 
 const componentName = process.argv[2];
-const componentPrefix = process.argv[3];
+const componentKey = process.argv[3];
 
-function createTypes(directory, componentName, componentPrefix) {
+function createTypes(directory, componentName, componentKey) {
   const content = `
 import { ElementType } from 'react';
 import { ElementRestProps, PolymorphicComponentPropsWithRef, WithStyle } from '../common';
@@ -44,14 +44,14 @@ export interface Use${componentName}PropsReturn<E extends Element> {
 
 export interface ${componentName}StylesProps extends ${componentName}ShapeProps {}  
   `;
-  const fileName = `${componentPrefix}.ts`;
+  const fileName = `${componentKey}.ts`;
   const filePath = path.join(directory, fileName);
 
   fs.writeFileSync(filePath, content);
 
   console.log(`File ${fileName} created at ${filePath}`);
 }
-function createConstants(directory, componentName, componentPrefix) {
+function createConstants(directory, componentName, componentKey) {
   const content = `
 export const ${componentName.toUpperCase()}_ROOT = '${componentName}';
 
@@ -59,7 +59,7 @@ export const ${componentName.toUpperCase()}_DEFAULT_VALUES = {
   as: 'div',
 };  
   `;
-  const fileName = `${componentPrefix}.ts`;
+  const fileName = `${componentKey}.ts`;
   const filePath = path.join(directory, fileName);
 
   fs.writeFileSync(filePath, content);
@@ -212,7 +212,7 @@ export * from './hooks';
   console.log(`File ${fileName} created at ${filePath}`);
 }
 
-function generateReactComponent(componentName, componentPrefix) {
+function generateReactComponent(componentName, componentKey) {
   const directoryRoot = './packages';
   const dir = {
     componentRoot: `${directoryRoot}/components/${componentName}/`,
@@ -229,8 +229,8 @@ function generateReactComponent(componentName, componentPrefix) {
     process.exit(1);
   }
 
-  createTypes(dir.typesRoot, componentName, componentPrefix);
-  createConstants(dir.constantsRoot, componentName, componentPrefix);
+  createTypes(dir.typesRoot, componentName, componentKey);
+  createConstants(dir.constantsRoot, componentName, componentKey);
   createMain(dir.componentRoot, componentName);
   createIndex(dir.componentRoot, componentName);
   createHookProps(dir.componentHooksRoot, componentName);
@@ -239,12 +239,14 @@ function generateReactComponent(componentName, componentPrefix) {
   createHooksIndex(dir.componentHooksRoot, componentName);
 
   console.log(`\n\n***************************************************************************************`);
+  console.log(`** WHAT NEXT **************************************************************************`);
+  console.log(`***************************************************************************************`);
   console.log(
-    `1.\nMain file import:\n* "import * from './${componentName}'" --> "${directoryRoot}/components/index.ts".\n`
+    `1. Main file import: "import * from './${componentName}'" --> "${directoryRoot}/components/index.ts".`
   );
-  console.log(`2.\nUpdate types:\n* "types/theme/components.ts"\n* "styles/theme/components.ts".\n`);
+  console.log(`2. Update types:\n* "types/theme/components.ts"\n* "styles/theme/components.ts".`);
   console.log(
-    `3.\nAdd imports:\n * "import * from './${componentPrefix}.ts'" --> "${dir.typesRoot}index.ts"\n * "import * from './${componentPrefix}.ts'" --> "${dir.constantsRoot}index.ts"`
+    `3. Add imports:\n * "import * from './${componentKey}.ts'" --> "${dir.typesRoot}index.ts"\n * "import * from './${componentKey}.ts'" --> "${dir.constantsRoot}index.ts"`
   );
   console.log(`***************************************************************************************\n\n`);
 }
@@ -253,9 +255,9 @@ if (!componentName) {
   console.error('Component name is required.');
   process.exit(1);
 }
-if (!componentPrefix) {
-  console.error('Component prefix is required.');
+if (!componentKey) {
+  console.error('Component key is required.');
   process.exit(1);
 }
 
-generateReactComponent(componentName, componentPrefix);
+generateReactComponent(componentName, componentKey);

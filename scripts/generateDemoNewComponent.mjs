@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 const componentName = process.argv[2];
+const componentKey = process.argv[3];
 
 function createMainView(directory, componentName, componentKey) {
     const content = `
@@ -117,11 +118,13 @@ function generateDemoNewComponent(componentName, componentKey) {
     createRootIndex(componentDir, componentName);
 
     console.log(`\n\n***************************************************************************************`);
-    console.log(`1. Add new line "import * from './${componentName}'" at "demo/src/views/Components/views/index.ts"`);
-    console.log(`2. Add new line "import { ${componentName}View } from './views'" at "demo/src/views/Components/Components.tsx"`);
-    console.log(`3. Update "src/config/routes.ts"`);
-    console.log(`4. Update "src/enums/routes.ts"`);
-    console.log(`5. Update "src/constants/navigation.ts"`);
+    console.log(`** WHAT NEXT **************************************************************************`);
+    console.log(`***************************************************************************************`);
+    console.log(`1. Add new line "import * from './${componentName}'" at "./demo/src/views/Components/views/index.ts"`);
+    console.log(`2. Add new line "import { ${componentName}View } from './views'" at "./demo/src/views/Components/Components.tsx"`);
+    console.log(`3. Update "./demo/src/config/routes.ts"`);
+    console.log(`4. Update "./demo/src/enums/routes.ts"`);
+    console.log(`5. Update "./demo/src/constants/navigation.ts"`);
     console.log(`***************************************************************************************\n\n`);
 }
 
@@ -129,5 +132,9 @@ if (!componentName) {
     console.error('Component name is required.');
     process.exit(1);
 }
+if (!componentKey) {
+    console.error('Component key is required.');
+    process.exit(1);
+}
 
-generateDemoNewComponent(componentName);
+generateDemoNewComponent(componentName, componentKey);

@@ -7,6 +7,7 @@ import { useRadioHandling, useRadioProps, useRadioStyles } from './hooks';
 const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps, ref) => {
   const {
     color = RADIO_DEFAULT_VALUES.color,
+    size = RADIO_DEFAULT_VALUES.size,
     className,
     style,
     styles,
@@ -21,7 +22,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps, ref) 
     ...rest
   } = props;
 
-  const styleProps = { color };
+  const styleProps = { color, size };
   const defaultSlotProps = { labelProps: { ...slotProps?.labelProps } };
   const defaultSlots = {
     checkedIcon: slots?.checkedIcon || <RadioIcon />,

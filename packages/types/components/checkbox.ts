@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, ReactNode, RefObject } from 'react';
 import { WithStyle, ElementRestProps, InputPickedProps } from '../common';
-import { ComponentStyles, InputColor } from '../styles';
+import { ComponentStyles, InputColor, ShapeSize } from '../styles';
 
 type CheckboxLabelProps = ComponentPropsWithRef<'label'>;
 
@@ -19,6 +19,7 @@ export interface CheckboxElementaryProps extends Partial<WithStyle> {
 
 export interface CheckboxShapeProps {
   color: InputColor;
+  size: ShapeSize;
 }
 
 export interface CheckboxStateProps {

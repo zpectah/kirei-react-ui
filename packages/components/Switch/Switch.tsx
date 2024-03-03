@@ -6,6 +6,7 @@ import { useSwitchHandling, useSwitchProps, useSwitchStyles } from './hooks';
 const Switch = forwardRef<HTMLInputElement, SwitchProps>((props: SwitchProps, ref) => {
   const {
     color = SWITCH_DEFAULT_VALUES.color,
+    size = SWITCH_DEFAULT_VALUES.size,
     className,
     style,
     styles,
@@ -19,7 +20,7 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>((props: SwitchProps, re
     ...rest
   } = props;
 
-  const styleProps = { color };
+  const styleProps = { color, size };
   const defaultSlotProps = { labelProps: { ...slotProps?.labelProps }, sliderProps: { ...slotProps?.sliderProps } };
 
   const { inputRef, focused, ...handlingProps } = useSwitchHandling({ checked, onChange, onBlur, onFocus, ref });

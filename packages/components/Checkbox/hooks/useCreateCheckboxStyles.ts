@@ -18,7 +18,7 @@ const getColorVariant = (palette: ThemePalette, color: InputColor) => {
 };
 
 export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStylesProps) => {
-  const { color } = stylesProps;
+  const { color, size } = stylesProps;
   const { palette, shape, transitions } = theme;
 
   const labelTransition = getElementTransitions(['color'], transitions.duration.shortest, transitions.easing.easeInOut);
@@ -40,9 +40,6 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
     justifyContent: 'center',
     flexShrink: 0,
     cursor: 'pointer',
-    width: `calc(${SHAPE_MIN_HEIGHT.medium} / 1.5)`,
-    height: `calc(${SHAPE_MIN_HEIGHT.medium} / 1.5)`,
-    fontSize: `calc(${SHAPE_MIN_HEIGHT.medium} / 1.81)`,
     color: palette.text.secondary,
     position: 'relative',
     transition: labelTransition,
@@ -57,7 +54,7 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
       position: 'absolute',
       top: '-10%',
       left: '-10%',
-      zIndex: '-1',
+      zIndex: 0,
       transition: focusElementTransition,
     },
 
@@ -72,12 +69,31 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
     },
   };
 
+  const labelSize = {
+    small: {
+      width: SHAPE_MIN_HEIGHT.small,
+      height: SHAPE_MIN_HEIGHT.small,
+      fontSize: `calc(${SHAPE_MIN_HEIGHT.small} / 2.1)`,
+    },
+    medium: {
+      width: SHAPE_MIN_HEIGHT.medium,
+      height: SHAPE_MIN_HEIGHT.medium,
+      fontSize: `calc(${SHAPE_MIN_HEIGHT.medium} / 1.81)`,
+    },
+    large: {
+      width: SHAPE_MIN_HEIGHT.large,
+      height: SHAPE_MIN_HEIGHT.large,
+      fontSize: `calc(${SHAPE_MIN_HEIGHT.large} / 1.62)`,
+    },
+  };
+
   const styles = {
     root: Object.assign({
       ...rootBase,
     }),
     label: Object.assign({
       ...labelBase,
+      ...labelSize[size],
       ...getColorVariant(palette, color),
     }),
   };

@@ -27,7 +27,7 @@ const getColorVariant = (palette: ThemePalette, color: InputColor) => {
 };
 
 export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesProps) => {
-  const { color } = stylesProps;
+  const { color, size } = stylesProps;
   const { palette, shape, transitions } = theme;
 
   const sliderTransition = getElementTransitions(
@@ -58,22 +58,20 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
     justifyContent: 'center',
     flexShrink: 0,
     cursor: 'pointer',
-    width: `calc(${SHAPE_MIN_HEIGHT.medium} / 1.25)`,
-    height: `calc(${SHAPE_MIN_HEIGHT.medium} / 1.5)`,
     position: 'relative',
     borderRadius: shape.borderRadius.medium,
 
     [`&::before`]: {
       content: '""',
       display: 'block',
-      width: '120%',
-      height: '120%',
+      width: '110%',
+      height: '110%',
       backgroundColor: 'transparent',
       borderRadius: shape.borderRadius.medium,
       position: 'absolute',
-      top: '-10%',
-      left: '-10%',
-      zIndex: '-1',
+      top: '-5%',
+      left: '-5%',
+      zIndex: 0,
       transition: focusElementTransition,
     },
 
@@ -86,33 +84,98 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
 
   const sliderBase = {
     position: 'absolute',
-    top: '.325rem',
-    left: 0,
     right: 0,
     bottom: 0,
     backgroundColor: palette.text.secondary,
     borderRadius: shape.borderRadius.medium,
     border: `3px solid ${palette.text.secondary}`,
     transition: sliderTransition,
-    height: `calc((${SHAPE_MIN_HEIGHT.medium} / 1.81) - 6px)`,
 
     [`&:hover`]: {
       backgroundColor: palette.text.primary,
     },
+  };
 
-    [`&::before`]: {
-      position: 'absolute',
-      content: '""',
-      width: '0.5rem',
-      height: '100%',
-      left: 0,
-      top: 0,
-      backgroundColor: palette.background.default,
-      borderRadius: shape.borderRadius.small,
-      transition: sliderBeforeTransition,
+  const labelSize = {
+    small: {
+      width: `calc(${SHAPE_MIN_HEIGHT.small} * 1.25)`,
+      height: SHAPE_MIN_HEIGHT.small,
+    },
+    medium: {
+      width: `calc(${SHAPE_MIN_HEIGHT.medium} * 1.25)`,
+      height: SHAPE_MIN_HEIGHT.medium,
+    },
+    large: {
+      width: `calc(${SHAPE_MIN_HEIGHT.large} * 1.25)`,
+      height: SHAPE_MIN_HEIGHT.large,
+    },
+  };
 
-      [`.${STATUS_CLASS_NAMES.isChecked} &`]: {
-        transform: 'translateX(1.1rem)',
+  const sliderSize = {
+    small: {
+      top: '26%',
+      left: '15%',
+      width: '70%',
+      height: '48%',
+
+      [`&::before`]: {
+        position: 'absolute',
+        content: '""',
+        width: '0.5rem',
+        height: '100%',
+        left: 0,
+        top: 0,
+        backgroundColor: palette.background.default,
+        borderRadius: shape.borderRadius.small,
+        transition: sliderBeforeTransition,
+
+        [`.${STATUS_CLASS_NAMES.isChecked} &`]: {
+          transform: `translateX(calc(${SHAPE_MIN_HEIGHT.small} / 2.5))`,
+        },
+      },
+    },
+    medium: {
+      top: '26%',
+      left: '15%',
+      width: '70%',
+      height: '48%',
+
+      [`&::before`]: {
+        position: 'absolute',
+        content: '""',
+        width: '0.5rem',
+        height: '100%',
+        left: 0,
+        top: 0,
+        backgroundColor: palette.background.default,
+        borderRadius: shape.borderRadius.small,
+        transition: sliderBeforeTransition,
+
+        [`.${STATUS_CLASS_NAMES.isChecked} &`]: {
+          transform: `translateX(calc(${SHAPE_MIN_HEIGHT.medium} / 1.95))`,
+        },
+      },
+    },
+    large: {
+      top: '26%',
+      left: '15%',
+      width: '70%',
+      height: '48%',
+
+      [`&::before`]: {
+        position: 'absolute',
+        content: '""',
+        width: '0.5rem',
+        height: '100%',
+        left: 0,
+        top: 0,
+        backgroundColor: palette.background.default,
+        borderRadius: shape.borderRadius.small,
+        transition: sliderBeforeTransition,
+
+        [`.${STATUS_CLASS_NAMES.isChecked} &`]: {
+          transform: `translateX(calc(${SHAPE_MIN_HEIGHT.large} / 1.75))`,
+        },
       },
     },
   };
@@ -125,10 +188,12 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
     }),
     label: Object.assign({
       ...labelBase,
+      ...labelSize[size],
       ...colorVariant.label,
     }),
     slider: Object.assign({
       ...sliderBase,
+      ...sliderSize[size],
       ...colorVariant.slider,
     }),
   };

@@ -1,4 +1,4 @@
-import { brandColorKeys } from 'types';
+import { brandColorKeys, shapeSizeKeys } from 'types';
 
 export const SWITCH_ROOT = 'Switch';
 export const SWITCH_INPUT = `${SWITCH_ROOT}-input`;
@@ -7,4 +7,5 @@ export const SWITCH_SLIDER = `${SWITCH_ROOT}-slider`;
 
 export const SWITCH_DEFAULT_VALUES = {
   color: brandColorKeys.primary,
+  size: shapeSizeKeys.medium,
 };

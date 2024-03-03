@@ -7,6 +7,7 @@ import { useCheckboxHandling, useCheckboxProps, useCheckboxStyles } from './hook
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxProps, ref) => {
   const {
     color = CHECKBOX_DEFAULT_VALUES.color,
+    size = CHECKBOX_DEFAULT_VALUES.size,
     className,
     style,
     styles,
@@ -22,7 +23,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props: CheckboxPro
     ...rest
   } = props;
 
-  const styleProps = { color };
+  const styleProps = { color, size };
   const defaultSlotProps = { labelProps: { ...slotProps?.labelProps } };
   const defaultSlots = {
     checkedIcon: slots?.checkedIcon || <CheckboxIcon />,

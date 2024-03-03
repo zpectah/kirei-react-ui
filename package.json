@@ -23,7 +23,10 @@
     "lint:packages": "eslint packages",
     "lint:demo": "eslint demo",
     "test": "jest /tests",
-    "test:coverage": "jest /tests --coverage"
+    "test:coverage": "jest /tests --coverage",
+    "generate:newComponent": "node ./scripts/generateNewComponent.mjs",
+    "generate:demo:newComponent": "",
+    "generate:demo:newApi": ""
   },
   "private": true,
   "dependencies": {

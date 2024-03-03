@@ -15,6 +15,12 @@ export const PRIMARY_NAVIGATION = [
   },
   {
     key: 3,
+    label: 'menuItem.api',
+    path: routes.api.root,
+    prefix: routes.api.rootPrefix,
+  },
+  {
+    key: 4,
     label: 'menuItem.customization',
     path: routes.customization.root,
     prefix: routes.customization.rootPrefix,
@@ -29,11 +35,6 @@ export const DETAIL_NAVIGATION = [
   },
   {
     key: 2,
-    label: 'menuItem.components.sub.api',
-    path: routes.components.detail.api,
-  },
-  {
-    key: 3,
     label: 'menuItem.components.sub.playground',
     path: routes.components.detail.playground,
   },
@@ -54,6 +55,34 @@ export const GET_STARTED_SIDEBAR_NAVIGATION = [
     key: 3,
     label: 'menuItem.getStarted.usage',
     path: routes.getStarted.routes.usage.root,
+  },
+];
+
+export const CUSTOMIZATION_SIDEBAR_NAVIGATION = [
+  {
+    key: 1,
+    label: 'menuItem.customization.theme',
+    path: routes.customization.routes.theme.root,
+  },
+  {
+    key: 2,
+    label: 'menuItem.customization.palette',
+    path: routes.customization.routes.palette.root,
+  },
+  {
+    key: 3,
+    label: 'menuItem.customization.breakpoints',
+    path: routes.customization.routes.breakpoints.root,
+  },
+  {
+    key: 4,
+    label: 'menuItem.customization.typography',
+    path: routes.customization.routes.typography.root,
+  },
+  {
+    key: 5,
+    label: 'menuItem.customization.components',
+    path: routes.customization.routes.components.root,
   },
 ];
 
@@ -120,30 +149,85 @@ export const COMPONENTS_SIDEBAR_NAVIGATION = [
   },
 ];
 
-export const CUSTOMIZATION_SIDEBAR_NAVIGATION = [
+export const API_SIDEBAR_NAVIGATION = [
   {
     key: 1,
-    label: 'menuItem.customization.theme',
-    path: routes.customization.routes.theme.root,
+    label: 'menuItem.api.button',
+    path: routes.api.routes.button.root,
   },
   {
     key: 2,
-    label: 'menuItem.customization.palette',
-    path: routes.customization.routes.palette.root,
+    label: 'menuItem.api.checkbox',
+    path: routes.api.routes.checkbox.root,
   },
   {
     key: 3,
-    label: 'menuItem.customization.breakpoints',
-    path: routes.customization.routes.breakpoints.root,
+    label: 'menuItem.api.container',
+    path: routes.api.routes.container.root,
   },
   {
     key: 4,
-    label: 'menuItem.customization.typography',
-    path: routes.customization.routes.typography.root,
+    label: 'menuItem.api.controlLabel',
+    path: routes.api.routes['control-label'].root,
   },
   {
     key: 5,
-    label: 'menuItem.customization.components',
-    path: routes.customization.routes.components.root,
+    label: 'menuItem.api.iconButton',
+    path: routes.api.routes['icon-button'].root,
+  },
+  {
+    key: 6,
+    label: 'menuItem.api.icons',
+    path: routes.api.routes.icons.root,
+  },
+  {
+    key: 7,
+    label: 'menuItem.api.link',
+    path: routes.api.routes.link.root,
+  },
+  {
+    key: 8,
+    label: 'menuItem.api.modal',
+    path: routes.api.routes.modal.root,
+  },
+  {
+    key: 9,
+    label: 'menuItem.api.modalBody',
+    path: routes.api.routes['modal-body'].root,
+  },
+  {
+    key: 10,
+    label: 'menuItem.api.modalFooter',
+    path: routes.api.routes['modal-footer'].root,
+  },
+  {
+    key: 11,
+    label: 'menuItem.api.modalHeader',
+    path: routes.api.routes['modal-header'].root,
+  },
+  {
+    key: 12,
+    label: 'menuItem.api.paper',
+    path: routes.api.routes.paper.root,
+  },
+  {
+    key: 13,
+    label: 'menuItem.api.radio',
+    path: routes.api.routes.radio.root,
+  },
+  {
+    key: 14,
+    label: 'menuItem.api.stack',
+    path: routes.api.routes.stack.root,
+  },
+  {
+    key: 15,
+    label: 'menuItem.api.switch',
+    path: routes.api.routes.switch.root,
+  },
+  {
+    key: 16,
+    label: 'menuItem.api.typography',
+    path: routes.api.routes.typography.root,
   },
 ];

@@ -1,8 +1,7 @@
 import React, { useMemo, useState, ComponentType } from 'react';
 import { CloseIcon } from 'icons';
 import { Modal, ModalHeader, ModalBody, Button, Paper, Typography } from 'components';
-import { Section } from '../../../../../../components';
-import { PreviewCombo } from '../../../../components/index';
+import { Section, PreviewCombo } from '../../../../../../components';
 import iconsList from './iconsList';
 
 export type ActiveIconProps = { label: string; node: ComponentType };

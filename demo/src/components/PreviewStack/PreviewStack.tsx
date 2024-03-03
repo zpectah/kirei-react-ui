@@ -1,10 +1,10 @@
 import React, { ElementType, useMemo } from 'react';
 import { useKireiContext } from 'styles';
-import { SpacingValues, StackProps } from 'types';
+import { Spacing, StackProps } from 'types';
 import { Stack } from 'components';
 
 export interface PreviewStackProps extends StackProps<ElementType> {
-  spacing?: SpacingValues;
+  spacing?: Spacing;
 }
 
 const PreviewStack = (props: PreviewStackProps) => {

@@ -1,8 +1,7 @@
 import React, { ElementType, useState } from 'react';
 import { ButtonProps } from 'types';
 import { Button, Switch, ControlLabel } from 'components';
-import { routes } from '../../../../config';
-import { Article, ArticleFooter, Section } from '../../../../components';
+import { Article, Section } from '../../../../components';
 import { PlaygroundPreview, PlaygroundControls } from '../../components/index';
 
 const PlaygroundView = () => {
@@ -182,11 +181,6 @@ const PlaygroundView = () => {
           />
         </Section>
       </Article>
-
-      <ArticleFooter
-        backRoute={`${routes.components.routes.button.root}${routes.components.detail.api}`}
-        backLabel={'API'}
-      />
     </>
   );
 };

@@ -1,9 +1,7 @@
 import React from 'react';
 // import { useKireiContext } from 'styles';
 import { Container, Paper } from 'components';
-import { routes } from '../../../../config';
-import { Article, ArticleFooter, Section } from '../../../../components';
-import { PreviewCode, PreviewCombo } from '../../components/index';
+import { Article, Section, PreviewCode, PreviewCombo } from '../../../../components';
 
 const PreviewView = () => {
   // const { theme } = useKireiContext();
@@ -49,11 +47,6 @@ const PreviewView = () => {
           </PreviewCombo>
         </Section>
       </Article>
-
-      <ArticleFooter
-        forwardRoute={`${routes.components.routes.container.root}${routes.components.detail.api}`}
-        forwardLabel={'API'}
-      />
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Section, SectionProps } from '../../../../components';
+import { Section, SectionProps } from '../Section';
 
 export interface ApiTableItemProps {
   key: number;

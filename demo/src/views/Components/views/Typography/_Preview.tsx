@@ -1,9 +1,7 @@
 import React from 'react';
 import { Typography, Stack } from 'components';
 import { useKireiContext } from 'styles';
-import { routes } from '../../../../config';
-import { Article, ArticleFooter, Section } from '../../../../components';
-import { PreviewCode, PreviewCombo } from '../../components/index';
+import { Article, Section, PreviewCode, PreviewCombo } from '../../../../components';
 import examples from './examples';
 
 const PreviewView = () => {
@@ -211,11 +209,6 @@ const PreviewView = () => {
           </PreviewCombo>
         </Section>
       </Article>
-
-      <ArticleFooter
-        forwardRoute={`${routes.components.routes.typography.root}${routes.components.detail.api}`}
-        forwardLabel={'API'}
-      />
     </>
   );
 };

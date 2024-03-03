@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 // import { useKireiContext } from 'styles';
 import { Button, IconButton, Stack, Modal, ModalHeader, ModalBody, ModalFooter } from 'components';
 import { CloseIcon } from 'icons';
-import { routes } from '../../../../config';
-import { Article, ArticleFooter, Section } from '../../../../components';
-import { PreviewCode, PreviewCombo } from '../../components/index';
+import { Article, Section, PreviewCode, PreviewCombo } from '../../../../components';
 
 const PreviewView = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -185,11 +183,6 @@ const PreviewView = () => {
           </Modal>
         </Section>
       </Article>
-
-      <ArticleFooter
-        forwardRoute={`${routes.components.routes.modal.root}${routes.components.detail.api}`}
-        forwardLabel={'API'}
-      />
     </>
   );
 };

@@ -1,1 +1,1 @@
-export { default as GetStarted } from './GetStarted.tsx';
+export { default as GetStarted } from './GetStarted';

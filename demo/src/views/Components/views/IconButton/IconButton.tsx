@@ -4,7 +4,6 @@ import { kireiComponentsRootListKeys } from 'types';
 import { routes } from '../../../../config';
 import { DetailLayout } from '../../components/index';
 import Preview from './_Preview';
-import Api from './_Api';
 import Playground from './_Playground';
 
 const IconButtonView = () => (
@@ -14,7 +13,6 @@ const IconButtonView = () => (
       element={<DetailLayout route={kireiComponentsRootListKeys['icon-button']} title="IconButton" subtitle={`...`} />}
     >
       <Route index element={<Preview />} />
-      <Route path={routes.components.detail.api} element={<Api />} />
       <Route path={routes.components.detail.playground} element={<Playground />} />
     </Route>
   </Routes>

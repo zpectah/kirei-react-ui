@@ -1,12 +1,11 @@
 import React from 'react';
-import { routes } from '../../../../config';
-import { Article, ArticleFooter } from '../../../../components';
-import { ApiTable } from '../../components/index';
+import { View, withPlainLayout } from '../../../Layout';
+import { Article, ApiTable } from '../../../components';
 
-const ApiView = () => {
+const ButtonView = () => {
   return (
-    <>
-      <Article title="Button API">
+    <View title="Button API">
+      <Article>
         <ApiTable
           title="ButtonProps"
           rows={[
@@ -41,15 +40,8 @@ const ApiView = () => {
           ]}
         />
       </Article>
-
-      <ArticleFooter
-        backRoute={`${routes.components.routes.button.root}${routes.components.detail.preview}`}
-        backLabel={'Preview'}
-        forwardRoute={`${routes.components.routes.button.root}${routes.components.detail.playground}`}
-        forwardLabel={'Playground'}
-      />
-    </>
+    </View>
   );
 };
 
-export default ApiView;
+export default withPlainLayout(ButtonView);

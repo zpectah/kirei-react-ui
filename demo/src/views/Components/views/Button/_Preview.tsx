@@ -1,9 +1,7 @@
 import React from 'react';
 import { Button } from 'components';
 import { BackwardIcon, ForwardIcon } from 'icons';
-import { routes } from '../../../../config';
-import { Article, Section, ArticleFooter } from '../../../../components';
-import { PreviewCode, PreviewCombo } from '../../components/index';
+import { Article, Section, PreviewCode, PreviewCombo } from '../../../../components';
 
 const PreviewView = () => {
   return (
@@ -225,11 +223,6 @@ const PreviewView = () => {
           </PreviewCombo>
         </Section>
       </Article>
-
-      <ArticleFooter
-        forwardRoute={`${routes.components.routes.button.root}${routes.components.detail.api}`}
-        forwardLabel={'API'}
-      />
     </>
   );
 };

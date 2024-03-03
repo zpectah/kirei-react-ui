@@ -1,9 +1,7 @@
 import React from 'react';
 import { IconButton } from 'components';
 import { CloseIcon } from 'icons';
-import { routes } from '../../../../config';
-import { Article, ArticleFooter, Section } from '../../../../components';
-import { PreviewCode, PreviewCombo } from '../../components/index';
+import { Article, Section, PreviewCode, PreviewCombo } from '../../../../components';
 
 const PreviewView = () => {
   return (
@@ -49,11 +47,6 @@ const PreviewView = () => {
           ...
         </Section>
       </Article>
-
-      <ArticleFooter
-        forwardRoute={`${routes.components.routes['icon-button'].root}${routes.components.detail.api}`}
-        forwardLabel={'API'}
-      />
     </>
   );
 };

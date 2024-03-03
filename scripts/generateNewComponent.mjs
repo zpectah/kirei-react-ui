@@ -211,6 +211,24 @@ export * from './hooks';
 
   console.log(`File ${fileName} created at ${filePath}`);
 }
+function createRootReadme(directory, componentName) {
+  const content = `
+# ${componentName}
+
+## Description
+...
+
+## API
+...
+
+  `;
+  const fileName = `README.md`;
+  const filePath = path.join(directory, fileName);
+
+  fs.writeFileSync(filePath, content);
+
+  console.log(`File ${fileName} created at ${filePath}`);
+}
 
 function generateReactComponent(componentName, componentKey) {
   const directoryRoot = './packages';
@@ -233,6 +251,7 @@ function generateReactComponent(componentName, componentKey) {
   createConstants(dir.constantsRoot, componentName, componentKey);
   createMain(dir.componentRoot, componentName);
   createIndex(dir.componentRoot, componentName);
+  createRootReadme(dir.componentRoot, componentName);
   createHookProps(dir.componentHooksRoot, componentName);
   createHookStyles(dir.componentHooksRoot, componentName);
   createHookCreateStyles(dir.componentHooksRoot, componentName);

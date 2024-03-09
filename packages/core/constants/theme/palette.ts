@@ -8,7 +8,7 @@ export const PALETTE = {
   info: 'hsl(210, 78.7%, 46.1%)',
   success: 'hsl(123, 43.4%, 38.8%)',
 
-  disabled: 'hsl(177, 0%, 64%)',
+  disabled: 'hsl(177, 0%, 64%)', // TODO
 
   grey: 'hsl(0, 0.0%, 38.0%)',
   dark: 'hsl(0, 0.0%, 9.8%)',
@@ -16,8 +16,8 @@ export const PALETTE = {
   light: 'hsl(0, 0.0%, 94.1%)',
   white: 'hsl(0, 0.0%, 99.2%)',
 
-  paperLight: 'hsl(0, 0.0%, 99.8%)',
-  paperDark: 'hsl(0, 0.0%, 17%)',
+  paperLight: 'hsl(0, 0.0%, 99.8%)', // TODO
+  paperDark: 'hsl(0, 0.0%, 17%)', // TODO
 
   red: 'hsl(0, 65%, 47%)',
   pink: 'hsl(337, 79%, 47%)',

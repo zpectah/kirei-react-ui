@@ -1,6 +1,7 @@
 export * from './breakpoints';
 export * from './components';
-export * from './palette';
+export * from './palette'; // TODO
+export * from './paletteV2'; // TODO
 export * from './shadows';
 export * from './shape';
 export * from './spacing';

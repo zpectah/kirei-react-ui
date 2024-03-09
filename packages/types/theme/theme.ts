@@ -1,7 +1,8 @@
 import { DeepPartial } from '../common';
 import { ThemeBreakpoints } from './breakpoints';
 import { ThemeComponents } from './components';
-import { ThemePalette } from './palette';
+import { ThemePalette } from './palette'; // TODO
+import { ThemePaletteV2 } from './paletteV2'; // TODO
 import { ThemeShadows } from './shadows';
 import { ThemeShape } from './shape';
 import { ThemeSpacing } from './spacing';
@@ -13,6 +14,7 @@ export interface Theme {
   breakpoints: ThemeBreakpoints;
   components: ThemeComponents;
   palette: ThemePalette;
+  paletteV2: ThemePaletteV2;
   shadows: ThemeShadows;
   shape: ThemeShape;
   spacing: ThemeSpacing;

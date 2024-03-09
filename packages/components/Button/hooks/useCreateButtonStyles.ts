@@ -10,10 +10,11 @@ import {
   ThemePaletteV2,
 } from 'types';
 import { LOADING_LABEL_ALPHA, SHAPE_SIZE_CLASS_NAMES, SHAPE_VARIANT_CLASS_NAME, STATUS_CLASS_NAMES } from 'core';
-import { getElementTransitions, getShadowWidth, getShapeSizeVariant } from 'styles';
+import { getElementTransitions, getButtonShapeSizeVariant, getShadowWidth } from 'styles';
 import { capitalizeFirstLetter } from 'utils';
 import Color from 'color';
 
+// TODO
 const getRootColorVariant = (
   variant: ShapeVariant,
   color: ButtonColor,
@@ -135,7 +136,7 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
       width: '100%',
     },
     [`&.${SHAPE_SIZE_CLASS_NAMES[size]}`]: {
-      ...getShapeSizeVariant(size, spacing, typography),
+      ...getButtonShapeSizeVariant(size, spacing, typography),
     },
   };
 

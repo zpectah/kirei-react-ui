@@ -471,20 +471,6 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
   };
 
   const neutral = {
-    base: neutralColor[mode].base,
-    main: {
-      light: neutralColor[mode].main.light,
-      dark: neutralColor[mode].main.dark,
-      current: neutralColor[mode].main.current,
-    },
-    contrast: {
-      light: neutralColor[mode].contrast.light,
-      dark: neutralColor[mode].contrast.dark,
-      current: neutralColor[mode].contrast.current,
-    },
-  };
-
-  const inverted = {
     base: neutralColor[mode_opposite].base,
     main: {
       light: neutralColor[mode_opposite].main.light,
@@ -495,6 +481,20 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
       light: neutralColor[mode_opposite].contrast.light,
       dark: neutralColor[mode_opposite].contrast.dark,
       current: neutralColor[mode_opposite].contrast.current,
+    },
+  };
+
+  const inverted = {
+    base: neutralColor[mode].base,
+    main: {
+      light: neutralColor[mode].main.light,
+      dark: neutralColor[mode].main.dark,
+      current: neutralColor[mode].main.current,
+    },
+    contrast: {
+      light: neutralColor[mode].contrast.light,
+      dark: neutralColor[mode].contrast.dark,
+      current: neutralColor[mode].contrast.current,
     },
   };
 

@@ -1,25 +1,107 @@
+import Color from 'color';
 import {
   Theme,
   IconButtonStylesProps,
-  shapeVariantKeys,
+  ShapeVariant,
+  ButtonColor,
   ShapeSize,
+  ThemePaletteV2,
   ThemeSpacing,
+  ThemeShape,
+  shapeVariantKeys,
   shapeSizeKeys,
   Shape,
   shapeKeys,
-  ThemeShape,
-  ShapeVariant,
-  ThemePalette,
-  ButtonColor,
 } from 'types';
-import { SHAPE_MIN_HEIGHT } from 'core';
-import {
-  getElementTransitions,
-  getContainedButtonVariant,
-  getOutlinedButtonVariant,
-  getTextButtonVariant,
-} from 'styles';
+import { getElementTransitions, getShadowWidth } from 'styles';
+import { capitalizeFirstLetter } from 'utils';
+import { SHAPE_VARIANT_CLASS_NAME, STATUS_CLASS_NAMES, SHAPE_MIN_HEIGHT } from 'core';
 
+// TODO
+const getRootColorVariant = (
+  variant: ShapeVariant,
+  color: ButtonColor,
+  size: ShapeSize,
+  palette: ThemePaletteV2,
+  spacing: ThemeSpacing,
+  shape: ThemeShape
+) => {
+  const capitalizeColor = capitalizeFirstLetter(color);
+  const baseColor = palette[color];
+  const hoverShadowWidth = getShadowWidth(size, spacing);
+
+  switch (variant) {
+    case shapeVariantKeys.contained:
+      return {
+        [`&.${SHAPE_VARIANT_CLASS_NAME.contained}${capitalizeColor}`]: {
+          backgroundColor: baseColor.main.current,
+          color: baseColor.contrast.current,
+          borderColor: baseColor.main.current,
+
+          [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled}), &.${STATUS_CLASS_NAMES.isActive}`]: {
+            boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${baseColor.base}`,
+            borderColor: baseColor.base,
+          },
+          ['&:focus']: {
+            outline: `${shape.borderWidth.outline} solid ${Color(baseColor.main.current).alpha(palette.action.focusAlpha).toString()}`,
+          },
+          [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
+            pointerEvents: 'none',
+            cursor: 'default',
+            color: color,
+            backgroundColor: palette.action.disabled.current,
+            borderColor: 'transparent',
+          },
+        },
+      };
+
+    case shapeVariantKeys.outlined:
+      return {
+        [`&.${SHAPE_VARIANT_CLASS_NAME.outlined}${capitalizeColor}`]: {
+          backgroundColor: 'transparent',
+          color: baseColor.main.current,
+          borderColor: baseColor.main.current,
+
+          [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled}), &.${STATUS_CLASS_NAMES.isActive}`]: {
+            boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(baseColor.base).alpha(0.05).toString()}`,
+            color: baseColor.base,
+            borderColor: baseColor.base,
+          },
+          ['&:focus']: {
+            outline: `${shape.borderWidth.outline} solid ${Color(baseColor.main.current).alpha(palette.action.focusAlpha).toString()}`,
+          },
+          [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
+            pointerEvents: 'none',
+            cursor: 'default',
+            color: palette.action.disabled.current,
+            borderColor: palette.action.disabled.current,
+          },
+        },
+      };
+
+    case shapeVariantKeys.text:
+      return {
+        [`&.${SHAPE_VARIANT_CLASS_NAME.text}${capitalizeColor}`]: {
+          backgroundColor: 'transparent',
+          color: baseColor.main.current,
+          borderColor: 'transparent',
+
+          [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled}), &.${STATUS_CLASS_NAMES.isActive}`]: {
+            boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(baseColor.base).alpha(0.05).toString()}`,
+            color: baseColor.base,
+          },
+          ['&:focus']: {
+            outline: `${shape.borderWidth.outline} solid ${Color(baseColor.main.current).alpha(palette.action.focusAlpha).toString()}`,
+          },
+          [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
+            color: palette.action.disabled.current,
+          },
+        },
+      };
+  }
+};
+
+// TODO
 const getShapeSizeVariant = (size: ShapeSize, spacing: ThemeSpacing) => {
   switch (size) {
     case shapeSizeKeys.small:
@@ -48,6 +130,7 @@ const getShapeSizeVariant = (size: ShapeSize, spacing: ThemeSpacing) => {
   }
 };
 
+// TODO
 const getShapeBorder = (shape: Shape, size: ShapeSize, themeShape: ThemeShape) => {
   const radiusSize = {
     small: SHAPE_MIN_HEIGHT.small,
@@ -71,27 +154,8 @@ const getShapeBorder = (shape: Shape, size: ShapeSize, themeShape: ThemeShape) =
   }
 };
 
-const getRootVariant = (
-  variant: ShapeVariant,
-  palette: ThemePalette,
-  shape: ThemeShape,
-  spacing: ThemeSpacing,
-  stylesProps: { color: ButtonColor; size: ShapeSize }
-) => {
-  switch (variant) {
-    case shapeVariantKeys.contained:
-      return getContainedButtonVariant(palette, shape, spacing, stylesProps);
-
-    case shapeVariantKeys.outlined:
-      return getOutlinedButtonVariant(palette, shape, spacing, stylesProps);
-
-    case shapeVariantKeys.text:
-      return getTextButtonVariant(palette, shape, spacing, stylesProps);
-  }
-};
-
 export const useCreateIconButtonStyles = (theme: Theme, stylesProps: IconButtonStylesProps) => {
-  const { transitions, palette, spacing, shape: themeShape } = theme;
+  const { transitions, paletteV2, spacing, shape: themeShape } = theme;
   const { size, color, variant, shape } = stylesProps;
 
   const transition = getElementTransitions(
@@ -131,7 +195,7 @@ export const useCreateIconButtonStyles = (theme: Theme, stylesProps: IconButtonS
     root: Object.assign({
       ...rootBase,
       ...getShapeSizeVariant(size, spacing),
-      ...getRootVariant(variant, palette, themeShape, spacing, { size, color }),
+      ...getRootColorVariant(variant, color, size, paletteV2, spacing, themeShape),
       ...getShapeBorder(shape, size, themeShape),
     }),
     icon: Object.assign({

@@ -10,7 +10,7 @@ export const PALETTE = {
 
   disabled: 'hsl(177, 0%, 64%)', // TODO
 
-  grey: 'hsl(0, 0.0%, 38.0%)',
+  grey: 'hsl(0, 0.0%, 38.0%)', // TODO
   dark: 'hsl(0, 0.0%, 9.8%)',
   black: 'hsl(0, 0.0%, 0.8%)',
   light: 'hsl(0, 0.0%, 94.1%)',
@@ -19,6 +19,7 @@ export const PALETTE = {
   paperLight: 'hsl(0, 0.0%, 99.8%)', // TODO
   paperDark: 'hsl(0, 0.0%, 17%)', // TODO
 
+  // TODO
   red: 'hsl(0, 65%, 47%)',
   pink: 'hsl(337, 79%, 47%)',
   purple: 'hsl(280, 68%, 42%)',
@@ -39,6 +40,7 @@ export const PALETTE = {
   blueGrey: 'hsl(200, 18%, 30%)',
 };
 
+// TODO -->
 export const PALETTE_RATIO = {
   activeAlpha: 0.12,
   backgroundAlpha: 0.65,
@@ -55,3 +57,4 @@ export const SHAPE_BORDER_ALPHA = 0.15;
 export const LOADING_LABEL_ALPHA = 0.25;
 
 export const BACKGROUND_GLASS_ALPHA = 0.25;
+// TODO <--

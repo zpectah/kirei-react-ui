@@ -9,6 +9,8 @@ const ACTIVE_ALPHA = 0.15;
 const HOVER_ALPHA = 0.05;
 const FOCUS_ALPHA = 0.15;
 
+const TEXT_MUTED_RATIO = 0.15;
+
 const getLightenColor = (color: string, ratio: number) => Color(color).lighten(ratio).toString();
 const getDarkenColor = (color: string, ratio: number) => Color(color).darken(ratio).toString();
 const getNegativeColor = (color: string) => Color(color).negate().toString();
@@ -107,8 +109,8 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
         ...theme_base.background.paper,
       },
       shape: {
-        light: palette?.background?.shape?.light || Color(theme_base.background.paper.light).blacken(0.25).toString(),
-        dark: palette?.background?.shape?.dark || Color(theme_base.background.paper.light).whiten(0.25).toString(),
+        light: palette?.background?.shape?.light || Color(theme_base.text.body.light).blacken(tonalOffset).toString(),
+        dark: palette?.background?.shape?.dark || Color(theme_base.text.body.dark).whiten(tonalOffset).toString(),
       },
       dividerAlpha: theme_base.background.dividerAlpha,
     },
@@ -117,8 +119,8 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
         ...theme_base.text.body,
       },
       muted: {
-        light: palette?.text?.muted?.light || Color(theme_base.text.body.light).lighten(0.15).toString(),
-        dark: palette?.text?.muted?.dark || Color(theme_base.text.body.dark).darken(0.15).toString(),
+        light: palette?.text?.muted?.light || Color(theme_base.text.body.light).lighten(TEXT_MUTED_RATIO).toString(),
+        dark: palette?.text?.muted?.dark || Color(theme_base.text.body.dark).darken(TEXT_MUTED_RATIO).toString(),
       },
       disabled: {
         light:

@@ -23,6 +23,13 @@ const ThemeView = () => {
       </Article>
       <Article>
         <Section>
+          <div
+            style={{
+              marginTop: theme.spacing.get(2),
+              marginBottom: theme.spacing.get(2),
+              borderTop: `1px solid ${theme.paletteV2.background.divider}`,
+            }}
+          ></div>
           <Stack gap={2}>
             <ColorTile
               label="Label"

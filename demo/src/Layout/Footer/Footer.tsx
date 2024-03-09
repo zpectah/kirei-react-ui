@@ -20,7 +20,7 @@ const Footer = () => {
             alignItems: 'center',
             justifyContent: 'center',
             gap: '.5rem',
-            color: theme.palette.text.muted,
+            color: theme.paletteV2.text.muted.current,
             ...theme.typography.caption,
           }}
         >

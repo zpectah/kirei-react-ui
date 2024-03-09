@@ -11,7 +11,7 @@ export interface ViewProps extends WithChildren {
 
 const View = ({ children, title, subtitle, footer }: ViewProps) => {
   const {
-    theme: { spacing, palette },
+    theme: { spacing, paletteV2 },
   } = useKireiContext();
 
   return (
@@ -40,7 +40,7 @@ const View = ({ children, title, subtitle, footer }: ViewProps) => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'end',
-            borderTop: `1px solid ${palette.shape.border}`,
+            borderTop: `1px solid ${paletteV2.background.divider}`,
           }}
         >
           {footer}

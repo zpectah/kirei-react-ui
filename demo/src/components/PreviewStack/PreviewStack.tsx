@@ -11,17 +11,17 @@ const PreviewStack = (props: PreviewStackProps) => {
   const { children, gap = 4, alignItems = 'center', justifyContent = 'center', spacing = 5, ...rest } = props;
 
   const {
-    theme: { palette, spacing: themeSpacing },
+    theme: { paletteV2, spacing: themeSpacing },
   } = useKireiContext();
 
   const backgroundImage = useMemo(() => {
-    const colorPrimary = palette.utils.getDarkenColor(palette.background.default, 0.025);
-    const colorSecondary = palette.utils.getDarkenColor(palette.background.default, 0.15);
+    const colorPrimary = paletteV2.utils.getDarkenColor(paletteV2.background.body.current, 0.025);
+    const colorSecondary = paletteV2.utils.getDarkenColor(paletteV2.background.body.current, 0.15);
 
     return `
     repeating-linear-gradient(45deg, ${colorPrimary} 25%, transparent 25%, transparent 75%, ${colorPrimary} 75%, ${colorPrimary}),
     repeating-linear-gradient(45deg, ${colorPrimary} 25%, ${colorSecondary} 25%, ${colorSecondary} 75%, ${colorPrimary} 75%, ${colorPrimary})`;
-  }, [palette]);
+  }, [paletteV2]);
   const backgroundPositionBase = '.5rem';
   const backgroundSizeBase = '1rem';
 
@@ -32,7 +32,7 @@ const PreviewStack = (props: PreviewStackProps) => {
         backgroundPosition: `0 0, ${backgroundPositionBase} ${backgroundPositionBase}`,
         backgroundSize: `${backgroundSizeBase} ${backgroundSizeBase}`,
         padding: themeSpacing.get(spacing),
-        border: `1px solid ${palette.shape.border}`,
+        border: `1px solid ${paletteV2.background.divider}`,
         overflow: 'hidden',
       }}
       gap={gap}

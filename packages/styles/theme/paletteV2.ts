@@ -9,7 +9,7 @@ const ACTIVE_ALPHA = 0.15;
 const HOVER_ALPHA = 0.05;
 const FOCUS_ALPHA = 0.15;
 
-const TEXT_MUTED_RATIO = 0.15;
+const TEXT_MUTED_RATIO = 0.25;
 
 const getLightenColor = (color: string, ratio: number) => Color(color).lighten(ratio).toString();
 const getDarkenColor = (color: string, ratio: number) => Color(color).darken(ratio).toString();
@@ -100,6 +100,11 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
     },
   };
 
+  const TEXT_MUTED_LIGHT =
+    palette?.text?.muted?.light || Color(theme_base.text.body.light).lighten(TEXT_MUTED_RATIO).toString();
+  const TEXT_MUTED_DARK =
+    palette?.text?.muted?.dark || Color(theme_base.text.body.dark).darken(TEXT_MUTED_RATIO).toString();
+
   const theme_update = {
     background: {
       body: {
@@ -119,16 +124,13 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
         ...theme_base.text.body,
       },
       muted: {
-        light: palette?.text?.muted?.light || Color(theme_base.text.body.light).lighten(TEXT_MUTED_RATIO).toString(),
-        dark: palette?.text?.muted?.dark || Color(theme_base.text.body.dark).darken(TEXT_MUTED_RATIO).toString(),
+        light: TEXT_MUTED_LIGHT,
+        dark: TEXT_MUTED_DARK,
       },
       disabled: {
         light:
-          palette?.text?.disabled?.light ||
-          Color(theme_base.text.body.light).alpha(theme_base.action.disableAlpha).toString(),
-        dark:
-          palette?.text?.disabled?.dark ||
-          Color(theme_base.text.body.dark).alpha(theme_base.action.disableAlpha).toString(),
+          palette?.text?.disabled?.light || Color(TEXT_MUTED_LIGHT).alpha(theme_base.action.disableAlpha).toString(),
+        dark: palette?.text?.disabled?.dark || Color(TEXT_MUTED_DARK).alpha(theme_base.action.disableAlpha).toString(),
       },
     },
     action: {
@@ -242,7 +244,7 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
       shape: theme_update.background.shape[mode],
     },
     text: {
-      body: theme_update.text.body[mode],
+      body: theme_base.text.body[mode],
       muted: theme_update.text.muted[mode],
       disabled: theme_update.text.disabled[mode],
     },

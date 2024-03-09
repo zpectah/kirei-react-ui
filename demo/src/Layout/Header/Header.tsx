@@ -8,6 +8,7 @@ import HeaderNavigation from './HeaderNavigation';
 
 const Header = () => {
   const { theme, toggleThemeMode } = useKireiContext();
+  const { paletteV2 } = theme;
 
   return (
     <header
@@ -17,8 +18,8 @@ const Header = () => {
         position: 'fixed',
         top: 0,
         left: 0,
-        backgroundColor: theme.palette.dark.dark,
-        color: theme.palette.dark.contrast,
+        backgroundColor: paletteV2.dark.main.current,
+        color: paletteV2.dark.contrast.current,
       }}
     >
       <Container isFluid>
@@ -43,7 +44,7 @@ const Header = () => {
             <HeaderNavigation />
             <div>
               <Button variant="outlined" color="light" onClick={toggleThemeMode}>
-                [{theme.palette.mode}]
+                [{paletteV2.mode}]
               </Button>
             </div>
           </div>

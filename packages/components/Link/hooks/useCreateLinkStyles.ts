@@ -5,8 +5,9 @@ import { getTypographyColor } from 'styles';
 
 export const useCreateLinkStyles = (theme: Theme, stylesProps: LinkStylesProps) => {
   const { variant, color, underline } = stylesProps;
+  const { paletteV2 } = theme;
 
-  const rootBaseColor = getTypographyColor(theme, color);
+  const rootBaseColor = getTypographyColor(paletteV2, color);
 
   const rootBase = {
     color: rootBaseColor,

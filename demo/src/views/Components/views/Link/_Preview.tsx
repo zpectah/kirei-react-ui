@@ -93,18 +93,18 @@ const PreviewView = () => {
         </Section>
         <Section title="Typography colors">
           <PreviewCombo
-            code='<Link color="text-tertiary">...</Link>
-<Link color="text-secondary">...</Link>
-<Link color="text-tertiary">...</Link>'
+            code='<Link color="body">...</Link>
+<Link color="muted">...</Link>
+<Link color="disabled">...</Link>'
           >
-            <Link href="/" color="text-tertiary">
-              Text primary
+            <Link href="/" color="body">
+              Body
             </Link>
-            <Link href="/" color="text-secondary">
-              Text secondary
+            <Link href="/" color="muted">
+              Muted
             </Link>
-            <Link href="/" color="text-tertiary">
-              Text tertiary
+            <Link href="/" color="disabled">
+              Disabled
             </Link>
           </PreviewCombo>
         </Section>

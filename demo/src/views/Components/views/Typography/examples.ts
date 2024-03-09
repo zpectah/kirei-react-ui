@@ -32,8 +32,7 @@ export default {
 <Typography color="warning">...</Typography>
 <Typography color="error">...</Typography>
 `,
-    typography: `<Typography color="text-primary">...</Typography>
-<Typography color="text-secondary">...</Typography>
+    typography: `<Typography color="body">...</Typography>
 <Typography color="muted">...</Typography>
 <Typography color="disabled">...</Typography>
 `,

@@ -19,8 +19,7 @@ export enum emotionColorKeys {
 }
 
 export enum textColorKeys {
-  'text-primary' = 'text-primary',
-  'text-secondary' = 'text-secondary',
+  body = 'body',
   muted = 'muted',
   disabled = 'disabled',
   inherit = 'inherit',

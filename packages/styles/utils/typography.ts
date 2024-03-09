@@ -1,22 +1,28 @@
-import { Theme, TypographyColor, brandColorKeys, neutralColorKeys, emotionColorKeys, textColorKeys } from 'types';
+import {
+  TypographyColor,
+  brandColorKeys,
+  neutralColorKeys,
+  emotionColorKeys,
+  textColorKeys,
+  ThemePaletteV2,
+} from 'types';
 
-export const getTypographyColor = (theme: Theme, color: TypographyColor) => {
+export const getTypographyColor = (palette: ThemePaletteV2, color: TypographyColor) => {
   const rootColorMap = {
-    [brandColorKeys.primary]: theme.palette.primary.main,
-    [brandColorKeys.secondary]: theme.palette.secondary.main,
-    [brandColorKeys.tertiary]: theme.palette.tertiary.main,
-    [emotionColorKeys.error]: theme.palette.error.main,
-    [emotionColorKeys.warning]: theme.palette.warning.main,
-    [emotionColorKeys.info]: theme.palette.info.main,
-    [emotionColorKeys.success]: theme.palette.success.main,
-    [neutralColorKeys.light]: theme.palette.light.main,
-    [neutralColorKeys.dark]: theme.palette.dark.main,
-    [neutralColorKeys.inverted]: theme.palette.inverted.main,
-    [neutralColorKeys.neutral]: theme.palette.neutral.main,
-    [textColorKeys['text-primary']]: theme.palette.text.primary,
-    [textColorKeys['text-secondary']]: theme.palette.text.secondary,
-    [textColorKeys.muted]: theme.palette.text.muted,
-    [textColorKeys.disabled]: theme.palette.text.disabled,
+    [brandColorKeys.primary]: palette.primary.main.current,
+    [brandColorKeys.secondary]: palette.secondary.main.current,
+    [brandColorKeys.tertiary]: palette.tertiary.main.current,
+    [emotionColorKeys.error]: palette.error.main.current,
+    [emotionColorKeys.warning]: palette.warning.main.current,
+    [emotionColorKeys.info]: palette.info.main.current,
+    [emotionColorKeys.success]: palette.success.main.current,
+    [neutralColorKeys.light]: palette.light.main.current,
+    [neutralColorKeys.dark]: palette.dark.main.current,
+    [neutralColorKeys.inverted]: palette.inverted.main.current,
+    [neutralColorKeys.neutral]: palette.neutral.main.current,
+    [textColorKeys.body]: palette.text.body.current,
+    [textColorKeys.muted]: palette.text.muted.current,
+    [textColorKeys.disabled]: palette.text.disabled.current,
     [textColorKeys.inherit]: 'inherit',
   };
 

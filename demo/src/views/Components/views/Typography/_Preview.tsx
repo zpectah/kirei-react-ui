@@ -164,11 +164,8 @@ const PreviewView = () => {
             code={examples.colors.typography}
             stackProps={{ direction: 'column', alignItems: 'flex-start' }}
           >
-            <Typography color="text-primary">
-              text-primary: Nec varius, et dui tristique et iaculis euismod quam tristique, condimentum bibendum
-            </Typography>
-            <Typography color="text-secondary">
-              text-secondary: Sollicitudin pulvinar, felis a turpis nibh maximus suspendisse magna et dui sed
+            <Typography color="body">
+              body: Nec varius, et dui tristique et iaculis euismod quam tristique, condimentum bibendum
             </Typography>
             <Typography color="muted">
               muted: Magna ut venenatis, elit bibendum vivamus consequat fermentum ullamcorper fermentum

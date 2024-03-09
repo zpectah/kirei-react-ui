@@ -9,8 +9,8 @@ export const PALETTE = {
   success: 'hsl(123, 43.4%, 38.8%)',
 
   disabled: 'hsl(177, 0%, 64%)', // TODO
-
   grey: 'hsl(0, 0.0%, 38.0%)', // TODO
+
   dark: 'hsl(0, 0.0%, 9.8%)',
   black: 'hsl(0, 0.0%, 0.8%)',
   light: 'hsl(0, 0.0%, 94.1%)',
@@ -50,11 +50,10 @@ export const PALETTE_RATIO = {
   outlineAlpha: 0.5,
   shadowAlpha: 0.05,
 };
-
 export const SECONDARY_TEXT_ALPHA = 0.85;
 export const SHAPE_DIVIDER_ALPHA = 0.25;
 export const SHAPE_BORDER_ALPHA = 0.15;
-export const LOADING_LABEL_ALPHA = 0.25;
-
-export const BACKGROUND_GLASS_ALPHA = 0.25;
 // TODO <--
+
+export const LOADING_LABEL_ALPHA = 0.25;
+export const BACKGROUND_GLASS_ALPHA = 0.25;

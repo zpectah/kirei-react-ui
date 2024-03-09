@@ -14,9 +14,6 @@ export const createGlobalStyles = (theme: Theme) => {
       fontSize: '1rem',
       fontFamily: theme.typography.fontFamily,
       fontWeight: theme.typography.fontWeightRegular,
-      // TODO
-      // backgroundColor: theme.palette.background.default,
-      // color: theme.palette.text.primary,
       backgroundColor: theme.paletteV2.background.body.current,
       color: theme.paletteV2.text.body.current,
     },

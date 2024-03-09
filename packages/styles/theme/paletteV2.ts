@@ -294,6 +294,7 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
   const white = PALETTE.white;
   const common = {
     black,
+    dark: PALETTE.dark,
     grey: {
       95: 'hsl(0, 0%, 5%)',
       90: 'hsl(0, 0%, 10%)',
@@ -307,6 +308,7 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
       10: 'hsl(0, 0%, 90%)',
       5: 'hsl(0, 0%, 95%)',
     },
+    light: PALETTE.light,
     white,
   };
 

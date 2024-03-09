@@ -18,6 +18,7 @@ export interface ThemePaletteV2 {
   mode: ThemeModeV2;
   common: {
     black: string;
+    dark: string;
     grey: {
       90: string;
       80: string;
@@ -30,6 +31,7 @@ export interface ThemePaletteV2 {
       10: string;
       5: string;
     };
+    light: string;
     white: string;
   };
   background: {

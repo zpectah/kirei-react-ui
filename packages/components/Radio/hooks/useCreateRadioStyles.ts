@@ -1,9 +1,9 @@
-import { Theme, RadioStylesProps, ThemePalette, InputColor } from 'types';
+import { Theme, RadioStylesProps, ThemePaletteV2, InputColor } from 'types';
 import { getElementTransitions } from 'styles';
 import { SHAPE_MIN_HEIGHT, STATUS_CLASS_NAMES } from 'core';
 
-const getColorVariant = (palette: ThemePalette, color: InputColor) => {
-  const colorMain = palette[color].main;
+const getColorVariant = (palette: ThemePaletteV2, color: InputColor) => {
+  const colorMain = palette[color].main.current;
 
   return {
     [`&.${STATUS_CLASS_NAMES.isChecked}, &.${STATUS_CLASS_NAMES.isIndeterminate}`]: {
@@ -11,7 +11,7 @@ const getColorVariant = (palette: ThemePalette, color: InputColor) => {
     },
     [`&.${STATUS_CLASS_NAMES.isFocused}`]: {
       [`&::before`]: {
-        backgroundColor: palette.utils.getAlphaColor(colorMain, palette.ratio.activeAlpha),
+        backgroundColor: palette.utils.getAlphaColor(colorMain, palette.action.activeAlpha),
       },
     },
   };
@@ -19,7 +19,7 @@ const getColorVariant = (palette: ThemePalette, color: InputColor) => {
 
 export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps) => {
   const { color, size } = stylesProps;
-  const { palette, transitions } = theme;
+  const { paletteV2, transitions } = theme;
 
   const labelTransition = getElementTransitions(['color'], transitions.duration.shortest, transitions.easing.easeInOut);
   const focusElementTransition = getElementTransitions(
@@ -40,7 +40,7 @@ export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps
     justifyContent: 'center',
     flexShrink: 0,
     cursor: 'pointer',
-    color: palette.text.secondary,
+    color: paletteV2.text.muted,
     position: 'relative',
     transition: labelTransition,
 
@@ -59,13 +59,13 @@ export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps
     },
 
     [`&:hover`]: {
-      color: palette.text.primary,
+      color: paletteV2.text.body,
     },
 
     [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
       pointerEvents: 'none',
       cursor: 'default',
-      opacity: palette.ratio.disabledAlpha,
+      opacity: paletteV2.action.disableAlpha,
     },
   };
 
@@ -94,7 +94,7 @@ export const useCreateRadioStyles = (theme: Theme, stylesProps: RadioStylesProps
     label: Object.assign({
       ...labelBase,
       ...labelSize[size],
-      ...getColorVariant(palette, color),
+      ...getColorVariant(paletteV2, color),
     }),
   };
 

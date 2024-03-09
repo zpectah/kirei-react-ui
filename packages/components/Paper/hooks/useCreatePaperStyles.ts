@@ -1,34 +1,31 @@
 import { BACKGROUND_GLASS_ALPHA } from 'core';
-import { Theme, PaperStylesProps } from 'types';
+import { Theme, PaperStylesProps, ThemePaletteColor } from 'types';
 
-const getPaperShape = (
-  background: string,
-  color: string,
-  colorAlt: string,
-  border: string,
-  getAlphaColor: (color: string, ratio: number) => string,
-  borderPrefix: string
+const getShapePaper = (
+  tone: ThemePaletteColor,
+  borderPrefix: string,
+  getAlphaColor: (color: string, ratio: number) => string
 ) => {
   return {
     contained: {
-      backgroundColor: background,
-      color: color,
+      backgroundColor: tone.main.current,
+      color: tone.contrast.current,
     },
     outlined: {
-      color: background,
-      border: `${borderPrefix} ${border}`,
+      color: tone.main.current,
+      border: `${borderPrefix} ${tone.main.current}`,
     },
     glass: {
-      color: colorAlt,
-      backgroundColor: getAlphaColor(background, BACKGROUND_GLASS_ALPHA),
-      border: `${borderPrefix} ${border}`,
+      color: tone.main.current,
+      backgroundColor: getAlphaColor(tone.main.current, BACKGROUND_GLASS_ALPHA),
+      border: `${borderPrefix} ${tone.main.current}`,
     },
   };
 };
 
 export const useCreatePaperStyles = (theme: Theme, stylesProps: PaperStylesProps) => {
   const { color, isSquare, variant, elevation } = stylesProps;
-  const { palette, shape, shadows } = theme;
+  const { paletteV2, shape, shadows } = theme;
 
   const borderPrefix = `${shape.borderWidth.divider} solid`;
 
@@ -39,109 +36,29 @@ export const useCreatePaperStyles = (theme: Theme, stylesProps: PaperStylesProps
   const rootVariants = {
     paper: {
       contained: {
-        backgroundColor: palette.background.paper,
-        color: palette.text.primary,
+        backgroundColor: paletteV2.background.paper.current,
+        color: paletteV2.text.body.current,
       },
       outlined: {
-        color: palette.text.primary,
-        border: `${borderPrefix} ${palette.shape.border}`,
+        color: paletteV2.text.body.current,
+        border: `${borderPrefix} ${paletteV2.background.divider}`,
       },
       glass: {
-        backgroundColor: palette.utils.getAlphaColor(palette.background.paper, BACKGROUND_GLASS_ALPHA),
-        border: `${borderPrefix} ${palette.shape.border}`,
+        backgroundColor: paletteV2.utils.getAlphaColor(paletteV2.background.paper.current, BACKGROUND_GLASS_ALPHA),
+        border: `${borderPrefix} ${paletteV2.background.divider}`,
       },
     },
-
-    primary: getPaperShape(
-      palette.primary.main,
-      palette.primary.contrast,
-      palette.primary.dark,
-      palette.primary.main,
-      palette.utils.getAlphaColor,
-      borderPrefix
-    ),
-    secondary: getPaperShape(
-      palette.secondary.main,
-      palette.secondary.contrast,
-      palette.secondary.dark,
-      palette.secondary.main,
-      palette.utils.getAlphaColor,
-      borderPrefix
-    ),
-    tertiary: getPaperShape(
-      palette.tertiary.main,
-      palette.tertiary.contrast,
-      palette.tertiary.dark,
-      palette.tertiary.main,
-      palette.utils.getAlphaColor,
-      borderPrefix
-    ),
-
-    success: getPaperShape(
-      palette.success.main,
-      palette.success.contrast,
-      palette.success.dark,
-      palette.success.main,
-      palette.utils.getAlphaColor,
-      borderPrefix
-    ),
-    info: getPaperShape(
-      palette.info.main,
-      palette.info.contrast,
-      palette.info.dark,
-      palette.info.main,
-      palette.utils.getAlphaColor,
-      borderPrefix
-    ),
-    warning: getPaperShape(
-      palette.warning.main,
-      palette.warning.contrast,
-      palette.warning.dark,
-      palette.warning.main,
-      palette.utils.getAlphaColor,
-      borderPrefix
-    ),
-    error: getPaperShape(
-      palette.error.main,
-      palette.error.contrast,
-      palette.error.dark,
-      palette.error.main,
-      palette.utils.getAlphaColor,
-      borderPrefix
-    ),
-
-    inverted: getPaperShape(
-      palette.inverted.main,
-      palette.inverted.contrast,
-      palette.inverted.dark,
-      palette.inverted.main,
-      palette.utils.getAlphaColor,
-      borderPrefix
-    ),
-    neutral: getPaperShape(
-      palette.neutral.main,
-      palette.neutral.contrast,
-      palette.neutral.dark,
-      palette.neutral.main,
-      palette.utils.getAlphaColor,
-      borderPrefix
-    ),
-    light: getPaperShape(
-      palette.light.main,
-      palette.light.contrast,
-      palette.light.dark,
-      palette.light.main,
-      palette.utils.getAlphaColor,
-      borderPrefix
-    ),
-    dark: getPaperShape(
-      palette.dark.main,
-      palette.dark.contrast,
-      palette.dark.dark,
-      palette.dark.main,
-      palette.utils.getAlphaColor,
-      borderPrefix
-    ),
+    primary: getShapePaper(paletteV2.primary, borderPrefix, paletteV2.utils.getAlphaColor),
+    secondary: getShapePaper(paletteV2.secondary, borderPrefix, paletteV2.utils.getAlphaColor),
+    tertiary: getShapePaper(paletteV2.tertiary, borderPrefix, paletteV2.utils.getAlphaColor),
+    success: getShapePaper(paletteV2.success, borderPrefix, paletteV2.utils.getAlphaColor),
+    info: getShapePaper(paletteV2.info, borderPrefix, paletteV2.utils.getAlphaColor),
+    warning: getShapePaper(paletteV2.warning, borderPrefix, paletteV2.utils.getAlphaColor),
+    error: getShapePaper(paletteV2.error, borderPrefix, paletteV2.utils.getAlphaColor),
+    light: getShapePaper(paletteV2.light, borderPrefix, paletteV2.utils.getAlphaColor),
+    dark: getShapePaper(paletteV2.dark, borderPrefix, paletteV2.utils.getAlphaColor),
+    neutral: getShapePaper(paletteV2.neutral, borderPrefix, paletteV2.utils.getAlphaColor),
+    inverted: getShapePaper(paletteV2.inverted, borderPrefix, paletteV2.utils.getAlphaColor),
   };
 
   const styles = {

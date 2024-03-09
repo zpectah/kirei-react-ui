@@ -8,7 +8,7 @@ interface BaseColorScheme {
   current: string;
 }
 
-interface PaletteColor {
+export interface ThemePaletteColor {
   base: string;
   main: BaseColorScheme;
   contrast: BaseColorScheme;
@@ -55,17 +55,17 @@ export interface ThemePaletteV2 {
     focusAlpha: number;
   };
   tonalOffset: number;
-  primary: PaletteColor;
-  secondary: PaletteColor;
-  tertiary: PaletteColor;
-  success: PaletteColor;
-  info: PaletteColor;
-  warning: PaletteColor;
-  error: PaletteColor;
-  light: PaletteColor;
-  dark: PaletteColor;
-  neutral: PaletteColor;
-  inverted: PaletteColor;
+  primary: ThemePaletteColor;
+  secondary: ThemePaletteColor;
+  tertiary: ThemePaletteColor;
+  success: ThemePaletteColor;
+  info: ThemePaletteColor;
+  warning: ThemePaletteColor;
+  error: ThemePaletteColor;
+  light: ThemePaletteColor;
+  dark: ThemePaletteColor;
+  neutral: ThemePaletteColor;
+  inverted: ThemePaletteColor;
   utils: {
     getNegativeColor: (color: string) => string;
     getLightenColor: (color: string, ratio: number) => string;

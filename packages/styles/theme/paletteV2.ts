@@ -2,48 +2,48 @@ import Color from 'color';
 import { themeModeKeys, DeepPartial, ThemePaletteV2 } from 'types';
 import { PALETTE } from 'core';
 
+const TONAL_OFFSET = 0.25;
+const DIVIDER_ALPHA = 0.15;
+const DISABLE_ALPHA = 0.35;
+const ACTIVE_ALPHA = 0.15;
+const HOVER_ALPHA = 0.05;
+const FOCUS_ALPHA = 0.15;
+
+const getLightenColor = (color: string, ratio: number) => Color(color).lighten(ratio).toString();
+const getDarkenColor = (color: string, ratio: number) => Color(color).darken(ratio).toString();
+const getNegativeColor = (color: string) => Color(color).negate().toString();
+const getGreyscaleColor = (color: string) => Color(color).grayscale().toString();
+const getWhitenColor = (color: string, ratio: number) => Color(color).whiten(ratio).toString();
+const getBlackenColor = (color: string, ratio: number) => Color(color).blacken(ratio).toString();
+const getAlphaColor = (color: string, ratio: number) => Color(color).alpha(ratio).toString();
+
 export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): ThemePaletteV2 => {
   const mode = palette?.mode || themeModeKeys.light;
   const mode_opposite = mode === themeModeKeys.light ? themeModeKeys.dark : themeModeKeys.light;
 
-  const black = PALETTE.black;
-  const white = PALETTE.white;
-  const common = {
-    black,
-    grey: {
-      95: 'hsl(0, 0%, 5%)',
-      90: 'hsl(0, 0%, 10%)',
-      80: 'hsl(0, 0%, 20%)',
-      70: 'hsl(0, 0%, 30%)',
-      60: 'hsl(0, 0%, 40%)',
-      50: 'hsl(0, 0%, 50%)',
-      40: 'hsl(0, 0%, 60%)',
-      30: 'hsl(0, 0%, 70%)',
-      20: 'hsl(0, 0%, 80%)',
-      10: 'hsl(0, 0%, 90%)',
-      5: 'hsl(0, 0%, 95%)',
-    },
-    white,
-  };
-
   // ---
 
-  const PALETTE_THRESHOLD = 0.25; // TODO
-
-  const DIVIDER_ALPHA = 0.15;
-
-  const DISABLE_ALPHA = 0.35;
-  const ACTIVE_ALPHA = 0.15;
-  const HOVER_ALPHA = 0.05;
-  const FOCUS_ALPHA = 0.15;
+  const tonalOffset = palette?.tonalOffset || TONAL_OFFSET;
 
   // ---
 
   const PRIMARY_BASE = palette?.primary?.base || PALETTE.primary;
-  const PRIMARY_MAIN_LIGHT = palette?.primary?.main?.light || Color(PRIMARY_BASE).darken(PALETTE_THRESHOLD).toString();
-  const PRIMARY_MAIN_DARK = palette?.primary?.main?.dark || Color(PRIMARY_BASE).lighten(PALETTE_THRESHOLD).toString();
+  const PRIMARY_MAIN_LIGHT = palette?.primary?.main?.light || Color(PRIMARY_BASE).darken(tonalOffset).toString();
+  const PRIMARY_MAIN_DARK = palette?.primary?.main?.dark || Color(PRIMARY_BASE).lighten(tonalOffset).toString();
 
-  // --
+  // ---
+
+  const utils = {
+    getLightenColor,
+    getDarkenColor,
+    getNegativeColor,
+    getGreyscaleColor,
+    getWhitenColor,
+    getBlackenColor,
+    getAlphaColor,
+  };
+
+  // ---
 
   const theme_base = {
     background: {
@@ -69,7 +69,6 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
       hoverAlpha: palette?.action?.hoverAlpha || HOVER_ALPHA,
       focusAlpha: palette?.action?.focusAlpha || FOCUS_ALPHA,
     },
-    //
     primary: {
       base: PRIMARY_BASE,
     },
@@ -91,20 +90,12 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
     error: {
       base: palette?.error?.base || PALETTE.error,
     },
-    //
     light: {
-      base: PALETTE.light,
+      base: palette?.light?.base || PALETTE.light,
     },
     dark: {
-      base: PALETTE.dark,
+      base: palette?.dark?.base || PALETTE.dark,
     },
-    //
-    // neutral: {
-    //   base: PALETTE.dark,
-    // },
-    // inverted: {
-    //   base: PALETTE.light,
-    // },
   };
 
   const theme_update = {
@@ -150,7 +141,6 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
         dark: palette?.action?.active?.dark || Color(PRIMARY_MAIN_DARK).alpha(theme_base.action.activeAlpha).toString(),
       },
     },
-    //
     primary: {
       main: {
         light: PRIMARY_MAIN_LIGHT,
@@ -163,106 +153,84 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
     },
     secondary: {
       main: {
-        light: Color(theme_base.secondary.base).darken(PALETTE_THRESHOLD).toString(),
-        dark: Color(theme_base.secondary.base).lighten(PALETTE_THRESHOLD).toString(),
+        light: palette?.secondary?.main?.light || Color(theme_base.secondary.base).darken(tonalOffset).toString(),
+        dark: palette?.secondary?.main?.dark || Color(theme_base.secondary.base).lighten(tonalOffset).toString(),
       },
       contrast: {
-        light: PALETTE.white,
-        dark: PALETTE.black,
+        light: palette?.secondary?.contrast?.light || PALETTE.white,
+        dark: palette?.secondary?.contrast?.dark || PALETTE.black,
       },
     },
     tertiary: {
       main: {
-        light: Color(theme_base.tertiary.base).darken(PALETTE_THRESHOLD).toString(),
-        dark: Color(theme_base.tertiary.base).lighten(PALETTE_THRESHOLD).toString(),
+        light: palette?.tertiary?.main?.light || Color(theme_base.tertiary.base).darken(tonalOffset).toString(),
+        dark: palette?.tertiary?.main?.dark || Color(theme_base.tertiary.base).lighten(tonalOffset).toString(),
       },
       contrast: {
-        light: PALETTE.white,
-        dark: PALETTE.black,
+        light: palette?.tertiary?.contrast?.light || PALETTE.white,
+        dark: palette?.tertiary?.contrast?.dark || PALETTE.black,
       },
     },
     success: {
       main: {
-        light: Color(theme_base.success.base).darken(PALETTE_THRESHOLD).toString(),
-        dark: Color(theme_base.success.base).lighten(PALETTE_THRESHOLD).toString(),
+        light: palette?.success?.main?.light || Color(theme_base.success.base).darken(tonalOffset).toString(),
+        dark: palette?.success?.main?.dark || Color(theme_base.success.base).lighten(tonalOffset).toString(),
       },
       contrast: {
-        light: PALETTE.white,
-        dark: PALETTE.black,
+        light: palette?.success?.contrast?.light || PALETTE.white,
+        dark: palette?.success?.contrast?.dark || PALETTE.black,
       },
     },
     info: {
       main: {
-        light: Color(theme_base.info.base).darken(PALETTE_THRESHOLD).toString(),
-        dark: Color(theme_base.info.base).lighten(PALETTE_THRESHOLD).toString(),
+        light: palette?.info?.main?.light || Color(theme_base.info.base).darken(TONAL_OFFSET).toString(),
+        dark: palette?.info?.main?.dark || Color(theme_base.info.base).lighten(TONAL_OFFSET).toString(),
       },
       contrast: {
-        light: PALETTE.white,
-        dark: PALETTE.black,
+        light: palette?.info?.contrast?.light || PALETTE.white,
+        dark: palette?.info?.contrast?.dark || PALETTE.black,
       },
     },
     warning: {
       main: {
-        light: Color(theme_base.warning.base).darken(PALETTE_THRESHOLD).toString(),
-        dark: Color(theme_base.warning.base).lighten(PALETTE_THRESHOLD).toString(),
+        light: palette?.warning?.main?.light || Color(theme_base.warning.base).darken(tonalOffset).toString(),
+        dark: palette?.warning?.main?.dark || Color(theme_base.warning.base).lighten(tonalOffset).toString(),
       },
       contrast: {
-        light: PALETTE.white,
-        dark: PALETTE.black,
+        light: palette?.warning?.contrast?.light || PALETTE.white,
+        dark: palette?.warning?.contrast?.dark || PALETTE.black,
       },
     },
     error: {
       main: {
-        light: Color(theme_base.error.base).darken(PALETTE_THRESHOLD).toString(),
-        dark: Color(theme_base.error.base).lighten(PALETTE_THRESHOLD).toString(),
+        light: palette?.error?.main?.light || Color(theme_base.error.base).darken(tonalOffset).toString(),
+        dark: palette?.error?.main?.dark || Color(theme_base.error.base).lighten(tonalOffset).toString(),
       },
       contrast: {
-        light: PALETTE.white,
-        dark: PALETTE.black,
+        light: palette?.error?.contrast?.light || PALETTE.white,
+        dark: palette?.error?.contrast?.dark || PALETTE.black,
       },
     },
-    //
     light: {
       main: {
-        light: Color(theme_base.light.base).darken(PALETTE_THRESHOLD).toString(),
-        dark: Color(theme_base.light.base).lighten(PALETTE_THRESHOLD).toString(),
+        light: palette?.light?.main?.light || Color(theme_base.light.base).darken(tonalOffset).toString(),
+        dark: palette?.light?.main?.dark || Color(theme_base.light.base).lighten(tonalOffset).toString(),
       },
       contrast: {
-        light: PALETTE.black,
-        dark: PALETTE.white,
+        light: palette?.light?.contrast?.light || PALETTE.black,
+        dark: palette?.light?.contrast?.dark || PALETTE.black,
       },
     },
     dark: {
       main: {
-        light: Color(theme_base.dark.base).darken(PALETTE_THRESHOLD).toString(),
-        dark: Color(theme_base.dark.base).lighten(PALETTE_THRESHOLD).toString(),
+        light: palette?.dark?.main?.light || Color(theme_base.dark.base).darken(tonalOffset).toString(),
+        dark: palette?.dark?.main?.dark || Color(theme_base.dark.base).lighten(tonalOffset).toString(),
       },
       contrast: {
-        light: PALETTE.white,
-        dark: PALETTE.black,
+        light: palette?.dark?.contrast?.light || PALETTE.white,
+        dark: palette?.dark?.contrast?.dark || PALETTE.white,
       },
     },
-    //
-    // neutral: {
-    //   main: {
-    //     light: Color(theme_base.neutral.base).darken(PALETTE_THRESHOLD).toString(),
-    //     dark: Color(theme_base.neutral.base).lighten(PALETTE_THRESHOLD).toString(),
-    //   },
-    //   contrast: {
-    //     light: PALETTE.white,
-    //     dark: PALETTE.black,
-    //   },
-    // },
-    // inverted: {
-    //   main: {
-    //     light: Color(theme_base.inverted.base).darken(PALETTE_THRESHOLD).toString(),
-    //     dark: Color(theme_base.inverted.base).lighten(PALETTE_THRESHOLD).toString(),
-    //   },
-    //   contrast: {
-    //     light: PALETTE.black,
-    //     dark: PALETTE.white,
-    //   },
-    // },
   };
 
   const current = {
@@ -308,7 +276,6 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
       main: theme_update.error.main[mode],
       contrast: theme_update.error.contrast[mode],
     },
-    //
     light: {
       main: theme_update.light.main[mode],
       contrast: theme_update.light.contrast[mode],
@@ -317,12 +284,29 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
       main: theme_update.dark.main[mode],
       contrast: theme_update.dark.contrast[mode],
     },
-    //
-    // neutral: {},
-    // inverted: {},
   };
 
   // ---
+
+  const black = PALETTE.black;
+  const white = PALETTE.white;
+  const common = {
+    black,
+    grey: {
+      95: 'hsl(0, 0%, 5%)',
+      90: 'hsl(0, 0%, 10%)',
+      80: 'hsl(0, 0%, 20%)',
+      70: 'hsl(0, 0%, 30%)',
+      60: 'hsl(0, 0%, 40%)',
+      50: 'hsl(0, 0%, 50%)',
+      40: 'hsl(0, 0%, 60%)',
+      30: 'hsl(0, 0%, 70%)',
+      20: 'hsl(0, 0%, 80%)',
+      10: 'hsl(0, 0%, 90%)',
+      5: 'hsl(0, 0%, 95%)',
+    },
+    white,
+  };
 
   const background = {
     body: {
@@ -453,7 +437,6 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
     },
   };
 
-  // What exactly is light
   const light = {
     base: theme_base.light.base,
     main: {
@@ -466,7 +449,6 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
     },
   };
 
-  // What exactly is dark
   const dark = {
     base: theme_base.dark.base,
     main: {
@@ -484,8 +466,6 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
     dark,
   };
 
-  // TODO
-  // What exactly is neutral
   const neutral = {
     base: neutralColor[mode].base,
     main: {
@@ -500,8 +480,6 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
     },
   };
 
-  // TODO
-  // What exactly is inverted
   const inverted = {
     base: neutralColor[mode_opposite].base,
     main: {
@@ -522,6 +500,7 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
     background,
     text,
     action,
+    tonalOffset,
     primary,
     secondary,
     tertiary,
@@ -533,5 +512,6 @@ export const createThemePaletteV2 = (palette?: DeepPartial<ThemePaletteV2>): The
     dark,
     neutral,
     inverted,
+    utils,
   };
 };

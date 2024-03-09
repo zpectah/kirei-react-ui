@@ -13,12 +13,12 @@ const KireiProvider = ({ children, theme, styles, applyCSSReset, applyGlobalStyl
       theme: uiTheme,
       setTheme: (theme: PartialTheme) => setUiTheme(createTheme(theme)),
       setThemeMode: (mode: ThemeMode) => {
-        setUiTheme(createTheme({ palette: { mode } }));
+        setUiTheme(createTheme({ palette: { mode }, paletteV2: { mode } })); // TODO
       },
       toggleThemeMode: () => {
         const mode = uiTheme.palette.mode === themeModeKeys.light ? themeModeKeys.dark : themeModeKeys.light;
 
-        setUiTheme(createTheme(Object.assign({ palette: { mode } })));
+        setUiTheme(createTheme(Object.assign({ palette: { mode }, paletteV2: { mode } }))); // TODO
       },
     };
   }, [uiTheme]);

@@ -14,3 +14,12 @@ export const PALETTE = {
 };
 
 export const LOADING_LABEL_ALPHA = 0.25;
+
+export const TEXT_MUTED_RATIO = 0.25;
+
+export const PALETTE_TONAL_OFFSET = 0.25;
+export const PALETTE_DIVIDER_ALPHA = 0.15;
+export const PALETTE_DISABLE_ALPHA = 0.35;
+export const PALETTE_ACTIVE_ALPHA = 0.15;
+export const PALETTE_HOVER_ALPHA = 0.05;
+export const PALETTE_FOCUS_ALPHA = 0.15;

@@ -1,15 +1,15 @@
 import Color from 'color';
 import { themeModeKeys, DeepPartial, ThemePalette } from 'types';
-import { PALETTE } from 'core';
-
-const TONAL_OFFSET = 0.25;
-const DIVIDER_ALPHA = 0.15;
-const DISABLE_ALPHA = 0.35;
-const ACTIVE_ALPHA = 0.15;
-const HOVER_ALPHA = 0.05;
-const FOCUS_ALPHA = 0.15;
-
-const TEXT_MUTED_RATIO = 0.25;
+import {
+  PALETTE,
+  PALETTE_TONAL_OFFSET,
+  PALETTE_DIVIDER_ALPHA,
+  PALETTE_DISABLE_ALPHA,
+  PALETTE_ACTIVE_ALPHA,
+  PALETTE_HOVER_ALPHA,
+  PALETTE_FOCUS_ALPHA,
+  TEXT_MUTED_RATIO,
+} from 'core';
 
 const getLightenColor = (color: string, ratio: number) => Color(color).lighten(ratio).toString();
 const getDarkenColor = (color: string, ratio: number) => Color(color).darken(ratio).toString();
@@ -25,16 +25,6 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
 
   // ---
 
-  const tonalOffset = palette?.tonalOffset || TONAL_OFFSET;
-
-  // ---
-
-  const PRIMARY_BASE = palette?.primary?.base || PALETTE.primary;
-  const PRIMARY_MAIN_LIGHT = palette?.primary?.main?.light || Color(PRIMARY_BASE).darken(tonalOffset).toString();
-  const PRIMARY_MAIN_DARK = palette?.primary?.main?.dark || Color(PRIMARY_BASE).lighten(tonalOffset).toString();
-
-  // ---
-
   const utils = {
     getLightenColor,
     getDarkenColor,
@@ -44,111 +34,98 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     getBlackenColor,
     getAlphaColor,
   };
+  const tonalOffset = palette?.tonalOffset || PALETTE_TONAL_OFFSET;
 
   // ---
 
-  const theme_base = {
-    background: {
-      body: {
-        light: palette?.background?.body?.light || PALETTE.light,
-        dark: palette?.background?.body?.dark || PALETTE.dark,
-      },
-      paper: {
-        light: palette?.background?.paper?.light || PALETTE.light,
-        dark: palette?.background?.paper?.dark || PALETTE.dark,
-      },
-      dividerAlpha: palette?.background?.dividerAlpha || DIVIDER_ALPHA,
-    },
-    text: {
-      body: {
-        light: palette?.text?.body?.light || PALETTE.dark,
-        dark: palette?.text?.body?.dark || PALETTE.light,
-      },
-    },
-    action: {
-      disableAlpha: palette?.action?.disableAlpha || DISABLE_ALPHA,
-      activeAlpha: palette?.action?.activeAlpha || ACTIVE_ALPHA,
-      hoverAlpha: palette?.action?.hoverAlpha || HOVER_ALPHA,
-      focusAlpha: palette?.action?.focusAlpha || FOCUS_ALPHA,
-    },
-    primary: {
-      base: PRIMARY_BASE,
-    },
-    secondary: {
-      base: palette?.secondary?.base || PALETTE.secondary,
-    },
-    tertiary: {
-      base: palette?.tertiary?.base || PALETTE.tertiary,
-    },
-    success: {
-      base: palette?.success?.base || PALETTE.success,
-    },
-    info: {
-      base: palette?.info?.base || PALETTE.info,
-    },
-    warning: {
-      base: palette?.warning?.base || PALETTE.warning,
-    },
-    error: {
-      base: palette?.error?.base || PALETTE.error,
-    },
-    light: {
-      base: palette?.light?.base || PALETTE.light,
-    },
-    dark: {
-      base: palette?.dark?.base || PALETTE.dark,
-    },
+  const primaryBase = palette?.primary?.base || PALETTE.primary;
+  const primaryMainLight = palette?.primary?.main?.light || Color(primaryBase).darken(tonalOffset).toString();
+  const primaryMainDark = palette?.primary?.main?.dark || Color(primaryBase).lighten(tonalOffset).toString();
+
+  // ---
+
+  const _action = {
+    disableAlpha: palette?.action?.disableAlpha || PALETTE_DISABLE_ALPHA,
+    activeAlpha: palette?.action?.activeAlpha || PALETTE_ACTIVE_ALPHA,
+    hoverAlpha: palette?.action?.hoverAlpha || PALETTE_HOVER_ALPHA,
+    focusAlpha: palette?.action?.focusAlpha || PALETTE_FOCUS_ALPHA,
+  };
+  const _backgroundBody = {
+    light: palette?.background?.body?.light || PALETTE.light,
+    dark: palette?.background?.body?.dark || PALETTE.dark,
+  };
+  const _backgroundPaper = {
+    light: palette?.background?.paper?.light || PALETTE.light,
+    dark: palette?.background?.paper?.dark || PALETTE.dark,
+  };
+  const _textBody = {
+    light: palette?.text?.body?.light || PALETTE.dark,
+    dark: palette?.text?.body?.dark || PALETTE.light,
+  };
+  const _backgroundShape = {
+    light: palette?.background?.shape?.light || Color(_textBody.light).blacken(tonalOffset).toString(),
+    dark: palette?.background?.shape?.dark || Color(_textBody.dark).whiten(tonalOffset).toString(),
+  };
+  const _backgroundDividerAlpha = palette?.background?.dividerAlpha || PALETTE_DIVIDER_ALPHA;
+  const _textMuted = {
+    light: palette?.text?.muted?.light || Color(_textBody.light).lighten(TEXT_MUTED_RATIO).toString(),
+    dark: palette?.text?.muted?.dark || Color(_textBody.dark).darken(TEXT_MUTED_RATIO).toString(),
+  };
+  const _textDisabled = {
+    light: palette?.text?.disabled?.light || Color(_textMuted.light).alpha(_action.disableAlpha).toString(),
+    dark: palette?.text?.disabled?.dark || Color(_textMuted.dark).alpha(_action.disableAlpha).toString(),
   };
 
-  const TEXT_MUTED_LIGHT =
-    palette?.text?.muted?.light || Color(theme_base.text.body.light).lighten(TEXT_MUTED_RATIO).toString();
-  const TEXT_MUTED_DARK =
-    palette?.text?.muted?.dark || Color(theme_base.text.body.dark).darken(TEXT_MUTED_RATIO).toString();
+  const theme_base = {
+    primary: primaryBase,
+    secondary: palette?.secondary?.base || PALETTE.secondary,
+    tertiary: palette?.tertiary?.base || PALETTE.tertiary,
+    success: palette?.success?.base || PALETTE.success,
+    info: palette?.info?.base || PALETTE.info,
+    warning: palette?.warning?.base || PALETTE.warning,
+    error: palette?.error?.base || PALETTE.error,
+    light: palette?.light?.base || PALETTE.light,
+    dark: palette?.dark?.base || PALETTE.dark,
+  };
 
-  const theme_update = {
+  const theme_compose = {
     background: {
       body: {
-        ...theme_base.background.body,
+        ..._backgroundBody,
       },
       paper: {
-        ...theme_base.background.paper,
+        ..._backgroundPaper,
       },
       shape: {
-        light: palette?.background?.shape?.light || Color(theme_base.text.body.light).blacken(tonalOffset).toString(),
-        dark: palette?.background?.shape?.dark || Color(theme_base.text.body.dark).whiten(tonalOffset).toString(),
+        ..._backgroundShape,
       },
-      dividerAlpha: theme_base.background.dividerAlpha,
+      dividerAlpha: _backgroundDividerAlpha,
     },
     text: {
       body: {
-        ...theme_base.text.body,
+        ..._textBody,
       },
       muted: {
-        light: TEXT_MUTED_LIGHT,
-        dark: TEXT_MUTED_DARK,
+        ..._textMuted,
       },
       disabled: {
-        light:
-          palette?.text?.disabled?.light || Color(TEXT_MUTED_LIGHT).alpha(theme_base.action.disableAlpha).toString(),
-        dark: palette?.text?.disabled?.dark || Color(TEXT_MUTED_DARK).alpha(theme_base.action.disableAlpha).toString(),
+        ..._textDisabled,
       },
     },
     action: {
       disabled: {
-        light:
-          palette?.action?.disabled?.light || Color(PALETTE.black).alpha(theme_base.action.disableAlpha).toString(),
-        dark: palette?.action?.disabled?.dark || Color(PALETTE.light).alpha(theme_base.action.disableAlpha).toString(),
+        light: palette?.action?.disabled?.light || Color(PALETTE.black).alpha(_action.disableAlpha).toString(),
+        dark: palette?.action?.disabled?.dark || Color(PALETTE.light).alpha(_action.disableAlpha).toString(),
       },
       active: {
-        light:
-          palette?.action?.active?.light || Color(PRIMARY_MAIN_LIGHT).alpha(theme_base.action.activeAlpha).toString(),
-        dark: palette?.action?.active?.dark || Color(PRIMARY_MAIN_DARK).alpha(theme_base.action.activeAlpha).toString(),
+        light: palette?.action?.active?.light || Color(primaryMainLight).alpha(_action.activeAlpha).toString(),
+        dark: palette?.action?.active?.dark || Color(primaryMainDark).alpha(_action.activeAlpha).toString(),
       },
     },
     primary: {
       main: {
-        light: PRIMARY_MAIN_LIGHT,
-        dark: PRIMARY_MAIN_DARK,
+        light: primaryMainLight,
+        dark: primaryMainDark,
       },
       contrast: {
         light: palette?.primary?.contrast?.light || PALETTE.white,
@@ -157,8 +134,8 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     },
     secondary: {
       main: {
-        light: palette?.secondary?.main?.light || Color(theme_base.secondary.base).darken(tonalOffset).toString(),
-        dark: palette?.secondary?.main?.dark || Color(theme_base.secondary.base).lighten(tonalOffset).toString(),
+        light: palette?.secondary?.main?.light || Color(theme_base.secondary).darken(tonalOffset).toString(),
+        dark: palette?.secondary?.main?.dark || Color(theme_base.secondary).lighten(tonalOffset).toString(),
       },
       contrast: {
         light: palette?.secondary?.contrast?.light || PALETTE.white,
@@ -167,8 +144,8 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     },
     tertiary: {
       main: {
-        light: palette?.tertiary?.main?.light || Color(theme_base.tertiary.base).darken(tonalOffset).toString(),
-        dark: palette?.tertiary?.main?.dark || Color(theme_base.tertiary.base).lighten(tonalOffset).toString(),
+        light: palette?.tertiary?.main?.light || Color(theme_base.tertiary).darken(tonalOffset).toString(),
+        dark: palette?.tertiary?.main?.dark || Color(theme_base.tertiary).lighten(tonalOffset).toString(),
       },
       contrast: {
         light: palette?.tertiary?.contrast?.light || PALETTE.white,
@@ -177,8 +154,8 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     },
     success: {
       main: {
-        light: palette?.success?.main?.light || Color(theme_base.success.base).darken(tonalOffset).toString(),
-        dark: palette?.success?.main?.dark || Color(theme_base.success.base).lighten(tonalOffset).toString(),
+        light: palette?.success?.main?.light || Color(theme_base.success).darken(tonalOffset).toString(),
+        dark: palette?.success?.main?.dark || Color(theme_base.success).lighten(tonalOffset).toString(),
       },
       contrast: {
         light: palette?.success?.contrast?.light || PALETTE.white,
@@ -187,8 +164,8 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     },
     info: {
       main: {
-        light: palette?.info?.main?.light || Color(theme_base.info.base).darken(TONAL_OFFSET).toString(),
-        dark: palette?.info?.main?.dark || Color(theme_base.info.base).lighten(TONAL_OFFSET).toString(),
+        light: palette?.info?.main?.light || Color(theme_base.info).darken(tonalOffset).toString(),
+        dark: palette?.info?.main?.dark || Color(theme_base.info).lighten(tonalOffset).toString(),
       },
       contrast: {
         light: palette?.info?.contrast?.light || PALETTE.white,
@@ -197,8 +174,8 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     },
     warning: {
       main: {
-        light: palette?.warning?.main?.light || Color(theme_base.warning.base).darken(tonalOffset).toString(),
-        dark: palette?.warning?.main?.dark || Color(theme_base.warning.base).lighten(tonalOffset).toString(),
+        light: palette?.warning?.main?.light || Color(theme_base.warning).darken(tonalOffset).toString(),
+        dark: palette?.warning?.main?.dark || Color(theme_base.warning).lighten(tonalOffset).toString(),
       },
       contrast: {
         light: palette?.warning?.contrast?.light || PALETTE.white,
@@ -207,8 +184,8 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     },
     error: {
       main: {
-        light: palette?.error?.main?.light || Color(theme_base.error.base).darken(tonalOffset).toString(),
-        dark: palette?.error?.main?.dark || Color(theme_base.error.base).lighten(tonalOffset).toString(),
+        light: palette?.error?.main?.light || Color(theme_base.error).darken(tonalOffset).toString(),
+        dark: palette?.error?.main?.dark || Color(theme_base.error).lighten(tonalOffset).toString(),
       },
       contrast: {
         light: palette?.error?.contrast?.light || PALETTE.white,
@@ -217,8 +194,8 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     },
     light: {
       main: {
-        light: palette?.light?.main?.light || Color(theme_base.light.base).darken(tonalOffset).toString(),
-        dark: palette?.light?.main?.dark || Color(theme_base.light.base).lighten(tonalOffset).toString(),
+        light: palette?.light?.main?.light || Color(theme_base.light).darken(tonalOffset).toString(),
+        dark: palette?.light?.main?.dark || Color(theme_base.light).lighten(tonalOffset).toString(),
       },
       contrast: {
         light: palette?.light?.contrast?.light || PALETTE.black,
@@ -227,8 +204,8 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     },
     dark: {
       main: {
-        light: palette?.dark?.main?.light || Color(theme_base.dark.base).darken(tonalOffset).toString(),
-        dark: palette?.dark?.main?.dark || Color(theme_base.dark.base).lighten(tonalOffset).toString(),
+        light: palette?.dark?.main?.light || Color(theme_base.dark).darken(tonalOffset).toString(),
+        dark: palette?.dark?.main?.dark || Color(theme_base.dark).lighten(tonalOffset).toString(),
       },
       contrast: {
         light: palette?.dark?.contrast?.light || PALETTE.white,
@@ -239,54 +216,54 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
 
   const current = {
     background: {
-      body: theme_update.background.body[mode],
-      paper: theme_update.background.paper[mode],
-      shape: theme_update.background.shape[mode],
+      body: theme_compose.background.body[mode],
+      paper: theme_compose.background.paper[mode],
+      shape: theme_compose.background.shape[mode],
     },
     text: {
-      body: theme_base.text.body[mode],
-      muted: theme_update.text.muted[mode],
-      disabled: theme_update.text.disabled[mode],
+      body: theme_compose.text.body[mode],
+      muted: theme_compose.text.muted[mode],
+      disabled: theme_compose.text.disabled[mode],
     },
     action: {
-      disabled: theme_update.action.disabled[mode],
-      active: theme_update.action.active[mode],
+      disabled: theme_compose.action.disabled[mode],
+      active: theme_compose.action.active[mode],
     },
     primary: {
-      main: theme_update.primary.main[mode],
-      contrast: theme_update.primary.contrast[mode],
+      main: theme_compose.primary.main[mode],
+      contrast: theme_compose.primary.contrast[mode],
     },
     secondary: {
-      main: theme_update.secondary.main[mode],
-      contrast: theme_update.secondary.contrast[mode],
+      main: theme_compose.secondary.main[mode],
+      contrast: theme_compose.secondary.contrast[mode],
     },
     tertiary: {
-      main: theme_update.tertiary.main[mode],
-      contrast: theme_update.tertiary.contrast[mode],
+      main: theme_compose.tertiary.main[mode],
+      contrast: theme_compose.tertiary.contrast[mode],
     },
     success: {
-      main: theme_update.success.main[mode],
-      contrast: theme_update.success.contrast[mode],
+      main: theme_compose.success.main[mode],
+      contrast: theme_compose.success.contrast[mode],
     },
     info: {
-      main: theme_update.info.main[mode],
-      contrast: theme_update.info.contrast[mode],
+      main: theme_compose.info.main[mode],
+      contrast: theme_compose.info.contrast[mode],
     },
     warning: {
-      main: theme_update.warning.main[mode],
-      contrast: theme_update.warning.contrast[mode],
+      main: theme_compose.warning.main[mode],
+      contrast: theme_compose.warning.contrast[mode],
     },
     error: {
-      main: theme_update.error.main[mode],
-      contrast: theme_update.error.contrast[mode],
+      main: theme_compose.error.main[mode],
+      contrast: theme_compose.error.contrast[mode],
     },
     light: {
-      main: theme_update.light.main[mode],
-      contrast: theme_update.light.contrast[mode],
+      main: theme_compose.light.main[mode],
+      contrast: theme_compose.light.contrast[mode],
     },
     dark: {
-      main: theme_update.dark.main[mode],
-      contrast: theme_update.dark.contrast[mode],
+      main: theme_compose.dark.main[mode],
+      contrast: theme_compose.dark.contrast[mode],
     },
   };
 
@@ -316,153 +293,153 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
 
   const background = {
     body: {
-      ...theme_update.background.body,
+      ...theme_compose.background.body,
       current: current.background.body,
     },
     paper: {
-      ...theme_update.background.paper,
+      ...theme_compose.background.paper,
       current: current.background.paper,
     },
     shape: {
-      ...theme_update.background.shape,
+      ...theme_compose.background.shape,
       current: current.background.shape,
     },
     divider:
-      palette?.background?.divider || Color(current.text.body).alpha(theme_update.background.dividerAlpha).toString(),
-    dividerAlpha: theme_update.background.dividerAlpha,
+      palette?.background?.divider || Color(current.text.body).alpha(theme_compose.background.dividerAlpha).toString(),
+    dividerAlpha: theme_compose.background.dividerAlpha,
   };
 
   const text = {
     body: {
-      ...theme_update.text.body,
+      ...theme_compose.text.body,
       current: current.text.body,
     },
     muted: {
-      ...theme_update.text.muted,
+      ...theme_compose.text.muted,
       current: current.text.muted,
     },
     disabled: {
-      ...theme_update.text.disabled,
+      ...theme_compose.text.disabled,
       current: current.text.disabled,
     },
   };
 
   const action = {
     disabled: {
-      ...theme_update.action.disabled,
+      ...theme_compose.action.disabled,
       current: current.action.disabled,
     },
     active: {
-      ...theme_update.action.active,
+      ...theme_compose.action.active,
       current: current.action.active,
     },
-    ...theme_base.action,
+    ..._action,
   };
 
   const primary = {
-    base: theme_base.primary.base,
+    base: theme_base.primary,
     main: {
-      ...theme_update.primary.main,
+      ...theme_compose.primary.main,
       current: current.primary.main,
     },
     contrast: {
-      ...theme_update.primary.contrast,
+      ...theme_compose.primary.contrast,
       current: current.primary.contrast,
     },
   };
 
   const secondary = {
-    base: theme_base.secondary.base,
+    base: theme_base.secondary,
     main: {
-      ...theme_update.secondary.main,
+      ...theme_compose.secondary.main,
       current: current.secondary.main,
     },
     contrast: {
-      ...theme_update.secondary.contrast,
+      ...theme_compose.secondary.contrast,
       current: current.secondary.contrast,
     },
   };
 
   const tertiary = {
-    base: theme_base.tertiary.base,
+    base: theme_base.tertiary,
     main: {
-      ...theme_update.tertiary.main,
+      ...theme_compose.tertiary.main,
       current: current.tertiary.main,
     },
     contrast: {
-      ...theme_update.tertiary.contrast,
+      ...theme_compose.tertiary.contrast,
       current: current.tertiary.contrast,
     },
   };
 
   const success = {
-    base: theme_base.success.base,
+    base: theme_base.success,
     main: {
-      ...theme_update.success.main,
+      ...theme_compose.success.main,
       current: current.success.main,
     },
     contrast: {
-      ...theme_update.success.contrast,
+      ...theme_compose.success.contrast,
       current: current.success.contrast,
     },
   };
 
   const info = {
-    base: theme_base.info.base,
+    base: theme_base.info,
     main: {
-      ...theme_update.info.main,
+      ...theme_compose.info.main,
       current: current.info.main,
     },
     contrast: {
-      ...theme_update.info.contrast,
+      ...theme_compose.info.contrast,
       current: current.info.contrast,
     },
   };
 
   const warning = {
-    base: theme_base.warning.base,
+    base: theme_base.warning,
     main: {
-      ...theme_update.warning.main,
+      ...theme_compose.warning.main,
       current: current.warning.main,
     },
     contrast: {
-      ...theme_update.warning.contrast,
+      ...theme_compose.warning.contrast,
       current: current.warning.contrast,
     },
   };
 
   const error = {
-    base: theme_base.error.base,
+    base: theme_base.error,
     main: {
-      ...theme_update.error.main,
+      ...theme_compose.error.main,
       current: current.error.main,
     },
     contrast: {
-      ...theme_update.error.contrast,
+      ...theme_compose.error.contrast,
       current: current.error.contrast,
     },
   };
 
   const light = {
-    base: theme_base.light.base,
+    base: theme_base.light,
     main: {
-      ...theme_update.light.main,
+      ...theme_compose.light.main,
       current: current.light.main,
     },
     contrast: {
-      ...theme_update.light.contrast,
+      ...theme_compose.light.contrast,
       current: current.light.contrast,
     },
   };
 
   const dark = {
-    base: theme_base.dark.base,
+    base: theme_base.dark,
     main: {
-      ...theme_update.dark.main,
+      ...theme_compose.dark.main,
       current: current.dark.main,
     },
     contrast: {
-      ...theme_update.dark.contrast,
+      ...theme_compose.dark.contrast,
       current: current.dark.contrast,
     },
   };

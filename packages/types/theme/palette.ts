@@ -2,7 +2,7 @@ import { themeModeKeys } from '../enums';
 
 export type ThemeMode = keyof typeof themeModeKeys;
 
-interface BaseColorScheme {
+interface ThemeColorScheme {
   light: string;
   dark: string;
   current: string;
@@ -10,8 +10,8 @@ interface BaseColorScheme {
 
 export interface ThemePaletteColor {
   base: string;
-  main: BaseColorScheme;
-  contrast: BaseColorScheme;
+  main: ThemeColorScheme;
+  contrast: ThemeColorScheme;
 }
 
 export interface ThemePalette {
@@ -35,21 +35,21 @@ export interface ThemePalette {
     white: string;
   };
   background: {
-    body: BaseColorScheme;
-    paper: BaseColorScheme;
-    shape: BaseColorScheme;
+    body: ThemeColorScheme;
+    paper: ThemeColorScheme;
+    shape: ThemeColorScheme;
     divider: string;
     dividerAlpha: number;
   };
   text: {
-    body: BaseColorScheme;
-    muted: BaseColorScheme;
-    disabled: BaseColorScheme;
+    body: ThemeColorScheme;
+    muted: ThemeColorScheme;
+    disabled: ThemeColorScheme;
   };
   action: {
-    disabled: BaseColorScheme;
+    disabled: ThemeColorScheme;
     disableAlpha: number;
-    active: BaseColorScheme;
+    active: ThemeColorScheme;
     activeAlpha: number;
     hoverAlpha: number;
     focusAlpha: number;

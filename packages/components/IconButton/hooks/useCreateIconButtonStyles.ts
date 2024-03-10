@@ -5,7 +5,7 @@ import {
   ShapeVariant,
   ButtonColor,
   ShapeSize,
-  ThemePaletteV2,
+  ThemePalette,
   ThemeSpacing,
   ThemeShape,
   shapeVariantKeys,
@@ -22,7 +22,7 @@ const getRootColorVariant = (
   variant: ShapeVariant,
   color: ButtonColor,
   size: ShapeSize,
-  palette: ThemePaletteV2,
+  palette: ThemePalette,
   spacing: ThemeSpacing,
   shape: ThemeShape
 ) => {
@@ -155,7 +155,7 @@ const getShapeBorder = (shape: Shape, size: ShapeSize, themeShape: ThemeShape) =
 };
 
 export const useCreateIconButtonStyles = (theme: Theme, stylesProps: IconButtonStylesProps) => {
-  const { transitions, paletteV2, spacing, shape: themeShape } = theme;
+  const { transitions, palette, spacing, shape: themeShape } = theme;
   const { size, color, variant, shape } = stylesProps;
 
   const transition = getElementTransitions(
@@ -195,7 +195,7 @@ export const useCreateIconButtonStyles = (theme: Theme, stylesProps: IconButtonS
     root: Object.assign({
       ...rootBase,
       ...getShapeSizeVariant(size, spacing),
-      ...getRootColorVariant(variant, color, size, paletteV2, spacing, themeShape),
+      ...getRootColorVariant(variant, color, size, palette, spacing, themeShape),
       ...getShapeBorder(shape, size, themeShape),
     }),
     icon: Object.assign({

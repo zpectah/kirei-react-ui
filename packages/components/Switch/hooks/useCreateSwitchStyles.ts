@@ -1,8 +1,8 @@
-import { Theme, SwitchStylesProps, ThemePaletteV2, InputColor } from 'types';
+import { Theme, SwitchStylesProps, ThemePalette, InputColor } from 'types';
 import { SHAPE_MIN_HEIGHT, STATUS_CLASS_NAMES } from 'core';
 import { getElementTransitions } from 'styles';
 
-const getColorVariant = (palette: ThemePaletteV2, color: InputColor) => {
+const getColorVariant = (palette: ThemePalette, color: InputColor) => {
   const colorMain = palette[color].main.current;
 
   return {
@@ -28,7 +28,7 @@ const getColorVariant = (palette: ThemePaletteV2, color: InputColor) => {
 
 export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesProps) => {
   const { color, size } = stylesProps;
-  const { paletteV2, shape, transitions } = theme;
+  const { palette, shape, transitions } = theme;
 
   const sliderTransition = getElementTransitions(
     ['background-color', 'color', 'border-color'],
@@ -78,7 +78,7 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
     [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
       pointerEvents: 'none',
       cursor: 'default',
-      opacity: paletteV2.action.disableAlpha,
+      opacity: palette.action.disableAlpha,
     },
   };
 
@@ -86,13 +86,13 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
     position: 'absolute',
     right: 0,
     bottom: 0,
-    backgroundColor: paletteV2.text.muted.current,
+    backgroundColor: palette.text.muted.current,
     borderRadius: shape.borderRadius.medium,
-    border: `3px solid ${paletteV2.text.muted.current}`, // TODO - add border width as variable
+    border: `3px solid ${palette.text.muted.current}`, // TODO - add border width as variable
     transition: sliderTransition,
 
     [`&:hover`]: {
-      backgroundColor: paletteV2.text.body.current,
+      backgroundColor: palette.text.body.current,
     },
   };
 
@@ -125,7 +125,7 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
         height: '100%',
         left: 0,
         top: 0,
-        backgroundColor: paletteV2.background.body.current,
+        backgroundColor: palette.background.body.current,
         borderRadius: shape.borderRadius.small,
         transition: sliderBeforeTransition,
 
@@ -147,7 +147,7 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
         height: '100%',
         left: 0,
         top: 0,
-        backgroundColor: paletteV2.background.body.current,
+        backgroundColor: palette.background.body.current,
         borderRadius: shape.borderRadius.small,
         transition: sliderBeforeTransition,
 
@@ -169,7 +169,7 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
         height: '100%',
         left: 0,
         top: 0,
-        backgroundColor: paletteV2.background.body.current,
+        backgroundColor: palette.background.body.current,
         borderRadius: shape.borderRadius.small,
         transition: sliderBeforeTransition,
 
@@ -180,7 +180,7 @@ export const useCreateSwitchStyles = (theme: Theme, stylesProps: SwitchStylesPro
     },
   };
 
-  const colorVariant = getColorVariant(paletteV2, color);
+  const colorVariant = getColorVariant(palette, color);
 
   const styles = {
     root: Object.assign({

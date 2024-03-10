@@ -7,7 +7,7 @@ import {
   ThemeSpacing,
   ButtonColor,
   ShapeSize,
-  ThemePaletteV2,
+  ThemePalette,
 } from 'types';
 import { LOADING_LABEL_ALPHA, SHAPE_SIZE_CLASS_NAMES, SHAPE_VARIANT_CLASS_NAME, STATUS_CLASS_NAMES } from 'core';
 import { getElementTransitions, getButtonShapeSizeVariant, getShadowWidth } from 'styles';
@@ -19,7 +19,7 @@ const getRootColorVariant = (
   variant: ShapeVariant,
   color: ButtonColor,
   size: ShapeSize,
-  palette: ThemePaletteV2,
+  palette: ThemePalette,
   spacing: ThemeSpacing,
   shape: ThemeShape
 ) => {
@@ -99,7 +99,7 @@ const getRootColorVariant = (
 };
 
 export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesProps) => {
-  const { transitions, paletteV2, spacing, shape, typography } = theme;
+  const { transitions, palette, spacing, shape, typography } = theme;
   const { size, color, variant } = stylesProps;
 
   const transition = getElementTransitions(
@@ -183,7 +183,7 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
   const styles = {
     root: Object.assign({
       ...rootBase,
-      ...getRootColorVariant(variant, color, size, paletteV2, spacing, shape),
+      ...getRootColorVariant(variant, color, size, palette, spacing, shape),
     }),
     label: Object.assign(labelBase),
     iconStart: Object.assign(iconStartBase),

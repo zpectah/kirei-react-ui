@@ -3,12 +3,12 @@ import { getPaperDividerColor } from 'styles';
 import { useModalContext } from '../../Modal';
 
 export const useCreateModalFooterStyles = (theme: Theme, stylesProps: ModalFooterStylesProps) => {
-  const { spacing, paletteV2 } = theme;
+  const { spacing, palette } = theme;
   const { justifyContent, divider } = stylesProps;
 
   const { color } = useModalContext();
 
-  const rootDividerColor = getPaperDividerColor(color, paletteV2);
+  const rootDividerColor = getPaperDividerColor(color, palette);
   const rootBase = {
     paddingTop: divider ? spacing.get(3) : 0,
     paddingBottom: spacing.get(3),

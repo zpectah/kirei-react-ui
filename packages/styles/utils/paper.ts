@@ -1,6 +1,6 @@
-import { PaperColor, themeModeKeys, ThemePaletteV2 } from 'types';
+import { PaperColor, themeModeKeys, ThemePalette } from 'types';
 
-export const getPaperDividerColor = (color: PaperColor, palette: ThemePaletteV2) => {
+export const getPaperDividerColor = (color: PaperColor, palette: ThemePalette) => {
   const isLightMode = palette.mode === themeModeKeys.light;
   let divider;
   switch (color) {

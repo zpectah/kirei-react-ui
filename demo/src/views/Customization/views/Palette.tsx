@@ -5,7 +5,7 @@ import { Article, Section } from '../../../components';
 
 const PaletteView = () => {
   const { theme } = useKireiContext();
-  const { paletteV2 } = theme;
+  const { palette } = theme;
 
   return (
     <View
@@ -35,8 +35,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.primary.main.current,
-                  color: paletteV2.primary.contrast.current,
+                  backgroundColor: palette.primary.main.current,
+                  color: palette.primary.contrast.current,
                 }}
               >
                 primary
@@ -48,8 +48,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.secondary.main.current,
-                  color: paletteV2.secondary.contrast.current,
+                  backgroundColor: palette.secondary.main.current,
+                  color: palette.secondary.contrast.current,
                 }}
               >
                 secondary
@@ -61,8 +61,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.tertiary.main.current,
-                  color: paletteV2.tertiary.contrast.current,
+                  backgroundColor: palette.tertiary.main.current,
+                  color: palette.tertiary.contrast.current,
                 }}
               >
                 tertiary
@@ -74,8 +74,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.error.main.current,
-                  color: paletteV2.error.contrast.current,
+                  backgroundColor: palette.error.main.current,
+                  color: palette.error.contrast.current,
                 }}
               >
                 error
@@ -87,8 +87,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.warning.main.current,
-                  color: paletteV2.warning.contrast.current,
+                  backgroundColor: palette.warning.main.current,
+                  color: palette.warning.contrast.current,
                 }}
               >
                 warning
@@ -100,8 +100,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.info.main.current,
-                  color: paletteV2.info.contrast.current,
+                  backgroundColor: palette.info.main.current,
+                  color: palette.info.contrast.current,
                 }}
               >
                 info
@@ -113,8 +113,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.success.main.current,
-                  color: paletteV2.success.contrast.current,
+                  backgroundColor: palette.success.main.current,
+                  color: palette.success.contrast.current,
                 }}
               >
                 success
@@ -126,8 +126,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.inverted.main.current,
-                  color: paletteV2.inverted.contrast.current,
+                  backgroundColor: palette.inverted.main.current,
+                  color: palette.inverted.contrast.current,
                 }}
               >
                 inverted
@@ -139,8 +139,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.neutral.main.current,
-                  color: paletteV2.neutral.contrast.current,
+                  backgroundColor: palette.neutral.main.current,
+                  color: palette.neutral.contrast.current,
                 }}
               >
                 neutral
@@ -161,8 +161,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.primary.main.dark,
-                  color: paletteV2.primary.contrast.dark,
+                  backgroundColor: palette.primary.main.dark,
+                  color: palette.primary.contrast.dark,
                 }}
               >
                 primary
@@ -174,8 +174,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.secondary.main.dark,
-                  color: paletteV2.secondary.contrast.dark,
+                  backgroundColor: palette.secondary.main.dark,
+                  color: palette.secondary.contrast.dark,
                 }}
               >
                 secondary
@@ -187,8 +187,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.tertiary.main.dark,
-                  color: paletteV2.tertiary.contrast.dark,
+                  backgroundColor: palette.tertiary.main.dark,
+                  color: palette.tertiary.contrast.dark,
                 }}
               >
                 tertiary
@@ -200,8 +200,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.error.main.dark,
-                  color: paletteV2.error.contrast.dark,
+                  backgroundColor: palette.error.main.dark,
+                  color: palette.error.contrast.dark,
                 }}
               >
                 error
@@ -213,8 +213,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.warning.main.dark,
-                  color: paletteV2.warning.contrast.dark,
+                  backgroundColor: palette.warning.main.dark,
+                  color: palette.warning.contrast.dark,
                 }}
               >
                 warning
@@ -226,8 +226,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.info.main.dark,
-                  color: paletteV2.info.contrast.dark,
+                  backgroundColor: palette.info.main.dark,
+                  color: palette.info.contrast.dark,
                 }}
               >
                 info
@@ -239,8 +239,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.success.main.dark,
-                  color: paletteV2.success.contrast.dark,
+                  backgroundColor: palette.success.main.dark,
+                  color: palette.success.contrast.dark,
                 }}
               >
                 success
@@ -252,8 +252,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.inverted.main.dark,
-                  color: paletteV2.inverted.contrast.dark,
+                  backgroundColor: palette.inverted.main.dark,
+                  color: palette.inverted.contrast.dark,
                 }}
               >
                 inverted
@@ -265,8 +265,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.neutral.main.dark,
-                  color: paletteV2.neutral.contrast.dark,
+                  backgroundColor: palette.neutral.main.dark,
+                  color: palette.neutral.contrast.dark,
                 }}
               >
                 neutral
@@ -287,8 +287,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.primary.main.light,
-                  color: paletteV2.primary.contrast.light,
+                  backgroundColor: palette.primary.main.light,
+                  color: palette.primary.contrast.light,
                 }}
               >
                 primary
@@ -300,8 +300,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.secondary.main.light,
-                  color: paletteV2.secondary.contrast.light,
+                  backgroundColor: palette.secondary.main.light,
+                  color: palette.secondary.contrast.light,
                 }}
               >
                 secondary
@@ -313,8 +313,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.tertiary.main.light,
-                  color: paletteV2.tertiary.contrast.light,
+                  backgroundColor: palette.tertiary.main.light,
+                  color: palette.tertiary.contrast.light,
                 }}
               >
                 tertiary
@@ -326,8 +326,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.error.main.light,
-                  color: paletteV2.error.contrast.light,
+                  backgroundColor: palette.error.main.light,
+                  color: palette.error.contrast.light,
                 }}
               >
                 error
@@ -339,8 +339,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.warning.main.light,
-                  color: paletteV2.warning.contrast.light,
+                  backgroundColor: palette.warning.main.light,
+                  color: palette.warning.contrast.light,
                 }}
               >
                 warning
@@ -352,8 +352,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.info.main.light,
-                  color: paletteV2.info.contrast.light,
+                  backgroundColor: palette.info.main.light,
+                  color: palette.info.contrast.light,
                 }}
               >
                 info
@@ -365,8 +365,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.success.main.light,
-                  color: paletteV2.success.contrast.light,
+                  backgroundColor: palette.success.main.light,
+                  color: palette.success.contrast.light,
                 }}
               >
                 success
@@ -378,8 +378,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.inverted.main.light,
-                  color: paletteV2.inverted.contrast.light,
+                  backgroundColor: palette.inverted.main.light,
+                  color: palette.inverted.contrast.light,
                 }}
               >
                 inverted
@@ -391,8 +391,8 @@ const PaletteView = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: paletteV2.neutral.main.light,
-                  color: paletteV2.neutral.contrast.light,
+                  backgroundColor: palette.neutral.main.light,
+                  color: palette.neutral.contrast.light,
                 }}
               >
                 neutral
@@ -415,7 +415,7 @@ const PaletteView = () => {
                 height: '2rem',
                 borderWidth: '1px',
                 borderStyle: 'solid',
-                borderColor: paletteV2.background.divider,
+                borderColor: palette.background.divider,
               }}
             ></div>
           </div>

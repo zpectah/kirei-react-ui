@@ -32,7 +32,7 @@ const SidebarNavigation = (props: SidebarNavigationProps) => {
             to={path}
             style={{
               padding: theme.spacing.get(1),
-              color: isActive ? theme.paletteV2.primary.main.current : theme.paletteV2.neutral.main.current,
+              color: isActive ? theme.palette.primary.main.current : theme.palette.neutral.main.current,
             }}
           >
             {t(label)}

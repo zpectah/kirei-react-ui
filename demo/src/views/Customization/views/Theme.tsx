@@ -16,7 +16,7 @@ const ThemeView = () => {
         <Section>...Theme...</Section>
         <Section>
           <pre>
-            <code>{JSON.stringify(theme.paletteV2, null, 2)}</code>
+            <code>{JSON.stringify(theme.palette, null, 2)}</code>
           </pre>
           <br />
         </Section>
@@ -27,68 +27,68 @@ const ThemeView = () => {
             style={{
               marginTop: theme.spacing.get(2),
               marginBottom: theme.spacing.get(2),
-              borderTop: `1px solid ${theme.paletteV2.background.divider}`,
+              borderTop: `1px solid ${theme.palette.background.divider}`,
             }}
           ></div>
           <Stack gap={2}>
             <ColorTile
               label="Label"
-              background={theme.paletteV2.primary.main.current}
-              color={theme.paletteV2.primary.contrast.current}
+              background={theme.palette.primary.main.current}
+              color={theme.palette.primary.contrast.current}
             />
             <ColorTile
               label="Label"
-              background={theme.paletteV2.secondary.main.current}
-              color={theme.paletteV2.secondary.contrast.current}
+              background={theme.palette.secondary.main.current}
+              color={theme.palette.secondary.contrast.current}
             />
             <ColorTile
               label="Label"
-              background={theme.paletteV2.tertiary.main.current}
-              color={theme.paletteV2.tertiary.contrast.current}
+              background={theme.palette.tertiary.main.current}
+              color={theme.palette.tertiary.contrast.current}
             />
           </Stack>
           <Stack gap={2}>
             <ColorTile
               label="Label"
-              background={theme.paletteV2.success.main.current}
-              color={theme.paletteV2.success.contrast.current}
+              background={theme.palette.success.main.current}
+              color={theme.palette.success.contrast.current}
             />
             <ColorTile
               label="Label"
-              background={theme.paletteV2.info.main.current}
-              color={theme.paletteV2.info.contrast.current}
+              background={theme.palette.info.main.current}
+              color={theme.palette.info.contrast.current}
             />
             <ColorTile
               label="Label"
-              background={theme.paletteV2.warning.main.current}
-              color={theme.paletteV2.warning.contrast.current}
+              background={theme.palette.warning.main.current}
+              color={theme.palette.warning.contrast.current}
             />
             <ColorTile
               label="Label"
-              background={theme.paletteV2.error.main.current}
-              color={theme.paletteV2.error.contrast.current}
+              background={theme.palette.error.main.current}
+              color={theme.palette.error.contrast.current}
             />
           </Stack>
           <Stack gap={2}>
             <ColorTile
               label="Light"
-              background={theme.paletteV2.light.main.current}
-              color={theme.paletteV2.light.contrast.current}
+              background={theme.palette.light.main.current}
+              color={theme.palette.light.contrast.current}
             />
             <ColorTile
               label="Dark"
-              background={theme.paletteV2.dark.main.current}
-              color={theme.paletteV2.dark.contrast.current}
+              background={theme.palette.dark.main.current}
+              color={theme.palette.dark.contrast.current}
             />
             <ColorTile
               label="Neutral"
-              background={theme.paletteV2.neutral.main.current}
-              color={theme.paletteV2.neutral.contrast.current}
+              background={theme.palette.neutral.main.current}
+              color={theme.palette.neutral.contrast.current}
             />
             <ColorTile
               label="Inverted"
-              background={theme.paletteV2.inverted.main.current}
-              color={theme.paletteV2.inverted.contrast.current}
+              background={theme.palette.inverted.main.current}
+              color={theme.palette.inverted.contrast.current}
             />
           </Stack>
         </Section>

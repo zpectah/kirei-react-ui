@@ -4,10 +4,10 @@ import {
   neutralColorKeys,
   emotionColorKeys,
   textColorKeys,
-  ThemePaletteV2,
+  ThemePalette,
 } from 'types';
 
-export const getTypographyColor = (palette: ThemePaletteV2, color: TypographyColor) => {
+export const getTypographyColor = (palette: ThemePalette, color: TypographyColor) => {
   const rootColorMap = {
     [brandColorKeys.primary]: palette.primary.main.current,
     [brandColorKeys.secondary]: palette.secondary.main.current,

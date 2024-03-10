@@ -3,9 +3,9 @@ import { getTypographyColor } from 'styles';
 
 export const useCreateTypographyStyles = (theme: Theme, stylesProps: TypographyStylesProps) => {
   const { variant, color, isTruncated } = stylesProps;
-  const { paletteV2 } = theme;
+  const { palette } = theme;
 
-  const rootBaseColor = getTypographyColor(paletteV2, color);
+  const rootBaseColor = getTypographyColor(palette, color);
 
   const rootBase = {
     color: rootBaseColor,

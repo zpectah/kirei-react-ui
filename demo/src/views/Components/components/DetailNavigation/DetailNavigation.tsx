@@ -15,14 +15,14 @@ const DetailNavigation = ({ route }: DetailNavigationProps) => {
   const { t } = useTranslation('common');
   const { pathname } = useLocation();
   const {
-    theme: { spacing, paletteV2 },
+    theme: { spacing, palette },
   } = useKireiContext();
 
   return (
     <Stack
       style={{
         marginBottom: spacing.get(3),
-        borderBottom: `1px solid ${paletteV2.background.divider}`,
+        borderBottom: `1px solid ${palette.background.divider}`,
       }}
       wrap="nowrap"
     >
@@ -45,7 +45,7 @@ const DetailNavigation = ({ route }: DetailNavigationProps) => {
                   paddingRight: spacing.get(4),
                 },
                 '&.textPrimary': {
-                  borderBottomColor: paletteV2.primary.main.current,
+                  borderBottomColor: palette.primary.main.current,
                 },
               },
             }}

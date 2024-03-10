@@ -3,7 +3,7 @@ import { BACKDROP_DEFAULT_VALUES } from 'core';
 
 export const useCreateBackdropStyles = (theme: Theme, stylesProps: BackdropStylesProps) => {
   const { background = BACKDROP_DEFAULT_VALUES.background } = stylesProps;
-  const { paletteV2 } = theme;
+  const { palette } = theme;
 
   const rootBase = {
     width: '100vw',
@@ -15,7 +15,7 @@ export const useCreateBackdropStyles = (theme: Theme, stylesProps: BackdropStyle
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: paletteV2.utils.getAlphaColor(paletteV2.common[background], 0.65),
+    backgroundColor: palette.utils.getAlphaColor(palette.common[background], 0.65),
   };
 
   const styles = {

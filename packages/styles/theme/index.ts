@@ -1,7 +1,6 @@
 export * from './components';
 export * from './breakpoints';
-export * from './palette'; // TODO
-export * from './paletteV2'; // TODO
+export * from './palette';
 export * from './shadows';
 export * from './theme';
 export * from './shape';

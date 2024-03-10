@@ -5,9 +5,9 @@ import { getTypographyColor } from 'styles';
 
 export const useCreateLinkStyles = (theme: Theme, stylesProps: LinkStylesProps) => {
   const { variant, color, underline } = stylesProps;
-  const { paletteV2 } = theme;
+  const { palette } = theme;
 
-  const rootBaseColor = getTypographyColor(paletteV2, color);
+  const rootBaseColor = getTypographyColor(palette, color);
 
   const rootBase = {
     color: rootBaseColor,
@@ -16,7 +16,7 @@ export const useCreateLinkStyles = (theme: Theme, stylesProps: LinkStylesProps) 
     [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
       pointerEvents: 'none',
       cursor: 'default',
-      opacity: theme.palette.ratio.disabledAlpha,
+      opacity: theme.palette.action.disableAlpha,
     },
   };
   const rootVariant = variant === 'inherit' ? {} : theme.typography[variant];

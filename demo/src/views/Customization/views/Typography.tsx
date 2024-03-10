@@ -5,7 +5,7 @@ import { Article, Section } from '../../../components';
 
 const TypographyView = () => {
   const { theme } = useKireiContext();
-  const { paletteV2 } = theme;
+  const { palette } = theme;
 
   return (
     <View
@@ -21,9 +21,9 @@ const TypographyView = () => {
               gap: '.5rem',
             }}
           >
-            <p style={{ color: paletteV2.text.body.current }}>[body] Lorem ipsum dolor sit amet ...</p>
-            <p style={{ color: paletteV2.text.muted.current }}>[muted] Lorem ipsum dolor sit amet ...</p>
-            <p style={{ color: paletteV2.text.disabled.current }}>[disabled] Lorem ipsum dolor sit amet ...</p>
+            <p style={{ color: palette.text.body.current }}>[body] Lorem ipsum dolor sit amet ...</p>
+            <p style={{ color: palette.text.muted.current }}>[muted] Lorem ipsum dolor sit amet ...</p>
+            <p style={{ color: palette.text.disabled.current }}>[disabled] Lorem ipsum dolor sit amet ...</p>
           </div>
         </Section>
       </Article>

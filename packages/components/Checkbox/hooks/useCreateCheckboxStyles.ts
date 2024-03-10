@@ -1,8 +1,8 @@
-import { Theme, CheckboxStylesProps, ThemePaletteV2, InputColor } from 'types';
+import { Theme, CheckboxStylesProps, ThemePalette, InputColor } from 'types';
 import { getElementTransitions } from 'styles';
 import { STATUS_CLASS_NAMES, SHAPE_MIN_HEIGHT } from 'core';
 
-const getColorVariant = (palette: ThemePaletteV2, color: InputColor) => {
+const getColorVariant = (palette: ThemePalette, color: InputColor) => {
   const colorMain = palette[color].main.current;
 
   return {
@@ -19,7 +19,7 @@ const getColorVariant = (palette: ThemePaletteV2, color: InputColor) => {
 
 export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStylesProps) => {
   const { color, size } = stylesProps;
-  const { paletteV2, shape, transitions } = theme;
+  const { palette, shape, transitions } = theme;
 
   const labelTransition = getElementTransitions(['color'], transitions.duration.shortest, transitions.easing.easeInOut);
   const focusElementTransition = getElementTransitions(
@@ -40,7 +40,7 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
     justifyContent: 'center',
     flexShrink: 0,
     cursor: 'pointer',
-    color: paletteV2.text.muted,
+    color: palette.text.muted,
     position: 'relative',
     transition: labelTransition,
 
@@ -59,13 +59,13 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
     },
 
     [`&:hover`]: {
-      color: paletteV2.text.body,
+      color: palette.text.body,
     },
 
     [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
       pointerEvents: 'none',
       cursor: 'default',
-      opacity: paletteV2.action.disableAlpha,
+      opacity: palette.action.disableAlpha,
     },
   };
 
@@ -94,7 +94,7 @@ export const useCreateCheckboxStyles = (theme: Theme, stylesProps: CheckboxStyle
     label: Object.assign({
       ...labelBase,
       ...labelSize[size],
-      ...getColorVariant(paletteV2, color),
+      ...getColorVariant(palette, color),
     }),
   };
 

@@ -1,102 +1,8 @@
-import {
-  Theme,
-  ButtonStylesProps,
-  shapeVariantKeys,
-  ShapeVariant,
-  ThemeShape,
-  ThemeSpacing,
-  ButtonColor,
-  ShapeSize,
-  ThemePalette,
-} from 'types';
-import { LOADING_LABEL_ALPHA, SHAPE_SIZE_CLASS_NAMES, SHAPE_VARIANT_CLASS_NAME, STATUS_CLASS_NAMES } from 'core';
-import { getElementTransitions, getButtonShapeSizeVariant, getShadowWidth } from 'styles';
-import { capitalizeFirstLetter } from 'utils';
-import Color from 'color';
+import { Theme, ButtonStylesProps } from 'types';
+import { LOADING_LABEL_ALPHA, SHAPE_SIZE_CLASS_NAMES, STATUS_CLASS_NAMES } from 'core';
+import { getElementTransitions, getButtonShapeSizeVariant, getButtonRootColorVariant } from 'styles';
 
 // TODO
-const getRootColorVariant = (
-  variant: ShapeVariant,
-  color: ButtonColor,
-  size: ShapeSize,
-  palette: ThemePalette,
-  spacing: ThemeSpacing,
-  shape: ThemeShape
-) => {
-  const capitalizeColor = capitalizeFirstLetter(color);
-  const baseColor = palette[color];
-  const hoverShadowWidth = getShadowWidth(size, spacing);
-
-  switch (variant) {
-    case shapeVariantKeys.contained:
-      return {
-        [`&.${SHAPE_VARIANT_CLASS_NAME.contained}${capitalizeColor}`]: {
-          backgroundColor: baseColor.main.current,
-          color: baseColor.contrast.current,
-          borderColor: baseColor.main.current,
-
-          [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled}), &.${STATUS_CLASS_NAMES.isActive}`]: {
-            boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${baseColor.base}`,
-            borderColor: baseColor.base,
-          },
-          ['&:focus']: {
-            outline: `${shape.borderWidth.outline} solid ${Color(baseColor.main.current).alpha(palette.action.focusAlpha).toString()}`,
-          },
-          [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
-            pointerEvents: 'none',
-            cursor: 'default',
-            color: color,
-            backgroundColor: palette.action.disabled.current,
-            borderColor: 'transparent',
-          },
-        },
-      };
-
-    case shapeVariantKeys.outlined:
-      return {
-        [`&.${SHAPE_VARIANT_CLASS_NAME.outlined}${capitalizeColor}`]: {
-          backgroundColor: 'transparent',
-          color: baseColor.main.current,
-          borderColor: baseColor.main.current,
-
-          [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled}), &.${STATUS_CLASS_NAMES.isActive}`]: {
-            boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(baseColor.base).alpha(0.05).toString()}`,
-            color: baseColor.base,
-            borderColor: baseColor.base,
-          },
-          ['&:focus']: {
-            outline: `${shape.borderWidth.outline} solid ${Color(baseColor.main.current).alpha(palette.action.focusAlpha).toString()}`,
-          },
-          [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
-            pointerEvents: 'none',
-            cursor: 'default',
-            color: palette.action.disabled.current,
-            borderColor: palette.action.disabled.current,
-          },
-        },
-      };
-
-    case shapeVariantKeys.text:
-      return {
-        [`&.${SHAPE_VARIANT_CLASS_NAME.text}${capitalizeColor}`]: {
-          backgroundColor: 'transparent',
-          color: baseColor.main.current,
-          borderColor: 'transparent',
-
-          [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled}), &.${STATUS_CLASS_NAMES.isActive}`]: {
-            boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(baseColor.base).alpha(0.05).toString()}`,
-            color: baseColor.base,
-          },
-          ['&:focus']: {
-            outline: `${shape.borderWidth.outline} solid ${Color(baseColor.main.current).alpha(palette.action.focusAlpha).toString()}`,
-          },
-          [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
-            color: palette.action.disabled.current,
-          },
-        },
-      };
-  }
-};
 
 export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesProps) => {
   const { transitions, palette, spacing, shape, typography } = theme;
@@ -183,7 +89,7 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
   const styles = {
     root: Object.assign({
       ...rootBase,
-      ...getRootColorVariant(variant, color, size, palette, spacing, shape),
+      ...getButtonRootColorVariant(variant, color, size, palette, spacing, shape),
     }),
     label: Object.assign(labelBase),
     iconStart: Object.assign(iconStartBase),

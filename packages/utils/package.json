@@ -6,8 +6,5 @@
     "build": "tsc"
   },
   "devDependencies": {},
-  "dependencies": {
-    "core": "*",
-    "types": "*"
-  }
+  "dependencies": {}
 }

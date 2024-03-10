@@ -6,7 +6,6 @@ import { usePaperStyles, usePaperProps } from './hooks';
 const Paper = <T extends ElementType>(props: PaperProps<T>) => {
   const {
     as: Component = PAPER_DEFAULT_VALUES.as,
-    color = PAPER_DEFAULT_VALUES.color,
     variant = PAPER_DEFAULT_VALUES.variant,
     elevation = PAPER_DEFAULT_VALUES.elevation,
     children,
@@ -16,7 +15,7 @@ const Paper = <T extends ElementType>(props: PaperProps<T>) => {
     styles,
     ...rest
   } = props;
-  const styleProps = { color, elevation, isSquare, variant };
+  const styleProps = { elevation, isSquare, variant };
 
   const {
     composedStyles: { root },

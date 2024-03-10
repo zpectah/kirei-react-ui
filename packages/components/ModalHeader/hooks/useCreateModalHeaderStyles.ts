@@ -1,17 +1,16 @@
 import { Theme, ModalHeaderStylesProps } from 'types';
-import { getPaperDividerColor } from 'styles';
-import { useModalContext } from '../../Modal';
+// import { useModalContext } from '../../Modal';
 
 export const useCreateModalHeaderStyles = (theme: Theme, stylesProps: ModalHeaderStylesProps) => {
   const { spacing, palette } = theme;
   const { divider } = stylesProps;
 
-  const { color } = useModalContext();
+  // TODO
+  // const { color } = useModalContext();
 
-  const rootDividerColor = getPaperDividerColor(color, palette);
   const rootBase = {
     padding: spacing.get(3, 3),
-    borderBottom: divider ? `1px solid ${rootDividerColor}` : 'none',
+    borderBottom: divider ? `1px solid ${palette.background.divider}` : 'none',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'start',

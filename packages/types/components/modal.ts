@@ -1,7 +1,7 @@
 import { MouseEvent, KeyboardEvent, SyntheticEvent, MutableRefObject, ComponentPropsWithRef, ElementType } from 'react';
 import { ElementRestProps, WithoutChildren, WithStyle, ScrollDeterminate } from '../common';
 import { Breakpoints, ComponentStyles } from '../styles';
-import { PaperColor, PaperProps } from './paper';
+import { PaperProps } from './paper';
 import { BackdropProps } from './backdrop';
 
 type ContainerProps = ComponentPropsWithRef<'div'>;
@@ -91,6 +91,4 @@ export interface UseModalHandlingReturn extends Pick<ModalHandlingProps, 'onClos
 export interface ModalContextProps
   extends ModalHandlingProps,
     Pick<ModalInitialProps, 'id'>,
-    Pick<ModalShapeProps, 'scroll'> {
-  color: PaperColor;
-}
+    Pick<ModalShapeProps, 'scroll'> {}

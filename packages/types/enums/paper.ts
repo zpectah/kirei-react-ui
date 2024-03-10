@@ -1,5 +1,4 @@
 export enum paperVariantKeys {
-  contained = 'contained',
+  elevated = 'elevated',
   outlined = 'outlined',
-  glass = 'glass',
 }

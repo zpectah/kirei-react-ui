@@ -14,4 +14,3 @@ export const PALETTE = {
 };
 
 export const LOADING_LABEL_ALPHA = 0.25;
-export const BACKGROUND_GLASS_ALPHA = 0.25;

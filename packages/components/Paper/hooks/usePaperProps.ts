@@ -5,7 +5,6 @@ import { capitalizeFirstLetter } from 'utils';
 
 export const usePaperProps = <E extends Element>(props: UsePaperProps): UsePaperPropsReturn<E> => {
   const {
-    color = PAPER_DEFAULT_VALUES.color,
     variant = PAPER_DEFAULT_VALUES.variant,
     elevation = PAPER_DEFAULT_VALUES.elevation,
     className,
@@ -17,7 +16,7 @@ export const usePaperProps = <E extends Element>(props: UsePaperProps): UsePaper
     root: {
       className: clsx(
         PAPER_ROOT,
-        `${variant}${capitalizeFirstLetter(color)}`,
+        `variant${capitalizeFirstLetter(variant)}`,
         `elevation${elevation}`,
         isSquare && STATUS_CLASS_NAMES.isSquare,
         className

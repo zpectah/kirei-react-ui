@@ -4,22 +4,37 @@ import { Button } from 'components';
 import { ForwardIcon } from 'icons';
 import { routes } from '../../../config';
 import { View, withPlainLayout } from '../../../Layout';
-import { Article } from '../../../components';
+import { Article, PreviewCode } from '../../../components';
 
 const UsageView = () => {
   return (
     <View
       title="Usage"
-      subtitle="Proin cras dictum, pharetra sagittis libero sollicitudin nunc vitae et elit, ultricies tellus sollicitudin lectus. Lorem fringilla porttitor, odio morbi suspendisse non congue dui imperdiet ut hendrerit integer, fermentum nibh maximus et iaculis ut hendrerit. Interdum dignissim, dolor quis fermentum lorem ipsum nulla turpis nulla accumsan, elit fusce gravida ac nec nulla."
+      subtitle={`Learn how to handle Kirei UI components`}
       footer={
         <Button variant="text" as={Link} to={routes.components.root} endIcon={<ForwardIcon />}>
           Components
         </Button>
       }
     >
-      <Article title="Using your first component">...TODO...</Article>
-      <Article title="Style overrides">...TODO...</Article>
-      <Article title="Theming">...TODO...</Article>
+      <Article title="Using your first component">
+        <PreviewCode
+          code={`import React from 'react';
+import { Button } from 'components';
+
+const ComponentWithButton = () => {
+    return <Button>Hello World</Button>
+};
+
+export default ComponentWithButton;`}
+        />
+      </Article>
+      <Article title="Style overrides">
+        <PreviewCode code={`...TODO...`} />
+      </Article>
+      <Article title="Theming">
+        <PreviewCode code={`...TODO...`} />
+      </Article>
     </View>
   );
 };

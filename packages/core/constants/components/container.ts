@@ -5,5 +5,5 @@ export const CONTAINER_ROOT = 'Container';
 export const CONTAINER_DEFAULT_VALUES = {
   as: 'div',
   maxWidth: breakpointKeys.xl,
-  xOffset: spacingKeys['2'],
+  xOffset: spacingKeys[2],
 };

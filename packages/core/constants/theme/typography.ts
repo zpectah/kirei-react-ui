@@ -116,3 +116,10 @@ export const TYPOGRAPHY_SHAPE_LARGE = {
   lineHeight: 1.25,
   letterSpacing: '0',
 };
+export const TYPOGRAPHY_INHERIT = {
+  fontFamily: TYPOGRAPHY_FONT_FAMILY,
+  fontWeight: TYPOGRAPHY_FONT_WEIGHT_REGULAR,
+  fontSize: 'inherit',
+  lineHeight: 1.125,
+  letterSpacing: 'inherit',
+};

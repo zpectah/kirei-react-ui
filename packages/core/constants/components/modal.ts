@@ -1,4 +1,4 @@
-import { breakpointKeys, scrollDeterminateKeys, paperBackgroundColorKeys } from 'types';
+import { breakpointKeys, scrollDeterminateKeys } from 'types';
 
 export const MODAL_ROOT = 'Modal';
 export const MODAL_BACKDROP = `${MODAL_ROOT}-backdrop`;
@@ -11,7 +11,5 @@ export const MODAL_DEFAULT_VALUES = {
   maxWidth: breakpointKeys.md,
   scroll: scrollDeterminateKeys.paper,
 };
-
-export const MODAL_PAPER_DEFAULT_COLOR = paperBackgroundColorKeys.paper;
 
 export const MODAL_ID_PREFIX = 'modal_';

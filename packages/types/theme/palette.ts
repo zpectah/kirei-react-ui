@@ -1,6 +1,5 @@
 import { themeModeKeys } from '../enums';
-
-export type ThemeMode = keyof typeof themeModeKeys;
+import { ThemeColor } from '../styles';
 
 interface ThemeColorScheme {
   light: string;
@@ -8,13 +7,19 @@ interface ThemeColorScheme {
   current: string;
 }
 
-export interface ThemePaletteColor {
+interface ThemePaletteColor {
   base: string;
   main: ThemeColorScheme;
   contrast: ThemeColorScheme;
 }
 
-export interface ThemePalette {
+type ThemeColorSet = {
+  [key in ThemeColor]: ThemePaletteColor;
+};
+
+export type ThemeMode = keyof typeof themeModeKeys;
+
+export interface ThemePalette extends ThemeColorSet {
   mode: ThemeMode;
   common: {
     black: string;
@@ -55,17 +60,6 @@ export interface ThemePalette {
     focusAlpha: number;
   };
   tonalOffset: number;
-  primary: ThemePaletteColor;
-  secondary: ThemePaletteColor;
-  tertiary: ThemePaletteColor;
-  success: ThemePaletteColor;
-  info: ThemePaletteColor;
-  warning: ThemePaletteColor;
-  error: ThemePaletteColor;
-  light: ThemePaletteColor;
-  dark: ThemePaletteColor;
-  neutral: ThemePaletteColor;
-  inverted: ThemePaletteColor;
   utils: {
     getNegativeColor: (color: string) => string;
     getLightenColor: (color: string, ratio: number) => string;

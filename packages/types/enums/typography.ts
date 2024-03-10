@@ -14,5 +14,4 @@ export enum typographyVariantKeys {
   shapeSmall = 'shapeSmall',
   shapeMedium = 'shapeMedium',
   shapeLarge = 'shapeLarge',
-  inherit = 'inherit',
 }

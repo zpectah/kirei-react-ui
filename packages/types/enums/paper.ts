@@ -1,4 +1,4 @@
-export enum paperVariantKeys {
-  elevated = 'elevated',
-  outlined = 'outlined',
-}
+export const paperVariantKeys = {
+  elevated: 'elevated',
+  outlined: 'outlined',
+} as const;

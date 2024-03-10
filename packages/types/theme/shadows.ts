@@ -1,8 +1,7 @@
-export interface ThemeShadows {
-  0: string;
-  1: string;
-  2: string;
-  3: string;
-  4: string;
-  5: string;
-}
+import { Shadows } from '../styles';
+
+type ThemeShadowSet = {
+  [key in Shadows]: string;
+};
+
+export interface ThemeShadows extends ThemeShadowSet {}

@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 function formatCamelCaseToUpper(string) {
-  let formattedString = string.replace(/[A-Z]/g, match => `_${match}`).toUpperCase();
+  let formattedString = string.replace(/[A-Z]/g, (match) => `_${match}`).toUpperCase();
   formattedString = formattedString.replace(/^_/, '');
 
   return formattedString;
@@ -267,9 +267,7 @@ function generateReactComponent(componentName, componentKey) {
   console.log(`\n\n***************************************************************************************`);
   console.log(`** WHAT NEXT **************************************************************************`);
   console.log(`***************************************************************************************`);
-  console.log(
-    `1. Main file import: "import * from './${componentName}'" --> "${directoryRoot}/components/index.ts".`
-  );
+  console.log(`1. Main file import: "import * from './${componentName}'" --> "${directoryRoot}/components/index.ts".`);
   console.log(`2. Update types:\n* "types/theme/components.ts"\n* "styles/theme/components.ts".`);
   console.log(
     `3. Add imports:\n * "import * from './${componentKey}.ts'" --> "${dir.typesRoot}index.ts"\n * "import * from './${componentKey}.ts'" --> "${dir.constantsRoot}index.ts"`

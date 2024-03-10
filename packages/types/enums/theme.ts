@@ -1,4 +1,4 @@
-export enum themeModeKeys {
-  light = 'light',
-  dark = 'dark',
-}
+export const themeModeKeys = {
+  light: 'light',
+  dark: 'dark',
+} as const;

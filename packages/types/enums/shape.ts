@@ -1,17 +1,17 @@
-export enum shapeKeys {
-  square = 'square',
-  rounded = 'rounded',
-  circle = 'circle',
-}
+export const shapeKeys = {
+  square: 'square',
+  rounded: 'rounded',
+  circle: 'circle',
+} as const;
 
-export enum shapeSizeKeys {
-  small = 'small',
-  medium = 'medium',
-  large = 'large',
-}
+export const shapeSizeKeys = {
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+} as const;
 
-export enum shapeVariantKeys {
-  text = 'text',
-  outlined = 'outlined',
-  contained = 'contained',
-}
+export const shapeVariantKeys = {
+  text: 'text',
+  outlined: 'outlined',
+  contained: 'contained',
+} as const;

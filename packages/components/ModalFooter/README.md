@@ -1,7 +1,9 @@
 # ModalFooter
 
 ## Description
+
 ...
 
 ## API
+
 ...

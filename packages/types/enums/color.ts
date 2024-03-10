@@ -1,35 +1,37 @@
-export enum brandColorKeys {
-  primary = 'primary',
-  secondary = 'secondary',
-  tertiary = 'tertiary',
-}
+export const brandColorKeys = {
+  primary: 'primary',
+  secondary: 'secondary',
+  tertiary: 'tertiary',
+} as const;
 
-export enum neutralColorKeys {
-  light = 'light',
-  dark = 'dark',
-  inverted = 'inverted',
-  neutral = 'neutral',
-}
+export const neutralColorKeys = {
+  light: 'light',
+  dark: 'dark',
+  inverted: 'inverted',
+  neutral: 'neutral',
+} as const;
 
-export enum emotionColorKeys {
-  error = 'error',
-  warning = 'warning',
-  info = 'info',
-  success = 'success',
-}
+export const emotionColorKeys = {
+  error: 'error',
+  warning: 'warning',
+  info: 'info',
+  success: 'success',
+} as const;
 
-export enum textColorKeys {
-  body = 'body',
-  muted = 'muted',
-  disabled = 'disabled',
-  inherit = 'inherit',
-}
+export const themeColorKeys = {
+  ...brandColorKeys,
+  ...neutralColorKeys,
+  ...emotionColorKeys,
+} as const;
 
-export enum paperBackgroundColorKeys {
-  paper = 'paper',
-}
+export const textColorKeys = {
+  body: 'body',
+  muted: 'muted',
+  disabled: 'disabled',
+  inherit: 'inherit',
+} as const;
 
-export enum backdropBackgroundColorKeys {
-  light = 'light',
-  dark = 'dark',
-}
+export const backdropBackgroundColorKeys = {
+  light: 'light',
+  dark: 'dark',
+} as const;

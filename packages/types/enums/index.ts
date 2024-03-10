@@ -7,6 +7,7 @@ export * from './link';
 export * from './paper';
 export * from './placement';
 export * from './scroll';
+export * from './shadows';
 export * from './shape';
 export * from './spacing';
 export * from './theme';

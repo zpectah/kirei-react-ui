@@ -1,4 +1,6 @@
-export const BREAKPOINTS_UNIT = 'px';
+import { breakpointUnitKeys } from 'types';
+
+export const BREAKPOINTS_UNIT = breakpointUnitKeys.px;
 
 export const BREAKPOINTS = {
   xs: 0,

@@ -1,4 +1,4 @@
-export enum scrollDeterminateKeys {
-  body = 'body',
-  paper = 'paper',
-}
+export const scrollDeterminateKeys = {
+  body: 'body',
+  paper: 'paper',
+} as const;

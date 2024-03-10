@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { ModalProps } from 'types';
-import { MODAL_DEFAULT_VALUES, MODAL_PAPER_DEFAULT_COLOR, MODAL_ID_PREFIX } from 'core';
+import { MODAL_DEFAULT_VALUES, MODAL_ID_PREFIX } from 'core';
 import { getRandomString } from 'utils';
 import { Backdrop } from '../Backdrop';
 import { Paper } from '../Paper';

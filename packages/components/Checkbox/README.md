@@ -1,7 +1,9 @@
 # Checkbox
 
 ## Description
+
 ...
 
 ## API
+
 ...

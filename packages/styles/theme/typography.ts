@@ -24,6 +24,7 @@ import {
   TYPOGRAPHY_SHAPE_SMALL,
   TYPOGRAPHY_SHAPE_MEDIUM,
   TYPOGRAPHY_SHAPE_LARGE,
+  TYPOGRAPHY_INHERIT,
 } from 'core';
 
 export const createThemeTypography = (typography?: DeepPartial<ThemeTypography>): ThemeTypography => {
@@ -96,6 +97,9 @@ export const createThemeTypography = (typography?: DeepPartial<ThemeTypography>)
     shapeLarge: {
       ...TYPOGRAPHY_SHAPE_LARGE,
       ...typography?.shapeLarge,
+    },
+    inherit: {
+      ...TYPOGRAPHY_INHERIT,
     },
   };
 };

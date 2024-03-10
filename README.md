@@ -1,7 +1,7 @@
 # Kirei React UI
 
-Kirei React UI represents a pinnacle in the realm of Open Source Design Systems, 
-founded upon principles of simplicity and minimalism. It doesn't just epitomize 
+Kirei React UI represents a pinnacle in the realm of Open Source Design Systems,
+founded upon principles of simplicity and minimalism. It doesn't just epitomize
 sleek aesthetics but also champions seamless implementation for unparalleled user experiences.
 
 ## Description
@@ -28,6 +28,7 @@ sleek aesthetics but also champions seamless implementation for unparalleled use
 - `% yarn lint:all` Lints project structure
 
 ### Generators
+
 Generators will not update root files with index, it will only generate new file as template
 
 - `% yarn generate:newComponent <ComponentName> <componentKey>` Generates default files for new component

@@ -5,7 +5,7 @@ const componentName = process.argv[2];
 const componentKey = process.argv[3];
 
 function createMainView(directory, componentName, componentKey) {
-    const content = `
+  const content = `
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { kireiComponentsRootListKeys } from 'types';
@@ -28,15 +28,15 @@ const ${componentName}View = () => (
 
 export default ${componentName}View;    
     `;
-    const fileName = `${componentName}.tsx`;
-    const filePath = path.join(directory, fileName);
+  const fileName = `${componentName}.tsx`;
+  const filePath = path.join(directory, fileName);
 
-    fs.writeFileSync(filePath, content);
+  fs.writeFileSync(filePath, content);
 
-    console.log(`File ${fileName} created at ${filePath}`);
+  console.log(`File ${fileName} created at ${filePath}`);
 }
 function createPlaygroundView(directory, componentName) {
-    const content = `
+  const content = `
 import React from 'react';
 import { Article } from '../../../../components';
 
@@ -50,15 +50,15 @@ const PlaygroundView = () => {
 
 export default PlaygroundView;    
     `;
-    const fileName = `_Playground.tsx`;
-    const filePath = path.join(directory, fileName);
+  const fileName = `_Playground.tsx`;
+  const filePath = path.join(directory, fileName);
 
-    fs.writeFileSync(filePath, content);
+  fs.writeFileSync(filePath, content);
 
-    console.log(`File ${fileName} created at ${filePath}`);
+  console.log(`File ${fileName} created at ${filePath}`);
 }
 function createPreviewView(directory, componentName) {
-    const content = `
+  const content = `
 import React from 'react';
 import { ${componentName} } from 'components';
 import { Article, Section, PreviewCode, PreviewCombo } from '../../../../components';
@@ -82,59 +82,61 @@ const PreviewView = () => {
 
 export default PreviewView;    
     `;
-    const fileName = `_Preview.ts`;
-    const filePath = path.join(directory, fileName);
+  const fileName = `_Preview.ts`;
+  const filePath = path.join(directory, fileName);
 
-    fs.writeFileSync(filePath, content);
+  fs.writeFileSync(filePath, content);
 
-    console.log(`File ${fileName} created at ${filePath}`);
+  console.log(`File ${fileName} created at ${filePath}`);
 }
 function createRootIndex(directory, componentName) {
-    const content = `
+  const content = `
 export { default as ${componentName}View } from './${componentName}';    
     `;
-    const fileName = `index.ts`;
-    const filePath = path.join(directory, fileName);
+  const fileName = `index.ts`;
+  const filePath = path.join(directory, fileName);
 
-    fs.writeFileSync(filePath, content);
+  fs.writeFileSync(filePath, content);
 
-    console.log(`File ${fileName} created at ${filePath}`);
+  console.log(`File ${fileName} created at ${filePath}`);
 }
 
 function generateDemoNewComponent(componentName, componentKey) {
-    const directoryRoot = './demo/src/views/Components/views/';
-    const componentDir = `${directoryRoot}${componentName}`;
+  const directoryRoot = './demo/src/views/Components/views/';
+  const componentDir = `${directoryRoot}${componentName}`;
 
-    if (!fs.existsSync(componentDir)) {
-        fs.mkdirSync(componentDir);
-    } else {
-        console.log(`Component root ${componentName} already exists.`);
-        process.exit(1);
-    }
+  if (!fs.existsSync(componentDir)) {
+    fs.mkdirSync(componentDir);
+  } else {
+    console.log(`Component root ${componentName} already exists.`);
+    process.exit(1);
+  }
 
-    createMainView(componentDir, componentName, componentKey);
-    createPlaygroundView(componentDir, componentName);
-    createPreviewView(componentDir, componentName);
-    createRootIndex(componentDir, componentName);
+  createMainView(componentDir, componentName, componentKey);
+  createPlaygroundView(componentDir, componentName);
+  createPreviewView(componentDir, componentName);
+  createRootIndex(componentDir, componentName);
 
-    console.log(`\n\n***************************************************************************************`);
-    console.log(`** WHAT NEXT **************************************************************************`);
-    console.log(`***************************************************************************************`);
-    console.log(`1. Add new line "import * from './${componentName}'" at "./demo/src/views/Components/views/index.ts"`);
-    console.log(`2. Add new line "import { ${componentName}View } from './views'" at "./demo/src/views/Components/Components.tsx"`);
-    console.log(`3. Update "./demo/src/config/routes.ts"`);
-    console.log(`4. Update "./demo/src/enums/routes.ts"`);
-    console.log(`5. Update "./demo/src/constants/navigation.ts"`);
-    console.log(`***************************************************************************************\n\n`);
+  console.log(`\n\n***************************************************************************************`);
+  console.log(`** WHAT NEXT **************************************************************************`);
+  console.log(`***************************************************************************************`);
+  console.log(`1. Add new line "import * from './${componentName}'" at "./demo/src/views/Components/views/index.ts"`);
+  console.log(
+    `2. Add new line "import { ${componentName}View } from './views'" at "./demo/src/views/Components/Components.tsx"`
+  );
+  console.log(`3. Update "./demo/src/config/routes.ts"`);
+  console.log(`4. Update "./demo/src/enums/routes.ts"`);
+  console.log(`5. Update "./demo/src/constants/navigation.ts"`);
+  console.log(`***************************************************************************************\n\n`);
 }
 
 if (!componentName) {
-    console.error('Component name is required.');
-    process.exit(1);
+  console.error('Component name is required.');
+  process.exit(1);
 }
 if (!componentKey) {
-    console.error('Component key is required.');
-    process.exit(1);
+  console.error('Component key is required.');
+  process.exit(1);
 }
 
 generateDemoNewComponent(componentName, componentKey);

@@ -1,27 +1,27 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Button } from 'components';
+import { IconButton } from 'components';
 
-describe('Button', () => {
-  it('Button: default render', () => {
-    const dom = render(<Button>Hello World</Button>);
+describe('IconButton', () => {
+  it('IconButton: default render', () => {
+    const dom = render(<IconButton>Hello World</IconButton>);
     const element = dom.container.querySelector('button') as HTMLElement;
 
     expect(element.textContent).toBe('Hello World');
   });
 
-  it('Button: render as Link', () => {
-    const dom = render(<Button as="a">Hello World</Button>);
+  it('IconButton: render as Link', () => {
+    const dom = render(<IconButton as="a">Hello World</IconButton>);
     const element = dom.container.querySelector('a') as HTMLElement;
 
     expect(element.textContent).toBe('Hello World');
   });
 
-  it('Button: default className', () => {
-    const dom = render(<Button />);
+  it('IconButton: default className', () => {
+    const dom = render(<IconButton />);
     const element = dom.container.querySelector('button') as HTMLElement;
 
-    expect(element).toHaveClass('Button');
+    expect(element).toHaveClass('IconButton');
   });
 });

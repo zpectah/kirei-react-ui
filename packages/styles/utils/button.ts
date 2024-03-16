@@ -133,6 +133,8 @@ export const getButtonRootColorVariant = (
             outline: `${shape.borderWidth.outline} solid ${Color(baseColor.main.current).alpha(palette.action.focusAlpha).toString()}`,
           },
           [`&.${STATUS_CLASS_NAMES.isDisabled}`]: {
+            pointerEvents: 'none',
+            cursor: 'default',
             color: palette.action.disabled.current,
           },
         },

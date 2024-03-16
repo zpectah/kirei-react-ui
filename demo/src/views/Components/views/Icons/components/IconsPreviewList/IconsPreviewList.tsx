@@ -2,20 +2,21 @@ import React, { useMemo, useState, ComponentType } from 'react';
 import { CloseIcon } from 'icons';
 import { Modal, ModalHeader, ModalBody, Button, Paper, Typography } from 'components';
 import { Section, PreviewCombo } from '../../../../../../components';
-import iconsList from './iconsList';
 
-export type ActiveIconProps = { label: string; node: ComponentType };
+type IconProps = { label: string; node: ComponentType };
+
 export interface IconsPreviewListProps {
-  onSelect?: (icon: ActiveIconProps) => void;
+  onSelect?: (icon: IconProps) => void;
+  iconsList: IconProps[];
 }
 
 const IconsPreviewList = (props: IconsPreviewListProps) => {
-  const { onSelect } = props;
+  const { onSelect, iconsList = [] } = props;
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [activeIcon, setActiveIcon] = useState<ActiveIconProps | undefined>(undefined);
+  const [activeIcon, setActiveIcon] = useState<IconProps | undefined>(undefined);
 
-  const openModalHandler = (icon: ActiveIconProps) => {
+  const openModalHandler = (icon: IconProps) => {
     setModalOpen(true);
     setActiveIcon(icon);
     if (onSelect) onSelect(icon);
@@ -63,7 +64,6 @@ const IconsPreviewList = (props: IconsPreviewListProps) => {
 
   return (
     <>
-      <div>...search bar here TODO...</div>
       <Section>
         <div
           style={{

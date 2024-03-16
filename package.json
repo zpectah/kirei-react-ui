@@ -12,8 +12,8 @@
     "system"
   ],
   "scripts": {
+    "start": "cd demo && vite",
     "build:packages": "yarn nx run-many -t build",
-    "start:demo": "cd demo && vite",
     "build:demo": "cd demo && vite build",
     "format:all:check": "prettier --check .",
     "format:all:write": "prettier --write .",
@@ -63,5 +63,8 @@
   "workspaces": [
     "packages/*",
     "demo"
-  ]
+  ],
+  "engines": {
+    "yarn": "^1.22.18"
+  }
 }
